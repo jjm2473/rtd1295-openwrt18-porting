@@ -1,0 +1,3 @@
+/sbin/logread
+/sbin/logd
+/etc/init.d/log

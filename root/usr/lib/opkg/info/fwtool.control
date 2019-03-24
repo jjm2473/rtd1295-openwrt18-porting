@@ -1,0 +1,10 @@
+Package: fwtool
+Version: 1
+Depends: libc
+Source: package/system/fwtool
+SourceName: fwtool
+Section: utils
+Maintainer: Felix Fietkau <nbd@nbd.name>
+Architecture: aarch64_cortex-a53
+Installed-Size: 3612
+Description:  Utility for appending and extracting firmware metadata and signatures

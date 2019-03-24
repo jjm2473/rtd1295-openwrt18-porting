@@ -1,0 +1,12 @@
+Package: dropbear
+Version: 2017.75-9
+Depends: libc
+Alternatives: 100:/usr/bin/ssh:/usr/sbin/dropbear, 100:/usr/bin/scp:/usr/sbin/dropbear
+Source: package/network/services/dropbear
+SourceName: dropbear
+License: MIT
+LicenseFiles: LICENSE libtomcrypt/LICENSE libtommath/LICENSE
+Section: net
+Architecture: aarch64_cortex-a53
+Installed-Size: 82156
+Description:  A small SSH2 server/client designed for small memory environments.

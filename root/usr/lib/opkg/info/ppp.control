@@ -1,0 +1,11 @@
+Package: ppp
+Version: 2.4.7.git-2018-06-23-1
+Depends: libc, kmod-ppp
+Source: package/network/services/ppp
+SourceName: ppp
+License: BSD-4-Clause
+Section: net
+Maintainer: Felix Fietkau <nbd@nbd.name>
+Architecture: aarch64_cortex-a53
+Installed-Size: 111505
+Description:  This package contains the PPP (Point-to-Point Protocol) daemon.

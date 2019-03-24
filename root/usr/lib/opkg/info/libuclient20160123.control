@@ -1,0 +1,12 @@
+Package: libuclient20160123
+Version: 2018-11-24-3ba74ebc-1
+Depends: libc, libubox20170601
+Provides: libuclient
+Source: package/libs/uclient
+SourceName: libuclient
+License: ISC
+Section: libs
+Maintainer: Felix Fietkau <nbd@nbd.name>
+Architecture: aarch64_cortex-a53
+Installed-Size: 9433
+Description:  HTTP/1.1 client library

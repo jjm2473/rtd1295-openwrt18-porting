@@ -1,0 +1,6 @@
+/usr/share/fw3/helpers.conf
+/etc/init.d/firewall
+/sbin/fw3
+/etc/config/firewall
+/etc/firewall.user
+/etc/hotplug.d/iface/20-firewall

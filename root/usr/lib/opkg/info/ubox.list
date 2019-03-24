@@ -1,0 +1,9 @@
+/sbin/lsmod
+/usr/bin/getrandom
+/sbin/modprobe
+/lib/libvalidate.so
+/sbin/rmmod
+/sbin/insmod
+/sbin/validate_data
+/sbin/modinfo
+/sbin/kmodloader
