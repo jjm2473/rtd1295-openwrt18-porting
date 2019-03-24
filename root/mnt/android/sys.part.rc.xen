@@ -1,0 +1,4 @@
+/dev/block/xvda1    /system
+/dev/block/xvda2    /data
+/dev/block/xvda3    /cache
+/dev/block/xvda5    /vendor

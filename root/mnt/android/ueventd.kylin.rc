@@ -1,0 +1,32 @@
+# disp driver
+/dev/mali0           0666   system     graphics
+/dev/ion             0666   system     system
+
+#####################################################
+# Note: all char dev should not be accessible except
+# owner and group owner, otherwise cts will be failed
+#####################################################
+
+/dev/hdmitx          0660   system     system
+/dev/mhltx           0660   system     system
+/dev/hdcp            0660   system     system
+/dev/vpu             0660   mediacodec mediacodec
+/dev/jpu             0660   mediacodec mediacodec
+/dev/ve3             0660   mediacodec mediacodec
+/dev/memalloc        0660   mediacodec mediacodec
+/dev/rtk-se          0660   mediacodec mediacodec
+/dev/rtk-md          0660   mediacodec mediacodec
+/dev/rtk_btusb       0660   bluetooth  net_bt_stack
+/dev/ttyS1           0660   bluetooth  net_bt_stack
+/dev/ttyS0           0660   system     system
+/dev/ttyS2           0660   system     system
+/dev/sw_sync         0660   system     graphics
+/dev/uctrl           0660   media      root
+/dev/rpc*            0660   media      graphics
+/dev/video*          0660   system     camera
+/dev/uio*            0660   media      root
+/dev/cec-*           0660   system     system
+/dev/i2c-*           0660   system     system
+/dev/snd/*           0660   system     audio
+/dev/graphics/*      0660   media      graphics
+/dev/block/sr*       0644   root       root

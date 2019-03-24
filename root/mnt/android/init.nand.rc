@@ -1,0 +1,21 @@
+on early-init
+
+on init
+
+on early-fs
+    write /sys/module/ubi/parameters/fm_autoconvert 1
+    mount ubifs ubi@/system /system rw noatime wait bulk_read
+    mount ubifs ubi@/data /data rw noatime nosuid nodev wait bulk_read
+    mount ubifs ubi@/cache /cache rw noatime nosuid nodev wait bulk_read
+    mount ubifs ubi@/system /system ro remount noatime bulk_read
+
+on fs
+
+on post-fs
+
+on post-fs-data
+
+on early-boot
+
+on boot
+

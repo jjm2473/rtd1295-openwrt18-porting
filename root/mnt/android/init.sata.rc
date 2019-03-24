@@ -1,0 +1,18 @@
+on early-init
+    symlink /fstab.kylin.sata /fstab.kylin
+    symlink /sys.part.rc.sata /sys.part.rc
+
+on init
+
+on early-fs
+
+on fs
+
+on post-fs
+
+on post-fs-data
+
+on early-boot
+
+on boot
+

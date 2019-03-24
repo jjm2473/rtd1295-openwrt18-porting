@@ -1,0 +1,26 @@
+# Android fstab file.
+#<src>                                                  <mnt_point>         <type>    <mnt_flags>                                                                         <fs_mgr_flags>
+# The filesystem that contains the filesystem checker binary (typically /system) cannot
+# specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
+
+/dev/block/sataa19	/system		ext4	ro,noatime	wait
+#/dev/block/sataa20	/data		ext4	rw,noatime,nosuid,nodev,journal_checksum,errors=continue,data_err=ignore,discard	wait,forceencrypt=/cache/data-MD1
+#/dev/block/sataa20	/data		ext4	rw,noatime,nosuid,nodev,journal_checksum,errors=continue,data_err=ignore,discard	wait,encryptable=/cache/data-MD1
+/dev/block/sataa20	/data		ext4	rw,noatime,nosuid,nodev,journal_checksum,errors=continue,data_err=ignore,discard	wait
+/dev/block/sataa21	/cache		ext4	rw,noatime,nosuid,nodev,journal_checksum,errors=continue,data_err=ignore,discard	wait
+/dev/block/zram0		none		swap	defaults	zramsize=524288000,swapprio=30
+
+# OHCI
+/devices/platform/98013400.ohci/usb*                auto    auto    defaults    voldmanaged=usb:auto,encryptable=userdata
+# EHCI
+/devices/platform/98013000.ehci/usb*                auto    auto    defaults    voldmanaged=usb:auto,encryptable=userdata
+# XHCI U2
+/devices/platform/98013c00.rtk_dwc3_u2host/*/usb*   auto    auto    defaults    voldmanaged=usb:auto,encryptable=userdata
+# XHCI U3
+/devices/platform/98013e00.rtk_dwc3_u3host/*/usb*   auto    auto    defaults    voldmanaged=usb:auto,encryptable=userdata
+# XHCI Type C
+/devices/platform/98013200.rtk_dwc3_drd/*/usb*      auto    auto    defaults    voldmanaged=usb:auto,encryptable=userdata
+# SD Card
+/devices/platform/98000000.sdmmc/*/mmc*         auto    auto    defaults    voldmanaged=sdcard1:auto,encryptable=userdata
+# SATA
+/devices/platform/9803f000.sata/ata*            auto    auto    defaults    voldmanaged=sata:auto,encryptable=userdata

@@ -1,0 +1,33 @@
+#!/bin/sh
+# Copyright (C) 2010 OpenWrt.org
+
+do_mount_overlayfs() {
+    if [ -e /rom/note ]; then
+            DEV_ETC=`blkid -L nasetc`
+            if [ -n "$DEV_ETC" ]; then
+                fsck -t ext4 -y $DEV_ETC || \
+                    fsck.ext4 -y $DEV_ETC
+                resize2fs $DEV_ETC
+                sync
+                mount -t ext4 -L nasetc /overlay && \
+                 echo 'ext4 etc mounted!' > /dev/console || \
+                 echo 'Failed to mount ext4 etc!' > /dev/console
+            fi
+
+        mkdir -p /overlay/upper /overlay/work
+        mount -o noatime,lowerdir=/,upperdir=/overlay/upper,workdir=/overlay/work -t overlay "overlayfs:/overlay" /mnt \
+            || return -1
+
+        # pivot
+        mount --move /proc /mnt/proc
+
+        pivot_root /mnt /mnt/rom || return -1
+
+        mount --move /rom/dev /dev
+        mount --move /rom/tmp /tmp
+        mount --move /rom/sys /sys
+        mount --move /rom/overlay /overlay
+    fi
+}
+
+boot_hook_add preinit_mount_root do_mount_overlayfs

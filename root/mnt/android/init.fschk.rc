@@ -1,0 +1,29 @@
+
+on init
+    start mk_emmc_swap
+    start ext4resize
+    wait /rtk/ext4resize.done 5
+    #start e2fsck
+    #wait /rtk/e2fsck.done 60
+
+service mk_emmc_swap /sbin/mk_emmc_swap.sh
+    class core
+    user root
+    group root
+    disabled
+    oneshot
+    seclabel u:r:realtek:s0
+
+service ext4resize /sbin/ext4resize.sh
+    class core
+    user root
+    group root
+    disabled
+    oneshot
+    seclabel u:r:realtek:s0
+
+service e2fsck /sbin/e2fsck.sh
+    class core
+    oneshot
+    disabled
+    seclabel u:r:realtek:s0

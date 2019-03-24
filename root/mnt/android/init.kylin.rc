@@ -1,0 +1,309 @@
+import init.kylin.usb.rc
+import init.fschk.rc
+# For Webserver mode
+import /init.lighttpd.rc
+# For different boot storage
+import init.${ro.boot.storage}.rc
+
+on early-init
+    # performance governor
+    #write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor performance
+    #write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor performance
+    #write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor performance
+    #write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor performance
+
+    # interactive governor
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpufreq/interactive/target_loads 80
+    write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 1400000
+    write /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load 99
+    write /sys/devices/system/cpu/cpufreq/interactive/boost 1
+
+    mount debugfs debugfs /sys/kernel/debug
+    # Set up kernel tracing, but disable it by default
+    chmod 0755 /sys/kernel/debug
+    chmod 0222 /sys/kernel/debug/tracing/trace_marker
+    write /sys/kernel/debug/tracing/tracing_on 0
+
+    # KSM
+    write /sys/kernel/mm/ksm/pages_to_scan 100
+    write /sys/kernel/mm/ksm/sleep_millisecs 500
+    write /sys/kernel/mm/ksm/run 1
+
+    # ZRAM
+    write /sys/block/zram0/comp_algorithm lz4
+    write /sys/block/zram0/max_comp_streams 4
+    write /proc/sys/vm/page-cluster 0
+    write /proc/sys/vm/swappiness 100
+
+on init
+    #loglevel 3
+    start watchdogd
+
+    #mount rootfs rootfs / rw remount
+
+    # Support legacy paths
+    symlink /sdcard /mnt/sdcard
+    symlink /sdcard /storage/sdcard0
+
+    mkdir /tmp 0777 root system
+    mount tmpfs tmpfs /tmp mode=0777,uid=0,gid=1000
+
+on fs
+    mkdir /factory 0775 radio radio
+
+    setprop ro.crypto.umount_sd false
+
+    mount_all /fstab.kylin
+    swapon_all /fstab.kylin
+    setprop persist.storage.resizefs 1
+
+on post-fs-data
+    mkdir /data/media 0770 media_rw media_rw
+
+    # change back to bluetooth from system
+    ##chown bluetooth net_bt_stack /data/misc/bluetooth
+
+    # sensors-config
+    mkdir /data/sensors 751
+    # /data/sensors was owned by system/system earlier.
+    # Force it to root/root if it already exists.
+    chown root root /data/sensors
+    mkdir /data/lightsensor 751
+    # /data/lightsensor was owned by system/system earlier.
+    # Force it to root/root if it already exists.
+    chown root root /data/lightsensor
+    mkdir /data/calibration
+    mkdir /data/amit
+
+    mkdir /data/radio 0775 radio radio
+    mkdir /data/radio/log 0775 radio radio
+
+    chmod 0660 /data/misc/wifi/wpa_supplicant.conf
+
+    # Set indication (checked by vold) that we have finished this action
+    setprop vold.post_fs_data_done 1
+#    mkdir /data/cache 0770 system cache
+#    mkdir /data/misc/dhcp 0770 dhcp dhcp
+#    chown dhcp dhcp /data/misc/dhcp
+#    chown system system /dev/hdcp
+#    chmod 0660 /dev/hdcp
+#    mkdir /data/misc/wifi/sockets 0770 wifi wifi
+    setprop service.adb.tcp.port 5555
+    #PPPoE conf folder
+    mkdir /data/misc/ppp 0775 system system
+
+    mkdir /mnt/nfs 0755 root system
+    mkdir /tmp/ramfs 0777 root system
+    mkdir /tmp/ramfs/mnt 0777 root system
+
+    mkdir /data/etc 0777 system system
+    mkdir /data/etc/gapps 0777 system system
+
+on early-boot
+    # insert mali kernel module
+    insmod /system/vendor/modules/mali_kbase.ko
+
+on boot
+    # update foreground cpuset now that processors are up
+    write /dev/cpuset/foreground/cpus 0-3
+    write /dev/cpuset/foreground/boost/cpus 0-3
+    write /dev/cpuset/background/cpus 0-1
+    write /dev/cpuset/system-background/cpus 0-3
+
+    # insert paragon kernel module
+    insmod /system/vendor/modules/jnl.ko
+    insmod /system/vendor/modules/ufsd.ko
+
+    # insert btusb kernel module
+    insmod /system/vendor/modules/rtk_btusb.ko
+
+    chown system system /sys/kernel/suspend/mode
+    chmod 0664 /sys/kernel/suspend/mode
+    chown system system /sys/kernel/suspend/context
+    chmod 0664 /sys/kernel/suspend/context
+    chown system system /sys/kernel/suspend/watchdog_timer_sec
+    chmod 0664 /sys/kernel/suspend/watchdog_timer_sec
+    chown system system /sys/kernel/suspend/watchdog_en
+    chmod 0664 /sys/kernel/suspend/watchdog_en
+
+    # CTS requirement
+    chmod 0775 /tmp
+
+    # bluetooth
+    # change back to bluetooth from system
+    chown bluetooth net_bt_stack /data/misc/bluetooth
+    mkdir /data/misc/bluedroid 0770 bluetooth net_bt_stack
+    # bluetooth LPM
+    chown bluetooth net_bt_stack /proc/bluetooth/sleep/lpm
+    chown bluetooth net_bt_stack /proc/bluetooth/sleep/btwrite
+
+
+        #UART device
+    chmod 0660 /dev/ttyS1
+    chmod 0777 /dev/venus_ir
+    chown bluetooth net_bt_stack /dev/ttyS1
+	
+	#change the mode for fan
+	chown system system /sys/devices/platform/980070d0.pwm/dutyRate2
+
+    # rfkill
+    chmod 0660 /sys/class/rfkill/rfkill0/state
+    chmod 0660 /sys/class/rfkill/rfkill0/type
+    chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/state
+    chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/type
+    write /sys/class/rfkill/rfkill0/state 0
+
+    # bluetooth MAC address programming
+    chown bluetooth net_bt_stack ro.bt.bdaddr_path
+    chown bluetooth net_bt_stack /system/etc/bluetooth
+    chown bluetooth net_bt_stack /data/misc/bluetooth
+    #setprop ro.bt.bdaddr_path "/data/misc/bluetooth/bdaddr"
+
+    start libchk
+    start start_tee_sup
+
+#eeprom userspace program
+service eeprom /system/bin/eeprom -BKLG
+    class main
+    user root
+    group root
+    oneshot
+    disabled
+    seclabel u:r:realtek:s0
+
+# bugreport is triggered by holding down volume down, volume up and power
+service bugreport /system/bin/dumpstate -d -p -B -z \
+        -o /data/data/com.android.shell/files/bugreports/bugreport
+    class main
+    disabled
+    oneshot
+    keycodes 114 115 116
+    seclabel u:r:dumpstate:s0
+
+#service bootkylin /sbin/bootkylin.sh
+#    class main
+#    oneshot
+#    #disabled
+
+#service bootkylin /sbin/usb_suspend.sh
+#    class main
+#    oneshot
+
+on property:persist.rtk.dvdlog=1
+    restart DvdPlayer
+
+on property:persist.rtk.dvdlog=0
+    restart DvdPlayer
+
+on property:ro.debuggable=1
+    # install busybox symbolic links
+    #mkdir /system/vendor/bin
+    #start busybox_link
+
+    # start gatord
+    #insmod /system/vendor/modules/gator.ko
+    #start gator
+
+    # remount rootfs to rw
+    #mount rootfs rootfs / rw remount
+
+on property:sys.boot_completed=1
+    class_start delay_start
+    start xen_data_channel
+
+    # insert usb ethernet kernel module
+    #insmod /system/vendor/modules/usbnet.ko
+    #insmod /system/vendor/modules/net1080.ko
+
+on property:persist.rtk.hdmirx.version=1.4
+    write /sys/devices/platform/98037000.hdmirx/edid_version 1.4
+
+on property:persist.rtk.hdmirx.version=2.0
+    write /sys/devices/platform/98037000.hdmirx/edid_version 2.0
+
+# the following settings are used to disable ipv6 on cellular networks that cannot
+# support it.
+on property:ril.ipv6.rmnet0.enable=1
+    write /proc/sys/net/ipv6/conf/rmnet0/disable_ipv6 0
+
+on property:ril.ipv6.rmnet0.enable=0
+    write /proc/sys/net/ipv6/conf/rmnet0/disable_ipv6 1
+
+on property:ril.ipv6.rmnet1.enable=1
+    write /proc/sys/net/ipv6/conf/rmnet1/disable_ipv6 0
+
+on property:ril.ipv6.rmnet1.enable=0
+    write /proc/sys/net/ipv6/conf/rmnet1/disable_ipv6 1
+
+#Realtek wireless extension actions.
+on property:rtk.net.wifi.ext.actions=1
+    write /sys/class/net/wlan0/queues/rx-0/rps_cpus f
+    write /sys/class/net/wlan0/queues/rx-1/rps_cpus f
+    write /sys/class/net/wlan0/queues/rx-2/rps_cpus f
+    write /sys/class/net/wlan0/queues/rx-3/rps_cpus f
+    write /sys/class/net/p2p0/queues/rx-0/rps_cpus f
+    write /sys/class/net/p2p0/queues/rx-1/rps_cpus f
+    write /sys/class/net/p2p0/queues/rx-2/rps_cpus f
+    write /sys/class/net/p2p0/queues/rx-3/rps_cpus f
+
+service hidraw /system/bin/vr_bee_hidraw_daemon
+    class main
+    user root
+    group root
+
+service chperformance /system/bin/chperformance.sh
+    disabled
+    oneshot
+    seclabel u:r:realtek:s0
+
+service chinteractive /system/bin/chinteractive.sh
+    disabled
+    oneshot
+    seclabel u:r:realtek:s0
+
+on property:persist.rtk.performancemode=1
+    #start chperformance
+    write /sys/devices/system/cpu/cpufreq/interactive/boost 1
+
+#on property:persist.rtk.performancemode=0
+#    #start chinteractive
+#    write /sys/devices/system/cpu/cpufreq/interactive/boost 0
+
+on property:sys.boot_completed=1 && property:persist.rtk.performancemode=0
+    write /sys/devices/system/cpu/cpufreq/interactive/boost 0
+
+service factorysave /system/bin/factorysave.sh
+    disabled
+    oneshot
+
+service preinstall /system/bin/preinstall.sh
+    user root
+    group root
+    disable
+    oneshot
+
+service c4_sddpd /system/bin/c4_sddpd
+    user root
+    group root
+    disable
+    oneshot
+
+service hdservice /system/bin/hdservice
+    class main
+    user root
+    group root
+    oneshot
+
+on property:sys.boot_completed=1
+    start preinstall
+    start gapps_installer
+
+service gapps_installer /system/bin/gapps_installer.sh
+    user root
+    group root
+    disabled
+    oneshot

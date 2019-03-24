@@ -1,0 +1,3 @@
+/dev/block/sataa19    /system
+/dev/block/sataa20    /data
+/dev/block/sataa21    /cache
