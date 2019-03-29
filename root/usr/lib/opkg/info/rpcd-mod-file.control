@@ -1,0 +1,11 @@
+Package: rpcd-mod-file
+Version: 2018-11-28-3aa81d0d-1
+Depends: libc, libubus20170705, libubox20170601, rpcd
+Source: feeds/base/package/system/rpcd
+SourceName: rpcd-mod-file
+License: ISC
+Section: utils
+Maintainer: Jo-Philipp Wich <jo@mein.io>
+Architecture: aarch64_cortex-a53
+Installed-Size: 5408
+Description:  Provides ubus calls for file and directory operations.

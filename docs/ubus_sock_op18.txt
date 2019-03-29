@@ -1,0 +1,8 @@
+netstat -anp|grep ubus
+unix  2      [ ACC ]     STREAM     LISTENING      13157 70/ubusd            /var/run/ubus.sock
+unix  3      [ ]         STREAM     CONNECTED      15693 70/ubusd            /var/run/ubus.sock
+unix  3      [ ]         STREAM     CONNECTED      15166 70/ubusd            /var/run/ubus.sock
+unix  3      [ ]         STREAM     CONNECTED      11075 70/ubusd            /var/run/ubus.sock
+unix  3      [ ]         STREAM     CONNECTED      13805 70/ubusd            /var/run/ubus.sock
+unix  2      [ ]         DGRAM                     13162 70/ubusd            
+unix  3      [ ]         STREAM     CONNECTED      11976 70/ubusd            /var/run/ubus.sock

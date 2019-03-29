@@ -1,0 +1,39 @@
+8822bs               3034777  0 
+ahci                   28250  0 
+async_memcpy            1961  1 raid456
+async_pq                5969  1 raid456
+async_raid6_recov       2236  1 raid456
+async_tx                2879  5 raid456,async_raid6_recov,async_pq,async_xor,async_memcpy
+async_xor               4439  2 raid456,async_pq
+crc_ccitt               1289  1 ppp_async
+cryptodev              41750  0 
+dm_log                 10764  2 dm_mirror,dm_region_hash
+dm_mirror              15569  0 
+dm_region_hash          8104  1 dm_mirror
+gre                     4647  2 pptp,ip_gre
+ip_gre                 10103  0 
+ip_tunnel              14620  1 ip_gre
+ip6_udp_tunnel          1709  1 l2tp_core
+jnl                    38315  1 ufsd
+l2tp_core              23911  2 l2tp_ppp,l2tp_netlink
+l2tp_netlink            9473  1 l2tp_ppp
+l2tp_ppp               20375  0 
+linear                  4449  0 
+mali_kbase            346924 17 
+md_mod                132421  6 multipath,raid456,raid10,raid1,raid0,linear
+multipath               7561  0 
+nfsd                  105409  0 
+ppp_async               8681  0 
+pppoe                  13373  0 
+pptp                   15644  0 
+r8168                 479209  0 
+raid0                  11535  0 
+raid1                  30470  0 
+raid10                 40912  0 
+raid456                91023  0 
+raid6_pq               88948  3 raid456,async_raid6_recov,async_pq
+rtk_btusb              51331  0 
+rtk_sdmmc              36010  0 
+udp_tunnel              1842  1 l2tp_core
+ufsd                  698683  0 
+xor                     7869  1 async_xor

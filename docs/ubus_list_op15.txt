@@ -1,0 +1,10 @@
+dhcp odhcpd
+disk-helper rpcd
+file rpcd
+iwinfo rpcd
+log logd
+rpc-sys rpcd
+service ubusd
+session rpcd
+system ubusd
+uci rpcd

@@ -6,6 +6,8 @@
 
 export PATH="/usr/sbin:/usr/bin:/sbin:/bin"
 
+touch /android/.coldplug_done || touch /rom/android/.coldplug_done
+
 . /lib/functions.sh
 . /lib/functions/preinit.sh
 . /lib/functions/system.sh

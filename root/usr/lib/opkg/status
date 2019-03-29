@@ -50,6 +50,15 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
 Auto-Installed: yes
 
+Package: rpcd
+Version: 2018-11-28-3aa81d0d-1
+Depends: libc, libubus20170705, libubox20170601, libuci20130104, libblobmsg-json
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Conffiles:
+ /etc/config/rpcd 81a24774226d42c6ea53b531992335cc910094a7e17f80a803e680e2eededd4f
+Installed-Time: 1553875645
+
 Package: busybox
 Version: 1.30.1-2
 Depends: libc
@@ -321,6 +330,13 @@ Conffiles:
 Installed-Time: 1553274868
 Alternatives: 100:/usr/bin/ssh:/usr/sbin/dropbear, 100:/usr/bin/scp:/usr/sbin/dropbear
 
+Package: rpcd-mod-file
+Version: 2018-11-28-3aa81d0d-1
+Depends: libc, libubus20170705, libubox20170601, rpcd
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1553876056
+
 Package: mtd
 Version: 24
 Depends: libc, libubox20170601
@@ -545,6 +561,13 @@ Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
 Auto-Installed: yes
+
+Package: blkid
+Version: 2.33-2
+Depends: libc, libblkid1, libuuid1
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1553875782
 
 Package: fwtool
 Version: 1

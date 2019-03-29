@@ -1,0 +1,12 @@
+Package: blkid
+Version: 2.33-2
+Depends: libc, libblkid1, libuuid1
+Source: feeds/base/package/utils/util-linux
+SourceName: blkid
+License: GPL-2.0
+LicenseFiles: COPYING libblkid/COPYING libmount/COPYING Documentation/licenses/COPYING.GPLv2 Documentation/licenses/COPYING.LGPLv2.1 libuuid/COPYING Documentation/licenses/COPYING.BSD-3
+Section: utils
+Architecture: aarch64_cortex-a53
+Installed-Size: 34645
+Description:  The blkid program is the command-line interface to working with the libblkid
+ library.

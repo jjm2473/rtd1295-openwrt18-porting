@@ -1,0 +1,36 @@
+#!/bin/sh
+
+SERVICES="samba minidlna transmission vsftpd forked-daapd netatalk"
+
+if [ "$#" -ne 2 ]; then
+  echo "Usage: $0 SERVICENAME [enable|disable] "
+  exit 1
+fi
+
+if echo "$SERVICES" | grep -q $1; then
+	case "$2" in
+		enable)
+			/sbin/uci set $1.config.enabled=1
+			/sbin/uci commit $1
+			/etc/init.d/$1 start
+			/etc/init.d/$1 enable
+			exit 0
+		;;
+
+		disable)
+			/sbin/uci set $1.config.enabled=0
+			/sbin/uci commit $1
+			/etc/init.d/$1 stop
+			/etc/init.d/$1 disable
+			exit 0
+		;;
+
+		*)
+			echo "$2 command is not supported"
+			exit 1
+		;;
+	esac
+else
+	echo "Service: $1 is not yet supported"
+	exit 1
+fi

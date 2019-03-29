@@ -1,0 +1,14 @@
+  PID USER       VSZ STAT COMMAND
+    1 root      1500 S    /sbin/procd
+   70 root      1116 S    /sbin/ubusd
+   71 root       808 S    /sbin/askfirst /usr/libexec/login.sh
+   72 root       808 S    /sbin/askfirst /usr/libexec/login.sh
+  297 root      1156 S    /sbin/logd -S 64
+  349 dnsmasq   1296 S    /usr/sbin/dnsmasq -C /var/etc/dnsmasq.conf.cfg01411c -k -x /var/run/dnsmasq/dnsmasq.cfg01411c.pid
+  414 root      1604 S    /sbin/netifd
+  446 root      1376 S    /usr/sbin/odhcpd
+  594 root      1192 S<   /usr/sbin/ntpd -n -N -S /usr/sbin/ntpd-hotplug -p 0.openwrt.pool.ntp.org -p 1.openwrt.pool.ntp.org -p 2.openwrt.pool.ntp.org -p 3.openwrt.pool.ntp.org
+  731 root       956 S    /usr/sbin/dropbear -F -P /var/run/dropbear.1.pid -p 22 -K 300 -T 3
+  892 root      1072 R    /usr/sbin/dropbear -F -P /var/run/dropbear.1.pid -p 22 -K 300 -T 3
+  893 root      1200 S    -ash
+ 1144 root      1476 S    /usr/sbin/uhttpd -f -h /www -r OpenWrt -x /cgi-bin -u /ubus -t 60 -T 30 -k 20 -A 1 -n 1 -N 100 -R -p 0.0.0.0:80 -p [::]:80

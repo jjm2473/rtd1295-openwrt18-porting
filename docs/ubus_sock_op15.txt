@@ -1,0 +1,7 @@
+
+unix  2      [ ACC ]     STREAM     LISTENING       8433 199/ubusd           @/var/run/ubus.sock
+unix  3      [ ]         STREAM     CONNECTED      13196 199/ubusd           @/var/run/ubus.sock
+unix  3      [ ]         STREAM     CONNECTED      14574 199/ubusd           @/var/run/ubus.sock
+unix  3      [ ]         STREAM     CONNECTED      13855 199/ubusd           @/var/run/ubus.sock
+unix  3      [ ]         STREAM     CONNECTED      10718 199/ubusd           @/var/run/ubus.sock
+unix  3      [ ]         STREAM     CONNECTED      13813 199/ubusd           @/var/run/ubus.sock
