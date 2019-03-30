@@ -711,6 +711,13 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
 Auto-Installed: yes
 
+Package: luci-i18n-base-zh-cn
+Version: git-19.088.25182-8e3e502-1
+Depends: libc, luci-base
+Status: install user installed
+Architecture: all
+Installed-Time: 1553962550
+
 Package: liblucihttp-lua
 Version: 2019-01-24-1afbdcc3-1
 Depends: libc, liblucihttp0, liblua5.1.5
@@ -750,6 +757,13 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
 Auto-Installed: yes
 
+Package: luci-i18n-opkg-zh-cn
+Version: git-19.088.25182-8e3e502-1
+Depends: libc, luci-app-opkg
+Status: install user installed
+Architecture: all
+Installed-Time: 1553962650
+
 Package: ubox
 Version: 2019-03-21-a7827795-1
 Depends: libc, libubox20170601, ubusd, ubus, libubus20170705, libuci20130104
@@ -787,6 +801,20 @@ Status: install ok installed
 Architecture: all
 Installed-Time: 1553960282
 Auto-Installed: yes
+
+Package: luci-i18n-opkg-en
+Version: git-19.088.25182-8e3e502-1
+Depends: libc, luci-app-opkg
+Status: install user installed
+Architecture: all
+Installed-Time: 1553962639
+
+Package: luci-i18n-base-en
+Version: git-19.088.25182-8e3e502-1
+Depends: libc, luci-base
+Status: install user installed
+Architecture: all
+Installed-Time: 1553962534
 
 Package: fwtool
 Version: 1

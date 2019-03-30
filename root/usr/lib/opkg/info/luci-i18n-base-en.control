@@ -1,0 +1,10 @@
+Package: luci-i18n-base-en
+Version: git-19.088.25182-8e3e502-1
+Depends: libc, luci-base
+Source: feeds/luci/modules/luci-base
+SourceName: luci-i18n-base-en
+License: MIT
+Section: luci
+Architecture: all
+Installed-Size: 718
+Description:  Translation for luci-base - English

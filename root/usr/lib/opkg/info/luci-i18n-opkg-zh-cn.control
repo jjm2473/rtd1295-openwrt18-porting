@@ -1,0 +1,9 @@
+Package: luci-i18n-opkg-zh-cn
+Version: git-19.088.25182-8e3e502-1
+Depends: libc, luci-app-opkg
+Source: feeds/luci/applications/luci-app-opkg
+SourceName: luci-i18n-opkg-zh-cn
+Section: luci
+Architecture: all
+Installed-Size: 2132
+Description:  Translation for luci-app-opkg - 中文 (Chinese)
