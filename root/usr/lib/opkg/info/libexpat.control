@@ -1,0 +1,12 @@
+Package: libexpat
+Version: 2.2.6-1
+Depends: libc
+Source: feeds/packages/libs/expat
+SourceName: libexpat
+License: MIT
+LicenseFiles: COPYING
+Section: libs
+Maintainer: Steven Barth <cyrus@openwrt.org>, Ted Hess <thess@kitschensync.net>
+Architecture: aarch64_cortex-a53
+Installed-Size: 51121
+Description:  A fast, non-validating, stream-oriented XML parsing library.

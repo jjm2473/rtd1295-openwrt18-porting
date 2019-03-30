@@ -1,0 +1,3 @@
+/usr/sbin/avahi-daemon
+/etc/init.d/avahi-daemon
+/etc/avahi/avahi-daemon.conf

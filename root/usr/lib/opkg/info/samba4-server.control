@@ -1,0 +1,15 @@
+Package: samba4-server
+Version: 4.9.4-3
+Depends: libc, samba4-libs
+Source: feeds/packages/net/samba4
+SourceName: samba4-server
+License: GPL-3.0-only
+LicenseFiles: COPYING
+Section: net
+Maintainer: Andy Walsh <andy.walsh44+github@gmail.com>
+Architecture: aarch64_cortex-a53
+Installed-Size: 144136
+Description:  installs: smbd (daemon) smbpasswd pdbedit testparm
+ 
+ This provides the basic fileserver service and is the minimum needed to serve file shares.
+ HINT: https://fitzcarraldoblog.wordpress.com/2016/10/17/a-correct-method-of-configuring-samba-for-browsing-smb-shares-in-a-home-network/

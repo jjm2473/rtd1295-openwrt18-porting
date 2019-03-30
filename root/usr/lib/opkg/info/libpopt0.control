@@ -1,0 +1,11 @@
+Package: libpopt0
+Version: 1.16-2
+Depends: libc
+Provides: libpopt
+Source: feeds/base/package/libs/popt
+SourceName: libpopt
+License: MIT
+Section: libs
+Architecture: aarch64_cortex-a53
+Installed-Size: 17483
+Description:  A command line option parsing library

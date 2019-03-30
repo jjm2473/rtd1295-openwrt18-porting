@@ -1,0 +1,12 @@
+Package: libnettle6
+Version: 3.4.1-2
+Depends: libc, libgmp10
+Provides: libnettle
+Source: feeds/base/package/libs/nettle
+SourceName: libnettle
+License: GPL-2.0+
+LicenseFiles: COPYING
+Section: libs
+Architecture: aarch64_cortex-a53
+Installed-Size: 242089
+Description:  GNU crypto library

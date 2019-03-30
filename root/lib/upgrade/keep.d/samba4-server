@@ -1,0 +1,7 @@
+/etc/samba/smb.conf
+/etc/samba/smbpasswd
+/etc/samba/secrets.tdb
+/etc/samba/passdb.tdb
+/etc/samba/idmap.ldb
+/etc/samba/lmhosts
+/etc/nsswitch.conf

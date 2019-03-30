@@ -1,0 +1,10 @@
+Package: libdbus
+Version: 1.12.12-1
+Depends: libc, libpthread
+Source: feeds/packages/utils/dbus
+SourceName: libdbus
+License: AFL-2.1
+Section: utils
+Architecture: aarch64_cortex-a53
+Installed-Size: 111095
+Description:  Simple interprocess messaging system (library)

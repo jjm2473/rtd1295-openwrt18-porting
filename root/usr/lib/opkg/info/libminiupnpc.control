@@ -1,0 +1,10 @@
+Package: libminiupnpc
+Version: 2.1-1
+Depends: libc
+Source: feeds/packages/net/miniupnpc
+SourceName: libminiupnpc
+Section: libs
+Maintainer: Steven Barth <cyrus@openwrt.org>
+Architecture: aarch64_cortex-a53
+Installed-Size: 19309
+Description:  Lightweight UPnP library

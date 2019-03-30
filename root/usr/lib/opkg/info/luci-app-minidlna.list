@@ -1,0 +1,5 @@
+/usr/lib/lua/luci/view/minidlna_status.htm
+/usr/lib/lua/luci/controller/minidlna.lua
+/usr/lib/lua/luci/view/admin_status/index/minidlna.htm
+/etc/uci-defaults/40_luci-minidlna
+/usr/lib/lua/luci/model/cbi/minidlna.lua

@@ -1,0 +1,12 @@
+Package: transmission-web
+Version: 2.94-3
+Depends: libc
+Source: feeds/packages/net/transmission
+SourceName: transmission-web
+License: GPL-2.0+
+LicenseFiles: COPYING
+Section: net
+Maintainer: Rosen Penev <rosenp@gmail.com>
+Architecture: aarch64_cortex-a53
+Installed-Size: 241554
+Description:  Webinterface resources for transmission.

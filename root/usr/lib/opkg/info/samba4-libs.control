@@ -1,0 +1,12 @@
+Package: samba4-libs
+Version: 4.9.4-3
+Depends: libc, zlib, libtirpc, krb5-libs, libpopt0, libcap, libpthread, libnettle6, libgcrypt, libpam, dbus, libavahi-client, attr, libavahi-client
+Source: feeds/packages/net/samba4
+SourceName: samba4-libs
+License: GPL-3.0-only
+LicenseFiles: COPYING
+Section: net
+Maintainer: Andy Walsh <andy.walsh44+github@gmail.com>
+Architecture: aarch64_cortex-a53
+Installed-Size: 5295274
+Description:  Samba 4.9.4 libs

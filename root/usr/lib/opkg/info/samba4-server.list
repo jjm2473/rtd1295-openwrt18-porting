@@ -1,0 +1,9 @@
+/etc/init.d/samba4
+/usr/sbin/nmbd
+/usr/bin/testparm
+/etc/samba/smb.conf.template
+/etc/config/samba4
+/lib/upgrade/keep.d/samba4-server
+/usr/sbin/smbd
+/usr/bin/smbpasswd
+/usr/bin/pdbedit

@@ -1,0 +1,4 @@
+/usr/bin/attr
+/usr/bin/setfattr
+/lib/upgrade/keep.d/attr
+/usr/bin/getfattr

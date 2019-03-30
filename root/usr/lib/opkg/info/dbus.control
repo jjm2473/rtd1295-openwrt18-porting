@@ -1,0 +1,10 @@
+Package: dbus
+Version: 1.12.12-1
+Depends: libc, libexpat, libdbus
+Source: feeds/packages/utils/dbus
+SourceName: dbus
+License: AFL-2.1
+Section: utils
+Architecture: aarch64_cortex-a53
+Installed-Size: 98574
+Description:  Simple interprocess messaging system (daemon)

@@ -1,0 +1,5 @@
+/usr/lib/libavahi-common.so.3
+/etc/dbus-1/system.d/avahi-dbus.conf
+/usr/lib/libavahi-core.so.7.0.2
+/usr/lib/libavahi-common.so.3.5.3
+/usr/lib/libavahi-core.so.7

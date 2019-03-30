@@ -1,0 +1,9 @@
+Package: luci-lib-ipkg
+Version: git-19.088.25182-8e3e502-1
+Depends: libc, luci-base
+Source: feeds/luci/libs/luci-lib-ipkg
+SourceName: luci-lib-ipkg
+Section: luci
+Architecture: all
+Installed-Size: 2066
+Description:  Legacy opkg interface class

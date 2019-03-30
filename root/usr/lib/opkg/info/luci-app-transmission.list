@@ -1,0 +1,3 @@
+/etc/uci-defaults/40_luci-transmission
+/usr/lib/lua/luci/model/cbi/transmission.lua
+/usr/lib/lua/luci/controller/transmission.lua

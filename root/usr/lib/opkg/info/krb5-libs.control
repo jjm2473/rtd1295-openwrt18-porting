@@ -1,0 +1,12 @@
+Package: krb5-libs
+Version: 1.17-1
+Depends: libc, libncurses6, libss2, libcomerr0
+Source: feeds/packages/net/krb5
+SourceName: krb5-libs
+License: MIT
+LicenseFiles: NOTICE
+Section: net
+Maintainer: W. Michael Petullo <mike@flyn.org>
+Architecture: aarch64_cortex-a53
+Installed-Size: 661245
+Description:  Kerberos 5 Shared Libraries

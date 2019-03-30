@@ -1,0 +1,12 @@
+Package: libncurses6
+Version: 6.1-4
+Depends: libc, terminfo
+Provides: libncursesw, libncurses, libncursesw6
+Source: feeds/base/package/libs/ncurses
+SourceName: libncurses
+License: MIT
+LicenseFiles: README
+Section: libs
+Architecture: aarch64_cortex-a53
+Installed-Size: 161704
+Description:  Terminal handling library (Unicode)

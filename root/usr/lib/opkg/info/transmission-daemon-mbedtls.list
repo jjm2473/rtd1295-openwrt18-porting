@@ -1,0 +1,4 @@
+/etc/init.d/transmission
+/etc/sysctl.d/20-transmission.conf
+/usr/bin/transmission-daemon
+/etc/config/transmission
