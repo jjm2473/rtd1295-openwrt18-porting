@@ -1,0 +1,11 @@
+Package: block-mount
+Version: 2019-03-28-ff1ded63-4
+Depends: libc, ubox, libubox20170601, libuci20130104
+Source: package/system/fstools
+SourceName: block-mount
+License: GPL-2.0
+Section: base
+Maintainer: John Crispin <john@phrozen.org>
+Architecture: aarch64_cortex-a53
+Installed-Size: 20742
+Description:  Block device mounting and checking

@@ -5,11 +5,11 @@ do_mount_overlayfs() {
     if [ -e /rom/note ]; then
             DEV_ETC=`blkid -L nasetc`
             if [ -n "$DEV_ETC" ]; then
-                fsck -t ext4 -y $DEV_ETC || \
-                    fsck.ext4 -y $DEV_ETC
+                fsck.ext4 -y $DEV_ETC || \
+                    fsck -t ext4 -y $DEV_ETC
                 resize2fs $DEV_ETC
                 sync
-                mount -t ext4 -L nasetc /overlay && \
+                mount -t ext4 $DEV_ETC /overlay && \
                  echo 'ext4 etc mounted!' > /dev/console || \
                  echo 'Failed to mount ext4 etc!' > /dev/console
             fi

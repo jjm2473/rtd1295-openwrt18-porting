@@ -1,5 +1,9 @@
 blkid
+resize2fs
 rpcd
 rpcd-mod-file
+block-mount
+blockdev
+hdparm
 luci
 uhttpd-mod-ubus

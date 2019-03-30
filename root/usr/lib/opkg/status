@@ -89,6 +89,20 @@ Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
 
+Package: resize2fs
+Version: 1.44.5-1
+Depends: libc, e2fsprogs
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1553911199
+
+Package: blockdev
+Version: 2.33-2
+Depends: libc, librt
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1553911264
+
 Package: kmod-pppoe
 Version: 4.14.107-1
 Depends: kernel (= 4.14.107-1-baef5e1f1cb3d6b76c6d687e645dc927), kmod-ppp, kmod-pppox
@@ -245,6 +259,13 @@ Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
 Auto-Installed: yes
+
+Package: block-mount
+Version: 2019-03-28-ff1ded63-4
+Depends: libc, ubox, libubox20170601, libuci20130104
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1553911158
 
 Package: firewall
 Version: 2019-01-02-70f8785b-2
@@ -459,6 +480,13 @@ Architecture: aarch64_cortex-a53
 Conffiles:
  /etc/e2fsck.conf dece11e2b15f487d7d2bf9f96abe2eaaf9cd33f02d7b9725b9116023d7786cac
 Installed-Time: 1553274868
+
+Package: hdparm
+Version: 9.58-1
+Depends: libc
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1553911272
 
 Package: kmod-ppp
 Version: 4.14.107-1

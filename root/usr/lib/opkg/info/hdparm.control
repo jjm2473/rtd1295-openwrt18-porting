@@ -1,0 +1,11 @@
+Package: hdparm
+Version: 9.58-1
+Depends: libc
+Source: feeds/packages/utils/hdparm
+SourceName: hdparm
+License: BSD-Style Open Source License
+Section: utils
+Maintainer: Rosen Penev <rosenp@gmail.com>
+Architecture: aarch64_cortex-a53
+Installed-Size: 45554
+Description:  get/set SATA/IDE device parameters
