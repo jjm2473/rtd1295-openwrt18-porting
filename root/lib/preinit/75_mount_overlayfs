@@ -30,4 +30,4 @@ do_mount_overlayfs() {
     fi
 }
 
-boot_hook_add preinit_mount_root do_mount_overlayfs
+boot_hook_add preinit_main do_mount_overlayfs
