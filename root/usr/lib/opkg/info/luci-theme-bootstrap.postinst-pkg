@@ -1,0 +1,4 @@
+[ -n "${IPKG_INSTROOT}" ] || {
+	(. /etc/uci-defaults/30_luci-theme-bootstrap) && rm -f /etc/uci-defaults/30_luci-theme-bootstrap
+	exit 0
+}

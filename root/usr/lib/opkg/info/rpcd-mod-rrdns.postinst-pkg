@@ -1,0 +1,3 @@
+#!/bin/sh
+killall -HUP rpcd 2>/dev/null
+exit 0

@@ -1,0 +1,10 @@
+Package: luci-mod-system
+Version: git-19.088.25182-8e3e502-1
+Depends: libc, luci-base
+Source: feeds/luci/modules/luci-mod-system
+SourceName: luci-mod-system
+License: Apache-2.0
+Section: luci
+Architecture: all
+Installed-Size: 18403
+Description:  LuCI Administration - Global System Settings

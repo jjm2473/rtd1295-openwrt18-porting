@@ -1,0 +1,4 @@
+[ -n "${IPKG_INSTROOT}" ] || {
+	(. /etc/uci-defaults/50_luci-mod-admin-full) && rm -f /etc/uci-defaults/50_luci-mod-admin-full
+	exit 0
+}

@@ -1,0 +1,10 @@
+Package: luci-mod-network
+Version: git-19.088.25182-8e3e502-1
+Depends: libc, luci-base, libiwinfo-lua
+Source: feeds/luci/modules/luci-mod-network
+SourceName: luci-mod-network
+License: Apache-2.0
+Section: luci
+Architecture: all
+Installed-Size: 36622
+Description:  LuCI Network Administration

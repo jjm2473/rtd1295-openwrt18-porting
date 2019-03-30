@@ -1,3 +1,19 @@
+Package: luci-theme-material
+Version: git-19.088.25182-8e3e502-1
+Depends: libc
+Status: install user installed
+Architecture: all
+Installed-Time: 1553960417
+
+Package: liblucihttp0
+Version: 2019-01-24-1afbdcc3-1
+Depends: libc
+Provides: liblucihttp
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1553960204
+Auto-Installed: yes
+
 Package: libc
 Version: 1.1.21-1
 Depends: libgcc1
@@ -24,6 +40,14 @@ Conffiles:
  /etc/opkg.conf f38c19f696ea87c0b30eb5bfeb8657237f4625e1a749c58b99f01595edfb6446
  /etc/opkg/customfeeds.conf 61d1f3aa62fe977614ed0c2f0ad3b2ee2f7b451bfb34812071d86d31a4d43d4a
 Installed-Time: 1553274868
+
+Package: luci-app-opkg
+Version: git-19.088.25182-8e3e502-1
+Depends: libc, opkg
+Status: install ok installed
+Architecture: all
+Installed-Time: 1553960305
+Auto-Installed: yes
 
 Package: libpthread
 Version: 1.1.21-1
@@ -68,12 +92,44 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
 Alternatives: 100:/usr/bin/find:/bin/busybox, 100:/usr/bin/flock:/bin/busybox, 100:/usr/bin/free:/bin/busybox, 100:/sbin/ip:/bin/busybox, 100:/bin/kill:/bin/busybox, 100:/usr/bin/pgrep:/bin/busybox, 100:/bin/ps:/bin/busybox, 100:/usr/bin/top:/bin/busybox, 100:/usr/bin/uptime:/bin/busybox, 100:/usr/bin/xargs:/bin/busybox
 
+Package: luci-lib-ip
+Version: git-19.088.25182-8e3e502-1
+Depends: libc, liblua5.1.5, libnl-tiny
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1553960181
+Auto-Installed: yes
+
+Package: libubus-lua
+Version: 2018-10-06-221ce7e7-1
+Depends: libc, libubus20170705, liblua5.1.5
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1553960192
+Auto-Installed: yes
+
 Package: kmod-nf-reject6
 Version: 4.14.107-1
 Depends: kernel (= 4.14.107-1-baef5e1f1cb3d6b76c6d687e645dc927)
 Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
+
+Package: libiwinfo-lua
+Version: 2019-03-28-c2cfe9d9-1
+Depends: libc, libiwinfo20181126, liblua5.1.5
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1553960244
+Auto-Installed: yes
+
+Package: luci-mod-system
+Version: git-19.088.25182-8e3e502-1
+Depends: libc, luci-base
+Status: install ok installed
+Architecture: all
+Installed-Time: 1553960266
+Auto-Installed: yes
 
 Package: kmod-nf-flow
 Version: 4.14.107-1
@@ -102,6 +158,14 @@ Depends: libc, librt
 Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553911264
+
+Package: luci-theme-bootstrap
+Version: git-19.088.25182-8e3e502-1
+Depends: libc
+Status: install ok installed
+Architecture: all
+Installed-Time: 1553960286
+Auto-Installed: yes
 
 Package: kmod-pppoe
 Version: 4.14.107-1
@@ -251,6 +315,14 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
 Auto-Installed: yes
 
+Package: luci-mod-status
+Version: git-19.088.25182-8e3e502-1
+Depends: libc, luci-base, libiwinfo20181126, libiwinfo-lua
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1553960256
+Auto-Installed: yes
+
 Package: libxtables12
 Version: 1.8.2-3
 Depends: libc
@@ -258,6 +330,15 @@ Provides: libxtables
 Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
+Auto-Installed: yes
+
+Package: libiwinfo20181126
+Version: 2019-03-28-c2cfe9d9-1
+Depends: libc, libnl-tiny, libuci20130104, libubus20170705
+Provides: libiwinfo
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1553960237
 Auto-Installed: yes
 
 Package: block-mount
@@ -276,6 +357,14 @@ Conffiles:
  /etc/config/firewall 303d858071dfcf1d1e8593168eb9c582a2c774211f23cef4bf7c85e4060a5e8c
  /etc/firewall.user bd68324966481011f5e36570258ad97dd422655c16f3119d48325ed8459de510
 Installed-Time: 1553274868
+
+Package: luci-app-firewall
+Version: git-19.088.25182-8e3e502-1
+Depends: libc, firewall
+Status: install ok installed
+Architecture: all
+Installed-Time: 1553960299
+Auto-Installed: yes
 
 Package: kmod-nf-ipt
 Version: 4.14.107-1
@@ -331,6 +420,14 @@ Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
 
+Package: lua
+Version: 5.1.5-2
+Depends: libc, liblua5.1.5
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1553960168
+Auto-Installed: yes
+
 Package: libip4tc0
 Version: 1.8.2-3
 Depends: libc, libxtables12
@@ -372,6 +469,14 @@ Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
 
+Package: luci-proto-ppp
+Version: git-19.088.25182-8e3e502-1
+Depends: libc
+Status: install ok installed
+Architecture: all
+Installed-Time: 1553960306
+Auto-Installed: yes
+
 Package: libcomerr0
 Version: 1.44.5-1
 Depends: libc, libuuid1
@@ -379,6 +484,14 @@ Provides: libcomerr
 Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
+Auto-Installed: yes
+
+Package: luci-mod-admin-full
+Version: git-19.088.25182-8e3e502-1
+Depends: libc, luci-base, luci-mod-status, luci-mod-system, luci-mod-network
+Status: install ok installed
+Architecture: all
+Installed-Time: 1553960284
 Auto-Installed: yes
 
 Package: ppp
@@ -391,6 +504,18 @@ Conffiles:
  /etc/ppp/filter 579583b318e0cff706ffc134620b42d3fbce8fc31aeb0ad7eea1cc859868e902
  /etc/ppp/options 01f7358a5528be037dde329a2ecfb7a63382aababf21d4f5bc085f5acef95133
 Installed-Time: 1553274868
+
+Package: luci-base
+Version: git-19.088.25182-8e3e502-1
+Depends: libc, lua, luci-lib-nixio, luci-lib-ip, rpcd, libubus-lua, luci-lib-jsonc, liblucihttp-lua
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Conffiles:
+ /etc/luci-uploads/.placeholder e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+ /etc/config/luci 5a7c058ee80817cbda78401fa5e13eb2c0580d4aca9e4bf00df12f8d558aec29
+ /etc/config/ucitrack 3480e8ca8e224537c9d95e7678b05123ff7b06a2a0b3d1000032a04576d90381
+Installed-Time: 1553960235
+Auto-Installed: yes
 
 Package: logd
 Version: 2019-03-21-a7827795-1
@@ -413,6 +538,14 @@ Depends: libc, libubox20170601
 Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
+Auto-Installed: yes
+
+Package: luci-proto-ipv6
+Version: git-19.088.25182-8e3e502-1
+Depends: libc
+Status: install ok installed
+Architecture: all
+Installed-Time: 1553960311
 Auto-Installed: yes
 
 Package: libblobmsg-json
@@ -513,6 +646,16 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
 Auto-Installed: yes
 
+Package: uhttpd
+Version: 2018-11-28-cdfc902a-2
+Depends: libc, libubox20170601, libblobmsg-json, libjson-script
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Conffiles:
+ /etc/config/uhttpd ccb1b37c12734b273e6046e24a50b2af3a82274f4463ae68c9dabf7aed932099
+Installed-Time: 1553960146
+Auto-Installed: yes
+
 Package: kmod-nf-conntrack
 Version: 4.14.107-1
 Depends: kernel (= 4.14.107-1-baef5e1f1cb3d6b76c6d687e645dc927)
@@ -535,12 +678,29 @@ Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
 
+Package: liblua5.1.5
+Version: 5.1.5-2
+Depends: libc
+Provides: liblua
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1553960154
+Auto-Installed: yes
+
 Package: kmod-nf-ipt6
 Version: 4.14.107-1
 Depends: kernel (= 4.14.107-1-baef5e1f1cb3d6b76c6d687e645dc927), kmod-nf-ipt
 Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
+
+Package: luci-lib-nixio
+Version: git-19.088.25182-8e3e502-1
+Depends: libc, liblua5.1.5
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1553960172
+Auto-Installed: yes
 
 Package: libubus20170705
 Version: 2018-10-06-221ce7e7-1
@@ -550,6 +710,29 @@ Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
 Auto-Installed: yes
+
+Package: liblucihttp-lua
+Version: 2019-01-24-1afbdcc3-1
+Depends: libc, liblucihttp0, liblua5.1.5
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1553960211
+Auto-Installed: yes
+
+Package: luci-lib-jsonc
+Version: git-19.088.25182-8e3e502-1
+Depends: libc, liblua5.1.5, libjson-c2
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1553960201
+Auto-Installed: yes
+
+Package: luci
+Version: git-19.088.25182-8e3e502-1
+Depends: libc, uhttpd, luci-mod-admin-full, luci-theme-bootstrap, luci-app-firewall, luci-app-opkg, luci-proto-ppp, libiwinfo-lua, luci-proto-ipv6, rpcd-mod-rrdns
+Status: install user installed
+Architecture: all
+Installed-Time: 1553960312
 
 Package: kmod-nf-conntrack6
 Version: 4.14.107-1
@@ -597,6 +780,14 @@ Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553875782
 
+Package: luci-mod-network
+Version: git-19.088.25182-8e3e502-1
+Depends: libc, luci-base, libiwinfo-lua
+Status: install ok installed
+Architecture: all
+Installed-Time: 1553960282
+Auto-Installed: yes
+
 Package: fwtool
 Version: 1
 Depends: libc
@@ -626,6 +817,14 @@ Depends: kernel (= 4.14.107-1-baef5e1f1cb3d6b76c6d687e645dc927), kmod-lib-crc-cc
 Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
+
+Package: rpcd-mod-rrdns
+Version: 20170710
+Depends: libc, rpcd, libubox20170601, libubus20170705
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1553960312
+Auto-Installed: yes
 
 Package: ppp-mod-pppoe
 Version: 2.4.7.git-2018-06-23-1

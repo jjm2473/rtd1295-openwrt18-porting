@@ -1,0 +1,4 @@
+[ -n "${IPKG_INSTROOT}" ] || {
+	(. /etc/uci-defaults/30_luci-theme-material) && rm -f /etc/uci-defaults/30_luci-theme-material
+	exit 0
+}
