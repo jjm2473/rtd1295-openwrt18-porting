@@ -1,0 +1,3 @@
+/usr/lib/lua/luci/controller/netatalk.lua
+/etc/uci-defaults/luci-netatalk
+/usr/lib/lua/luci/model/cbi/netatalk.lua

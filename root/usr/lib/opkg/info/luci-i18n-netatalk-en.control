@@ -1,0 +1,8 @@
+Package: luci-i18n-netatalk-en
+Version: git-19.023.13982-f3c7f53-1
+Depends: libc, librt, libpthread, luci-app-netatalk
+Source: realtek/luci/applications/luci-app-netatalk
+Section: luci
+Architecture: all
+Installed-Size: 305
+Description:  Translation for luci-app-netatalk - English

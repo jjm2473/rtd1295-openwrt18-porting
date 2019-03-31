@@ -3,11 +3,287 @@
 
 START=50
 
+mkuserlist() {
+  echo $1 >> /var/etc/vsftpd/users.txt
+}
+
+
 start() {
-	mkdir -m 0755 -p /var/run/vsftpd
-	service_start /usr/sbin/vsftpd
+
+  config_load "vsftpd"
+  
+  local enabled ftpd_banner max_clients local_enable write_enable chown_uploads chroot_local_user local_umask local_root allow_writeable_chroot
+  local userlist_enable userlist_type anonymous_enable anon_upload_enable anon_mkdir_write_enable userlist anon_world_readable_only
+  ########## Since Ver 2.0 ##########
+  local dirmessage_enable connect_from_port_20 idle_session_timeout data_connection_timeout async_abor_enable
+  local ascii ls_recurse_enable ascii_download ascii_upload
+  ########## Since Ver 4.0 ##########
+  local proctitle_enable xferlog_enable log_path chown_username listen_ipv6 pasv_enable pasv_min_port
+  local pasv_max_port max_per_ip local_max_rate anon_max_rate
+  
+  config_get enabled                 config enabled			"0"	
+  config_get ftpd_banner             config ftpd_banner
+  config_get max_clients             config max_clients			"10"
+  config_get local_enable            config local_enable		"1"
+  config_get write_enable            config write_enable		"1"
+  config_get chown_uploads           config chown_uploads		"0"
+  config_get chroot_local_user       config chroot_local_user		"1"	
+  config_get local_umask             config local_umask			"022"
+  config_get local_root		     config local_root			"/mnt"
+  config_get userlist_enable         config userlist_enable		"0"
+  config_get userlist_type           config userlist_type		"allow"
+  config_get allow_writeable_chroot  config allow_writeable_chroot	"1"
+  config_get anonymous_enable        config anonymous_enable		"0"
+  config_get anon_upload_enable      config anon_upload_enable		"1"
+  config_get anon_mkdir_write_enable config anon_mkdir_write_enable	"1"
+  config_get anon_world_readable_only config anon_world_readable_only	"0"
+  ########## Since Ver 2.0 ##########
+  config_get dirmessage_enable       config dirmessage_enable
+  config_get connect_from_port_20    config connect_from_port_20
+  config_get idle_session_timeout    config idle_session_timeout
+  config_get data_connection_timeout config data_connection_timeout
+  config_get async_abor_enable       config async_abor_enable
+  config_get ascii                   config ascii
+  config_get ls_recurse_enable       config ls_recurse_enable
+  ########## Since Ver 3.0 ##########
+  config_get anon_root               config anon_root			"/mnt"
+  ########## Since Ver 4.0 ##########
+  config_get proctitle_enable        config proctitle_enable		"1"
+  config_get xferlog_enable          config xferlog_enable
+  config_get log_path		     config log_path
+  config_get chown_username	     config chown_username 		"ftp" 
+  config_get listen_ipv6	     config listen_ipv6			"1"
+  config_get pasv_enable	     config pasv_enable			"1"
+  config_get pasv_min_port	     config pasv_min_port
+  config_get pasv_max_port	     config pasv_max_port
+  config_get max_per_ip		     config max_per_ip			"5"
+  config_get local_max_rate	     config local_max_rate		"0"
+  config_get anon_max_rate	     config anon_max_rate		"0"
+
+  local userlist_deny
+
+  [ $enabled -gt 0 ] || return 1
+  
+  if [ $anonymous_enable -eq 1 ]; then
+    anonymous_enable="YES"
+  else
+    anonymous_enable="NO"
+  fi
+
+  if [ $anon_upload_enable -eq 1 ]; then
+    anon_upload_enable="YES"
+  else
+    anon_upload_enable="NO"
+  fi
+
+  if [ $anon_mkdir_write_enable -eq 1 ]; then
+    anon_mkdir_write_enable="YES"
+  else
+    anon_mkdir_write_enable="NO"
+  fi
+
+  if [ $anon_world_readable_only -eq 1 ]; then
+    anon_world_readable_only="YES"
+  else
+    anon_world_readable_only="NO"
+  fi
+
+  if [ $local_enable -eq 1 ]; then
+    local_enable="YES"
+  else
+    local_enable="NO"
+  fi
+
+  if [ $write_enable -eq 1 ]; then
+    write_enable="YES"
+  else
+    write_enable="NO"
+  fi
+  
+  if [ $chown_uploads -eq 1 ]; then
+    chown_uploads="YES"
+  else
+    chown_uploads="NO"
+  fi
+
+  if [ $chroot_local_user -eq 1 ]; then
+    chroot_local_user="YES"
+  else
+    chroot_local_user="NO"
+  fi
+
+  if [ $userlist_enable -eq 1 ]; then
+    userlist_enable="YES"
+  else
+    userlist_enable="NO"
+  fi
+  
+  if [ $userlist_type == "allow" ]; then
+    userlist_deny="NO"
+  else
+    userlist_deny="YES"
+  fi
+
+  if [ $allow_writeable_chroot -eq 1 ]; then
+    allow_writeable_chroot="YES"
+  else
+    allow_writeable_chroot="NO"
+  fi
+  
+  ########## Since Ver 2.0 ##########
+  if [ $dirmessage_enable -eq 1 ]; then
+    dirmessage_enable="YES"
+  else
+    dirmessage_enable="NO"
+  fi
+  
+  if [ $connect_from_port_20 -eq 1 ]; then
+    connect_from_port_20="YES"
+  else
+    connect_from_port_20="NO"
+  fi
+
+  if [ $async_abor_enable -eq 1 ]; then
+    async_abor_enable="YES"
+  else
+    async_abor_enable="NO"
+  fi
+
+  if [ $ls_recurse_enable -eq 1 ]; then
+    ls_recurse_enable="YES"
+  else
+    ls_recurse_enable="NO"
+  fi
+
+  case $ascii in
+    "both")
+        ascii_download="YES"
+        ascii_upload="YES"
+        ;;
+    "download")
+        ascii_download="YES"
+        ascii_upload="NO"
+        ;;
+    "upload")
+        ascii_download="NO"
+        ascii_upload="YES"
+        ;;
+    "none")
+        ascii_download="NO"
+        ascii_upload="NO"
+        ;;
+    *)
+        ascii_download="YES"
+        ascii_upload="YES"
+        ;;
+  esac
+
+  ########## Since Ver 4.0 ##########
+
+  if [ $proctitle_enable -eq 1 ]; then
+    proctitle_enable="YES"
+  else
+    proctitle_enable="NO"
+  fi
+
+  if [ $xferlog_enable -eq 1 ]; then
+    xferlog_enable="YES"
+  else
+    xferlog_enable="NO"
+  fi
+
+  if [ ! $log_path ]; then
+    log_path="/tmp/log/vsftpd.log"
+  fi
+  
+  if [ $listen_ipv6 -eq 1 ]; then
+    listen_ipv6="YES"
+  else
+    listen_ipv6="NO"
+  fi
+
+  if [ $pasv_enable -eq 1 ]; then
+    pasv_enable="YES"
+  else
+    pasv_enable="NO"
+  fi
+
+  mkdir -p /var/etc
+  mkdir -m 0755 -p /tmp/ftp
+  mkdir -m 0755 -p /tmp/ftp/upload
+  chown ftp.ftp /tmp/ftp/upload
+
+  sed -e "s#|MAX_CLIENTS|#$max_clients#g" \
+      -e "s#|ANONYMOUS_ENABLE|#$anonymous_enable#g" \
+      -e "s#|ANON_UPLOAD_ENABLE|#$anon_upload_enable#g" \
+      -e "s#|ANON_MKDIR_WRITE_ENABLE|#$anon_mkdir_write_enable#g" \
+      -e "s#|ANON_ROOT|#$anon_root#g" \
+      -e "s#|LOACL_ENABLE|#$local_enable#g" \
+      -e "s#|WRITE_ENABLE|#$write_enable#g" \
+      -e "s#|LOCAL_UMASK|#$local_umask#g" \
+      -e "s#|CHOWN_UPLOADS|#$chown_uploads#g" \
+      -e "s#|CHROOT_LOCAL_USER|#$chroot_local_user#g" \
+      -e "s#|FTPD_BANNER|#$ftpd_banner#g" \
+      -e "s#|USERLIST_ENABLE|#$userlist_enable#g" \
+      -e "s#|USERLIST_DENY|#$userlist_deny#g" \
+      -e "s#|DIRMESSAGE_ENABLE|#$dirmessage_enable#g" \
+      -e "s#|CONNECT_FROM_PORT_20|#$connect_from_port_20#g" \
+      -e "s#|ASYNC_ABOR_ENABLE|#$async_abor_enable#g" \
+      -e "s#|LS_RECURSE_ENABLE|#$ls_recurse_enable#g" \
+      -e "s#|ASCII_DOWNLOAD_ENABLE|#$ascii_download#g" \
+      -e "s#|ASCII_UPLOAD_ENABLE|#$ascii_upload#g" \
+      -e "s#|IDLE_SESSION_TIMEOUT|#$idle_session_timeout#g" \
+      -e "s#|DATA_CONNECTION_TIMEOUT|#$data_connection_timeout#g" \
+      -e "s#|XFERLOG_ENABLE|#$xferlog_enable#g" \
+      -e "s#|LOG_PATH|#$log_path#g" \
+      -e "s#|PROCTITLE_ENABLE|#$proctitle_enable#g" \
+      -e "s#|CHOWN_USERNAME|#$chown_username#g" \
+      -e "s#|LISTEN_IPV6|#$listen_ipv6#g" \
+      -e "s#|PASV_ENABLE|#$pasv_enable#g" \
+      -e "s#|MAX_PER_IP|#$max_per_ip#g" \
+      -e "s#|LOCAL_ROOT|#$local_root#g" \
+      -e "s#|ANON_WORLD_READABLE_ONLY|#$anon_world_readable_only#g" \
+      -e "s#|ALLOW_WRITEABLE_CHROOT|#$allow_writeable_chroot#g" \
+      /etc/vsftpd.conf.template > /var/etc/vsftpd.conf
+
+  ########## Since Ver 4.0 ##########
+  if [ $chown_username ]; then
+    echo "chown_username=$chown_username" >> /var/etc/vsftpd.conf
+  fi
+
+  if [ $pasv_min_port ]; then
+    echo "pasv_min_port=$pasv_min_port" >> /var/etc/vsftpd.conf
+  fi
+
+  if [ $pasv_max_port ]; then
+    echo "pasv_max_port=$pasv_max_port" >> /var/etc/vsftpd.conf
+  fi
+
+  if [ $local_max_rate -ne 0 ]; then
+    let local_max_rate*=1024
+    echo "local_max_rate=$local_max_rate" >> /var/etc/vsftpd.conf
+  fi
+
+  if [ $anon_max_rate -ne 0 ]; then
+    let anon_max_rate*=1024
+    echo "anon_max_rate=$anon_max_rate" >> /var/etc/vsftpd.conf
+  fi
+
+      [ -f /etc/vsftpd.conf ] && [ ! -L /etc/vsftpd.conf ] && mv -f /etc/vsftpd.conf /etc/vsftpd.conf.bak
+      ln -nsf /var/etc/vsftpd.conf /etc/vsftpd.conf
+      
+      rm -rf /var/etc/vsftpd/users.txt
+      mkdir -p /var/etc/vsftpd
+      config_list_foreach config userlist mkuserlist
+      
+      mkdir -m 0755 -p /var/run/vsftpd
+      service_start /usr/sbin/vsftpd
 }
 
 stop() {
 	service_stop /usr/sbin/vsftpd
+}
+
+restart() {
+	stop;sleep 2;start
 }

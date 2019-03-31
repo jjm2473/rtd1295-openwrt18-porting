@@ -1,0 +1,8 @@
+Package: luci-i18n-forked-daapd-zh-cn
+Version: git-19.023.13982-f3c7f53-1
+Depends: libc, librt, libpthread, luci-app-forked-daapd
+Source: realtek/luci/applications/luci-app-forked-daapd
+Section: luci
+Architecture: all
+Installed-Size: 341
+Description:  Translation for luci-app-forked-daapd - 普通话 (Chinese)

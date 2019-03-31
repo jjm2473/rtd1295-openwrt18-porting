@@ -1,0 +1,8 @@
+Package: luci-app-netatalk
+Version: git-19.023.13982-f3c7f53-1
+Depends: libc, librt, libpthread, netatalk
+Source: realtek/luci/applications/luci-app-netatalk
+Section: luci
+Architecture: all
+Installed-Size: 1422
+Description:  LuCI Support for netatalk

@@ -1,0 +1,8 @@
+Package: luci-app-vsftpd
+Version: git-19.023.13982-f3c7f53-1
+Depends: libc, librt, libpthread, vsftpd, vsftpd-tls
+Source: realtek/luci/applications/luci-app-vsftpd
+Section: luci
+Architecture: all
+Installed-Size: 4988
+Description:  Very Secure FTPD

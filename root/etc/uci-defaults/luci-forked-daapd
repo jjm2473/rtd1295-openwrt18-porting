@@ -1,0 +1,16 @@
+#!/bin/sh
+
+/etc/init.d/forked-daapd enabled && {
+	/etc/init.d/forked-daapd stop
+	/etc/init.d/forked-daapd disable
+}
+
+uci -q batch <<-EOF >/dev/null
+	delete ucitrack.forked_daapd
+	set ucitrack.forked_daapd=forked-daapd
+	set ucitrack.forked_daapd.init=forked-daapd
+	commit ucitrack
+EOF
+
+rm -f /tmp/luci-indexcache
+exit 0

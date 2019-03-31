@@ -1498,3 +1498,51 @@ Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
 
+Package: luci-app-forked-daapd
+Version: git-19.023.13982-f3c7f53-1
+Depends: libc, librt, libpthread, forked-daapd
+Status: install user installed
+Architecture: all
+Installed-Time: 1548323674
+
+Package: luci-i18n-forked-daapd-zh-cn
+Version: git-19.023.13982-f3c7f53-1
+Depends: libc, librt, libpthread, luci-app-forked-daapd
+Status: install user installed
+Architecture: all
+Installed-Time: 1548323675
+
+Package: luci-i18n-forked-daapd-en
+Version: git-19.023.13982-f3c7f53-1
+Depends: libc, librt, libpthread, luci-app-forked-daapd
+Status: install user installed
+Architecture: all
+Installed-Time: 1548323675
+
+Package: luci-app-netatalk
+Version: git-19.023.13982-f3c7f53-1
+Depends: libc, librt, libpthread, netatalk
+Status: install user installed
+Architecture: all
+Installed-Time: 1548323674
+
+Package: luci-i18n-netatalk-en
+Version: git-19.023.13982-f3c7f53-1
+Depends: libc, librt, libpthread, luci-app-netatalk
+Status: install user installed
+Architecture: all
+Installed-Time: 1548323676
+
+Package: luci-i18n-netatalk-zh-cn
+Version: git-19.023.13982-f3c7f53-1
+Depends: libc, librt, libpthread, luci-app-netatalk
+Status: install user installed
+Architecture: all
+Installed-Time: 1548323676
+
+Package: luci-app-vsftpd
+Version: git-19.023.13982-f3c7f53-1
+Depends: libc, librt, libpthread, vsftpd, vsftpd-tls
+Status: install user installed
+Architecture: all
+Installed-Time: 1548323675

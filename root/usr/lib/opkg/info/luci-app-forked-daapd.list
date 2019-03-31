@@ -1,0 +1,3 @@
+/usr/lib/lua/luci/controller/forked_daapd.lua
+/usr/lib/lua/luci/model/cbi/forked_daapd.lua
+/etc/uci-defaults/luci-forked-daapd

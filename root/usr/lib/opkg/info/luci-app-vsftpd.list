@@ -1,0 +1,5 @@
+/usr/lib/lua/luci/controller/vsftpd.lua
+/etc/uci-defaults/luci-vsftpd
+/etc/vsftpd.conf.template
+/usr/lib/lua/luci/view/vsftpd_status.htm
+/usr/lib/lua/luci/model/cbi/vsftpd.lua

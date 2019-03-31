@@ -1,0 +1,16 @@
+#!/bin/sh
+
+/etc/init.d/afpd enabled && {
+	/etc/init.d/afpd stop
+	/etc/init.d/afpd disable
+}
+
+uci -q batch <<-EOF >/dev/null
+	delete ucitrack.afpd
+	set ucitrack.afpd=afpd
+	set ucitrack.afpd.init=afpd
+	commit ucitrack
+EOF
+
+rm -f /tmp/luci-indexcache
+exit 0
