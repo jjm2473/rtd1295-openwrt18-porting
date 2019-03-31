@@ -1249,7 +1249,7 @@ Installed-Time: 1553274868
 Auto-Installed: yes
 
 Package: kernel
-Version: 4.14.107-1-baef5e1f1cb3d6b76c6d687e645dc927
+Version: 4.14.109-1-ea4f7c894f16c09b49fa3b83cad0280e
 Depends: libc
 Status: install user installed
 Architecture: aarch64_cortex-a53
