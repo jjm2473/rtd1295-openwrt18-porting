@@ -1,6 +1,7 @@
 #!/bin/sh /etc/rc.common
 # Copyright (C) 2006-2010 OpenWrt.org
 # Copyright (C) 2006 Carlos Sobrinho
+# 2019 jjm2473 porting openwrt 18.06.2+ to zidoo z9s
 
 START=09
 STOP=97

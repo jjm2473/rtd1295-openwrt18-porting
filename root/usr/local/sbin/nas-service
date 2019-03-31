@@ -1,4 +1,5 @@
 #!/bin/sh
+# 2019 jjm2473 porting openwrt 18.06.2+ to zidoo z9s
 
 SERVICES="samba minidlna transmission vsftpd forked-daapd netatalk"
 

@@ -1,5 +1,6 @@
 #!/bin/sh
 # Copyright (C) 2010 OpenWrt.org
+# 2019 jjm2473 porting openwrt 18.06.2+ to zidoo z9s
 
 do_mount_overlayfs() {
     if [ -e /rom/note ]; then
