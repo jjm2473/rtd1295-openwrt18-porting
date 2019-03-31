@@ -1,0 +1,10 @@
+Package: kmod-crypto-manager
+Version: 4.14.109-1
+Depends: kernel (=4.14.109-1-ea4f7c894f16c09b49fa3b83cad0280e), kmod-crypto-aead, kmod-crypto-hash, kmod-crypto-pcompress
+Source: package/kernel/linux
+SourceName: kmod-crypto-manager
+License: GPL-2.0
+Section: kernel
+Architecture: aarch64_cortex-a53
+Installed-Size: 240
+Description:  CryptoAPI algorithm manager

@@ -1,0 +1,2 @@
+/etc/modules.d/02-crypto-hash
+/etc/modules-boot.d/02-crypto-hash

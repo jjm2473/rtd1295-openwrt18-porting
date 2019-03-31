@@ -1,0 +1,4 @@
+/lib/modules/4.14.109/rpcsec_gss_krb5.ko
+/lib/modules/4.14.109/auth_rpcgss.ko
+/etc/modules.d/31-fs-nfs-common-rpcsec
+/lib/modules/4.14.109/oid_registry.ko

@@ -1,0 +1,7 @@
+/etc/exports
+/usr/sbin/exportfs
+/etc/init.d/nfsd
+/usr/sbin/rpc.nfsd
+/usr/sbin/rpc.mountd
+/usr/sbin/rpc.statd
+/usr/sbin/sm-notify

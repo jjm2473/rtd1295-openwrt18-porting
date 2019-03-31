@@ -1,0 +1,3 @@
+auth_rpcgss
+oid_registry
+rpcsec_gss_krb5

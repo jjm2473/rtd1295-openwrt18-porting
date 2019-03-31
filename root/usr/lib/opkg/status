@@ -125,6 +125,22 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
 Auto-Installed: yes
 
+Package: kmod-crypto-manager
+Version: 4.14.109-1
+Depends: kernel (= 4.14.109-1-ea4f7c894f16c09b49fa3b83cad0280e), kmod-crypto-aead, kmod-crypto-hash, kmod-crypto-pcompress
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554049400
+Auto-Installed: yes
+
+Package: kmod-crypto-pcompress
+Version: 4.14.109-1
+Depends: kernel (= 4.14.109-1-ea4f7c894f16c09b49fa3b83cad0280e)
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554049399
+Auto-Installed: yes
+
 Package: libuci20130104
 Version: 2018-08-11-4c8b4d6e-2
 Depends: libc, libubox20170601
@@ -151,6 +167,13 @@ Conffiles:
  /etc/config/rpcd 81a24774226d42c6ea53b531992335cc910094a7e17f80a803e680e2eededd4f
 Installed-Time: 1553875645
 
+Package: luci-i18n-forked-daapd-en
+Version: git-19.023.13982-f3c7f53-1
+Depends: libc, librt, libpthread, luci-app-forked-daapd
+Status: install user installed
+Architecture: all
+Installed-Time: 1548323675
+
 Package: busybox
 Version: 1.30.1-2
 Depends: libc
@@ -159,6 +182,14 @@ Essential: yes
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
 Alternatives: 100:/usr/bin/find:/bin/busybox, 100:/usr/bin/flock:/bin/busybox, 100:/usr/bin/free:/bin/busybox, 100:/sbin/ip:/bin/busybox, 100:/bin/kill:/bin/busybox, 100:/usr/bin/pgrep:/bin/busybox, 100:/bin/ps:/bin/busybox, 100:/usr/bin/top:/bin/busybox, 100:/usr/bin/uptime:/bin/busybox, 100:/usr/bin/xargs:/bin/busybox
+
+Package: kmod-crypto-cts
+Version: 4.14.109-1
+Depends: kernel (= 4.14.109-1-ea4f7c894f16c09b49fa3b83cad0280e), kmod-crypto-manager
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554049402
+Auto-Installed: yes
 
 Package: luci-lib-ip
 Version: git-19.088.25182-8e3e502-1
@@ -176,12 +207,28 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1553960192
 Auto-Installed: yes
 
+Package: kmod-crypto-hash
+Version: 4.14.109-1
+Depends: kernel (= 4.14.109-1-ea4f7c894f16c09b49fa3b83cad0280e)
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554049395
+Auto-Installed: yes
+
 Package: kmod-nf-reject6
 Version: 4.14.107-1
 Depends: kernel (= 4.14.107-1-baef5e1f1cb3d6b76c6d687e645dc927)
 Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
+
+Package: kmod-crypto-aead
+Version: 4.14.109-1
+Depends: kernel (= 4.14.109-1-ea4f7c894f16c09b49fa3b83cad0280e), kmod-crypto-null
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554049398
+Auto-Installed: yes
 
 Package: libiwinfo-lua
 Version: 2019-03-28-c2cfe9d9-1
@@ -211,6 +258,21 @@ Depends: libc, libpthread
 Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553964836
+Auto-Installed: yes
+
+Package: luci-i18n-netatalk-zh-cn
+Version: git-19.023.13982-f3c7f53-1
+Depends: libc, librt, libpthread, luci-app-netatalk
+Status: install user installed
+Architecture: all
+Installed-Time: 1548323676
+
+Package: kmod-crypto-md5
+Version: 4.14.109-1
+Depends: kernel (= 4.14.109-1-ea4f7c894f16c09b49fa3b83cad0280e), kmod-crypto-hash
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554049403
 Auto-Installed: yes
 
 Package: luci-mod-system
@@ -256,6 +318,14 @@ Depends: libc, luci-app-samba4
 Status: install user installed
 Architecture: all
 Installed-Time: 1553966489
+
+Package: kmod-fs-nfsd
+Version: 4.14.109-1
+Depends: kernel (= 4.14.109-1-ea4f7c894f16c09b49fa3b83cad0280e), kmod-fs-nfs-common, kmod-fs-exportfs, kmod-fs-nfs-common-rpcsec
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554049410
+Auto-Installed: yes
 
 Package: blockdev
 Version: 2.33-2
@@ -483,6 +553,14 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1553964872
 Auto-Installed: yes
 
+Package: kmod-crypto-hmac
+Version: 4.14.109-1
+Depends: kernel (= 4.14.109-1-ea4f7c894f16c09b49fa3b83cad0280e), kmod-crypto-hash, kmod-crypto-manager
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554049404
+Auto-Installed: yes
+
 Package: ubusd
 Version: 2018-10-06-221ce7e7-1
 Depends: libc, libubox20170601, libblobmsg-json
@@ -500,12 +578,28 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
 Auto-Installed: yes
 
+Package: kmod-dm
+Version: 4.14.109-1
+Depends: kernel (= 4.14.109-1-ea4f7c894f16c09b49fa3b83cad0280e), kmod-crypto-manager, kmod-dax
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554049421
+Auto-Installed: yes
+
 Package: libflac
 Version: 1.3.2-2
 Depends: libc
 Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553966943
+Auto-Installed: yes
+
+Package: libwrap
+Version: 7.6-1
+Depends: libc
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554049389
 Auto-Installed: yes
 
 Package: luci-mod-status
@@ -640,6 +734,14 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1554009161
 Auto-Installed: yes
 
+Package: kmod-fs-nfs-v4
+Version: 4.14.109-1
+Depends: kernel (= 4.14.109-1-ea4f7c894f16c09b49fa3b83cad0280e), kmod-fs-nfs
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554049415
+Auto-Installed: yes
+
 Package: kmod-ip6tables
 Version: 4.14.107-1
 Depends: kernel (= 4.14.107-1-baef5e1f1cb3d6b76c6d687e645dc927), kmod-nf-reject6, kmod-nf-ipt6, kmod-ipt-core
@@ -711,6 +813,14 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1554009169
 Auto-Installed: yes
 
+Package: kmod-fs-nfs-common-rpcsec
+Version: 4.14.109-1
+Depends: kernel (= 4.14.109-1-ea4f7c894f16c09b49fa3b83cad0280e), kmod-fs-nfs-common, kmod-crypto-des, kmod-crypto-cbc, kmod-crypto-cts, kmod-crypto-md5, kmod-crypto-sha1, kmod-crypto-hmac, kmod-crypto-ecb
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554049407
+Auto-Installed: yes
+
 Package: libip4tc0
 Version: 1.8.2-3
 Depends: libc, libxtables12
@@ -739,6 +849,14 @@ Conffiles:
 Installed-Time: 1553274868
 Alternatives: 100:/usr/bin/ssh:/usr/sbin/dropbear, 100:/usr/bin/scp:/usr/sbin/dropbear
 
+Package: kmod-dax
+Version: 4.14.109-1
+Depends: kernel (= 4.14.109-1-ea4f7c894f16c09b49fa3b83cad0280e)
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554049419
+Auto-Installed: yes
+
 Package: libgmp10
 Version: 6.1.2-2
 Depends: libc
@@ -747,6 +865,13 @@ Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553964513
 Auto-Installed: yes
+
+Package: luci-app-vsftpd
+Version: git-19.023.13982-f3c7f53-1
+Depends: libc, librt, libpthread, vsftpd, vsftpd-tls
+Status: install user installed
+Architecture: all
+Installed-Time: 1548323675
 
 Package: luci-i18n-minidlna-zh-cn
 Version: git-19.088.25182-8e3e502-1
@@ -776,6 +901,14 @@ Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
 
+Package: kmod-crypto-cbc
+Version: 4.14.109-1
+Depends: kernel (= 4.14.109-1-ea4f7c894f16c09b49fa3b83cad0280e), kmod-crypto-manager
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554049401
+Auto-Installed: yes
+
 Package: samba4-server
 Version: 4.9.4-3
 Depends: libc, samba4-libs
@@ -786,6 +919,23 @@ Conffiles:
  /etc/samba/smb.conf.template 5a83d969bbb5be905bb836951f542f526f70fc7ade14018b7ae35472afc782fa
 Installed-Time: 1553966304
 Auto-Installed: yes
+
+Package: rpcbind
+Version: 1.2.5-2
+Depends: libc, libtirpc, libwrap
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554049416
+Auto-Installed: yes
+
+Package: nfs-kernel-server
+Version: 2.3.3-5
+Depends: libc, libwrap, libblkid1, libuuid1, libtirpc, kmod-fs-nfsd, kmod-fs-nfs, kmod-fs-nfs-v4, rpcbind, nfs-utils-libs, libkeyutils, libdevmapper
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Conffiles:
+ /etc/exports 561d777edf21faf3358e85765de44c9a20b06f726f4a677463fd8fbefc5497a1
+Installed-Time: 1554049425
 
 Package: libnatpmp
 Version: 20150609-1
@@ -900,6 +1050,22 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1554007858
 Auto-Installed: yes
 
+Package: kmod-dnsresolver
+Version: 4.14.109-1
+Depends: kernel (= 4.14.109-1-ea4f7c894f16c09b49fa3b83cad0280e)
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554049411
+Auto-Installed: yes
+
+Package: libkeyutils
+Version: 1.6-2
+Depends: libc
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554049418
+Auto-Installed: yes
+
 Package: libjson-script
 Version: 2019-02-27-eeef7b50-1
 Depends: libc, libubox20170601
@@ -907,6 +1073,13 @@ Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
 Auto-Installed: yes
+
+Package: luci-i18n-forked-daapd-zh-cn
+Version: git-19.023.13982-f3c7f53-1
+Depends: libc, librt, libpthread, luci-app-forked-daapd
+Status: install user installed
+Architecture: all
+Installed-Time: 1548323675
 
 Package: luci-proto-ipv6
 Version: git-19.088.25182-8e3e502-1
@@ -941,6 +1114,14 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
 Auto-Installed: yes
 
+Package: kmod-crypto-ecb
+Version: 4.14.109-1
+Depends: kernel (= 4.14.109-1-ea4f7c894f16c09b49fa3b83cad0280e), kmod-crypto-manager
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554049405
+Auto-Installed: yes
+
 Package: iptables
 Version: 1.8.2-3
 Depends: libc, kmod-ipt-core, libip4tc0, libip6tc0, libxtables12
@@ -955,6 +1136,14 @@ Provides: lede-keyring
 Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
+Auto-Installed: yes
+
+Package: kmod-crypto-des
+Version: 4.14.109-1
+Depends: kernel (= 4.14.109-1-ea4f7c894f16c09b49fa3b83cad0280e)
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554049394
 Auto-Installed: yes
 
 Package: libext2fs2
@@ -1019,6 +1208,14 @@ Depends: libc, samba4-server
 Status: install ok installed
 Architecture: all
 Installed-Time: 1553966307
+Auto-Installed: yes
+
+Package: kmod-crypto-null
+Version: 4.14.109-1
+Depends: kernel (= 4.14.109-1-ea4f7c894f16c09b49fa3b83cad0280e), kmod-crypto-hash
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554049396
 Auto-Installed: yes
 
 Package: minidlna
@@ -1091,6 +1288,14 @@ Architecture: aarch64_cortex-a53
 Conffiles:
  /etc/config/transmission 9f176b3e644cdf3fefc354af68cd61f6956e762b47587489dd1a22670acd2d43
 Installed-Time: 1553966642
+
+Package: kmod-fs-nfs
+Version: 4.14.109-1
+Depends: kernel (= 4.14.109-1-ea4f7c894f16c09b49fa3b83cad0280e), kmod-fs-nfs-common, kmod-dnsresolver
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554049413
+Auto-Installed: yes
 
 Package: usign
 Version: 2015-07-04-ef641914-1
@@ -1178,12 +1383,28 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1553960211
 Auto-Installed: yes
 
+Package: kmod-fs-exportfs
+Version: 4.14.109-1
+Depends: kernel (= 4.14.109-1-ea4f7c894f16c09b49fa3b83cad0280e)
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554049393
+Auto-Installed: yes
+
 Package: luci-lib-jsonc
 Version: git-19.088.25182-8e3e502-1
 Depends: libc, liblua5.1.5, libjson-c2
 Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553960201
+Auto-Installed: yes
+
+Package: nfs-utils-libs
+Version: 2.3.3-5
+Depends: libc, libwrap, libblkid1, libuuid1, libtirpc, libkeyutils, libdevmapper
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554049425
 Auto-Installed: yes
 
 Package: luci
@@ -1279,6 +1500,13 @@ Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553875782
 
+Package: luci-app-forked-daapd
+Version: git-19.023.13982-f3c7f53-1
+Depends: libc, librt, libpthread, forked-daapd
+Status: install user installed
+Architecture: all
+Installed-Time: 1548323674
+
 Package: libevent2-6
 Version: 2.1.8-3
 Depends: libc
@@ -1320,6 +1548,36 @@ Depends: libc, luci-app-opkg
 Status: install user installed
 Architecture: all
 Installed-Time: 1553962639
+
+Package: kmod-fs-nfs-common
+Version: 4.14.109-1
+Depends: kernel (= 4.14.109-1-ea4f7c894f16c09b49fa3b83cad0280e)
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554049392
+Auto-Installed: yes
+
+Package: libdevmapper
+Version: 2.03.02-1
+Depends: libc, kmod-dm, libpthread, libuuid1, librt, libblkid1
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554049424
+Auto-Installed: yes
+
+Package: luci-i18n-netatalk-en
+Version: git-19.023.13982-f3c7f53-1
+Depends: libc, librt, libpthread, luci-app-netatalk
+Status: install user installed
+Architecture: all
+Installed-Time: 1548323676
+
+Package: luci-app-netatalk
+Version: git-19.023.13982-f3c7f53-1
+Depends: libc, librt, libpthread, netatalk
+Status: install user installed
+Architecture: all
+Installed-Time: 1548323674
 
 Package: luci-i18n-base-en
 Version: git-19.088.25182-8e3e502-1
@@ -1410,6 +1668,14 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1553964866
 Auto-Installed: yes
 
+Package: kmod-crypto-sha1
+Version: 4.14.109-1
+Depends: kernel (= 4.14.109-1-ea4f7c894f16c09b49fa3b83cad0280e), kmod-crypto-hash
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554049403
+Auto-Installed: yes
+
 Package: vsftpd
 Version: 3.0.3-3
 Depends: libc
@@ -1498,51 +1764,3 @@ Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
 
-Package: luci-app-forked-daapd
-Version: git-19.023.13982-f3c7f53-1
-Depends: libc, librt, libpthread, forked-daapd
-Status: install user installed
-Architecture: all
-Installed-Time: 1548323674
-
-Package: luci-i18n-forked-daapd-zh-cn
-Version: git-19.023.13982-f3c7f53-1
-Depends: libc, librt, libpthread, luci-app-forked-daapd
-Status: install user installed
-Architecture: all
-Installed-Time: 1548323675
-
-Package: luci-i18n-forked-daapd-en
-Version: git-19.023.13982-f3c7f53-1
-Depends: libc, librt, libpthread, luci-app-forked-daapd
-Status: install user installed
-Architecture: all
-Installed-Time: 1548323675
-
-Package: luci-app-netatalk
-Version: git-19.023.13982-f3c7f53-1
-Depends: libc, librt, libpthread, netatalk
-Status: install user installed
-Architecture: all
-Installed-Time: 1548323674
-
-Package: luci-i18n-netatalk-en
-Version: git-19.023.13982-f3c7f53-1
-Depends: libc, librt, libpthread, luci-app-netatalk
-Status: install user installed
-Architecture: all
-Installed-Time: 1548323676
-
-Package: luci-i18n-netatalk-zh-cn
-Version: git-19.023.13982-f3c7f53-1
-Depends: libc, librt, libpthread, luci-app-netatalk
-Status: install user installed
-Architecture: all
-Installed-Time: 1548323676
-
-Package: luci-app-vsftpd
-Version: git-19.023.13982-f3c7f53-1
-Depends: libc, librt, libpthread, vsftpd, vsftpd-tls
-Status: install user installed
-Architecture: all
-Installed-Time: 1548323675

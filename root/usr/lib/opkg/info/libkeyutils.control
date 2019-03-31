@@ -1,0 +1,9 @@
+Package: libkeyutils
+Version: 1.6-2
+Depends: libc
+Source: feeds/packages/libs/keyutils
+SourceName: libkeyutils
+Section: libs
+Architecture: aarch64_cortex-a53
+Installed-Size: 4857
+Description:  Key utilities library

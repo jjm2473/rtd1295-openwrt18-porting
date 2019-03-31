@@ -1,0 +1,10 @@
+Package: kmod-fs-exportfs
+Version: 4.14.109-1
+Depends: kernel (=4.14.109-1-ea4f7c894f16c09b49fa3b83cad0280e)
+Source: package/kernel/linux
+SourceName: kmod-fs-exportfs
+License: GPL-2.0
+Section: kernel
+Architecture: aarch64_cortex-a53
+Installed-Size: 234
+Description:  Kernel module for exportfs. Needed for some other modules.
