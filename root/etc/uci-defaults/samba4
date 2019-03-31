@@ -1,0 +1,11 @@
+#!/bin/sh
+
+[ -L /etc/config/samba ] || {
+	[ -f /etc/config/samba ] && {
+		cp -af /etc/config/samba /etc/config/samba4
+		rm -f /etc/config/samba
+	}
+	ln -s samba4 /etc/config/samba
+}
+
+exit 0

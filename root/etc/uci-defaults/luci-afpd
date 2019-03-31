@@ -1,5 +1,13 @@
 #!/bin/sh
 
+[ -L /etc/config/netatalk ] || {
+	[ -f /etc/config/netatalk ] && {
+		cp -af /etc/config/netatalk /etc/config/afpd
+		rm -f /etc/config/netatalk
+	}
+	ln -s afpd /etc/config/netatalk
+}
+
 /etc/init.d/afpd enabled && {
 	/etc/init.d/afpd stop
 	/etc/init.d/afpd disable

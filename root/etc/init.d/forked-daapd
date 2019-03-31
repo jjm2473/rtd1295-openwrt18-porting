@@ -47,6 +47,9 @@ start_instance() {
 }
 
 start() {
+    echo 'forked-daapd not avaliable now, maybe fix in future.'
+    return 1 # don't delete this line, or you will enter boot loop!
+
     config_load forked-daapd
     config_foreach start_instance forked-daapd
 }
