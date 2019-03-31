@@ -1,0 +1,8 @@
+Package: luci-i18n-nfsd-zh-cn
+Version: git-18.346.39597-d1ebd59-1
+Depends: libc, libssp, luci-app-nfsd
+Source: feeds/luci/applications/luci-app-nfsd
+Section: luci
+Architecture: all
+Installed-Size: 609
+Description:  Translation for luci-app-nfsd - 简体中文 (Simplified Chinese)

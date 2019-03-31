@@ -1,0 +1,8 @@
+Package: luci-app-nfsd
+Version: git-18.346.39597-d1ebd59-1
+Depends: libc, libssp, nfs-kernel-server
+Source: feeds/luci/applications/luci-app-nfsd
+Section: luci
+Architecture: all
+Installed-Size: 867
+Description:  PandoraBox NFS Daemon

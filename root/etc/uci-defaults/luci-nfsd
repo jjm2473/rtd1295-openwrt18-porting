@@ -1,0 +1,11 @@
+#!/bin/sh
+
+uci -q batch <<-EOF >/dev/null
+	delete ucitrack.@nfsd[-1]
+	add ucitrack nfsd
+	set ucitrack.@nfsd[-1].init=nfsd
+	commit ucitrack
+EOF
+
+rm -f /tmp/luci-indexcache
+exit 0

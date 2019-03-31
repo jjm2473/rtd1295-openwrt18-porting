@@ -1,0 +1,3 @@
+/etc/uci-defaults/luci-nfsd
+/usr/lib/lua/luci/controller/nfsd.lua
+/usr/lib/lua/luci/model/cbi/nfsd.lua

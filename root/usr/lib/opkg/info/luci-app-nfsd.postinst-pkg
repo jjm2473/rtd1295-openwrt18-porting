@@ -1,0 +1,4 @@
+[ -n "${IPKG_INSTROOT}" ] || {
+	(. /etc/uci-defaults/luci-nfsd) && rm -f /etc/uci-defaults/luci-nfsd
+	exit 0
+}
