@@ -1,10 +1,10 @@
-config transmission
+config transmission config
 	option enabled 0
 	option config_dir '/tmp/transmission'
 	option config_overwrite '1'
-	option user 'transmission'
-	option group 'transmission'
-	option mem_percentage 50
+	option user 'root'
+	option group 'root'
+	option mem_percentage 20
 	option nice 10
 	option web_home ''
 	option alt_speed_down 50

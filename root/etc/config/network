@@ -1,0 +1,8 @@
+config interface 'lan'
+	option proto 'none'
+	option ifname 'eth0'
+
+config interface 'wlan'
+	option proto 'none'
+	option ifname 'wlan0'
+	option delegate '0'

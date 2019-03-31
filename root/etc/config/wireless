@@ -1,0 +1,2 @@
+config wifi-iface 'wlan'
+	option device 'wlan0'

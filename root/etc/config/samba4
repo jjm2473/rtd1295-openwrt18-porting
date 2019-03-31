@@ -1,4 +1,5 @@
-config samba
+config samba config
+	option 'enabled'		'1'
 	option 'workgroup'		'WORKGROUP'
 	option 'description'	'Samba on OpenWrt'
 	option 'charset' 		'UTF-8'

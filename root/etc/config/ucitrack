@@ -54,3 +54,8 @@ config samba
 
 config tinyproxy
 	option init tinyproxy
+
+config minidlna 'minidlna'
+
+config transmission
+	option init 'transmission'
