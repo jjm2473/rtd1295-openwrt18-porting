@@ -1,0 +1,11 @@
+Package: vsftpd
+Version: 3.0.3-3
+Depends: libc
+Source: feeds/packages/net/vsftpd
+SourceName: vsftpd
+License: GPLv2
+Section: net
+Maintainer: Cezary Jackiewicz <cezary@eko.one.pl>
+Architecture: aarch64_cortex-a53
+Installed-Size: 42127
+Description:  Fast and secure FTP server (no TLS)
