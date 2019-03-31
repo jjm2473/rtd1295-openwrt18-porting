@@ -1,0 +1,14 @@
+Package: libprotobuf-c
+Version: 1.3.1-1
+Depends: libc
+Source: feeds/packages/libs/protobuf-c
+SourceName: libprotobuf-c
+License: BSD-2c
+Section: libs
+Maintainer: Rosen Penev <rosenp@gmail.com>
+Architecture: aarch64_cortex-a53
+Installed-Size: 10881
+Description:  Runtime library to use Google Protocol Buffers from C applications.
+ Protocol Buffers are a way of encoding structured data in an efficient yet
+ extensible format. Google uses Protocol Buffers for almost all of its
+ internal RPC protocols and file formats.

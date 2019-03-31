@@ -1,0 +1,12 @@
+Package: lame-lib
+Version: 3.100-1
+Depends: libc
+Source: feeds/packages/sound/lame
+SourceName: lame-lib
+License: LGPL-2.0
+LicenseFiles: COPYING LICENSE
+Section: sound
+Maintainer: Ted Hess <thess@kitschensync.net>
+Architecture: aarch64_cortex-a53
+Installed-Size: 118635
+Description:  lame mp3 encoder libs

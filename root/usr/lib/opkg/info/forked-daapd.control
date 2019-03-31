@@ -1,0 +1,15 @@
+Package: forked-daapd
+Version: 26.4-1
+Depends: libc, libgpg-error, libgcrypt, libgdbm, zlib, libexpat, libunistring, libevent2-6, libdaemon, libantlr3c, confuse, alsa-lib, libffmpeg-full, mxml, libavahi-client, sqlite3-cli, libplist, libcurl4, libjson-c2, libprotobuf-c, libgnutls, libsodium, libwebsockets
+Source: feeds/packages/sound/forked-daapd
+SourceName: forked-daapd
+License: GPL-2.0
+LicenseFiles: COPYING
+Section: sound
+Maintainer: Espen Jürgensen <espenjurgensen+openwrt@gmail.com>
+Architecture: aarch64_cortex-a53
+Installed-Size: 250666
+Description:  forked-daapd is a Linux/FreeBSD DAAP (iTunes), MPD (Music Player Daemon) and
+ RSP (Roku) media server. It has support for AirPlay speakers, Chromecast,
+ Apple Remote (and compatibles), MPD clients, internet radio and LastFM. It
+ does not support AirPlay/Chromecast video.

@@ -85,12 +85,28 @@ Architecture: all
 Installed-Time: 1553960305
 Auto-Installed: yes
 
+Package: libunistring
+Version: 0.9.10-1
+Depends: libc
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554008745
+Auto-Installed: yes
+
 Package: libjpeg
 Version: 9c-1
 Depends: libc
 Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553966789
+Auto-Installed: yes
+
+Package: libopus
+Version: 1.3-1
+Depends: libc
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554008776
 Auto-Installed: yes
 
 Package: libpthread
@@ -116,6 +132,14 @@ Provides: libuci
 Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
+Auto-Installed: yes
+
+Package: alsa-lib
+Version: 1.1.8-1
+Depends: libc, kmod-sound-core, libpthread, librt
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554008769
 Auto-Installed: yes
 
 Package: rpcd
@@ -173,6 +197,13 @@ Depends: libc, luci-app-transmission
 Status: install user installed
 Architecture: all
 Installed-Time: 1553966527
+
+Package: strace
+Version: 4.26-1
+Depends: libc
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554010262
 
 Package: libdbus
 Version: 1.12.12-1
@@ -249,6 +280,14 @@ Architecture: all
 Installed-Time: 1553960286
 Auto-Installed: yes
 
+Package: libprotobuf-c
+Version: 1.3.1-1
+Depends: libc
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554009143
+Auto-Installed: yes
+
 Package: kmod-pppoe
 Version: 4.14.107-1
 Depends: kernel (= 4.14.107-1-baef5e1f1cb3d6b76c6d687e645dc927), kmod-ppp, kmod-pppox
@@ -296,6 +335,14 @@ Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
 
+Package: confuse
+Version: 3.2.2-1
+Depends: libc
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554008748
+Auto-Installed: yes
+
 Package: kmod-ipt-conntrack
 Version: 4.14.107-1
 Depends: kernel (= 4.14.107-1-baef5e1f1cb3d6b76c6d687e645dc927), kmod-ipt-core, kmod-nf-conntrack
@@ -340,6 +387,14 @@ Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
 
+Package: kmod-input-core
+Version: 4.14.109-1
+Depends: kernel (= 4.14.109-1-ea4f7c894f16c09b49fa3b83cad0280e)
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554008749
+Auto-Installed: yes
+
 Package: libexif
 Version: 0.6.21-1
 Depends: libc
@@ -378,6 +433,14 @@ Provides: libsmartcols
 Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
+
+Package: libplist
+Version: 2.0.0-3
+Depends: libc, libxml2
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554009142
+Auto-Installed: yes
 
 Package: uboot-envtools
 Version: 2018.03-3
@@ -536,12 +599,28 @@ Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
 
+Package: libsodium
+Version: 1.0.17-1
+Depends: libc
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554009164
+Auto-Installed: yes
+
 Package: luci-lib-ipkg
 Version: git-19.088.25182-8e3e502-1
 Depends: libc, luci-base
 Status: install ok installed
 Architecture: all
 Installed-Time: 1553966526
+Auto-Installed: yes
+
+Package: sqlite3-cli
+Version: 3260000-3
+Depends: libc, libsqlite3, libedit
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554009141
 Auto-Installed: yes
 
 Package: libblkid1
@@ -551,6 +630,14 @@ Provides: libblkid
 Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
+Auto-Installed: yes
+
+Package: libgnutls
+Version: 3.6.7-1
+Depends: libc, libnettle6, libgmp10, libatomic1
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554009161
 Auto-Installed: yes
 
 Package: kmod-ip6tables
@@ -592,6 +679,14 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1553964857
 Auto-Installed: yes
 
+Package: mxml
+Version: 2.12-1
+Depends: libc, zlib
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554009133
+Auto-Installed: yes
+
 Package: uci
 Version: 2018-08-11-4c8b4d6e-2
 Depends: libc, libuci20130104
@@ -605,6 +700,15 @@ Depends: libc, liblua5.1.5
 Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553960168
+Auto-Installed: yes
+
+Package: libwebsockets-openssl
+Version: 3.1.0-1
+Depends: libc, zlib, libcap, libopenssl1.1
+Provides: libwebsockets
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554009169
 Auto-Installed: yes
 
 Package: libip4tc0
@@ -739,6 +843,14 @@ Conffiles:
 Installed-Time: 1553960235
 Auto-Installed: yes
 
+Package: kmod-sound-core
+Version: 4.14.109-1
+Depends: kernel (= 4.14.109-1-ea4f7c894f16c09b49fa3b83cad0280e), kmod-input-core
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554008751
+Auto-Installed: yes
+
 Package: libnettle6
 Version: 3.4.1-2
 Depends: libc, libgmp10
@@ -754,6 +866,14 @@ Depends: libc, libubox20170601, libubus20170705, libblobmsg-json
 Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
+
+Package: libantlr3c
+Version: 3.4-1
+Depends: libc
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554008746
+Auto-Installed: yes
 
 Package: samba4-libs
 Version: 4.9.4-3
@@ -1143,6 +1263,15 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
 Auto-Installed: yes
 
+Package: forked-daapd
+Version: 26.4-1
+Depends: libc, libgpg-error, libgcrypt, libgdbm, zlib, libexpat, libunistring, libevent2-6, libdaemon, libantlr3c, confuse, alsa-lib, libffmpeg-full, mxml, libavahi-client, sqlite3-cli, libplist, libcurl4, libjson-c2, libprotobuf-c, libgnutls, libsodium, libwebsockets
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Conffiles:
+ /etc/forked-daapd.conf ce2c0b80422f0c1f44d2774de897b45e62473963f862a55c5ef1177f9905fec9
+Installed-Time: 1554009169
+
 Package: blkid
 Version: 2.33-2
 Depends: libc, libblkid1, libuuid1
@@ -1198,6 +1327,24 @@ Depends: libc, luci-base
 Status: install user installed
 Architecture: all
 Installed-Time: 1553962534
+
+Package: libatomic1
+Version: 7.4.0-1
+Depends: libgcc1
+Provides: libatomic
+Status: install hold installed
+Essential: yes
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554009144
+Auto-Installed: yes
+
+Package: libgdbm
+Version: 1.11-1
+Depends: libc
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554008699
+Auto-Installed: yes
 
 Package: transmission-web
 Version: 2.94-3
@@ -1272,12 +1419,28 @@ Conffiles:
  /etc/vsftpd.conf dac7bbd200e5282e2f76057c9778e3695499e22b54752c12d8a210beda71cb7d
 Installed-Time: 1554007985
 
+Package: libedit
+Version: 20181209-3.1-1
+Depends: libc, libncurses6
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554009135
+Auto-Installed: yes
+
 Package: kmod-slhc
 Version: 4.14.107-1
 Depends: kernel (= 4.14.107-1-baef5e1f1cb3d6b76c6d687e645dc927), kmod-lib-crc-ccitt
 Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
+
+Package: lame-lib
+Version: 3.100-1
+Depends: libc
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554008783
+Auto-Installed: yes
 
 Package: libavahi-dbus-support
 Version: 0.7-3
@@ -1303,6 +1466,15 @@ Depends: libc, rpcd, libubox20170601, libubus20170705
 Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553960312
+Auto-Installed: yes
+
+Package: libffmpeg-full
+Version: 3.4.5-1
+Depends: libc, libpthread, libpthread, zlib, libbz2-1.0, alsa-lib, libopus, lame-lib
+Provides: libffmpeg
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554009132
 Auto-Installed: yes
 
 Package: ppp-mod-pppoe

@@ -1,0 +1,12 @@
+Package: mxml
+Version: 2.12-1
+Depends: libc, zlib
+Source: feeds/packages/libs/mxml
+SourceName: mxml
+License: GPL-2.0
+LicenseFiles: COPYING
+Section: libs
+Maintainer: Espen Jürgensen <espenjurgensen+openwrt@gmail.com>
+Architecture: aarch64_cortex-a53
+Installed-Size: 18622
+Description:  A small xml library.

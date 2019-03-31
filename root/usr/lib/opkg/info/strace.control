@@ -1,0 +1,13 @@
+Package: strace
+Version: 4.26-1
+Depends: libc
+Source: feeds/base/package/devel/strace
+SourceName: strace
+License: BSD-3c
+LicenseFiles: COPYRIGHT
+Section: utils
+Maintainer: Felix Fietkau <nbd@nbd.name>
+Architecture: aarch64_cortex-a53
+Installed-Size: 250420
+Description:  A useful diagnostic, instructional, and debugging tool. Allows you to track what
+ system calls a program makes while it is running.

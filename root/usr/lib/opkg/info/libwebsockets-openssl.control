@@ -1,0 +1,13 @@
+Package: libwebsockets-openssl
+Version: 3.1.0-1
+Depends: libc, zlib, libcap, libopenssl1.1
+Provides: libwebsockets
+Source: feeds/packages/libs/libwebsockets
+SourceName: libwebsockets-openssl
+License: LGPL-2.1+exception
+LicenseFiles: LICENSE
+Section: libs
+Maintainer: Karl Palsson <karlp@etactica.com>
+Architecture: aarch64_cortex-a53
+Installed-Size: 103417
+Description:  libwebsockets (OpenSSL)
