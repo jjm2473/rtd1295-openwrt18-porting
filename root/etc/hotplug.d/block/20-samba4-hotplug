@@ -72,7 +72,7 @@ case "$ACTION" in
                 *) return;;
         esac   
         
-	section=$(uci show samba | grep "'/mnt/${device}'"  | awk 'BEGIN { FS = "." } ; { print $2 }')
+	section=$(uci show samba4 | grep "'/mnt/${device}'"  | awk 'BEGIN { FS = "." } ; { print $2 }')
 	state=$(uci get samba4.${section}.state)
 	if [ "$state" = "a" ]; then
 		uci delete samba4.${section}
