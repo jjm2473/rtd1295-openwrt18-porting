@@ -93,7 +93,6 @@ if [ $device != "block" ]; then
 			section=$(echo $get_uuid | sed 's/-//g')
 			uci set fstab.${section}.target="/mnt/${device}"
 		}
-		[ ! -d /mnt/$device ] && mkdir -p /mnt/$device
 		return 0
 	}
 	return 1
