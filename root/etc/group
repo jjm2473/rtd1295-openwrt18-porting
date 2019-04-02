@@ -10,3 +10,4 @@ users:x:100:
 network:x:101:
 nogroup:x:65534:
 dnsmasq:x:453:dnsmasq
+media_rw:x:1023:ftp,admin,root
