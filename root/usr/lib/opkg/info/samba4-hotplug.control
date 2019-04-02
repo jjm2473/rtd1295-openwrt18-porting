@@ -1,0 +1,9 @@
+Package: samba4-hotplug
+Version: 1-1
+Depends: libc, librt, libpthread, samba4-server
+Source: package/network/services/samba4/samba-hotplug
+Section: net
+Maintainer: GuoGuo
+Architecture: rtd1295
+Installed-Size: 985
+Description:  A hotplug script to config Samba share automatically.

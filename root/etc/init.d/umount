@@ -4,5 +4,6 @@
 STOP=99
 stop() {
 	sync
+	find /mnt/ -maxdepth 1 -mindepth 1 -type d | xargs -n1 umount -r
 	/bin/umount -a -d -r
 }

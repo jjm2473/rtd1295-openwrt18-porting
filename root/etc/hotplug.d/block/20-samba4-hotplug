@@ -1,0 +1,86 @@
+#!/bin/sh
+
+#   samba4............................PandoraBox..........................
+#=======================================================================
+#
+#   D-Team Technology Co.,Ltd. ShenZhen
+#   ......:Vic
+#
+#
+# ......:.....................,.........................................
+#=======================================================================
+
+
+set_samba(){
+	uci set samba4.${section}="sambashare"
+	uci set samba4.${section}.name="Disk_${device}"
+	uci set samba4.${section}.path="${mountpoint}"
+	uci set samba4.${section}.state="a"
+	uci set samba4.${section}.read_only="no"
+	uci set samba4.${section}.guest_ok="yes"
+	uci commit samba4
+}
+
+set_samba_path(){
+	uci set samba4.${section}.path="${mountpoint}"
+	uci set samba4.${section}.state="m"
+	uci commit samba4
+}
+
+device=`basename $DEVPATH`
+timeout=2
+count=0
+
+case "$ACTION" in
+	add)
+	
+       case "$device" in
+                sd*) ;;
+                sata*) ;;
+                md*) ;;
+                hd*) ;;     
+                *) return;;
+        esac   
+
+	# Ignore nasroot(squashfs) and nasetc
+	blkid /dev/${device} | grep -q ' TYPE="squashfs"' && exit 0
+	blkid /dev/${device} | grep -q ' LABEL="nasetc"' && exit 0
+	blkid /dev/${device} | grep -q ' TYPE="ntfs"' && timeout=10
+
+	while [ "$count" -lt "$timeout" ]; do
+		mountpoint=`sed -ne "s|^[^ ]*/$device ||; T; s/ .*//p" /proc/self/mounts`
+		[ -n "$mountpoint" ] && break
+		sleep 1
+		count=`expr $count + 1`
+	done
+
+	get_uuid=`blkid /dev/${device} | awk -F " UUID=" '{print $2}'| awk -F "\"" '{print $2}'`
+	section=$(echo $get_uuid | sed 's/-//g')
+	have_uuid=$(uci show samba4 | grep -c "$section")
+	[ "$have_uuid" = "0" ] && set_samba
+	[ "$have_uuid" -gt "0" ] && set_samba_path
+	/etc/init.d/samba4 restart
+	;;
+
+	remove)
+
+       case "$device" in
+                sd*) ;;
+                sata*) ;;
+                md*) ;;
+                hd*) ;;     
+                *) return;;
+        esac   
+        
+	section=$(uci show samba | grep "'/mnt/${device}'"  | awk 'BEGIN { FS = "." } ; { print $2 }')
+	state=$(uci get samba4.${section}.state)
+	if [ "$state" = "a" ]; then
+		uci delete samba4.${section}
+		uci commit samba4
+	elif [ "$state" = "m" ]; then
+		uci set samba4.${section}.state="d"
+		uci commit samba4
+	fi
+	/etc/init.d/samba4 restart
+	;;
+esac

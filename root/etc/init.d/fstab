@@ -1,16 +1,70 @@
 #!/bin/sh /etc/rc.common
 # (C) 2013 openwrt.org
+# 2019 jjm2473
 
 START=40
 
+fstab_add_mount() {
+	local device
+	local fstype
+	local options
+	local uuid
+	local label
+	local target
+	local cmd
+
+	config_get_bool enabled "$1" enabled 0
+	[ $enabled -gt 0 ] && {
+		config_get uuid "$1" 'uuid'
+		if [ -z "$uuid" ] ; then
+			config_get label "$1" 'label'
+			if [ -z "$label" ] ; then
+				config_get device "$1" 'device'
+			else
+				device=`blkid -o device -L $label`
+			fi
+		else
+			device=`blkid -o device -U $uuid`
+		fi
+
+		[ -n "$device" ] && {
+			config_get fstype "$1" 'fstype'
+			config_get options "$1" 'options'
+			config_get target "$1" 'target'
+
+			[ -z "$target" ] && return 0
+
+			[ -d "$target" ] || mkdir -p "$target"
+
+			case "$fstype" in
+				hfs*)
+					fstype="ufsd";;
+				'ntfs')
+					fstype="ufsd";;
+				'exfat')
+					fstype="ufsd";;
+			esac
+
+			cmd="mount"
+			[ -n "$fstype" ] && cmd="$cmd -t $fstype"
+			[ -n "$options" ] && cmd="$cmd -o $options"
+			cmd="$cmd $device $target"
+
+			$cmd
+		}
+	}
+}
+
 boot() {
-	/sbin/block mount
+	start
 }
 
 start() {
-	echo "this file has been obsoleted. please call \"/sbin/block mount\" directly"
+	config_load fstab
+	config_foreach fstab_add_mount mount
 }
 
 stop() {
-	/sbin/block umount
+	sync
+	find /mnt/ -maxdepth 1 -mindepth 1 -type d | xargs -n1 umount -r
 }

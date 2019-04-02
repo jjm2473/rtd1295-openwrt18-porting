@@ -31,13 +31,13 @@ FS_TYPE=`blkid -o udev -p $DEV_PATH | grep ID_FS_TYPE | awk -F= '{print $2}'`
 # ntfs|exfat|hfs|hfsplus
 case "$FS_TYPE" in
     ntfs)
-        BIN=/sbin/chkntfs
+        BIN=/usr/local/sbin/chkntfs
         ;;
     exfat)
-        BIN=/sbin/chkexfat
+        BIN=/usr/local/sbin/chkexfat
         ;;
     hfs|hfsplus)
-        BIN=/sbin/chkhfs
+        BIN=/usr/local/sbin/chkhfs
         ;;
 esac
 

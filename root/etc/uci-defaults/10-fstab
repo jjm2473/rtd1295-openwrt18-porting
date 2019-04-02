@@ -1,2 +1,2 @@
-[ ! -f /etc/config/fstab ] && ( block detect > /etc/config/fstab )
+[ ! -f /etc/config/fstab ] && ( /sbin/gen_fstab > /dev/null )
 exit 0
