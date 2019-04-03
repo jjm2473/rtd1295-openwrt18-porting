@@ -13,7 +13,7 @@ for DEVPATH in `blkid -o device`; do
 	enabled=0
 	except=`basename $DEVPATH | grep -E "mmcblk|mtdblock"`
 	[ -z "except" ] && enabled=1
-	/sbin/add_fstab $DEVPATH $enabled >/dev/null
+	/sbin/add_fstab $DEVPATH "$enabled" >/dev/null
 done
 
 uci commit fstab >/dev/null

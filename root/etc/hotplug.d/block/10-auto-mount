@@ -7,7 +7,7 @@ if [ $device != "block" ] && [ -z $except ]; then
 
     case "$ACTION" in
 		add)
-			/sbin/add_fstab $DEVPATH && {
+			/sbin/add_fstab $DEVPATH "2" && {
 				uci commit fstab
 				sleep 1
 				mountpoint=`sed -ne "s|^[^ ]*/$device ||; T; s/ .*//p" /proc/self/mounts`
