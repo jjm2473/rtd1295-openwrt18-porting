@@ -1,0 +1,2 @@
+/etc/modules.d/28-md-linear
+/lib/modules/4.1.35-04005-g6c2818e-dirty/linear.ko

@@ -1,0 +1,2 @@
+/etc/modules-boot.d/40-scsi-core
+/etc/modules.d/40-scsi-core

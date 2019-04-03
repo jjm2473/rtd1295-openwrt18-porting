@@ -1,0 +1,10 @@
+Package: kmod-md-raid0
+Version: 4.1.7-1
+Depends: kernel (=4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2), kmod-md-mod
+Source: package/kernel/linux
+License: GPLv2
+Section: kernel
+Status: unknown hold not-installed
+Architecture: rtd1295
+Installed-Size: 7613
+Description:  RAID Level 0 (Striping) driver module (raid0.ko)

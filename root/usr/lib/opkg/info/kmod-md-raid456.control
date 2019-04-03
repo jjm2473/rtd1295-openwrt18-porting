@@ -1,0 +1,20 @@
+Package: kmod-md-raid456
+Version: 4.1.7-1
+Depends: kernel (=4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2), kmod-md-mod, kmod-lib-raid6, kmod-lib-xor
+Source: package/kernel/linux
+License: GPLv2
+Section: kernel
+Status: unknown hold not-installed
+Architecture: rtd1295
+Installed-Size: 65720
+Description:  RAID Level 4,5,6 kernel module (raid456.ko)
+ 
+ Includes the following modules required by
+ raid456.ko:
+ xor.ko
+ async_tx.ko
+ async_xor.ko
+ async_memcpy.ko
+ async_pq.ko
+ async_raid5_recov.ko
+ raid6_pq.ko

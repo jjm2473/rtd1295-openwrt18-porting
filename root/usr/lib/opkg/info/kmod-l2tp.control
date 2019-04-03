@@ -1,0 +1,10 @@
+Package: kmod-l2tp
+Version: 4.1.7-1
+Depends: kernel (=4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2), kmod-ipv6, kmod-udptunnel4, kmod-udptunnel6
+Source: package/kernel/linux
+License: GPLv2
+Section: kernel
+Status: unknown hold not-installed
+Architecture: rtd1295
+Installed-Size: 19419
+Description:  Kernel modules for L2TP V3 Support
