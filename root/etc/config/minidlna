@@ -2,7 +2,7 @@ config minidlna config
 	option 'enabled' '0'
 	option user 'root'
 	option port '8200'
-	option interface 'eth0'
+	option interface 'eth0,wlan0,p2p0'
 	option friendly_name 'OpenWrt DLNA Server'
 	option db_dir '/var/run/minidlna'
 	option log_dir '/var/log/minidlna'

@@ -4,4 +4,5 @@ config samba config
 	option 'description'	'Samba on OpenWrt'
 	option 'charset' 		'UTF-8'
 	option 'homes'			'0'
+	option 'interface'		'lan wlan p2p'
 
