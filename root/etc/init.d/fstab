@@ -14,25 +14,28 @@ fstab_add_mount() {
 	local cmd
 
 	config_get_bool enabled "$1" enabled 0
-	[ $enabled -gt 0 ] && {
-		config_get uuid "$1" 'uuid'
-		if [ -z "$uuid" ] ; then
-			config_get label "$1" 'label'
-			if [ -z "$label" ] ; then
-				config_get device "$1" 'device'
-			else
-				device=`blkid -o device -L $label`
-			fi
+	
+	config_get uuid "$1" 'uuid'
+	if [ -z "$uuid" ] ; then
+		config_get label "$1" 'label'
+		if [ -z "$label" ] ; then
+			config_get device "$1" 'device'
 		else
-			device=`blkid -o device -U $uuid`
+			device=`blkid -o device -L $label`
 		fi
+	else
+		device=`blkid -o device -U $uuid`
+	fi
 
-		[ -n "$device" ] && {
+	[ -n "$device" -a -b "$device" ] && {
+		config_get target "$1" 'target'
+
+		[ -z "$target" ] && return 0
+			
+		if [ $enabled -gt 0 ] ; then
+			# mount
 			config_get fstype "$1" 'fstype'
 			config_get options "$1" 'options'
-			config_get target "$1" 'target'
-
-			[ -z "$target" ] && return 0
 
 			[ -d "$target" ] || mkdir -p "$target"
 
@@ -51,17 +54,20 @@ fstab_add_mount() {
 			cmd="$cmd $device $target"
 
 			$cmd
-		}
+		else
+			grep -q "$device $target " /proc/mounts && umount -r "$target"
+		fi
 	}
-}
-
-boot() {
-	start
+	
 }
 
 start() {
 	config_load fstab
 	config_foreach fstab_add_mount mount
+}
+
+reload() {
+	start
 }
 
 stop() {
