@@ -7,7 +7,7 @@ audio:x:29:
 www-data:x:33:
 ftp:x:55:
 users:x:100:
-network:x:101:
 nogroup:x:65534:
 dnsmasq:x:453:dnsmasq
-media_rw:x:1023:ftp,admin,root
+media_rw:x:1023:ftp,nas
+inet:x:3003:network,nas,nobody

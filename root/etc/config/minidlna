@@ -1,6 +1,6 @@
 config minidlna config
 	option 'enabled' '0'
-	option user 'root'
+	option user 'nobody'
 	option port '8200'
 	option interface 'eth0,wlan0,p2p0'
 	option friendly_name 'OpenWrt DLNA Server'

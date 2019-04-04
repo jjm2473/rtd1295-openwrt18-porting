@@ -73,9 +73,18 @@ transmission() {
 	config_file="$config_dir/settings.json"
 	[ -d $config_dir ] || {
 		mkdir -p $config_dir
-		chmod 0755 $config_dir
 		touch $config_file
-		[ -z "$user" ] || chown -R "$user:$group" $config_dir
+	}
+
+	[ -d $download_dir ] || {
+		mkdir -p $download_dir
+	}
+
+	chmod 0755 $config_dir
+	chmod 0755 $download_dir
+	[ -z "$user" ] || {
+		chown -R "$user:$group" $config_dir
+		chown "$user:$group" $download_dir
 	}
 
 	[ "$config_overwrite" == 0 ] || {
