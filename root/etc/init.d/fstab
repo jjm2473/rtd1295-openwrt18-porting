@@ -27,7 +27,7 @@ fstab_add_mount() {
 		device=`blkid -o device -U $uuid`
 	fi
 
-	[ -n "$device" -a -b "$device" ] && {
+	[ -n "$device" ] && {
 		config_get target "$1" 'target'
 
 		[ -z "$target" ] && return 0
@@ -37,8 +37,6 @@ fstab_add_mount() {
 			config_get fstype "$1" 'fstype'
 			config_get options "$1" 'options'
 
-			[ -d "$target" ] || mkdir -p "$target"
-
 			case "$fstype" in
 				hfs*)
 					fstype="ufsd";;
@@ -47,6 +45,10 @@ fstab_add_mount() {
 				'exfat')
 					fstype="ufsd";;
 			esac
+
+			grep -q "^nodev\t$fstype\$" /proc/filesystems || [ -b "$device" ] || return 1
+
+			[ -d "$target" ] || mkdir -p "$target"
 
 			cmd="mount"
 			[ -n "$fstype" ] && cmd="$cmd -t $fstype"
