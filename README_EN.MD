@@ -32,7 +32,7 @@ Just falsh back the official OTA package.
 ### Release
 #### 1.1 (2019-04-05)
 *compares to 1.0, 1.1 supports net disk (CIFS/NFS) auto mounting*
-* [Complete Edition](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.1_full) (recommended)
+* [Complete Edition](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.1_full) (**recommended**)
 
 #### 1.0 (2019-04-05)
 *Zidoo Z9S with firmware 2.1.40/2.1.30 tested*
