@@ -30,9 +30,13 @@
 只要刷回官方OTA包即可
 
 ### 发布
+#### 1.1 (2019-04-05)
+*比1.0增加支持自动挂载网络磁盘(CIFS/NFS)*
+* [完整版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.1_full) (推荐)
+
 #### 1.0 (2019-04-05)
 *Zidoo Z9S 底包 2.1.40/2.1.30 测试通过*
-* [完整版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.0_full) (推荐)
+* [完整版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.0_full)
 * [基础带Luci版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.0_luci)
 * [基础无Luci版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.0_no_luci)
 
