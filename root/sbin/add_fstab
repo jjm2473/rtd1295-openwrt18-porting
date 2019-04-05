@@ -107,10 +107,6 @@ if [ $device != "block" ]; then
 		[ "$have_uuid" = "0" ] && {
 			set_fstab || return 1
 		}
-		[ "$have_uuid" -gt "0" ] && {
-			section=$(echo $get_uuid | sed 's/-//g')
-			uci set fstab.${section}.target="/mnt/${device}"
-		}
 		return 0
 	}
 	return 1

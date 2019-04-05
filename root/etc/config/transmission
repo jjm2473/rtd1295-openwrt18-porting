@@ -2,7 +2,7 @@ config transmission config
 	option enabled 0
 	option config_dir '/tmp/transmission'
 	option config_overwrite '1'
-	option user 'nas'
+	option user 'nobody'
 	option group 'media_rw'
 	option mem_percentage 20
 	option nice 10

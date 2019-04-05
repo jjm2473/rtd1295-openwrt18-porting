@@ -16,8 +16,10 @@ if [ $device != "block" ] && [ -z $except ]; then
 			;;
 
 		remove)
-			umount /dev/${device}
-			rmdir /mnt/${device}
+			grep -q "/dev/${device} /mnt/${device} " /proc/mounts && {
+				umount /mnt/${device}
+				rmdir /mnt/${device}
+			}
 			;;
     esac
 

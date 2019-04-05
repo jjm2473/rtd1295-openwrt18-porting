@@ -81,10 +81,8 @@ transmission() {
 	}
 
 	chmod 0755 $config_dir
-	chmod 0755 $download_dir
 	[ -z "$user" ] || {
 		chown -R "$user:$group" $config_dir
-		chown "$user:$group" $download_dir
 	}
 
 	[ "$config_overwrite" == 0 ] || {

@@ -147,6 +147,7 @@ end
 o = mount:taboption("advanced", Value, "options", translate("Mount options"),
 	translate("See \"mount\" manpage for details"))
 
+o.default = "noatime,nls=utf8,uid=1023,gid=1023,fmask=7,dmask=7"
 o.placeholder = "defaults"
 
 
