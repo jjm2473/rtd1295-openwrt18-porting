@@ -1,0 +1,14 @@
+#!/bin/sh
+
+if [ "`uci get minidlna.config.enabled`" == "1" ] ; then
+	/etc/init.d/minidlna enable
+fi
+
+uci -q batch <<-EOF >/dev/null
+	delete ucitrack.minidlna
+	set ucitrack.minidlna=minidlna
+	set ucitrack.minidlna.init=minidlna
+	commit ucitrack
+EOF
+
+exit 0

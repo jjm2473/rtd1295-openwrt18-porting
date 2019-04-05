@@ -33,26 +33,9 @@ s:tab("anonymous",translate("Anonymous"))
 s:tab("userlist",translate("User List"))
 s:tab("template",translate("Template"))
 
-
-
 enable=s:taboption("general",Flag,"enabled",translate("Enabled"))
 enable.rmempty=false
-function enable.cfgvalue(self,section)
-	return luci.sys.init.enabled("vsftpd") and self.enabled or self.disabled
-end
-function enable.write(self,section,value)
-	if value == "1" then
-	  if running then
-		luci.sys.call("/etc/init.d/vsftpd stop >/dev/null")
-	  end
-		luci.sys.call("/etc/init.d/vsftpd enable >/dev/null")
-		luci.sys.call("/etc/init.d/vsftpd start >/dev/null")
-	else
-		luci.sys.call("/etc/init.d/vsftpd stop >/dev/null")
-		luci.sys.call("/etc/init.d/vsftpd disable >/dev/null")
-	end
-	return Flag.write(self, section, value)
-end
+
 listen_ipv6=s:taboption("general",Flag,"listen_ipv6",translate("Allow IPv6"))
 listen_ipv6.rmempty=false
 banner=s:taboption("general",Value,"ftpd_banner",translate("FTP banner"))

@@ -16,8 +16,7 @@ if echo "$SERVICES" | grep -q $1; then
 		enable)
 			/sbin/uci set $SERVICENAME.config.enabled=1
 			/sbin/uci commit $SERVICENAME
-			/etc/init.d/$SERVICENAME start
-			/etc/init.d/$SERVICENAME enable
+			/etc/init.d/$SERVICENAME restart
 			exit 0
 		;;
 
@@ -25,7 +24,6 @@ if echo "$SERVICES" | grep -q $1; then
 			/sbin/uci set $SERVICENAME.config.enabled=0
 			/sbin/uci commit $SERVICENAME
 			/etc/init.d/$SERVICENAME stop
-			/etc/init.d/$SERVICENAME disable
 			exit 0
 		;;
 

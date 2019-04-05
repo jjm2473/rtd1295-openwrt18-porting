@@ -15,11 +15,6 @@
 
 if [ "`uci get afpd.config.enabled`" == "1" ] ; then
 	/etc/init.d/afpd enable
-else
-	/etc/init.d/afpd enabled && {
-		/etc/init.d/afpd stop
-		/etc/init.d/afpd disable
-	}
 fi
 
 uci -q batch <<-EOF >/dev/null
@@ -29,5 +24,4 @@ uci -q batch <<-EOF >/dev/null
 	commit ucitrack
 EOF
 
-rm -f /tmp/luci-indexcache
 exit 0

@@ -11,21 +11,6 @@ s.anonymous = true
 o = s:option(Flag, "enabled", translate("Enable"))
 o.rmempty = false
 
-function o.cfgvalue(self, section)
-	return luci.sys.init.enabled("afpd") and self.enabled or self.disabled
-end
-
-function o.write(self, section, value)
-	if value == "1" then
-		luci.sys.init.enable("afpd")
-		luci.sys.call("/etc/init.d/afpd start >/dev/null")
-	else
-		luci.sys.call("/etc/init.d/afpd stop >/dev/null")
-		luci.sys.init.disable("afpd")
-	end
-	return Flag.write(self, section, value)
-end
-
 servername = s:option(Value, "hostname", translate("Server Name"))
 servername.rmempty = true
 function servername.cfgvalue(self, section)
@@ -68,10 +53,6 @@ function path.cfgvalue(self, section)
 end
 function path.write(self, section, value)
 	return Flag.write(self, section, value)
-end
-
-function m.on_commit(self,map)
-	require("luci.sys").call('/sbin/reload_config')
 end
 
 return m

@@ -11,21 +11,6 @@ s.anonymous = true
 o = s:option(Flag, "enabled", translate("Enable"))
 o.rmempty = false
 
-function o.cfgvalue(self, section)
-	return luci.sys.init.enabled("forked-daapd") and self.enabled or self.disabled
-end
-
-function o.write(self, section, value)
-	if value == "1" then
-		luci.sys.init.enable("forked-daapd")
-		luci.sys.call("/etc/init.d/forked-daapd restart >/dev/null")
-	else
-		luci.sys.call("/etc/init.d/forked-daapd stop >/dev/null")
-		luci.sys.init.disable("forked-daapd")
-	end
-	return Flag.write(self, section, value)
-end
-
 servername = s:option(Value, "name", translate("Server Name"))
 servername.rmempty = true
 function servername.cfgvalue(self, section)

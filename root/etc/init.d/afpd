@@ -13,7 +13,6 @@ config_instance()
     local hostname
     local path
 
-    config_get enabled $1 enabled
     config_get hostname $1 hostname
     config_get path $1 path
 
@@ -22,8 +21,14 @@ config_instance()
 }
 
 start_service() {
+	local enabled
 	config_load afpd
-	config_foreach config_instance afpd
+
+	config_get_bool enabled config 'enabled' '0'
+
+	[ "$enabled" -gt 0 ] || return 1
+
+	config_foreach config_instance netatalk
 
 	mkdir -p /var/netatalk/CNID/files
 
@@ -39,3 +44,8 @@ start_service() {
 	procd_close_instance
 }
 
+service_triggers() {
+	PROCD_RELOAD_DELAY=2000
+
+	procd_add_reload_trigger "afpd"
+}

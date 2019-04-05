@@ -56,6 +56,7 @@ config tinyproxy
 	option init tinyproxy
 
 config minidlna 'minidlna'
+	option init 'minidlna'
 
 config transmission
 	option init 'transmission'
