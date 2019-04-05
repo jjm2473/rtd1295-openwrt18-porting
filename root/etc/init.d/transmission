@@ -144,8 +144,13 @@ transmission() {
 	procd_close_instance
 }
 
+service_triggers() {
+	PROCD_RELOAD_DELAY=2000
+	
+	procd_add_reload_trigger "transmission"
+}
+
 start_service() {
 	config_load 'transmission'
 	config_foreach transmission 'transmission'
 }
-

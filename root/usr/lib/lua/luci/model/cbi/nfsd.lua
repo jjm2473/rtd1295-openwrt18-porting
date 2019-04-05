@@ -6,6 +6,7 @@ s.anonymous=true
 s.addremove=true
 dir=s:option(Value,"share_dir",translate("Shared Directory"))
 dir.optional=false
+dir.default="/mnt"
 s:option(Value,"share_ip",translate("Listen IP")).default='*'
-s:option(Value,"share_options",translate("Share Options")).default='ro,insecure,sync'
+s:option(Value,"share_options",translate("Share Options")).default='ro,insecure,sync,anonuid=1023,all_squash'
 return m

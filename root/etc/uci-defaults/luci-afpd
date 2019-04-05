@@ -8,10 +8,19 @@
 	ln -s afpd /etc/config/netatalk
 }
 
-/etc/init.d/afpd enabled && {
-	/etc/init.d/afpd stop
-	/etc/init.d/afpd disable
+[ -f /etc/init.d/netatalk ] && {
+	/etc/init.d/netatalk disable
+	rm -f /etc/init.d/netatalk
 }
+
+if [ "`uci get afpd.config.enabled`" == "1" ] ; then
+	/etc/init.d/afpd enable
+else
+	/etc/init.d/afpd enabled && {
+		/etc/init.d/afpd stop
+		/etc/init.d/afpd disable
+	}
+fi
 
 uci -q batch <<-EOF >/dev/null
 	delete ucitrack.afpd

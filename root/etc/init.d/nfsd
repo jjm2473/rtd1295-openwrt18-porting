@@ -62,3 +62,12 @@ stop_service() {
 	grep -q /proc/fs/nfsd /proc/mounts && \
 		umount /proc/fs/nfsd
 }
+
+reload_service() {
+	nfsd_cfg_gen
+	/usr/sbin/exportfs -r
+}
+
+service_triggers() {
+	procd_add_reload_trigger "nfsd"
+}
