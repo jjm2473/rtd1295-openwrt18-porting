@@ -2,6 +2,8 @@
 [中文版](/README.MD)
 
 ### I. Project Description
+![Screenshot](screenshot.jpg?raw=true)
+
 This project is based on the [OpenWrt](https://www.openwrt.org/) SNAPSHOT image and the Zidoo Z9S official OTA package, designed to build the latest version of [OpenWrt](https://www.openwrt.org/) for RTD1295/RTD1296.
 
 The author has only one Zidoo Z9S. In theory, the Android+OpenWrt dual system of the RTD1295/RTD1296 solution can update OpenWrt to the latest version through this project.

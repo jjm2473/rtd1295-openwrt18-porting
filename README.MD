@@ -2,6 +2,8 @@
 [English Version](/README_EN.MD)
 
 ### 一.项目说明
+![Screenshot](screenshot.jpg?raw=true)
+
 本项目基于 [OpenWrt](https://www.openwrt.org/) SNAPSHOT 镜像和 Zidoo Z9S 官方OTA包, 旨在构建适用于 RTD1295/RTD1296 的最新版 [OpenWrt](https://www.openwrt.org/).
 
 作者本人只有一台 Zidoo Z9S, 理论上 RTD1295/RTD1296 方案的 Android+OpenWrt 双系统都能通过这个项目将 OpenWrt 更新到最新版.
