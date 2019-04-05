@@ -2,7 +2,7 @@
 [English Version](/README_EN.MD)
 
 ### 一.项目说明
-本项目基于 OpenWrt SNAPSHOT 镜像和 Zidoo Z9S 官方OTA包, 旨在构建适用于 RTD1295/RTD1296 的最新版 OpenWrt.
+本项目基于 [OpenWrt](https://www.openwrt.org/) SNAPSHOT 镜像和 Zidoo Z9S 官方OTA包, 旨在构建适用于 RTD1295/RTD1296 的最新版 [OpenWrt](https://www.openwrt.org/).
 
 作者本人只有一台 Zidoo Z9S, 理论上 RTD1295/RTD1296 方案的 Android+OpenWrt 双系统都能通过这个项目将 OpenWrt 更新到最新版.
 理论上支持的盒子: 
@@ -31,12 +31,14 @@
 
 ### 发布
 #### 1.0 (2019-04-05)
-Zidoo Z9S 底包 2.1.40/2.1.30 测试通过
-
-[完整版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.0_full) (推荐)
-
-[基础带Luci版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.0_luci)
-
-[基础无Luci版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.0_no_luci)
+*Zidoo Z9S 底包 2.1.40/2.1.30 测试通过*
+* [完整版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.0_full) (推荐)
+* [基础带Luci版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.0_luci)
+* [基础无Luci版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.0_no_luci)
 
 
+
+### 参考信息
+1. OpenWrt: https://www.openwrt.org/
+2. RTD1295: https://www.realtek.com/zh/products/communications-network-ics/item/rtd1295
+3. Zidoo: https://www.zidoo.tv/
