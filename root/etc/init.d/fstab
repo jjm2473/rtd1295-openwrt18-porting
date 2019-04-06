@@ -13,8 +13,6 @@ fstab_add_mount() {
 	local target
 	local cmd
 
-	config_get_bool enabled "$1" enabled 0
-	
 	config_get uuid "$1" 'uuid'
 	if [ -z "$uuid" ] ; then
 		config_get label "$1" 'label'
@@ -31,11 +29,12 @@ fstab_add_mount() {
 		config_get target "$1" 'target'
 
 		[ -z "$target" ] && return 0
-			
+
+		config_get_bool enabled "$1" enabled 0
+
 		if [ $enabled -gt 0 ] ; then
 			# mount
 			config_get fstype "$1" 'fstype'
-			config_get options "$1" 'options'
 
 			case "$fstype" in
 				hfs*)
@@ -48,16 +47,22 @@ fstab_add_mount() {
 
 			grep -q "^nodev\t$fstype\$" /proc/filesystems || [ -b "$device" ] || return 1
 
-			[ -d "$target" ] || mkdir -p "$target"
+			# umount pre mountpoint
+			grep -Fw "$device" /proc/mounts | awk -F " " '{print $2}' | xargs -rn1 umount
 
-			cmd="mount"
-			[ -n "$fstype" ] && cmd="$cmd -t $fstype"
-			[ -n "$options" ] && cmd="$cmd -o $options"
-			cmd="$cmd $device $target"
+			[ "$?" == "0" ] && {
+				[ -d "$target" ] || mkdir -p "$target"
 
-			$cmd
+				cmd="mount"
+				[ -n "$fstype" ] && cmd="$cmd -t $fstype"
+				config_get options "$1" 'options'
+				[ -n "$options" ] && cmd="$cmd -o $options"
+				cmd="$cmd $device $target"
+
+				$cmd
+			}
 		else
-			grep -q "$device $target " /proc/mounts && umount -r "$target"
+			grep -q -Fw "$device $target" /proc/mounts && umount -r "$target"
 		fi
 	}
 	
@@ -74,5 +79,5 @@ reload() {
 
 stop() {
 	sync
-	find /mnt/ -maxdepth 1 -mindepth 1 -type d | xargs -n1 umount -r
+	find /mnt/ -maxdepth 1 -mindepth 1 -type d | xargs -rn1 umount -r
 }
