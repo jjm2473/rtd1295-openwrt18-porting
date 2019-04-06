@@ -32,7 +32,10 @@ boot() {
 	touch /var/log/wtmp
 	touch /var/log/lastlog
 	touch /tmp/resolv.conf.auto
+	echo "nameserver 223.5.5.5" >> /tmp/resolv.conf.auto
+	echo "nameserver 8.8.8.8" >> /tmp/resolv.conf.auto
 	ln -sf /tmp/resolv.conf.auto /tmp/resolv.conf
+
 	grep -q debugfs /proc/filesystems && /bin/mount -o noatime -t debugfs debugfs /sys/kernel/debug
 	[ "$FAILSAFE" = "true" ] && touch /tmp/.failsafe
 
