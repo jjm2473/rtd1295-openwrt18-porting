@@ -222,6 +222,13 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1553960244
 Auto-Installed: yes
 
+Package: bash
+Version: 5.0-2
+Depends: libc, libncurses6, libreadline8
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554648836
+
 Package: luci-i18n-transmission-zh-cn
 Version: git-19.088.25182-8e3e502-1
 Depends: libc, luci-app-transmission
@@ -894,6 +901,15 @@ Depends: libc, zlib, libtirpc, krb5-libs, libpopt0, libcap, libpthread, libnettl
 Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553966284
+Auto-Installed: yes
+
+Package: libreadline8
+Version: 8.0-1
+Depends: libc, libncursesw6
+Provides: libreadline
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554648836
 Auto-Installed: yes
 
 Package: librt
