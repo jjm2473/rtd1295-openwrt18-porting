@@ -6,14 +6,14 @@
 
 本项目基于 [OpenWrt](https://www.openwrt.org/) SNAPSHOT 镜像和 Zidoo Z9S 官方OTA包, 旨在构建适用于 RTD1295/RTD1296 的最新版 [OpenWrt](https://www.openwrt.org/).
 
-作者本人只有一台 Zidoo Z9S, 理论上 RTD1295/RTD1296 方案的 Android+OpenWrt 双系统都能通过这个项目将 OpenWrt 更新到最新版.
+作者本人只有一台 Zidoo Z9S(RTD1296), 理论上 RTD1295/RTD1296 方案的 Android+OpenWrt 双系统都能通过这个项目将 OpenWrt 更新到最新版.
 理论上支持的盒子: 
 1. Zidoo X9S/Z9S/X10/Z10/X20 
 2. 开博尔 Q10PLUS(一代和二代)/Q20/Q20PLUS/Q30PLUS 
 
 如果还有其他相同解决方案的盒子, 欢迎补充.
 
-**有机友反馈 Zidoo X9S 刷了以后启动不了, 也许RTD1295不兼容, 所以RTD1295的设备先别刷!!**
+**有机友反馈 Zidoo X9S(RTD1295) 刷了以后启动不了, 也许RTD1295不兼容, 所以RTD1295的设备先别刷!!**
 
 ### 二.安装方法
 0. 视自身情况备份盒子配置(包括OpenWrt和安卓)
