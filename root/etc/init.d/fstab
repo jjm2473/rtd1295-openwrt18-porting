@@ -4,6 +4,8 @@
 
 START=40
 
+onboot=0
+mountswap=0
 fstab_add_mount() {
 	local device
 	local fstype
@@ -26,51 +28,86 @@ fstab_add_mount() {
 	fi
 
 	[ -n "$device" ] && {
-		config_get target "$1" 'target'
-
-		[ -z "$target" ] && return 0
 
 		config_get_bool enabled "$1" enabled 0
 
-		if [ $enabled -gt 0 ] ; then
-			# mount
-			config_get fstype "$1" 'fstype'
+		if [ "$mountswap" == "0" ] ; then
 
-			case "$fstype" in
-				hfs*)
-					fstype="ufsd";;
-				'ntfs')
-					fstype="ufsd";;
-				'exfat')
-					fstype="ufsd";;
-			esac
+			config_get target "$1" 'target'
+			[ -z "$target" ] && return 0
 
-			grep -q "^nodev\t$fstype\$" /proc/filesystems || [ -b "$device" ] || return 1
+			[ "$target" == "/overlay" -a "$onboot" == "0" ] && return 0
 
-			# umount pre mountpoint
-			grep -Fw "$device" /proc/mounts | awk -F " " '{print $2}' | xargs -rn1 umount
+			if [ $enabled -gt 0 ] ; then
+				# mount
+				config_get fstype "$1" 'fstype'
 
-			[ "$?" == "0" ] && {
-				[ -d "$target" ] || mkdir -p "$target"
+				case "$fstype" in
+					hfs*)
+						fstype="ufsd";;
+					'ntfs')
+						fstype="ufsd";;
+					'exfat')
+						fstype="ufsd";;
+				esac
 
-				cmd="mount"
-				[ -n "$fstype" ] && cmd="$cmd -t $fstype"
-				config_get options "$1" 'options'
-				[ -n "$options" ] && cmd="$cmd -o $options"
-				cmd="$cmd $device $target"
+				grep -q "^nodev\t$fstype\$" /proc/filesystems || [ -b "$device" ] || return 1
 
-				$cmd
-			}
+				# umount pre mountpoint
+				grep -Fw "$device" /proc/mounts | awk -F " " '{print $2}' | xargs -rn1 umount
+
+				[ "$?" == "0" ] && {
+					[ -d "$target" ] || mkdir -p "$target"
+
+					cmd="mount"
+					[ -n "$fstype" ] && cmd="$cmd -t $fstype"
+					config_get options "$1" 'options'
+					[ -n "$options" ] && cmd="$cmd -o $options"
+					cmd="$cmd $device $target"
+
+					$cmd && {
+						[ "$target" == "/overlay" ] && {
+							mkdir -p /overlay/upper /overlay/work
+							mount -o noatime,lowerdir=/,upperdir=/overlay/upper,workdir=/overlay/work -t overlay "overlayfs:/overlay" /mnt \
+								|| return 1
+
+							# pivot
+							mount --move /proc /mnt/proc
+
+							pivot_root /mnt /mnt/rom || return 1
+
+							mount --move /rom/dev /dev
+							mount --move /rom/tmp /tmp
+							mount --move /rom/sys /sys
+							mount --move /rom/overlay /overlay
+						}
+					}
+				}
+			else
+				grep -q -Fw "$device $target" /proc/mounts && umount -r "$target"
+			fi
 		else
-			grep -q -Fw "$device $target" /proc/mounts && umount -r "$target"
+			if [ $enabled -gt 0 ] ; then
+				swapon $device
+			else
+				swapoff $device
+			fi
 		fi
 	}
 	
 }
 
-start() {
+fstab_mount() {
 	config_load fstab
+	mountswap=0
 	config_foreach fstab_add_mount mount
+	mountswap=1
+	config_foreach fstab_add_mount swap
+}
+
+start() {
+	onboot=0
+	fstab_mount
 }
 
 reload() {
@@ -80,4 +117,9 @@ reload() {
 stop() {
 	sync
 	find /mnt/ -maxdepth 1 -mindepth 1 -type d | xargs -rn1 umount -r
+}
+
+boot() {
+	onboot=1
+	fstab_mount
 }

@@ -1,23 +1,40 @@
 #!/bin/sh
 [ -f /etc/config/fstab ] || {
-	echo "config 'global'" > /etc/config/fstab
+	echo "config global" > /etc/config/fstab
 	echo -e "\toption\tanon_swap\t'0'" >> /etc/config/fstab
 	echo -e "\toption\tanon_mount\t'0'" >> /etc/config/fstab
 	echo -e "\toption\tauto_swap\t'1'" >> /etc/config/fstab
 	echo -e "\toption\tauto_mount\t'1'" >> /etc/config/fstab
 	echo -e "\toption\tdelay_root\t'5'" >> /etc/config/fstab
 	echo -e "\toption\tcheck_fs\t'0'" >> /etc/config/fstab
+
+	uci commit fstab >>/dev/null
 }
 
-for DEVPATH in `blkid -o device`; do 
+anon_mount=0
+[ "`uci get fstab.@global[0].anon_mount`" == "1" ] && anon_mount=1
+
+anon_swap=0
+[ "`uci get fstab.@global[0].anon_swap`" == "1" ] && anon_swap=1
+
+for DEVPATH in `blkid -o device`; do
 	enabled=0
-	except=`basename $DEVPATH | grep -E "mmcblk|mtdblock"`
-	[ -z "except" ] && enabled=1
-	/sbin/add_fstab $DEVPATH "$enabled" >/dev/null
+	[ "$anon_mount" == "1" ] && {
+		except=`basename $DEVPATH | grep -E "mmcblk0|mtdblock"`
+		[ -z "except" ] && enabled=1
+	}
+	enabled_swap=0
+	[ "$anon_swap" == "1" ] && enabled_swap=1
+
+	/sbin/add_fstab $DEVPATH "$enabled" "$enabled_swap" >>/dev/null
 done
 
-uci commit fstab >/dev/null
+uci commit fstab >>/dev/null
 
-cp /etc/config/fstab /tmp/fstab
-cat /tmp/fstab
-rm -f /tmp/fstab
+sleep 1
+
+ts=`date +%s`
+
+cp /etc/config/fstab /tmp/$ts.fstab >>/dev/null
+cat /tmp/$ts.fstab 2>>/dev/null
+rm -f /tmp/$ts.fstab >>/dev/null

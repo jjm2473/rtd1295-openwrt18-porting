@@ -1,17 +1,29 @@
 #!/bin/sh
 
 device=`basename $DEVPATH`
-except=`echo $device | grep -E "mmcblk|mtdblock"`
+except=`echo $device | grep -E "mmcblk0|mtdblock"`
 
-if [ $device != "block" ] && [ -z $except ]; then
+if [ "$device" != "block" ] ; then
 
-    case "$ACTION" in
+	case "$ACTION" in
 		add)
-			/sbin/add_fstab $DEVPATH "2" && {
+			[ -b /dev/${device} ] || return 0
+
+			auto_mount=0
+			if [ -z "$except" ]; then
+				[ "`uci get fstab.@global[0].auto_mount`" == "1" ] && auto_mount=2
+			fi
+
+			auto_swap=0
+			[ "`uci get fstab.@global[0].auto_swap`" == "1" ] && auto_swap=2
+
+			/sbin/add_fstab $DEVPATH "$auto_mount" "$auto_swap" && {
 				uci commit fstab
-				sleep 1
-				mountpoint=`sed -ne "s|^[^ ]*/$device ||; T; s/ .*//p" /proc/self/mounts`
-				[ -n "$mountpoint" ] && chown nobody.media_rw $mountpoint && chmod 0775 $mountpoint
+				[ "$auto_mount" == "2" ] && {
+					sleep 1
+					mountpoint=`sed -ne "s|^[^ ]*/$device ||; T; s/ .*//p" /proc/self/mounts`
+					[ -n "$mountpoint" ] && chown nobody.media_rw $mountpoint && chmod 0775 $mountpoint
+				}
 			}
 			;;
 
@@ -22,6 +34,6 @@ if [ $device != "block" ] && [ -z $except ]; then
 				umount /dev/${device}
 			fi
 			;;
-    esac
+	esac
 
 fi
