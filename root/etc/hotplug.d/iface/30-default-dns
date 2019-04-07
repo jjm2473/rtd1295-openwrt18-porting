@@ -1,0 +1,7 @@
+#!/bin/sh
+
+[ "$ACTION" = ifdown ] && {
+    [ -L /tmp/resolv.conf ] && rm /tmp/resolv.conf
+    grep -q -Fw "223.5.5.5" /tmp/resolv.conf || echo "nameserver 223.5.5.5" >> /tmp/resolv.conf
+    grep -q -Fw "8.8.8.8" /tmp/resolv.conf || echo "nameserver 8.8.8.8" >> /tmp/resolv.conf
+}

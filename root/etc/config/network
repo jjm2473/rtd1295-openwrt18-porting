@@ -5,7 +5,6 @@ config interface 'lan'
 config interface 'wlan'
 	option proto 'none'
 	option ifname 'wlan0'
-	option delegate '0'
 
 config interface 'p2p'
 	option proto 'none'
