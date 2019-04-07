@@ -102,10 +102,10 @@ set_fstab() {
 device=`basename "$1"`
 
 if [ "$device" != "block" ]; then
-	[ -b /dev/${device} ] || return 0
+	[ -b /dev/${device} ] || return 1
 
 	blkinfo=`blkid "/dev/${device}"`
-	[ -z "$blkinfo" ] && return 0
+	[ -z "$blkinfo" ] && return 1
 
 	# Ignore nasroot(squashfs) and nasetc
 	echo "$blkinfo" | grep -q ' TYPE="squashfs"' && return 1
@@ -117,11 +117,13 @@ if [ "$device" != "block" ]; then
 		logger -t Auto-Mount "Block /dev/${device} added."
 		logger -t Auto-Mount "UUID=$get_uuid"
 		/usr/sbin/blockdev --setra 16384 /dev/${device}
-		have_uuid=$(uci show fstab | grep -c "$get_uuid")
+		have_uuid=$(uci show fstab | grep -cF "$get_uuid")
 		[ "$have_uuid" = "0" ] && {
-			set_fstab || return 1
+			section=$(echo $get_uuid | sed 's/-//g')
+			uci get "fstab.$section" 2>>/dev/null >>/dev/null && return 1
+			set_fstab && return 0
 		}
-		return 0
 	}
-	return 1
 fi
+
+return 1

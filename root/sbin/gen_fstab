@@ -18,13 +18,15 @@ anon_swap=0
 [ "`uci get fstab.@global[0].anon_swap`" == "1" ] && anon_swap=1
 
 for DEVPATH in `blkid -o device`; do
+	device=`basename $DEVPATH`
 	enabled=0
 	[ "$anon_mount" == "1" ] && {
-		except=`basename $DEVPATH | grep -E "mmcblk0|mtdblock"`
+		except=`echo "$device" | grep -E "mmcblk0|mtdblock"`
 		[ -z "except" ] && enabled=1
 	}
 	enabled_swap=0
 	[ "$anon_swap" == "1" ] && enabled_swap=1
+	[ -n "`echo $device | grep -F zram`" ] && enabled_swap=1
 
 	/sbin/add_fstab $DEVPATH "$enabled" "$enabled_swap" >>/dev/null
 done
@@ -35,6 +37,6 @@ sleep 1
 
 ts=`date +%s`
 
-cp /etc/config/fstab /tmp/$ts.fstab >>/dev/null
+cp -f /etc/config/fstab /tmp/$ts.fstab >>/dev/null
 cat /tmp/$ts.fstab 2>>/dev/null
 rm -f /tmp/$ts.fstab >>/dev/null
