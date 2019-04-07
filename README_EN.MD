@@ -12,6 +12,7 @@ Theoretically supported box:
 2. Kaiboer Q10PLUS (first generation and second generation) / Q20 / Q20PLUS / Q30PLUS
 
 If there are other boxes with the same solution, welcome to add.
+
 **A friend test on Zidoo X9S but failed!! RTD1295 may not supported!!**
 
 ### II. Installation
