@@ -12,6 +12,7 @@ Theoretically supported box:
 2. Kaiboer Q10PLUS (first generation and second generation) / Q20 / Q20PLUS / Q30PLUS
 
 If there are other boxes with the same solution, welcome to add.
+**A friend test on Zidoo X9S but failed!! RTD1295 may not supported!!**
 
 ### II. Installation
 0. Back up the box configuration (including OpenWrt and Android)
@@ -32,9 +33,13 @@ This method is suitable for resetting OpenWrt when you can enter the Android sys
 Just falsh back the official OTA package.
 
 ### Release
+#### 1.2 (2019-04-07)
+*compares to 1.1, 1.2 supports swap auto mounting*
+* [Complete Edition](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.2_full) (**recommended**)
+
 #### 1.1 (2019-04-05)
-*compares to 1.0, 1.1 supports net disk (CIFS/NFS) auto mounting*
-* [Complete Edition](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.1_full) (**recommended**)
+*compares to 1.0, 1.1 supports network disk (CIFS/NFS) auto mounting*
+* [Complete Edition](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.1_full)
 
 #### 1.0 (2019-04-05)
 *Zidoo Z9S with firmware 2.1.40/2.1.30 tested*

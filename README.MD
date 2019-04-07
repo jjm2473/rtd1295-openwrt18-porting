@@ -12,6 +12,7 @@
 2. 开博尔 Q10PLUS(一代和二代)/Q20/Q20PLUS/Q30PLUS 
 
 如果还有其他相同解决方案的盒子, 欢迎补充.
+**有机友反馈 Zidoo X9S 刷了以后启动不了, 也许RTD1295不兼容, 所以RTD1295的设备先别刷!!**
 
 ### 二.安装方法
 0. 视自身情况备份盒子配置(包括OpenWrt和安卓)
@@ -32,9 +33,13 @@
 只要刷回官方OTA包即可
 
 ### 发布
+#### 1.2 (2019-04-07)
+*比1.1增加支持自动挂载swap分区*
+* [完整版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.2_full) (**推荐**)
+
 #### 1.1 (2019-04-05)
 *比1.0增加支持自动挂载网络磁盘(CIFS/NFS)*
-* [完整版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.1_full) (**推荐**)
+* [完整版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.1_full)
 
 #### 1.0 (2019-04-05)
 *Zidoo Z9S 底包 2.1.40/2.1.30 测试通过*
