@@ -1,5 +1,5 @@
-dm-crypt
-dm-log
-dm-mirror
 dm-mod
+dm-log
 dm-region-hash
+dm-mirror
+dm-crypt
