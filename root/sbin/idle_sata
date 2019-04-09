@@ -1,0 +1,4 @@
+#!/bin/sh
+
+find /dev/ -name sata[a-z] -type b | xargs -rn1 hdparm -Y
+sleep 1
