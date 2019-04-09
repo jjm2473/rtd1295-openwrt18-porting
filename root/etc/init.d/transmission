@@ -152,3 +152,9 @@ start_service() {
 	config_load 'transmission'
 	config_foreach transmission 'transmission'
 }
+
+reload_service() {
+	stop
+	sleep 2
+	start
+}
