@@ -2,15 +2,7 @@ on early-init
     symlink /fstab.kylin.xen /fstab.kylin
     symlink /sys.part.rc.xen /sys.part.rc
 
-    # For BT under DomOTT
-    # rm /dev/ttyS1
-    # symlink /dev/ttyS0 /dev/ttyS1
-
 on init
-    # chmod 0660 /dev/ttyS0
-    # chmod 0660 /dev/ttyS1
-    # chown bluetooth net_bt_stack /dev/ttyS0
-    # chown bluetooth net_bt_stack /dev/ttyS1
 
 on early-fs
 

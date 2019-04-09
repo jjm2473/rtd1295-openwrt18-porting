@@ -68,13 +68,6 @@ else
         case "$1" in
             interactive | conservative | ondemand | powersave | performance)
                 dvfs_set_mode $1 $2
-
-                #if [ "$1" == "interactive" ]; then
-                #    T=/sys/devices/system/cpu/cpufreq/interactive/target_loads
-                #    chmod 660 $T
-                #    echo "40 400000:70 1100000:95" > $T
-                #fi
-
                 shift 2
                 ;;
             force)

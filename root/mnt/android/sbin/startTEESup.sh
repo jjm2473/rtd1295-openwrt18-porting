@@ -10,8 +10,8 @@ chown media:audio /system/vendor/lib/mediadrm/libPlayReadyDrmCryptoPlugin.so
 chmod 660 /system/vendor/lib/liboemcrypto.so
 chmod 660 /system/vendor/lib/mediadrm/libwvdrmengine.so
 chmod 660 /system/vendor/lib/mediadrm/libPlayReadyDrmCryptoPlugin.so
-chmod 666 /dev/teepriv0
-chmod 666 /dev/tee0
+chmod 640 /dev/teepriv0
+chmod 640 /dev/tee0
 sync
 tee-supplicant &
 sync
@@ -19,6 +19,9 @@ sync
 sync
 chown media:audio /dev/teepriv0
 chown media:audio /dev/tee0
+tee_secure_store_agent
+sync
+tee_antirollback_clock &
 fi
 
 if [ ! -f "/vendor/modules/optee.ko" ] || [ ! -f "/vendor/modules/optee_armtz.ko" ]

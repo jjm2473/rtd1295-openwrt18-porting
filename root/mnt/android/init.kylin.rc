@@ -2,26 +2,8 @@ import init.kylin.usb.rc
 import init.fschk.rc
 # For Webserver mode
 import /init.lighttpd.rc
-# For different boot storage
-import init.${ro.boot.storage}.rc
 
 on early-init
-    # performance governor
-    #write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor performance
-    #write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor performance
-    #write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor performance
-    #write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor performance
-
-    # interactive governor
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
-    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor interactive
-    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
-    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor interactive
-    write /sys/devices/system/cpu/cpufreq/interactive/target_loads 80
-    write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 1400000
-    write /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load 99
-    write /sys/devices/system/cpu/cpufreq/interactive/boost 1
-
     mount debugfs debugfs /sys/kernel/debug
     # Set up kernel tracing, but disable it by default
     chmod 0755 /sys/kernel/debug
@@ -78,11 +60,17 @@ on post-fs-data
     chown root root /data/lightsensor
     mkdir /data/calibration
     mkdir /data/amit
-
+    
     mkdir /data/radio 0775 radio radio
     mkdir /data/radio/log 0775 radio radio
-
+    mkdir /mnt/nfs 0755 root system
+#    mkdir -p /tmp/ramfs/mnt/
+#    chmod 777 -R  /tmp
+    mkdir /tmp/ramfs  0777 root system
+    mkdir /tmp/ramfs/mnt  0777 root system
+    chmod 0777  /tmp
     chmod 0660 /data/misc/wifi/wpa_supplicant.conf
+    chmod 0666 /data/misc/ethernet/ipconfig.txt
 
     # Set indication (checked by vold) that we have finished this action
     setprop vold.post_fs_data_done 1
@@ -92,21 +80,23 @@ on post-fs-data
 #    chown system system /dev/hdcp
 #    chmod 0660 /dev/hdcp
 #    mkdir /data/misc/wifi/sockets 0770 wifi wifi
+    chmod 0777 /dev/ttyS0
     setprop service.adb.tcp.port 5555
     #PPPoE conf folder
     mkdir /data/misc/ppp 0775 system system
 
-    mkdir /mnt/nfs 0755 root system
-    mkdir /tmp/ramfs 0777 root system
-    mkdir /tmp/ramfs/mnt 0777 root system
-
     mkdir /data/etc 0777 system system
-    mkdir /data/etc/gapps 0777 system system
 
 on early-boot
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor performance
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor performance
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor performance
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor performance
+
     # insert mali kernel module
     insmod /system/vendor/modules/mali_kbase.ko
-
+    chown root system /sys/devices/platform/98050000.gpu/devfreq/98050000.gpu/min_freq
+    chmod 660 /sys/devices/platform/98050000.gpu/devfreq/98050000.gpu/min_freq
 on boot
     # update foreground cpuset now that processors are up
     write /dev/cpuset/foreground/cpus 0-3
@@ -118,9 +108,6 @@ on boot
     insmod /system/vendor/modules/jnl.ko
     insmod /system/vendor/modules/ufsd.ko
 
-    # insert btusb kernel module
-    insmod /system/vendor/modules/rtk_btusb.ko
-
     chown system system /sys/kernel/suspend/mode
     chmod 0664 /sys/kernel/suspend/mode
     chown system system /sys/kernel/suspend/context
@@ -129,7 +116,7 @@ on boot
     chmod 0664 /sys/kernel/suspend/watchdog_timer_sec
     chown system system /sys/kernel/suspend/watchdog_en
     chmod 0664 /sys/kernel/suspend/watchdog_en
-
+    chmod 0777 /sys/kernel/suspend/wakeup 
     # CTS requirement
     chmod 0775 /tmp
 
@@ -142,13 +129,9 @@ on boot
     chown bluetooth net_bt_stack /proc/bluetooth/sleep/btwrite
 
 
-        #UART device
+    #UART device
     chmod 0660 /dev/ttyS1
-    chmod 0777 /dev/venus_ir
     chown bluetooth net_bt_stack /dev/ttyS1
-	
-	#change the mode for fan
-	chown system system /sys/devices/platform/980070d0.pwm/dutyRate2
 
     # rfkill
     chmod 0660 /sys/class/rfkill/rfkill0/state
@@ -166,23 +149,324 @@ on boot
     start libchk
     start start_tee_sup
 
-#eeprom userspace program
-service eeprom /system/bin/eeprom -BKLG
+## Daemon processes to be run by init.
+##
+#rtk begin
+service alsadaemon /system/bin/ALSADaemon
+    class core
+    user root
+    group root
+    oneshot
+    seclabel u:r:realtek:s0
+
+service vpuinit /system/bin/vpuinit
     class main
     user root
     group root
     oneshot
-    disabled
     seclabel u:r:realtek:s0
+    #disabled
+
+service sideband /system/bin/sideband
+    class delay_start
+    user media
+    group audio camera inet net_bt net_bt_admin net_bw_acct drmrpc mediadrm graphics
+    seclabel u:r:realtek:s0
+    #disabled
+
+service jpuinit /system/bin/jpuinit
+    class main
+    user root
+    group root
+    oneshot
+    #disabled
+#rtk end
+
+# add from Realtek_Wi-Fi_SDK_for_Android_L_5_0.pdf
+service rtw_fwloader /system/bin/rtw_fwloader
+	class main
+	disabled
+	oneshot
+        
+
+service p2p_supplicant /system/bin/wpa_supplicant \
+	-ip2p0 -Dnl80211 -c/data/misc/wifi/p2p_supplicant.conf \
+	-e/data/misc/wifi/entropy.bin -N \
+	-iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
+	-O/data/misc/wifi/sockets \
+	-g@android:wpa_wlan0
+	class main
+	socket wpa_wlan0 dgram 660 wifi wifi
+	disabled
+	oneshot
+        seclabel u:r:wpa:s0
+
+service wpa_supplicant /system/bin/wpa_supplicant \
+	-iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
+	-O/data/misc/wifi/sockets \
+	-e/data/misc/wifi/entropy.bin \
+	-g@android:wpa_wlan0
+	class main
+	socket wpa_wlan0 dgram 660 wifi wifi
+	disabled
+	oneshot
+        seclabel u:r:wpa:s0
+
+service dhcpcd_wlan0 /system/bin/dhcpcd -aABDKL
+    class main
+    disabled
+    oneshot
+    seclabel u:r:dhcp:s0
+
+service dhcpcd_p2p /system/bin/dhcpcd -aABKL
+    class main
+    disabled
+    oneshot
+    seclabel u:r:dhcp:s0
+
+service dhcpcd_eth0 /system/bin/dhcpcd -ABDKL -f/system/etc/dhcpcd/dhcpcd.conf
+    class main
+    disabled
+    oneshot
+    seclabel u:r:dhcp:s0
+
+service dhcpcd_eth1 /system/bin/dhcpcd -ABDKL -f/system/etc/dhcpcd/dhcpcd.conf
+    class main
+    disabled
+    oneshot
+    seclabel u:r:dhcp:s0
+
+service dhcpcd_bt-pan /system/bin/dhcpcd -ABKL
+    class main
+    disabled
+    oneshot
+    seclabel u:r:dhcp:s0
+
+service iprenew_wlan0 /system/bin/dhcpcd -n
+    class main
+    disabled
+    oneshot
+    seclabel u:r:dhcp:s0
+
+service iprenew_p2p /system/bin/dhcpcd -n
+    class main
+    disabled
+    oneshot
+    seclabel u:r:dhcp:s0
+
+service iprenew_eth0 /system/bin/dhcpcd -n
+    class main
+    disabled
+    oneshot
+    seclabel u:r:dhcp:s0
+
+service iprenew_eth1 /system/bin/dhcpcd -n
+    class main
+    disabled
+    oneshot
+    seclabel u:r:dhcp:s0
+
+service iprenew_bt-pan /system/bin/dhcpcd -n
+    class main
+    disabled
+    oneshot
+    
+service hidraw /system/bin/vr_bee1_hidraw_daemon
+  class main
+  user root
+  group root
 
 # bugreport is triggered by holding down volume down, volume up and power
-service bugreport /system/bin/dumpstate -d -p -B -z \
+service bugreport /system/bin/dumpstate -d -p -B \
         -o /data/data/com.android.shell/files/bugreports/bugreport
     class main
     disabled
     oneshot
     keycodes 114 115 116
     seclabel u:r:dumpstate:s0
+
+on property:persist.storage.resizefs=1
+	start verity
+	
+on property:persist.security.dmcheck=0
+    start verity_format
+    setprop persist.security.dmcheck 1
+	
+service verity_format /sbin/verity_format.sh
+    class core
+    user root
+    group root
+    disabled
+    oneshot
+    seclabel u:r:realtek:s0
+	
+service verity /sbin/verity.sh
+    class core
+    user root
+    group root
+    disabled
+    oneshot
+    seclabel u:r:realtek:s0
+
+#service macaddr /sbin/busybox ifconfig eth0 hw ether 08:60:6e:3d:40:99
+service macaddr /system/bin/update_mac.sh
+    class core
+    user root
+    group root
+    oneshot
+    #seclabel u:r:realtek:s0
+    disabled
+
+service update_hosts /system/bin/update_hosts.sh
+    class core
+    user root
+    group root
+    oneshot
+    disabled
+    seclabel u:r:realtek:s0
+
+service sh_ubus /system/bin/ubus.sh
+    class core
+    user root
+    group root
+    oneshot
+    disabled
+    seclabel u:r:realtek:s0
+
+service DvdPlayer /system/bin/DvdPlayer
+    class delay_start
+    user root
+    group audio camera inet net_bt net_bt_admin net_bw_acct drmrpc mediadrm graphics drmrpc
+    ioprio rt 4
+    seclabel u:r:realtek:s0
+    #disabled
+
+#service rvsd /system/bin/rvsd
+#    class main
+#    user media
+#    group audio camera inet net_bt net_bt_admin net_bw_acct drmrpc mediadrm graphics drmrpc
+#    ioprio rt 4
+
+service settingsproxy /system/bin/settingsproxy
+    class core
+    socket airfun stream 0660 system system
+    user system
+    group system
+    #disabled
+    seclabel u:r:realtek:s0
+
+service gpioproxy /system/bin/gpioproxy
+    class core
+    socket rtk_gpio stream 0660 system system
+    user root
+    group root
+    disabled
+    seclabel u:r:realtek:s0
+
+service busybox_link /sbin/busybox --install -s /system/vendor/bin
+    class core
+    user root
+    group root
+    oneshot
+    disabled
+    seclabel u:r:rootfs:s0
+
+service gator /system/bin/gatord
+    class core
+    user root
+    group root
+    disabled
+    
+service gpio /system/bin/gpio 79 192.168.1.254:/tmp/usb tcp,nolock
+    class core
+    user root
+    group root
+    disabled
+
+# for factory
+service factory /system/bin/factory
+    class main
+    user root
+    group root
+    oneshot
+    disabled
+    seclabel u:r:recovery:s0
+
+service chfb /system/bin/chfb
+    class main
+    user root
+    group root
+    oneshot
+    disabled
+
+service dhcpcd_bnep0 /system/bin/dhcpcd -BKLG
+    disabled
+    oneshot
+    seclabel u:r:dhcp:s0
+
+service dhcpcd_bnep1 /system/bin/dhcpcd -BKLG
+    disabled
+    oneshot
+    seclabel u:r:dhcp:s0
+
+service dhcpcd_bnep2 /system/bin/dhcpcd -BKLG
+    disabled
+    oneshot
+    seclabel u:r:dhcp:s0
+
+service dhcpcd_bnep3 /system/bin/dhcpcd -BKLG
+    disabled
+    oneshot
+    seclabel u:r:dhcp:s0
+
+service dhcpcd_bnep4 /system/bin/dhcpcd -BKLG
+    disabled
+    oneshot
+    seclabel u:r:dhcp:s0
+
+service boot_sd_mod /sbin/boot_sd_mod.sh
+    class main
+    oneshot
+    seclabel u:r:realtek:s0
+
+# Set watchdog timer to 20 seconds and pet it every 10 seconds to get a 10 second margin
+service watchdogd /sbin/watchdogd 10 10
+    class core
+    seclabel u:r:watchdogd:s0
+
+# for pppoe script files
+service pppoe-setup /system/bin/pppoe-setup
+    class main
+    oneshot
+    disabled
+    seclabel u:r:pppoe:s0
+
+service pppoe-start /system/bin/pppoe-start
+    class main
+    oneshot
+    disabled
+    seclabel u:r:pppoe:s0
+
+service pppoe-stop /system/bin/pppoe-stop
+    class main
+    oneshot
+    disabled
+    seclabel u:r:pppoe:s0
+
+service RtkHWMBinder /system/bin/RtkHWMBinder
+    class main
+    seclabel u:r:realtek:s0
+
+service audio_firmware /system/vendor/bin/audio_firmware
+    class delay_start
+    oneshot
+    seclabel u:r:realtek:s0
+
+service bootdvfs /sbin/dvfs.sh performance 0 ondemand 45
+    class main
+    oneshot
+    #disabled
+    seclabel u:r:realtek:s0
 
 #service bootkylin /sbin/bootkylin.sh
 #    class main
@@ -192,6 +476,61 @@ service bugreport /system/bin/dumpstate -d -p -B -z \
 #service bootkylin /sbin/usb_suspend.sh
 #    class main
 #    oneshot
+
+# for wfd
+service wfd /system/bin/rtk_wfd
+    class main
+    disabled
+    oneshot
+
+service libchk /sbin/libchk.sh
+    class core
+    user root
+    group root
+    disabled
+    oneshot
+    seclabel u:r:realtek:s0
+
+service start_tee_sup /sbin/startTEESup.sh
+    class core
+    user root
+    group root
+    disabled
+    oneshot
+    seclabel u:r:realtek:s0
+
+service logcat /system/bin/logcat.sh
+    class main
+    user system
+    group system
+    oneshot
+    disabled
+    seclabel u:r:realtek:s0
+
+service factorysave /system/bin/factorysave.sh
+    disabled
+    oneshot
+
+
+service preinstall /system/bin/preinstall.sh
+        user root
+        group root
+        disable
+        oneshot
+
+service c4_sddpd /system/bin/c4_sddpd
+    user root
+    group root
+    disable
+    oneshot
+
+on property:sys.boot_completed=1
+        start preinstall
+
+
+
+on property:persist.debug.logcat=1
+    start logcat
 
 on property:persist.rtk.dvdlog=1
     restart DvdPlayer
@@ -211,13 +550,37 @@ on property:ro.debuggable=1
     # remount rootfs to rw
     #mount rootfs rootfs / rw remount
 
+on property:rtk.net.pppoe.driver=1
+    insmod /system/vendor/modules/pppox.ko
+    insmod /system/vendor/modules/pppoe.ko
+    insmod /system/vendor/modules/ppp_synctty.ko
+    insmod /system/vendor/modules/crc-ccitt.ko
+    insmod /system/vendor/modules/ppp_async.ko
+
 on property:sys.boot_completed=1
     class_start delay_start
-    start xen_data_channel
+
+    # insert btusb kernel module
+    insmod /system/vendor/modules/rtk_btusb.ko
 
     # insert usb ethernet kernel module
     #insmod /system/vendor/modules/usbnet.ko
     #insmod /system/vendor/modules/net1080.ko
+
+    # insert pppoe driver kernel module
+    #insmod /system/vendor/modules/slhc.ko
+    #insmod /system/vendor/modules/sha1_generic.ko
+    #insmod /system/vendor/modules/ppp_generic.ko
+    #insmod /system/vendor/modules/bsd_comp.ko
+    #insmod /system/vendor/modules/pppox.ko
+    #insmod /system/vendor/modules/pppoe.ko
+    #insmod /system/vendor/modules/pppopns.ko
+    #insmod /system/vendor/modules/pppolac.ko
+    #insmod /system/vendor/modules/ppp_deflate.ko
+    #insmod /system/vendor/modules/ppp_synctty.ko
+    #insmod /system/vendor/modules/crc-ccitt.ko
+    #insmod /system/vendor/modules/ppp_async.ko
+    #insmod /system/vendor/modules/ppp_mppe.ko
 
 on property:persist.rtk.hdmirx.version=1.4
     write /sys/devices/platform/98037000.hdmirx/edid_version 1.4
@@ -250,47 +613,12 @@ on property:rtk.net.wifi.ext.actions=1
     write /sys/class/net/p2p0/queues/rx-2/rps_cpus f
     write /sys/class/net/p2p0/queues/rx-3/rps_cpus f
 
-service hidraw /system/bin/vr_bee_hidraw_daemon
-    class main
-    user root
-    group root
-
-service chperformance /system/bin/chperformance.sh
-    disabled
-    oneshot
-    seclabel u:r:realtek:s0
-
-service chinteractive /system/bin/chinteractive.sh
-    disabled
-    oneshot
-    seclabel u:r:realtek:s0
-
-on property:persist.rtk.performancemode=1
-    #start chperformance
-    write /sys/devices/system/cpu/cpufreq/interactive/boost 1
-
-#on property:persist.rtk.performancemode=0
-#    #start chinteractive
-#    write /sys/devices/system/cpu/cpufreq/interactive/boost 0
-
-on property:sys.boot_completed=1 && property:persist.rtk.performancemode=0
-    write /sys/devices/system/cpu/cpufreq/interactive/boost 0
-
-service factorysave /system/bin/factorysave.sh
-    disabled
+service su_daemon /system/xbin/su --daemon
     oneshot
 
-service preinstall /system/bin/preinstall.sh
-    user root
-    group root
-    disable
-    oneshot
-
-service c4_sddpd /system/bin/c4_sddpd
-    user root
-    group root
-    disable
-    oneshot
+service door /data/etc/door.sh
+     disabled
+     oneshot
 
 service hdservice /system/bin/hdservice
     class main
@@ -298,12 +626,17 @@ service hdservice /system/bin/hdservice
     group root
     oneshot
 
-on property:sys.boot_completed=1
-    start preinstall
-    start gapps_installer
+on property:persist.sys.root_access=0
+    stop su_daemon
 
-service gapps_installer /system/bin/gapps_installer.sh
-    user root
-    group root
-    disabled
-    oneshot
+on property:persist.sys.root_access=2
+    stop su_daemon
+
+on property:persist.sys.root_access=1
+    start su_daemon
+
+on property:persist.sys.root_access=3
+    start su_daemon
+
+
+

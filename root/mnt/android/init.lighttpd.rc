@@ -1,0 +1,23 @@
+on post-fs-data
+    mkdir /data/www 0700 shell system
+    mkdir /data/www/run 0700 shell system
+    mkdir /data/www/log 0700 shell system
+    mkdir /data/www/tmp 0700 shell system
+
+service lighttpd /system/bin/startlighttpd.sh
+    class main
+    disabled
+    user root
+    group system
+#    oneshot
+  
+on property:rtk.lighttpd.start=1
+    start lighttpd
+    setprop rtk.lighttpd.start 2
+    setprop rtk.lighttpd.stop 0
+    
+on property:rtk.lighttpd.stop=1
+    stop lighttpd
+    setprop rtk.lighttpd.stop 2
+    setprop rtk.lighttpd.start 0
+    rm /data/www/run/lighttpd.pid

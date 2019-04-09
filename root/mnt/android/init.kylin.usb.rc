@@ -7,7 +7,6 @@ on fs
     mkdir /config/usb_gadget/g1/configs/b.1
     mkdir /config/usb_gadget/g1/functions/ffs.adb
     mkdir /config/usb_gadget/g1/functions/mtp.gs0
-    mkdir /config/usb_gadget/g1/functions/rndis.gs4
     mkdir /config/usb_gadget/g1/strings/0x409
     mkdir /config/usb_gadget/g1/configs/b.1/strings/0x409
     mount functionfs adb /dev/usb-ffs/adb uid=2000,gid=2000
@@ -17,42 +16,42 @@ on boot
     write /sys/class/android_usb/android0/iProduct ${ro.product.model}
     write /sys/class/android_usb/android0/iSerial ${ro.serialno}
     write /sys/class/android_usb/android0/f_mass_storage/inquiry_string "Phoenix 0100"
-    write /sys/class/android_usb/android0/f_rndis/manufacturer Realtek
+    write /sys/class/android_usb/android0/f_rndis/manufacturer ZIDOO
     write /sys/class/android_usb/android0/f_rndis/vendorID 18d1
     write /sys/class/android_usb/android0/f_rndis/wceis 1
 
 on property:sys.usb.config=mtp
     write /config/usb_gadget/g1/idVendor 0x18d1
     write /config/usb_gadget/g1/idProduct 0x4ee1
-    write /config/usb_gadget/g1/strings/0x409/serialnumber ${ro.serialno}
+    write /config/usb_gadget/g1/strings/0x409/serialnumber "kylin"
     write /config/usb_gadget/g1/strings/0x409/manufacturer "Realtek"
     write /config/usb_gadget/g1/strings/0x409/product "FunctionFS gadget (mtp)"
     setprop sys.usb.configfs 1
     setprop sys.usb.state ${sys.usb.config}
 
 on property:sys.usb.config=mtp,adb
-    write /config/usb_gadget/g1/idProduct 0x4EE7
     write /config/usb_gadget/g1/idVendor 0x18d1
-    write /config/usb_gadget/g1/strings/0x409/serialnumber ${ro.serialno}
-    write /config/usb_gadget/g1/strings/0x409/manufacturer "Realtek"
-    write /config/usb_gadget/g1/strings/0x409/product "FunctionFS gadget (mtp, adb)"
+    write /config/usb_gadget/g1/idProduct 0x4ee1
+    write /config/usb_gadget/g1/strings/0x409/serialnumber "kylin"
+    write /config/usb_gadget/g1/strings/0x409/manufacturer "ZIDOO"
+    write /config/usb_gadget/g1/strings/0x409/product "FunctionFS gadget (mtp)"
     setprop sys.usb.configfs 1
     setprop sys.usb.state ${sys.usb.config}
 
 on property:sys.usb.config=rndis
-    write /config/usb_gadget/g1/idVendor 0x18d1
-    write /config/usb_gadget/g1/idProduct 0x4ee3
-    write /config/usb_gadget/g1/strings/0x409/serialnumber ${ro.serialno}
-    write /config/usb_gadget/g1/strings/0x409/manufacturer "Realtek"
-    write /config/usb_gadget/g1/strings/0x409/product "FunctionFS gadget (rndis)"
-    setprop sys.usb.configfs 1
+    write /sys/class/android_usb/android0/enable 0
+    write /sys/class/android_usb/android0/idVendor 18d1
+    write /sys/class/android_usb/android0/idProduct 4ee3
+    write /sys/class/android_usb/android0/functions ${sys.usb.config}
+    write /sys/class/android_usb/android0/bDeviceClass 224
+    write /sys/class/android_usb/android0/enable 1
     setprop sys.usb.state ${sys.usb.config}
 
 on property:sys.usb.config=adb
     write /config/usb_gadget/g1/idProduct 0x4EE7
     write /config/usb_gadget/g1/idVendor 0x18d1
-    write /config/usb_gadget/g1/strings/0x409/serialnumber ${ro.serialno}
-    write /config/usb_gadget/g1/strings/0x409/manufacturer "Realtek"
+    write /config/usb_gadget/g1/strings/0x409/serialnumber "kylin"
+    write /config/usb_gadget/g1/strings/0x409/manufacturer "ZIDOO"
     write /config/usb_gadget/g1/strings/0x409/product "FunctionFS gadget (adb)"
     setprop sys.usb.ffs.ready 1
     setprop sys.usb.configfs 1

@@ -1,0 +1,36 @@
+raid0.ko: md-mod.ko
+mali_kbase.ko:
+ahci.ko:
+pppoe.ko:
+gre.ko:
+udp_tunnel.ko:
+l2tp_netlink.ko: l2tp_core.ko ip6_udp_tunnel.ko udp_tunnel.ko
+l2tp_core.ko: ip6_udp_tunnel.ko udp_tunnel.ko
+raid456.ko: async_raid6_recov.ko async_memcpy.ko async_pq.ko async_xor.ko async_tx.ko md-mod.ko
+async_memcpy.ko: async_tx.ko
+dm-log.ko:
+ip_gre.ko: gre.ko ip_tunnel.ko
+async_xor.ko: async_tx.ko
+async_tx.ko:
+dm-region-hash.ko: dm-log.ko
+ip_tunnel.ko:
+raid1.ko: md-mod.ko
+ump.ko:
+linear.ko: md-mod.ko
+raid10.ko: md-mod.ko
+rtk_btusb.ko:
+ip6_udp_tunnel.ko:
+ppp_async.ko: crc-ccitt.ko
+ump_kernel_import_ion.ko: ump.ko
+pptp.ko: gre.ko
+crc-ccitt.ko:
+multipath.ko: md-mod.ko
+ufsd.ko: jnl.ko
+r8168.ko:
+dm-mirror.ko: dm-region-hash.ko dm-log.ko
+l2tp_ppp.ko: l2tp_netlink.ko l2tp_core.ko ip6_udp_tunnel.ko udp_tunnel.ko
+async_pq.ko: async_xor.ko async_tx.ko
+jnl.ko:
+md-mod.ko:
+kds.ko:
+async_raid6_recov.ko: async_tx.ko
