@@ -1,0 +1,10 @@
+Package: uclibcxx
+Version: 0.2.4-3
+Depends: libc
+Source: feeds/base/package/libs/uclibc++
+SourceName: uclibcxx
+License: LGPL-2.1+
+Section: libs
+Architecture: aarch64_cortex-a53
+Installed-Size: 70538
+Description:  C++ library for embedded systems
