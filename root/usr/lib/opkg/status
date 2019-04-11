@@ -77,6 +77,14 @@ Conffiles:
  /etc/opkg/customfeeds.conf 61d1f3aa62fe977614ed0c2f0ad3b2ee2f7b451bfb34812071d86d31a4d43d4a
 Installed-Time: 1553274868
 
+Package: wget
+Version: 1.20.3-1
+Depends: libc, libpcre, zlib, libopenssl1.1, librt
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554905770
+Alternatives: 300:/usr/bin/wget:/usr/bin/wget-ssl
+
 Package: luci-app-opkg
 Version: git-19.088.25182-8e3e502-1
 Depends: libc, opkg
@@ -405,6 +413,14 @@ Conffiles:
  /etc/sysupgrade.conf 9e87b05fe2f12c84d1c465b396322748479f64bc40e5bab061887f0bd95020a6
 Installed-Time: 1553274868
 
+Package: libpcre
+Version: 8.42-2
+Depends: libc, uclibcxx
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554905770
+Auto-Installed: yes
+
 Package: libexif
 Version: 0.6.21-1
 Depends: libc
@@ -724,6 +740,13 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
 Auto-Installed: yes
 
+Package: losetup
+Version: 2.33-2
+Depends: libc, libsmartcols1
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554654452
+
 Package: dbus
 Version: 1.12.12-1
 Depends: libc, libexpat, libdbus
@@ -742,6 +765,13 @@ Conffiles:
  /etc/config/dropbear 0198dbc97b5a9aac76a5c6233684571ccdcc91fcb735e91c36d2b06a98158589
 Installed-Time: 1553274868
 Alternatives: 100:/usr/bin/ssh:/usr/sbin/dropbear, 100:/usr/bin/scp:/usr/sbin/dropbear
+
+Package: curl
+Version: 7.64.1-1
+Depends: libc, libcurl4
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554907867
 
 Package: libgmp10
 Version: 6.1.2-2
@@ -822,6 +852,13 @@ Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553966642
 Auto-Installed: yes
+
+Package: libopenssl-devcrypto
+Version: 1.1.1b-3
+Depends: libc, libopenssl1.1, kmod-cryptodev, libopenssl-conf
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554905982
 
 Package: luci-proto-ppp
 Version: git-19.088.25182-8e3e502-1
@@ -960,6 +997,14 @@ Architecture: all
 Installed-Time: 1553960311
 Auto-Installed: yes
 
+Package: uclibcxx
+Version: 0.2.4-3
+Depends: libc
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1554905743
+Auto-Installed: yes
+
 Package: libblobmsg-json
 Version: 2019-02-27-eeef7b50-1
 Depends: libc, libjson-c2, libubox20170601
@@ -1034,6 +1079,16 @@ Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553911272
 
+Package: libopenssl-conf
+Version: 1.1.1b-3
+Depends: libc, libopenssl1.1
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Conffiles:
+ /etc/ssl/openssl.cnf f10ba64917b4458fafc1e078c2eb9e6a7602e68fc98c2e9e6df5e1636ae27d6b
+Installed-Time: 1554905982
+Auto-Installed: yes
+
 Package: libncurses6
 Version: 6.1-4
 Depends: libc, terminfo
@@ -1098,13 +1153,12 @@ Installed-Time: 1553960146
 Auto-Installed: yes
 
 Package: libcurl4
-Version: 7.64.0-1
+Version: 7.64.1-1
 Depends: libc, libmbedtls12, ca-bundle
 Provides: libcurl
-Status: install ok installed
+Status: install user installed
 Architecture: aarch64_cortex-a53
-Installed-Time: 1553966628
-Auto-Installed: yes
+Installed-Time: 1554907963
 
 Package: transmission-daemon-mbedtls
 Version: 2.94-3
