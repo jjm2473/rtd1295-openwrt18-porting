@@ -13,7 +13,9 @@
 
 如果还有其他相同解决方案的盒子, 欢迎补充.
 
-**有机友反馈 Zidoo X9S(RTD1295) 刷了以后启动不了, 也许RTD1295不兼容, 所以RTD1295的设备先别刷!!**
+**~~有机友反馈 Zidoo X9S(RTD1295) 刷了以后启动不了, 也许RTD1295不兼容, 所以RTD1295的设备先别刷!!~~**
+
+**Zidoo X9S(RTD1295)的Linux内核版本和Android版本跟Z9S不一样, 所以提供另外的包下载.**
 
 ### 二.安装方法
 0. 视自身情况备份盒子配置(包括OpenWrt和安卓)
@@ -34,9 +36,25 @@
 只要刷回官方OTA包即可
 
 ### 发布
+从1.3版本开始, 提供RTD1295分支和RTD1296分支, RTD1295分支支持 (Linux 4.1.17-g9100299-dirty + Android 6.0.1) 底包(例如X9S), RTD1296分支支持 (Linux 4.1.35-04005-g6c2818e-dirty + Android 7.1.1) 底包(例如Z9S).
+
+1.3版之前的包只支持(Linux 4.1.35-04005-g6c2818e-dirty + Android 7.1.1)底包.
+
+#### 1.3 (2019-04-11)
+*1.开始支持X9S, 感谢机油**凛冬将至**的耐心测试*
+
+*2.支持在Android里重置OpenWrt, 感谢Zidoo官方提供的参考资料*
+
+*3.关机或重启前尝试休眠硬盘*
+
+* RTD1296
+    * [完整版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.3_full) (**推荐**)
+* RTD1295
+    * [完整版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/x9s_1.3_full) (**推荐**)
+
 #### 1.2 (2019-04-07)
 *比1.1增加支持自动挂载swap分区*
-* [完整版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.2_full) (**推荐**)
+* [完整版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.2_full)
 
 #### 1.1 (2019-04-05)
 *比1.0增加支持自动挂载网络磁盘(CIFS/NFS)*

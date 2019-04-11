@@ -13,7 +13,9 @@ Theoretically supported box:
 
 If there are other boxes with the same solution, welcome to add.
 
-**A friend test on Zidoo X9S but failed!! RTD1295 may not supported!!**
+**~~A friend test on Zidoo X9S but failed!! RTD1295 may not supported!!~~**
+
+**Linux kernel version and Android version is different from Zidoo X9S to Z9S, so there will offer another package to support them (RTD1295).**
 
 ### II. Installation
 0. Back up the box configuration (including OpenWrt and Android)
@@ -34,9 +36,27 @@ This method is suitable for resetting OpenWrt when you can enter the Android sys
 Just falsh back the official OTA package.
 
 ### Release
+
+From 1.3, offering RTD1295 and RTD1296 varients, RTD1295 varient supports (Linux 4.1.17-g9100299-dirty + Android 6.0.1) devices (X9S, etc.), RTD1296 varient supports (Linux 4.1.35-04005-g6c2818e-dirty + Android 7.1.1) (Z9S, etc.).
+
+Before 1.3, only supports (Linux 4.1.35-04005-g6c2818e-dirty + Android 7.1.1).
+
+#### 1.3 (2019-04-11)
+*1.Supports X9S, Thank **凛冬将至** for his test*
+
+*2.Supports reset OpenWrt on Android, Thank Zidoo for offering references*
+
+*3.Try to sleep hard disk before power off or reboot*
+
+* RTD1296
+    * [Complete Edition](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.3_full) (**recommended**)
+* RTD1295
+    * [Complete Edition](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/x9s_1.3_full) (**recommended**)
+
+
 #### 1.2 (2019-04-07)
 *compares to 1.1, 1.2 supports swap auto mounting*
-* [Complete Edition](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.2_full) (**recommended**)
+* [Complete Edition](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.2_full)
 
 #### 1.1 (2019-04-05)
 *compares to 1.0, 1.1 supports network disk (CIFS/NFS) auto mounting*
