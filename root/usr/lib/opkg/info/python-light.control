@@ -1,0 +1,14 @@
+Package: python-light
+Version: 2.7.16-4
+Depends: libc, python-base, libffi, libbz2-1.0
+Source: feeds/packages/lang/python/python
+SourceName: python-light
+License: PSF
+LicenseFiles: LICENSE Modules/_ctypes/libffi_msvc/LICENSE Modules/_ctypes/darwin/LICENSE Modules/_ctypes/libffi/LICENSE Modules/_ctypes/libffi_osx/LICENSE Tools/pybench/LICENSE
+Section: lang
+Maintainer: Alexandru Ardelean <ardeleanalex@gmail.com>, Jeffery To <jeffery.to@gmail.com>
+Architecture: aarch64_cortex-a53
+Installed-Size: 1422802
+Description:  This package is essentially the python-base package plus
+ a few of the rarely used (and big) libraries stripped out
+ into separate packages.

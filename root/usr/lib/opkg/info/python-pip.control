@@ -1,0 +1,12 @@
+Package: python-pip
+Version: 18.1-1
+Depends: libc, python, python-setuptools, python-pip-conf
+Source: feeds/packages/lang/python/python
+SourceName: python-pip
+License: PSF
+LicenseFiles: LICENSE Modules/_ctypes/libffi_msvc/LICENSE Modules/_ctypes/darwin/LICENSE Modules/_ctypes/libffi/LICENSE Modules/_ctypes/libffi_osx/LICENSE Tools/pybench/LICENSE
+Section: lang
+Maintainer: Alexandru Ardelean <ardeleanalex@gmail.com>, Jeffery To <jeffery.to@gmail.com>
+Architecture: aarch64_cortex-a53
+Installed-Size: 1447859
+Description:  Python 2.7 pip module

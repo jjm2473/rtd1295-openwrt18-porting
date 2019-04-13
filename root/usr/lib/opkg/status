@@ -85,6 +85,13 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1554905770
 Alternatives: 300:/usr/bin/wget:/usr/bin/wget-ssl
 
+Package: python-pip
+Version: 18.1-1
+Depends: libc, python, python-setuptools, python-pip-conf
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1555093150
+
 Package: luci-app-opkg
 Version: git-19.088.25182-8e3e502-1
 Depends: libc, opkg
@@ -131,6 +138,14 @@ Depends: libc, libubus20170705, libblobmsg-json, ubusd
 Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
+Auto-Installed: yes
+
+Package: python-codecs
+Version: 2.7.16-4
+Depends: libc, python-light
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1555092392
 Auto-Installed: yes
 
 Package: libuci20130104
@@ -297,6 +312,14 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1553966944
 Auto-Installed: yes
 
+Package: python-db
+Version: 2.7.16-4
+Depends: libc, python-light, libdb47
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1555092543
+Auto-Installed: yes
+
 Package: kmod-lib-crc-ccitt
 Version: 4.14.107-1
 Depends: kernel (= 4.14.107-1-baef5e1f1cb3d6b76c6d687e645dc927)
@@ -452,6 +475,14 @@ Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
 
+Package: python-decimal
+Version: 2.7.16-4
+Depends: libc, python-light
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1555092557
+Auto-Installed: yes
+
 Package: libsmartcols1
 Version: 2.33-2
 Depends: libc, librt
@@ -468,12 +499,28 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1554009142
 Auto-Installed: yes
 
+Package: python-light
+Version: 2.7.16-4
+Depends: libc, python-base, libffi, libbz2-1.0
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1555092180
+Auto-Installed: yes
+
 Package: uboot-envtools
 Version: 2018.03-3
 Depends: libc
 Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
+
+Package: python-distutils
+Version: 2.7.16-4
+Depends: libc, python-light
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1555092477
+Auto-Installed: yes
 
 Package: dnsmasq
 Version: 2.80-11
@@ -534,6 +581,14 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1553966943
 Auto-Installed: yes
 
+Package: python-pydoc
+Version: 2.7.16-4
+Depends: libc, python-light
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1555092226
+Auto-Installed: yes
+
 Package: libwrap
 Version: 7.6-1
 Depends: libc
@@ -542,12 +597,35 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1554049389
 Auto-Installed: yes
 
+Package: python
+Version: 2.7.16-4
+Depends: libc, python-light, python-ctypes, python-pydoc, python-multiprocessing, python-codecs, python-sqlite3, python-logging, python-gdbm, python-email, python-distutils, python-xml, python-compiler, python-db, python-openssl, python-decimal, python-unittest, python-ncurses
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1555092594
+
+Package: python-base
+Version: 2.7.16-4
+Depends: libc, libpthread, zlib
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1555091874
+Auto-Installed: yes
+
 Package: luci-mod-status
 Version: git-19.088.25182-8e3e502-1
 Depends: libc, luci-base, libiwinfo20181126, libiwinfo-lua
 Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553960256
+Auto-Installed: yes
+
+Package: python-pip-conf
+Version: 0.1-1
+Depends: libc
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1555093149
 Auto-Installed: yes
 
 Package: libgpg-error
@@ -598,6 +676,14 @@ Depends: libc, libogg
 Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553966979
+Auto-Installed: yes
+
+Package: python-unittest
+Version: 2.7.16-4
+Depends: libc, python-light
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1555092574
 Auto-Installed: yes
 
 Package: firewall
@@ -667,6 +753,14 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1554009161
 Auto-Installed: yes
 
+Package: python-email
+Version: 2.7.16-4
+Depends: libc, python-light
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1555092433
+Auto-Installed: yes
+
 Package: odhcp6c
 Version: 2019-01-11-d2e247d8-16
 Depends: libc, libubox20170601
@@ -731,6 +825,22 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1554009169
 Auto-Installed: yes
 
+Package: python-ctypes
+Version: 2.7.16-4
+Depends: libc, python-light
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1555092188
+Auto-Installed: yes
+
+Package: python-gdbm
+Version: 2.7.16-4
+Depends: libc, python-light, libgdbm
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1555092416
+Auto-Installed: yes
+
 Package: libip4tc0
 Version: 1.8.2-3
 Depends: libc, libxtables12
@@ -765,6 +875,14 @@ Conffiles:
  /etc/config/dropbear 0198dbc97b5a9aac76a5c6233684571ccdcc91fcb735e91c36d2b06a98158589
 Installed-Time: 1553274868
 Alternatives: 100:/usr/bin/ssh:/usr/sbin/dropbear, 100:/usr/bin/scp:/usr/sbin/dropbear
+
+Package: python-ncurses
+Version: 2.7.16-4
+Depends: libc, python-light, libncurses6
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1555092594
+Auto-Installed: yes
 
 Package: curl
 Version: 7.64.1-1
@@ -868,6 +986,14 @@ Architecture: all
 Installed-Time: 1553960306
 Auto-Installed: yes
 
+Package: libffi
+Version: 3.2.1-3
+Depends: libc
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1555091878
+Auto-Installed: yes
+
 Package: libcomerr0
 Version: 1.44.5-1
 Depends: libc, libuuid1
@@ -895,6 +1021,14 @@ Conffiles:
  /etc/ppp/filter 579583b318e0cff706ffc134620b42d3fbce8fc31aeb0ad7eea1cc859868e902
  /etc/ppp/options 01f7358a5528be037dde329a2ecfb7a63382aababf21d4f5bc085f5acef95133
 Installed-Time: 1553274868
+
+Package: python-setuptools
+Version: 40.6.2-1
+Depends: libc, python
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1555093146
+Auto-Installed: yes
 
 Package: luci-base
 Version: git-19.088.25182-8e3e502-1
@@ -982,6 +1116,14 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
 Auto-Installed: yes
 
+Package: python-sqlite3
+Version: 2.7.16-4
+Depends: libc, python-light, libsqlite3
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1555092404
+Auto-Installed: yes
+
 Package: luci-i18n-forked-daapd-zh-cn
 Version: git-19.023.13982-f3c7f53-1
 Depends: libc, librt, libpthread, luci-app-forked-daapd
@@ -1055,6 +1197,14 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
 Auto-Installed: yes
 
+Package: python-compiler
+Version: 2.7.16-4
+Depends: libc, python-light
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1555092533
+Auto-Installed: yes
+
 Package: jshn
 Version: 2019-02-27-eeef7b50-1
 Depends: libc, libjson-c2, libubox20170601, libblobmsg-json
@@ -1078,6 +1228,14 @@ Depends: libc
 Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553911272
+
+Package: python-xml
+Version: 2.7.16-4
+Depends: libc, python-light, libexpat
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1555092525
+Auto-Installed: yes
 
 Package: libopenssl-conf
 Version: 1.1.1b-3
@@ -1125,6 +1283,14 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
 Auto-Installed: yes
 
+Package: python-openssl
+Version: 2.7.16-4
+Depends: libc, python-light, libopenssl1.1
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1555092549
+Auto-Installed: yes
+
 Package: libjson-c2
 Version: 0.12.1-3
 Depends: libc
@@ -1140,6 +1306,14 @@ Depends: libc, minidlna
 Status: install ok installed
 Architecture: all
 Installed-Time: 1553966994
+Auto-Installed: yes
+
+Package: python-multiprocessing
+Version: 2.7.16-4
+Depends: libc, python-light
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1555092248
 Auto-Installed: yes
 
 Package: uhttpd
@@ -1246,6 +1420,14 @@ Depends: libc, liblucihttp0, liblua5.1.5
 Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553960211
+Auto-Installed: yes
+
+Package: python-logging
+Version: 2.7.16-4
+Depends: libc, python-light
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1555092411
 Auto-Installed: yes
 
 Package: luci-lib-jsonc
