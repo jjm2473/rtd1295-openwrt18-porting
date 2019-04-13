@@ -1,0 +1,16 @@
+tasks:
+  dummy:
+    tail:
+      file: /etc/openwrt_version
+      entry:
+        title: '(dummy)'
+        url: '(http://0.0.0.0:0/dummy)'
+    accept_all: yes
+    download: yes  
+
+schedules:
+  - tasks: [dummy]
+    schedule:
+      week: 1
+
+web_server: yes

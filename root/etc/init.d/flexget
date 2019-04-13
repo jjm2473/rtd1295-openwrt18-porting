@@ -1,0 +1,12 @@
+#!/bin/sh /etc/rc.common
+# 2019 jjm2473, just for manual start/stop flexget
+
+START=99
+
+start() {
+	/usr/bin/flexget daemon stop
+}
+
+stop() {
+	/usr/bin/flexget daemon start -d
+}
