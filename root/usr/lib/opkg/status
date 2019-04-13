@@ -1539,6 +1539,13 @@ Status: install user installed
 Architecture: all
 Installed-Time: 1548323674
 
+Package: python-lib2to3
+Version: 2.7.16-4
+Depends: libc, python
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1555127145
+
 Package: libevent2-6
 Version: 2.1.8-3
 Depends: libc
