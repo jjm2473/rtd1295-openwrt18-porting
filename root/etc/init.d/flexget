@@ -4,9 +4,9 @@
 START=99
 
 start() {
-	/usr/bin/flexget daemon stop
+	/usr/bin/flexget daemon start -d
 }
 
 stop() {
-	/usr/bin/flexget daemon start -d
+	/usr/bin/flexget daemon stop
 }
