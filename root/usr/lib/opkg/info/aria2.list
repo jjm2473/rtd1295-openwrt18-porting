@@ -1,0 +1,3 @@
+/etc/config/aria2
+/etc/init.d/aria2
+/usr/bin/aria2c

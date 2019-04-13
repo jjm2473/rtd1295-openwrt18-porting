@@ -1,0 +1,4 @@
+[ -n "${IPKG_INSTROOT}" ] || {
+	(. /etc/uci-defaults/40_luci-aria2) && rm -f /etc/uci-defaults/40_luci-aria2
+	exit 0
+}

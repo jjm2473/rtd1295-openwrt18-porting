@@ -297,6 +297,14 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1553966944
 Auto-Installed: yes
 
+Package: luci-app-aria2
+Version: 1.0.1-4
+Depends: libc, luci-lib-ipkg, aria2
+Status: install ok installed
+Architecture: all
+Installed-Time: 1555136346
+Auto-Installed: yes
+
 Package: kmod-lib-crc-ccitt
 Version: 4.14.107-1
 Depends: kernel (= 4.14.107-1-baef5e1f1cb3d6b76c6d687e645dc927)
@@ -845,6 +853,13 @@ Conffiles:
  /etc/exports 561d777edf21faf3358e85765de44c9a20b06f726f4a677463fd8fbefc5497a1
 Installed-Time: 1554049425
 
+Package: luci-i18n-aria2-zh-cn
+Version: 1.0.1-4
+Depends: libc, luci-app-aria2
+Status: install user installed
+Architecture: all
+Installed-Time: 1555136346
+
 Package: libnatpmp
 Version: 20150609-1
 Depends: libc
@@ -895,6 +910,13 @@ Conffiles:
  /etc/ppp/filter 579583b318e0cff706ffc134620b42d3fbce8fc31aeb0ad7eea1cc859868e902
  /etc/ppp/options 01f7358a5528be037dde329a2ecfb7a63382aababf21d4f5bc085f5acef95133
 Installed-Time: 1553274868
+
+Package: ariang
+Version: 2018-11-21-f40f5a78-1
+Depends: libc, aria2, uhttpd
+Status: install user installed
+Architecture: all
+Installed-Time: 1555136807
 
 Package: luci-base
 Version: git-19.088.25182-8e3e502-1
@@ -1288,6 +1310,15 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
 Auto-Installed: yes
 
+Package: libstdcpp6
+Version: 7.4.0-1
+Provides: libstdcpp
+Status: install hold installed
+Essential: yes
+Architecture: aarch64_cortex-a53
+Installed-Time: 1555136309
+Auto-Installed: yes
+
 Package: libsqlite3
 Version: 3260000-3
 Depends: libc, libpthread, zlib
@@ -1364,6 +1395,14 @@ Provides: libevent2
 Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553966636
+Auto-Installed: yes
+
+Package: aria2
+Version: 1.34.0-6
+Depends: libc, zlib, libstdcpp6, libopenssl1.1
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1555136344
 Auto-Installed: yes
 
 Package: luci-mod-network
