@@ -1,0 +1,13 @@
+Package: libstdcpp6
+Version: 7.4.0-1
+Provides: libstdcpp
+Source: package/libs/toolchain
+SourceName: libstdcpp
+License: GPL-3.0-with-GCC-exception
+Section: libs
+Status: unknown hold not-installed
+Essential: yes
+Maintainer: Felix Fietkau <nbd@nbd.name>
+Architecture: aarch64_cortex-a53
+Installed-Size: 387585
+Description:  GNU Standard C++ Library v3
