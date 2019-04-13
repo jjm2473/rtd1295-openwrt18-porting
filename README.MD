@@ -40,6 +40,17 @@
 
 1.3版之前的包只支持(Linux 4.1.35-04005-g6c2818e-dirty + Android 7.1.1)底包.
 
+#### 1.4 (2019-04-13)
+*完整版只是增加了aria2*
+
+*增加[FlexGet特别版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.4_flexget), 给需要Python环境和[FlexGet](https://flexget.com/)的用户*
+
+* RTD1296
+    * [完整版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.4_full) (**推荐**)
+    * [FlexGet特别版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.4_flexget) (**Python + FlexGet**)
+* RTD1295 (未更新)
+    * [1.3](#13-2019-04-11)
+
 #### 1.3 (2019-04-11)
 *1.开始支持X9S, 感谢机油**凛冬将至**的耐心测试*
 
@@ -48,7 +59,7 @@
 *3.关机或重启前尝试休眠硬盘*
 
 * RTD1296
-    * [完整版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.3_full) (**推荐**)
+    * [完整版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.3_full)
 * RTD1295
     * [完整版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/x9s_1.3_full) (**推荐**)
 

@@ -41,6 +41,17 @@ From 1.3, offering RTD1295 and RTD1296 varients, RTD1295 varient supports (Linux
 
 Before 1.3, only supports (Linux 4.1.35-04005-g6c2818e-dirty + Android 7.1.1).
 
+#### 1.4 (2019-04-13)
+*Complete Edition only add aria2*
+
+*Offer [FlexGet Sepcial](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.4_flexget), for those who need Python and [FlexGet](https://flexget.com/)*
+
+* RTD1296
+    * [Complete Edition](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.4_full) (**recommended**)
+    * [FlexGet Sepcial](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.4_flexget) (**Python + FlexGet**)
+* RTD1295 (no update)
+    * [1.3](#13-2019-04-11)
+
 #### 1.3 (2019-04-11)
 *1.Supports X9S, Thank **凛冬将至** for his test*
 
@@ -49,7 +60,7 @@ Before 1.3, only supports (Linux 4.1.35-04005-g6c2818e-dirty + Android 7.1.1).
 *3.Try to sleep hard disk before power off or reboot*
 
 * RTD1296
-    * [Complete Edition](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.3_full) (**recommended**)
+    * [Complete Edition](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.3_full)
 * RTD1295
     * [Complete Edition](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/x9s_1.3_full) (**recommended**)
 
