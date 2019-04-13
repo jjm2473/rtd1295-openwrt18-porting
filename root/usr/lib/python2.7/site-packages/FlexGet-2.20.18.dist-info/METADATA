@@ -1,0 +1,217 @@
+Metadata-Version: 2.1
+Name: FlexGet
+Version: 2.20.18
+Summary: FlexGet is a program aimed to automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more.
+Home-page: https://flexget.com
+Author: Marko Koivusalo
+Author-email: marko.koivusalo@gmail.com
+License: MIT
+Project-URL: Issue Tracker, https://github.com/Flexget/Flexget/issues
+Project-URL: Forum, https://discuss.flexget.com
+Project-URL: Repository, https://github.com/Flexget/Flexget
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Requires-Python: >=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*
+Description-Content-Type: text/x-rst
+Provides-Extra: dev
+Requires-Dist: aniso8601 (==1.2.1)
+Requires-Dist: apscheduler (==3.5.0)
+Requires-Dist: babelfish (==0.5.5)
+Requires-Dist: beautifulsoup4 (==4.6.0)
+Requires-Dist: certifi (==2017.4.17)
+Requires-Dist: chardet (==3.0.3)
+Requires-Dist: cheroot (==5.5.0)
+Requires-Dist: cherrypy (==10.2.2)
+Requires-Dist: click (==6.7)
+Requires-Dist: colorclass (==2.2.0)
+Requires-Dist: feedparser (==5.2.1)
+Requires-Dist: flask-compress (==1.4.0)
+Requires-Dist: flask-cors (==3.0.2)
+Requires-Dist: flask-login (==0.4.0)
+Requires-Dist: flask-restful (==0.3.6)
+Requires-Dist: flask-restplus (==0.10.1)
+Requires-Dist: flask (==1.0.2)
+Requires-Dist: future (==0.16.0)
+Requires-Dist: guessit (==3.0.3)
+Requires-Dist: html5lib (==0.999999999)
+Requires-Dist: idna (==2.5)
+Requires-Dist: importlib-metadata (==0.8)
+Requires-Dist: itsdangerous (==0.24)
+Requires-Dist: jinja2 (==2.10)
+Requires-Dist: jsonschema (==2.6.0)
+Requires-Dist: markupsafe (==1.0)
+Requires-Dist: path.py (==11.5.0)
+Requires-Dist: plumbum (==1.6.3)
+Requires-Dist: portend (==1.8)
+Requires-Dist: progressbar (==2.5)
+Requires-Dist: pynzb (==0.1.0)
+Requires-Dist: pyparsing (==2.2.0)
+Requires-Dist: pyrss2gen (==1.1)
+Requires-Dist: python-dateutil (==2.6.1)
+Requires-Dist: pytz (==2017.2)
+Requires-Dist: pyyaml (==3.13)
+Requires-Dist: rebulk (==0.9.0)
+Requires-Dist: requests (==2.21.0)
+Requires-Dist: rpyc (==4.0.1)
+Requires-Dist: six (==1.10.0)
+Requires-Dist: sqlalchemy (==1.2.6)
+Requires-Dist: tempora (==1.8)
+Requires-Dist: terminaltables (==3.1.0)
+Requires-Dist: tzlocal (==1.4)
+Requires-Dist: urllib3 (==1.24.1)
+Requires-Dist: webencodings (==0.5.1)
+Requires-Dist: werkzeug (==0.14.1)
+Requires-Dist: zipp (==0.3.3)
+Requires-Dist: zxcvbn-python (==4.4.15)
+Provides-Extra: dev
+Requires-Dist: sphinx (==1.6.3); extra == 'dev'
+Requires-Dist: click (==6.7); extra == 'dev'
+Requires-Dist: pylint; extra == 'dev'
+Requires-Dist: coverage (==4.4.1); extra == 'dev'
+Requires-Dist: flake8; extra == 'dev'
+Requires-Dist: mock (==2.0.0); extra == 'dev'
+Requires-Dist: vcrpy (~=1.11.1); extra == 'dev'
+Requires-Dist: virtualenv (==15.1.0); extra == 'dev'
+Requires-Dist: boto3; extra == 'dev'
+Requires-Dist: wheel (==0.31.0); extra == 'dev'
+Requires-Dist: pytest (>=3.6.0); extra == 'dev'
+Requires-Dist: pytest-xdist (==1.20.0); extra == 'dev'
+Requires-Dist: pytest-runner; extra == 'dev'
+Requires-Dist: pytest-cov (==2.5.1); extra == 'dev'
+Requires-Dist: gitpython (==2.1.5); extra == 'dev'
+Requires-Dist: codacy-coverage (>=1.2.18); extra == 'dev'
+Requires-Dist: pip-tools (==3.2.0); extra == 'dev'
+Requires-Dist: twine (==1.11.0); extra == 'dev'
+Requires-Dist: isort (==4.3.4); extra == 'dev'
+Provides-Extra: dev
+Requires-Dist: black (==18.9b0); (python_version >= "3.6") and extra == 'dev'
+
+FlexGet
+=======
+.. image:: https://circleci.com/gh/Flexget/Flexget/tree/develop.svg?style=svg
+    :target: https://circleci.com/gh/Flexget/Flexget/tree/develop
+
+.. image:: https://img.shields.io/pypi/v/Flexget.svg
+    :target: https://pypi.python.org/pypi/Flexget
+
+.. image:: https://api.codacy.com/project/badge/Grade/86bb847efe984c12948bdeccabcbccad
+    :target: https://www.codacy.com/app/Flexget/Flexget?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Flexget/Flexget&amp;utm_campaign=Badge_Grade
+
+.. image:: https://api.codacy.com/project/badge/Coverage/86bb847efe984c12948bdeccabcbccad
+    :target: https://www.codacy.com/app/Flexget/Flexget?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Flexget/Flexget&amp;utm_campaign=Badge_Coverage
+
+.. image:: https://img.shields.io/gitter/room/nwjs/nw.js.svg
+    :target: https://gitter.im/Flexget/Flexget
+
+.. image:: http://isitmaintained.com/badge/resolution/Flexget/Flexget.svg
+    :target: http://isitmaintained.com/project/Flexget/Flexget
+
+`FlexGet`_ is a multipurpose automation tool for content like torrents, nzbs,
+podcasts, comics, series, movies, etc. It can use different kinds of sources
+like RSS-feeds, html pages, csv files, search engines and there are even
+plugins for sites that do not provide any kind of useful feeds.
+
+Example
+=======
+Flexget uses a `YAML`_ based configuration file.
+The following example will look in the RSS feed in the link, will match any item that match the listes series names and download it::
+
+    tasks:
+      tv_task:
+        rss: http://example.com/torrents.xml
+        series:
+        - some series
+        - another series
+        download: /tvshows
+
+There are numerous plugins that allow utilizing FlexGet in interesting ways
+and more are being added continuously.
+
+FlexGet is extremely useful in conjunction with applications which have watch
+directory support or provide interface for external utilities like FlexGet.
+To get a sense of the many things that can be done with FlexGet you can take a look in our `cookbook`_.
+
+.. _FlexGet: https://flexget.com
+
+.. _YAML: http://www.yaml.org/
+
+.. _cookbook: https://flexget.com/Cookbook
+
+
+**ChangeLog:** https://flexget.com/ChangeLog
+
+**Help:** https://discuss.flexget.com/
+
+**Chat:** http://webchat.freenode.net/?channels=#flexget or https://gitter.im/Flexget/Flexget
+
+**Bugs:** https://github.com/Flexget/Flexget/issues
+
+Install
+-------
+
+FlexGet is installable via pip with the command::
+
+    pip install flexget
+
+For more detailed instructions see the `installation guide`_.
+
+.. _installation guide: https://flexget.com/Install
+
+Feature requests
+----------------
+.. image:: http://feathub.com/Flexget/Flexget?format=svg
+   :target: http://feathub.com/Flexget/Flexget
+
+How to use GIT checkout
+-----------------------
+
+Check that you have Python 2.7 / 3.3 or newer available with command ``python -V``.
+
+In some environments newer python might be available under another name like 
+'python2.7' or 'python3' in which case you need to use that one instead of 
+plain 'python'.
+
+To start using FlexGet from this directory:
+
+First, install (a recent version of) the `virtualenv`_ package to your system.
+
+.. _virtualenv: https://pypi.python.org/pypi/virtualenv
+
+Now, in your checkout directory, run::
+
+    virtualenv .
+
+This will initialize python virtualenv. This doesn't need to be directly in
+your checkout directory, but these instructions assume that's where it is.
+
+Next we need to install dependencies and FlexGet itself, this can be done simply::
+
+    bin/pip install -e .
+
+This does an editable (`-e`) development install of the current directory (`.`).
+
+After that FlexGet is usable via ``<checkout directory>/bin/flexget``. Verify
+installation by running::
+
+    bin/flexget -V
+
+You may place the config file in your checkout directory, or in ``~/.flexget``
+(Unix, Mac OS X) or ``C:\Documents and Setting\<username>\flexget`` (Windows).
+
+If you don't want to use virtualenv there's ``flexget_vanilla.py`` file which
+can be used to run FlexGet without virtualenv, note that you will need to
+install all required dependencies yourself.
+
+

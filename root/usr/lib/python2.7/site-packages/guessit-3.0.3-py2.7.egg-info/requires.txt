@@ -1,0 +1,15 @@
+rebulk
+babelfish
+python-dateutil
+
+[dev]
+zest.releaser[recommended]
+pylint
+tox
+sphinx
+sphinx-autobuild
+
+[test]
+pytest>=3.3
+pytest-benchmark
+PyYAML

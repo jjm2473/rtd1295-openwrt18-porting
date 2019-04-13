@@ -1,0 +1,12 @@
+Metadata-Version: 1.1
+Name: zxcvbn-python
+Version: 4.4.15
+Summary: Python implementation of Dropbox's realistic password strength estimator, zxcvbn
+Home-page: https://github.com/dwolfhub/zxcvbn-python
+Author: Daniel Wolf
+Author-email: danielrwolf5@gmail.com
+License: MIT
+Download-URL: https://github.com/dwolfhub/zxcvbn-python/tarball/v4.4.15
+Description: UNKNOWN
+Keywords: zxcvbn,password,security
+Platform: UNKNOWN

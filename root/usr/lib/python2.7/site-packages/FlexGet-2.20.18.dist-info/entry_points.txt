@@ -1,0 +1,6 @@
+[console_scripts]
+flexget = flexget:main
+
+[gui_scripts]
+flexget-headless = flexget:main
+
