@@ -1,0 +1,12 @@
+#!/bin/sh /etc/rc.common
+# 2019 jjm2473 porting openwrt 18.06.2+ to zidoo z9s
+
+START=30
+
+boot() {
+	touch /android/.coldplug_done
+	touch /rom/android/.coldplug_done
+	# fix hostname changed by android
+	sleep 3
+	/etc/init.d/system reload
+}
