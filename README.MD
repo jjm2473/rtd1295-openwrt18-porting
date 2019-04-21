@@ -17,6 +17,8 @@
 
 **Zidoo X9S(RTD1295)的Linux内核版本和Android版本跟Z9S不一样, 所以提供另外的包下载.**
 
+附: 一些自己整理的[教程](https://github.com/jjm2473/rtd1295-openwrt18-porting/wiki) (Wiki页面)
+
 ### 二.安装方法
 0. 视自身情况备份盒子配置(包括OpenWrt和安卓)
 1. 从[发布](#发布)列表选择合适的版本, 
