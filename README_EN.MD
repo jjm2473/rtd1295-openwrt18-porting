@@ -22,7 +22,7 @@ If there are other boxes with the same solution, welcome to add.
 1. Select the appropriate version from the [Release](#release) list.
 2. Click on the appropriate link to go to the version details.
 3. Download update.op18*.zip
-4. Flash this zip package like a normal OTA package
+4. Flash this zip package as a normal OTA package
 
 After the flashing is finished, it will restart automatically, if it appears:
 1. Can not enter the Android desktop, may be incompatible, can only use the non-OTA way to flash back the official firmware (such as Z9S's [flashing tutorial](https://www.zidoo.tv/Support/support_guide/guide_target/jYabok9%2Ba0beq7k9e%5Bld%5D3ulg%3D%3D.html))
