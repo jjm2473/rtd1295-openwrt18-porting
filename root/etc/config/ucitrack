@@ -60,3 +60,6 @@ config minidlna 'minidlna'
 
 config transmission
 	option init 'transmission'
+
+config aria2
+	option init 'aria2'
