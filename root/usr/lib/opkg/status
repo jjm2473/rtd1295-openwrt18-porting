@@ -725,10 +725,9 @@ Installed-Time: 1553274868
 Package: lua
 Version: 5.1.5-2
 Depends: libc, liblua5.1.5
-Status: install ok installed
+Status: install user installed
 Architecture: aarch64_cortex-a53
-Installed-Time: 1553960168
-Auto-Installed: yes
+Installed-Time: 1557505299
 
 Package: libwebsockets-openssl
 Version: 3.1.0-1
@@ -1191,6 +1190,13 @@ Conffiles:
  /etc/config/transmission 9f176b3e644cdf3fefc354af68cd61f6956e762b47587489dd1a22670acd2d43
 Installed-Time: 1553966642
 
+Package: luac
+Version: 5.1.5-2
+Depends: libc, liblua5.1.5
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1557505299
+
 Package: usign
 Version: 2015-07-04-ef641914-1
 Depends: libc, libubox20170601
@@ -1217,9 +1223,9 @@ Package: liblua5.1.5
 Version: 5.1.5-2
 Depends: libc
 Provides: liblua
-Status: install ok installed
+Status: install user installed
 Architecture: aarch64_cortex-a53
-Installed-Time: 1553960154
+Installed-Time: 1557505299
 Auto-Installed: yes
 
 Package: zlib
