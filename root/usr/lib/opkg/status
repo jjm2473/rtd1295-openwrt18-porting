@@ -725,7 +725,7 @@ Installed-Time: 1553274868
 Package: lua
 Version: 5.1.5-2
 Depends: libc, liblua5.1.5
-Status: install user installed
+Status: install hold installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1557505299
 
@@ -1193,7 +1193,7 @@ Installed-Time: 1553966642
 Package: luac
 Version: 5.1.5-2
 Depends: libc, liblua5.1.5
-Status: install user installed
+Status: install hold installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1557505299
 
@@ -1223,7 +1223,7 @@ Package: liblua5.1.5
 Version: 5.1.5-2
 Depends: libc
 Provides: liblua
-Status: install user installed
+Status: install hold installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1557505299
 Auto-Installed: yes
