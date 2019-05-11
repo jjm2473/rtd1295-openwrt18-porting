@@ -175,14 +175,6 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
 Alternatives: 100:/usr/bin/find:/bin/busybox, 100:/usr/bin/flock:/bin/busybox, 100:/usr/bin/free:/bin/busybox, 100:/sbin/ip:/bin/busybox, 100:/bin/kill:/bin/busybox, 100:/usr/bin/pgrep:/bin/busybox, 100:/bin/ps:/bin/busybox, 100:/usr/bin/top:/bin/busybox, 100:/usr/bin/uptime:/bin/busybox, 100:/usr/bin/xargs:/bin/busybox
 
-Package: kmod-crypto-cts
-Version: 4.14.109-1
-Depends: kernel (= 4.14.109-1-ea4f7c894f16c09b49fa3b83cad0280e), kmod-crypto-manager
-Status: install ok installed
-Architecture: aarch64_cortex-a53
-Installed-Time: 1554049402
-Auto-Installed: yes
-
 Package: luci-lib-ip
 Version: git-19.088.25182-8e3e502-1
 Depends: libc, liblua5.1.5, libnl-tiny
@@ -197,29 +189,6 @@ Depends: libc, libubus20170705, liblua5.1.5
 Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553960192
-Auto-Installed: yes
-
-Package: kmod-crypto-hash
-Version: 4.14.109-1
-Depends: kernel (= 4.14.109-1-ea4f7c894f16c09b49fa3b83cad0280e)
-Status: install ok installed
-Architecture: aarch64_cortex-a53
-Installed-Time: 1554049395
-Auto-Installed: yes
-
-Package: kmod-nf-reject6
-Version: 4.14.107-1
-Depends: kernel (= 4.14.107-1-baef5e1f1cb3d6b76c6d687e645dc927)
-Status: install user installed
-Architecture: aarch64_cortex-a53
-Installed-Time: 1553274868
-
-Package: kmod-crypto-aead
-Version: 4.14.109-1
-Depends: kernel (= 4.14.109-1-ea4f7c894f16c09b49fa3b83cad0280e), kmod-crypto-null
-Status: install ok installed
-Architecture: aarch64_cortex-a53
-Installed-Time: 1554049398
 Auto-Installed: yes
 
 Package: libiwinfo-lua
@@ -266,14 +235,6 @@ Status: install user installed
 Architecture: all
 Installed-Time: 1548323676
 
-Package: kmod-crypto-md5
-Version: 4.14.109-1
-Depends: kernel (= 4.14.109-1-ea4f7c894f16c09b49fa3b83cad0280e), kmod-crypto-hash
-Status: install ok installed
-Architecture: aarch64_cortex-a53
-Installed-Time: 1554049403
-Auto-Installed: yes
-
 Package: luci-mod-system
 Version: git-19.088.25182-8e3e502-1
 Depends: libc, luci-base
@@ -281,13 +242,6 @@ Status: install ok installed
 Architecture: all
 Installed-Time: 1553960266
 Auto-Installed: yes
-
-Package: kmod-nf-flow
-Version: 4.14.107-1
-Depends: kernel (= 4.14.107-1-baef5e1f1cb3d6b76c6d687e645dc927), kmod-nf-conntrack
-Status: install user installed
-Architecture: aarch64_cortex-a53
-Installed-Time: 1553274868
 
 Package: libogg
 Version: 1.3.3-1
@@ -304,13 +258,6 @@ Status: install ok installed
 Architecture: all
 Installed-Time: 1555136346
 Auto-Installed: yes
-
-Package: kmod-lib-crc-ccitt
-Version: 4.14.107-1
-Depends: kernel (= 4.14.107-1-baef5e1f1cb3d6b76c6d687e645dc927)
-Status: install user installed
-Architecture: aarch64_cortex-a53
-Installed-Time: 1553274868
 
 Package: resize2fs
 Version: 1.44.5-1
@@ -444,6 +391,13 @@ Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
 
+Package: dosfstools
+Version: 4.1-1
+Depends: libc
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1557555224
+
 Package: netifd
 Version: 2019-03-21-34a70b62-1
 Depends: libc, libuci20130104, libnl-tiny, libubus20170705, ubus, ubusd, jshn, libubox20170601
@@ -508,6 +462,15 @@ Provides: libuclient
 Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
+
+Package: libmount1
+Version: 2.33-2
+Depends: libc, libblkid1
+Provides: libmount
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1557547859
+Auto-Installed: yes
 
 Package: attr
 Version: 2.4.48-1
@@ -852,6 +815,13 @@ Conffiles:
  /etc/exports 561d777edf21faf3358e85765de44c9a20b06f726f4a677463fd8fbefc5497a1
 Installed-Time: 1554049425
 
+Package: parted
+Version: 3.2-1
+Depends: libc, libuuid1, libblkid1
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1557546674
+
 Package: luci-i18n-aria2-zh-cn
 Version: 1.0.1-4
 Depends: libc, luci-app-aria2
@@ -1010,6 +980,13 @@ Status: install user installed
 Architecture: all
 Installed-Time: 1548323675
 
+Package: swap-utils
+Version: 2.33-2
+Depends: libc, librt, libblkid1
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1557548807
+
 Package: luci-proto-ipv6
 Version: git-19.088.25182-8e3e502-1
 Depends: libc
@@ -1126,6 +1103,15 @@ Status: install ok installed
 Architecture: all
 Installed-Time: 1553966307
 Auto-Installed: yes
+
+Package: mdadm
+Version: 4.1-1
+Depends: libc, libpthread, kmod-md-mod, kmod-md-raid0, kmod-md-raid10, kmod-md-raid1
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Conffiles:
+ /etc/config/mdadm b1ff7f54de2e179fe6fa76116d6bc48be23ba6fe4e50ce26c35edb569413692c
+Installed-Time: 1557546539
 
 Package: minidlna
 Version: 2018-04-10-799e6cf5-1
@@ -1357,7 +1343,7 @@ Installed-Time: 1553274868
 Auto-Installed: yes
 
 Package: kernel
-Version: 4.14.109-1-ea4f7c894f16c09b49fa3b83cad0280e
+Version: 4.14.115-1-23d15a724f40bd7560c0ff99cd797489
 Depends: libc
 Status: install user installed
 Architecture: aarch64_cortex-a53
@@ -1491,6 +1477,13 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1554008699
 Auto-Installed: yes
 
+Package: mount-utils
+Version: 2.33-2
+Depends: libc, librt, libmount1, libsmartcols1
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1557547859
+
 Package: transmission-web
 Version: 2.94-3
 Depends: libc
@@ -1621,6 +1614,13 @@ Depends: libc, luci-app-minidlna
 Status: install user installed
 Architecture: all
 Installed-Time: 1553967011
+
+Package: luci-app-diskmanager
+Version: git-19.023.13982-f3c7f53-1
+Depends: libc, librt, libpthread, mdadm, parted, mount-utils, swap-utils, e2fsprogs
+Status: install user installed
+Architecture: all
+Installed-Time: 1557559776
 
 Package: samba4-hotplug
 Version: 1-1

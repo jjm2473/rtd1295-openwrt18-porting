@@ -1,2 +1,1 @@
-/lib/modules/4.14.109/nfs.ko
 /etc/modules.d/40-fs-nfs
