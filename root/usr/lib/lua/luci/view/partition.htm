@@ -1,0 +1,336 @@
+<%
+require("luci.tools.webadmin")
+
+local diskmanager = require "luci.controller.diskmanager"
+
+local redirect_url = luci.dispatcher.build_url("admin/system/disk")
+local refresh_url_base = luci.dispatcher.build_url("admin/system/disk/partition")
+
+
+-- the base name of device is passed by REQUEST_URI
+local target = luci.http.getenv("REQUEST_URI"):match("[^/]-$")
+if not target then luci.http.redirect(redirect_url) end
+
+refresh_url = refresh_url_base .. "/" .. target
+local target = "/dev/" .. target
+
+local isPartitionTableExist = false
+local suggestPartitionTable = "MBR"
+local device_info = {}
+local partitions_info = {}
+
+local fs_set = diskmanager.listAvailableFormats()
+
+device_info, partitions_info = diskmanager.getDevicePartitionInfo(target)
+
+if device_info["Partition Table"] ~= "unknown" then
+	isPartitionTableExist = true
+else
+	local length = device_info["Length"]:gsub("^(%d+)s$", "%1")
+	local ss = tonumber(device_info["LogicSectorSize"])
+	suggestPartitionTable = ( tonumber(length)*ss > 2^41 and "GPT" or "MBR")
+end
+
+%>
+
+<%+header%>
+
+<script type="text/javascript">
+	var stxhr = new XHR();
+
+	var device_info = <%=luci.http.write_json(device_info)%>;
+	var partitions_info = <%=luci.http.write_json(partitions_info)%>;
+
+	//console.log(device_info)
+	//console.log(partitions_info)
+
+	// For IE version < 12
+	if (!String.prototype.startsWith) {
+		String.prototype.startsWith = function(searchString, position) {
+			position = position || 0;
+			return this.substr(position, searchString.length) === searchString;
+		};
+	}
+
+	// change size to given unit
+	function size2unit(size, unit) {
+		if (unit == undefined) {
+			unit = "s";
+		}
+
+		var units = {
+			B: 1,
+			s: 512,
+			K: 1024,
+			M: 1048576,
+			G: 1073741824,
+			T: 1099511627776
+		};
+		if (!size.match(/^\d+[sKMGT]$/))
+			return null;
+
+		var match = size.match(/^(\d+)([sKMGT])$/);
+		var sectors = parseInt(match[1]) * units[match[2]];
+		var unit = sectors / units[unit];
+
+		return unit;
+	}
+
+	function addpartition(id, type) {
+		var section_id = id.replace(/cbid\.table\.(\S+)\.Action/, "$1");
+		var target = <%=luci.http.write_json(target)%>
+		var start = document.getElementById("cbi-table-"+section_id+"-Start");
+		var end = document.getElementById("cbi-table-"+section_id+"-End");
+		document.getElementById("error-msg").innerHTML = "";
+
+		if (type == "div") {
+			start = start.innerHTML;
+			end = end.innerHTML;
+		}
+		else if (type == "input") {
+			start = start.value
+			end = end.value
+		}
+		if (typeof start != "string" || typeof end != "string" || start == "" || end == "") {
+			document.getElementById("error-msg").innerHTML = "<%:Please specify Start and End for New partition%>";
+			return;
+		}
+		else if (!start.match(/^\d+[sKMGT]$/) || !end.match(/^\+?\d+[sKMGT]$/)) {
+			document.getElementById("error-msg").innerHTML = "<%:Invalid Start and End Value%>";
+			return;
+		}
+
+		// support +size format for End sector
+		if (end.startsWith("+")) {
+			var match = end.match(/^\+(\d+[sKMGT])$/);
+
+			var start_sector = size2unit(start);
+			end = size2unit(match[1]) + start_sector;
+			end = end.toString() + "s";
+		}
+
+		XHR.get('<%=luci.dispatcher.build_url("admin", "system", "disk", "addpartition")%>',
+			{
+				target: target,
+				start: start,
+				end: end
+			},
+			function(x) {
+				location.reload();
+			}
+		);
+	}
+
+	function removepartition(id) {
+		var section_id = id.replace(/cbid.table.(\d+).Action/, "$1");
+		var target = <%=luci.http.write_json(target)%>
+		var number = document.getElementById("cbi-table-"+section_id+"-Number").innerHTML;
+		document.getElementById("error-msg").innerHTML = "";
+		window.location.href = "#";
+
+		document.getElementById("cbi-apply-system-status").innerHTML = "";
+		document.getElementById("cbi-apply-system").style.display = 'block';
+		XHR.get('<%=luci.dispatcher.build_url("admin", "system", "disk", "removepartition")%>',
+			{
+				target: target,
+				number: number
+			},
+			function(x) {
+				location.reload();
+			}
+		);
+	}
+
+	function formatpartition(id) {
+		var section_id = id.replace(/cbid.table.(\d+).Format Button/, "$1");
+		var target = <%=luci.http.write_json(target)%>
+		var number = document.getElementById("cbi-table-"+section_id+"-Number").innerHTML;
+		var fs = document.getElementById("cbid.table."+section_id+".Format List").value;
+		document.getElementById("error-msg").innerHTML = "";
+		window.location.href = "#";
+
+		if (fs == "") {
+			document.getElementById("error-msg").innerHTML = "<%:Please specify file system%>";
+			return;
+		}
+		if (target.startsWith("/dev/sd")) {
+			target = target + number;
+		}
+		else if (target.startsWith("/dev/sata")) {
+			target = target + number;
+		}
+		else if (target.startsWith("/dev/md")) {
+			target = target + "p" + number;
+		}
+		else if (target.startsWith("/dev/mmcblk")) {
+			target = target + "p" + number;
+		}
+		document.getElementById("cbi-apply-system-status").innerHTML = "<%:Formatting...%>";
+		document.getElementById("cbi-apply-system").style.display = 'block';
+		XHR.get('<%=luci.dispatcher.build_url("admin", "system", "disk", "formatpartition")%>',
+			{
+				target: target,
+				fs: fs
+			},
+			function(x) {
+				location.reload();
+			}
+		);
+	}
+
+	function createpartitiontable() {
+		var target = <%=luci.http.write_json(target)%>
+		var type = document.getElementById("cbid.partitiontable.ptselect").value;
+		document.getElementById("error-msg").innerHTML = "";
+
+		XHR.get('<%=luci.dispatcher.build_url("admin", "system", "disk", "createpartitiontable")%>',
+			{
+				target: target,
+				type: type
+			},
+			function(x) {
+				location.reload();
+			}
+		);
+	}
+
+	function back() {
+		location.href = '<%=luci.dispatcher.build_url("admin", "system", "disk")%>';
+	}
+
+</script>
+
+<h2><a id="content" name="content"><%:Partition Management%></a></h2>
+<fieldset class="cbi-section" id="cbi-apply-system" style="display: none;">
+	<legend>Applying changes</legend>
+	<img src="/luci-static/resources/icons/loading.gif" alt="Loading" style="vertical-align:middle">
+	<span id="cbi-apply-system-status"></span>
+</fieldset>
+<fieldset class="cbi-section">
+	<legend><%:Device Info%></legend>
+	<div class="cbi-map-desc" style="color:red" id="error-msg"><% if diskmanager.isUsed(target) then %>This Device is mounted, used as swap or used as raid member<% end %>
+	</div>
+	<br />
+	<table width="100%" cellspacing="10">
+		<tbody>
+			<tr><td width="33%"><%:Path%></td><td><%=device_info.Path%></td></tr>
+			<tr><td width="33%"><%:Model%></td><td><%=device_info.Model%></td></tr>
+			<tr><td width="33%"><%:Partition Table%></td><td<% if not isPartitionTableExist then %> style="color:red"<% end %>><%=device_info["Partition Table"]%></td></tr>
+			<tr><td width="33%"><%:LogicSectorSize%> / <%:PhysicalSectorSize%></td><td><%=device_info.LogicSectorSize%> / <%=device_info.PhysicalSectorSize%></td></tr>
+		</tbody>
+	</table>
+</fieldset>
+<fieldset class="cbi-section">
+	<legend><%:Partitions%></legend>
+	<div class="cbi-section-node">
+		<% if isPartitionTableExist then %>
+		<table class="cbi-section-table" id="cbi.partition.table">
+			<tbody>
+				<tr class="cbi-section-table-titles">
+					<th class="cbi-section-table-cell">Action</th>
+					<th class="cbi-section-table-cell">Number</th>
+					<th class="cbi-section-table-cell">Start Sector</th>
+					<th class="cbi-section-table-cell">End Sector</th>
+					<th class="cbi-section-table-cell">Size</th>
+					<th class="cbi-section-table-cell">File System</th>
+					<th class="cbi-section-table-cell">Format</th>
+					<th class="cbi-section-table-cell"></th>
+				</tr>
+				<tr class="cbi-section-table-descr">
+					<th class="cbi-section-table-cell"></th>
+					<th class="cbi-section-table-cell"></th>
+					<th class="cbi-section-table-cell"></th>
+					<th class="cbi-section-table-cell"></th>
+					<th class="cbi-section-table-cell"></th>
+					<th class="cbi-section-table-cell"></th>
+					<th class="cbi-section-table-cell"></th>
+					<th class="cbi-section-table-cell"></th>
+				</tr>
+				<% for i = 1, #partitions_info do %>
+				<tr class="cbi-section-table-row cbi-rowstyle-1" id="cbi-table-<%=i%>">
+					<td class="cbi-value-field">
+						<div id="cbi-table-<%=i%>-Action">
+							<% if partitions_info[i]["File system"] ~= "Free Space" then %>
+							<input class="cbi-button cbi-button-remove" value="<%:Remove%>" onclick="removepartition(this.id)"
+							<% else %>
+							<input class="cbi-button cbi-button-add" value="<%:Add%>" onclick="addpartition(this.id, 'div')"
+							<% end %>
+								type="button" id="cbid.table.<%=i%>.Action"<% if diskmanager.isUsed(partitions_info[i]["Name"]) then %> disabled<% end %>>
+						</div>
+					</td>
+					<td class="cbi-value-field"><div id="cbi-table-<%=i%>-Number"><%=partitions_info[i].Number%></div></td>
+					<td class="cbi-value-field"><div id="cbi-table-<%=i%>-Start"><%=partitions_info[i].Start%></div></td>
+					<td class="cbi-value-field"><div id="cbi-table-<%=i%>-End"><%=partitions_info[i].End%></div></td>
+					<td class="cbi-value-field"><div id="cbi-table-<%=i%>-Size"><%=partitions_info[i].Size%></div></td>
+					<td class="cbi-value-field"><div id="cbi-table-<%=i%>-File system"><%=partitions_info[i]["File system"]%></div></td>
+					<td class="cbi-value-field">
+						<% if partitions_info[i]["File system"] ~= "Free Space" then %>
+						<div id="cbi-table-<%=i%>-Format List">
+							<select class="cbi-input-select" id="cbid.table.<%=i%>.Format List" size="1"<% if diskmanager.isUsed(partitions_info[i]["Name"]) then %> disabled<% end %>>
+								<option value></option>
+								<% for j = 1, #fs_set do %>
+								<option value="<%=fs_set[j]%>"><%=fs_set[j]%></option>
+								<% end %>
+							</select>
+						</div>
+						<% end %>
+					</td>
+					<td class="cbi-value-field">
+						<% if partitions_info[i]["File system"] ~= "Free Space" then %>
+						<div id="cbi-table-<%=i%>-Format Button">
+							<input class="cbi-button cbi-input-edit" type="button" id="cbid.table.<%=i%>.Format Button"
+								value="<%:Format%>" onclick="formatpartition(this.id)"<% if diskmanager.isUsed(partitions_info[i]["Name"]) then %> disabled<% end %>>
+						</div>
+						<% end %>
+					</td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+		<% else %>
+		<div class="cbi-map-desc" style="color:red">There's no Partition Table found in this device, Please create it first.</div>
+		<br/>
+		<select class="cbi-input-select" id="cbid.partitiontable.ptselect">
+			<option value="msdos"<% if suggestPartitionTable == "MBR" then %> selected="selected"<% end %>>MBR</option>
+			<option value="gpt"<% if suggestPartitionTable == "GPT" then %> selected="selected"<% end %>>GPT</option>
+		</select>
+		<input class="cbi-button cbi-input-apply" type="button" id="cbid.partitiontable.ptadd" value="<%:Create%>" onclick="createpartitiontable()">
+		<% end %>
+	</div>
+</fieldset>
+<% if isPartitionTableExist then %>
+<form>
+<fieldset class="cbi-section">
+	<legend><%:Add New Partition%></legend>
+	<div class="cbi-map-desc">Please Enter Sector Number (ex: 2048s) or +size{B,s,K,M,G,T} (only in End field)</div>
+	<br/>
+	<div class="cbi-section-node">
+		<div class="cbi-value">
+			<label class="cbi-value-title" for="cbi-table-custom-Start"><%:Start%></label>
+			<div class="cbi-value-field">
+				<input type="text" class="cbi-input-text" id="cbi-table-custom-Start">
+			</div>
+		</div>
+		<div class="cbi-value">
+			<label class="cbi-value-title" for="cbi-table-custom-End"><%:End%></label>
+			<div class="cbi-value-field">
+				<input type="text" class="cbi-input-text" id="cbi-table-custom-End">
+			</div>
+		</div>
+		<div class="cbi-value cbi-value-last">
+			<input class="cbi-button cbi-input-apply" type="button" id="cbid.table.custom.Action"
+				value="<%:Add%>" onclick="addpartition(this.id, 'input')">
+		</div>
+	</div>
+</fieldset>
+
+<div class="cbi-page-actions">
+	<div style="float:left">
+		<input class="cbi-button cbi-button-link" type="button" value="<%:Back to Overview%>" onclick="back()">
+	</div>
+</div>
+
+</form>
+<% end %>
+
+<%+footer%>

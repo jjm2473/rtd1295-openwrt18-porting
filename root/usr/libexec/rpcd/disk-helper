@@ -1,0 +1,37 @@
+#!/bin/sh
+
+LOGFILE="/tmp/disk-helper.log"
+
+. /usr/share/libubox/jshn.sh
+
+case "$1" in
+	list)
+		echo '{ "allinone": { "devname": "str", "fstype": "str" } }'
+	;;
+	call)
+		case "$2" in
+			allinone)
+				# read the arguments
+				read input;
+
+				logger -t "disk-helper" "call" "$2" "INPUT: $input"
+
+				json_load "$input"
+				json_get_var dev "devname"
+				json_get_var fs "fstype"
+
+				logger -t "disk-helper" "call" "$2" "DEV:$dev, FS:$fs"
+
+				# call disk-helper.sh
+				# redirect to LOGFILE since output must be json format
+				/usr/bin/disk-helper.sh allinone $dev $fs &> $LOGFILE
+				RET=$?
+
+				logger -t "disk-helper" "call" "$2" "RET:$RET"
+
+				# return json format
+				[ 0 -eq $RET ] && echo '{ "format": "success" }' || echo '{ "format": "fail" }'
+			;;
+		esac
+	;;
+esac

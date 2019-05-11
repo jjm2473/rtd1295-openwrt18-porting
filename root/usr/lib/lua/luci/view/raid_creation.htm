@@ -1,0 +1,98 @@
+<%
+-- get possible raid members from /proc/partitions
+local cat = io.popen("cat /proc/partitions | tr -s ' ' | cut -d ' ' -f 5", "r")
+
+local members = {}
+for device in cat:lines() do
+	if device ~= "" and (string.find(device, "^sd[a-z]") or string.find(device, "^sata[a-z]")) then
+		table.insert(members, "/dev/"..device)
+	end
+end
+cat:close()
+%>
+
+<script type="text/javascript">
+	var MAX_MEMBER = 10;
+	var stxhr = new XHR();
+
+	var members = <%=luci.http.write_json(members)%>
+	MAX_MEMBER = (members.length > 0 && members.length < MAX_MEMBER)? members.length : MAX_MEMBER;
+
+	// add a new member field if one is selected
+	function member_onchange(id) {
+		var new_id = parseInt(id.replace("member", "")) + 1;
+		if (new_id > MAX_MEMBER)
+			return;
+		new_id = "member" + new_id.toString();
+		var slt = document.getElementById(id);
+		var newnode = slt.cloneNode(true);
+		newnode.setAttribute("id", new_id);
+		slt.parentElement.appendChild(newnode);
+		slt.onchange = undefined;
+	}
+
+	function create_raid() {
+		var level_slt = document.getElementById("cbid.raid.creation.1.level");
+		var level = level_slt.options[level_slt.selectedIndex].value;
+		var members = []
+
+		document.getElementById("error-msg").innerHTML = "";
+
+		var i = 1;
+		while (document.getElementById("member"+i.toString()) != null && i < MAX_MEMBER) {
+			var member_slt = document.getElementById("member"+i.toString());
+			members.push(member_slt.options[member_slt.selectedIndex].value)
+			i = i + 1;
+		}
+
+		if (level == "" || members.length <= 0) {
+			document.getElementById("error-msg").innerHTML = "Please specify level and raid members.";
+			return;
+		}
+
+		XHR.get('<%=luci.dispatcher.build_url("admin", "system", "disk", "createraid")%>',
+			{
+				level: level,
+				members: members
+			},
+			function(x) {
+				location.reload();
+			}
+		);
+	}
+</script>
+
+<fieldset class="cbi-section">
+	<legend><%:RAID Creation%></legend>
+	<div class="cbi-map-desc" style="color:red" id="error-msg"></div>
+	<br />
+	<div class="cbi-section-node">
+		<div class="cbi-value" id="cbi-raid-creation-1-level">
+			<label class="cbi-value-title" for="cbid.raid.creation.1.level">Level</label>
+			<div class="cbi-value-field">
+				<select name="cbid.raid.creation.1.level" id="cbid.raid.creation.1.level">
+					<option value="">--</option>
+					<option value="raid0">RAID 0(Stripe)</option>
+					<option value="raid1">RAID 1(Mirror)</option>
+					<option value="linear">Linear(JBOD)</option>
+					<option value="raid5">RAID 5</option>
+				</select>
+			</div>
+		</div>
+		<div class="cbi-value" id="cbi-raid-creation-1-member">
+			<label class="cbi-value-title" for="member1">Member</label>
+			<div class="cbi-value-field">
+				<select name="member1" id="member1" onChange="member_onchange(this.id)">
+					<option value="">--</option>
+					<% for index, member in ipairs(members) do %>
+						<option value="<%=member%>"><%=member%></option>
+					<% end %>
+				</select>
+			</div>
+		</div>
+		<div class="cbi-section-create">
+			<!-- set type to button instead of submit to use its css style but avoid built-in submit action -->
+			<input class="cbi-button cbi-input-apply" type="button" value="<%:Add%>" onclick="create_raid()">
+		</div>
+	</div>
+</fieldset>
