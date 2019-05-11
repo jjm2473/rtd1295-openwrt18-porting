@@ -1,0 +1,11 @@
+Package: swap-utils
+Version: 2.33-2
+Depends: libc, librt, libblkid1
+Source: feeds/base/package/utils/util-linux
+SourceName: swap-utils
+License: GPL-2.0
+LicenseFiles: COPYING libblkid/COPYING libmount/COPYING Documentation/licenses/COPYING.GPLv2 Documentation/licenses/COPYING.LGPLv2.1 libuuid/COPYING Documentation/licenses/COPYING.BSD-3
+Section: utils
+Architecture: aarch64_cortex-a53
+Installed-Size: 34023
+Description:  contains: mkswap, swaplabel

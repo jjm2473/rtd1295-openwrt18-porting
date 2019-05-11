@@ -1,0 +1,4 @@
+/usr/bin/mountpoint
+/usr/bin/mount
+/usr/bin/umount
+/usr/bin/findmnt

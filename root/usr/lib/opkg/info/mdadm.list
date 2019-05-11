@@ -1,0 +1,3 @@
+/etc/init.d/mdadm
+/sbin/mdadm
+/etc/config/mdadm
