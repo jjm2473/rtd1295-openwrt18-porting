@@ -20,16 +20,17 @@
 附: 一些自己整理的[教程](https://github.com/jjm2473/rtd1295-openwrt18-porting/wiki) (Wiki页面)
 
 #### 已知BUG
-1. lua的tonumber方法解析大于0x80000000且不含有0x80000000位的数字有误, 将只保留低31位, 例如大于4294967295且小于6442450944的数字会被解析成(0, 2147483648)
-2. 对于lua代码中出现的数字有跟1相同的bug
-3. 受1影响, 大于2T且小于3T的分区在挂载点中显示的分区大小会比真实数据小2T(不影响挂载)
+1. (1.5版已修复) ~~lua的tonumber方法解析大于0x80000000且不含有0x80000000位的数字有误, 将只保留低31位, 例如大于4294967295且小于6442450944的数字会被解析成(0, 2147483648)~~
+2. (1.5版已修复) ~~对于lua代码中出现的数字有跟1相同的bug~~
+3. (1.5版已修复) ~~受1影响, 大于2T且小于3T的分区在挂载点中显示的分区大小会比真实数据小2T(不影响挂载)~~
 
 ### 二.安装方法
 0. 视自身情况备份盒子配置(包括OpenWrt和安卓)
-1. 从[发布](#发布)列表选择合适的版本, 
-2. 点击相应链接进入版本详情, 
+1. 从[发布](#发布)列表选择合适的版本
+2. 点击相应链接进入版本详情
 3. 下载update.op18*.zip
 4. 跟平常OTA刷机一样刷入这个zip包
+5. 第一次刷的话, 刷完可能还要重置下OpenWrt设置
 
 刷完之后, 会自动重启, 如果出现:
 1. 无法进入安卓桌面, 可能是不兼容了, 只能用非OTA方式刷回官方固件 (例如Z9S的[刷机教程](https://www.zidoo.tv/Support/support_guide/guide_target/jYabok9%2Ba0beq7k9e%5Bld%5D3ulg%3D%3D.html))
@@ -41,11 +42,27 @@
 
 ### 四.恢复官方版本OpenWrt
 只要刷回官方OTA包即可
-
+ 
+--------------------------
+ 
 ### 发布
 从1.3版本开始, 提供RTD1295分支和RTD1296分支, RTD1295分支支持 (Linux 4.1.17-g9100299-dirty + Android 6.0.1) 底包(例如X9S), RTD1296分支支持 (Linux 4.1.35-04005-g6c2818e-dirty + Android 7.1.1) 底包(例如Z9S).
 
 1.3版之前的包只支持(Linux 4.1.35-04005-g6c2818e-dirty + Android 7.1.1)底包.
+
+#### 1.5 (2019-05-11)
+*1. 移植Zidoo的luci-app-diskmanager, 磁盘管理工具*
+
+*2. lua编译成64位版, 修复数字溢出问题 https://github.com/openwrt/openwrt/pull/2050*
+
+*3. 修复aria2配置应用失败问题*
+
+*4. 延迟启动Android, 提高[获取ipv6](https://github.com/jjm2473/rtd1295-openwrt18-porting/wiki/IPv6%E9%85%8D%E7%BD%AE)成功率*
+
+* RTD1296 (Z9S等)
+    * [完整版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.5_full) (**推荐**)
+* RTD1295 (X9S等)
+    * [完整版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/x9s_1.5_full) (**推荐**)
 
 #### 1.4 (2019-04-13)
 *完整版只是增加了aria2*
@@ -53,7 +70,7 @@
 *增加[FlexGet特别版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.4_flexget), 给需要Python环境和[FlexGet](https://flexget.com/)的用户*
 
 * RTD1296
-    * [完整版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.4_full) (**推荐**)
+    * [完整版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.4_full)
     * [FlexGet特别版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.4_flexget) (**Python + FlexGet**)
 * RTD1295 (未更新)
     * [1.3](#13-2019-04-11)
@@ -68,7 +85,7 @@
 * RTD1296
     * [完整版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.3_full)
 * RTD1295
-    * [完整版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/x9s_1.3_full) (**推荐**)
+    * [完整版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/x9s_1.3_full)
 
 #### 1.2 (2019-04-07)
 *比1.1增加支持自动挂载swap分区*
@@ -84,7 +101,8 @@
 * [基础带Luci版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.0_luci)
 * [基础无Luci版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.0_no_luci)
 
-
+--------------------------
+--------------------------
 
 ### 参考信息
 1. OpenWrt: https://www.openwrt.org/

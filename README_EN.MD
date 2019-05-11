@@ -9,7 +9,7 @@ This project is based on the [OpenWrt](https://www.openwrt.org/) SNAPSHOT image 
 The author has only one Zidoo Z9S. In theory, the Android+OpenWrt dual system of the RTD1295/RTD1296 solution can update OpenWrt to the latest version through this project.
 Theoretically supported box:
 1. Zidoo X9S/Z9S/X10/Z10/X20
-2. Kaiboer Q10PLUS (first generation and second generation) / Q20 / Q20PLUS / Q30PLUS
+2. Kaiboer Q10PLUS (generation 1 and 2) / Q20 / Q20PLUS / Q30PLUS
 
 If there are other boxes with the same solution, welcome to add.
 
@@ -19,10 +19,11 @@ If there are other boxes with the same solution, welcome to add.
 
 ### II. Installation
 0. Back up the box configuration (including OpenWrt and Android)
-1. Select the appropriate version from the [Release](#release) list.
-2. Click on the appropriate link to go to the version details.
+1. Select the appropriate version from the [Release](#release) list
+2. Click on the appropriate link to go to the version details
 3. Download update.op18*.zip
 4. Flash this zip package as a normal OTA package
+5. OpenWrt reseting may needed after first time installation
 
 After the flashing is finished, it will restart automatically, if it appears:
 1. Can not enter the Android desktop, may be incompatible, can only use the non-OTA way to flash back the official firmware (such as Z9S's [flashing tutorial](https://www.zidoo.tv/Support/support_guide/guide_target/jYabok9%2Ba0beq7k9e%5Bld%5D3ulg%3D%3D.html))
@@ -35,11 +36,27 @@ This method is suitable for resetting OpenWrt when you can enter the Android sys
 ### IV. Restore OpenWrt to the official version 
 Just falsh back the official OTA package.
 
+----------------
+
 ### Release
 
 From 1.3, offering RTD1295 and RTD1296 varients, RTD1295 varient supports (Linux 4.1.17-g9100299-dirty + Android 6.0.1) devices (X9S, etc.), RTD1296 varient supports (Linux 4.1.35-04005-g6c2818e-dirty + Android 7.1.1) (Z9S, etc.).
 
 Before 1.3, only supports (Linux 4.1.35-04005-g6c2818e-dirty + Android 7.1.1).
+
+#### 1.5 (2019-05-11)
+*1. Port zidoo's luci-app-diskmanager, the disk manager*
+
+*2. Recompile lua in 64bit mode, to fix number overflow https://github.com/openwrt/openwrt/pull/2050*
+
+*3. fix aria2 config apply fail*
+
+*4. delay Android booting, make [ipv6 config](https://github.com/jjm2473/rtd1295-openwrt18-porting/wiki/IPv6%E9%85%8D%E7%BD%AE) works better*
+
+* RTD1296 (Z9S,etc.)
+    * [Complete Edition](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.5_full) (**recommended**)
+* RTD1295 (X9S,etc.)
+    * [Complete Edition](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/x9s_1.5_full) (**recommended**)
 
 #### 1.4 (2019-04-13)
 *Complete Edition only add aria2*
@@ -47,7 +64,7 @@ Before 1.3, only supports (Linux 4.1.35-04005-g6c2818e-dirty + Android 7.1.1).
 *Offer [FlexGet Sepcial](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.4_flexget), for those who need Python and [FlexGet](https://flexget.com/)*
 
 * RTD1296
-    * [Complete Edition](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.4_full) (**recommended**)
+    * [Complete Edition](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.4_full) 
     * [FlexGet Sepcial](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.4_flexget) (**Python + FlexGet**)
 * RTD1295 (no update)
     * [1.3](#13-2019-04-11)
@@ -62,7 +79,7 @@ Before 1.3, only supports (Linux 4.1.35-04005-g6c2818e-dirty + Android 7.1.1).
 * RTD1296
     * [Complete Edition](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.3_full)
 * RTD1295
-    * [Complete Edition](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/x9s_1.3_full) (**recommended**)
+    * [Complete Edition](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/x9s_1.3_full)
 
 
 #### 1.2 (2019-04-07)
@@ -79,6 +96,8 @@ Before 1.3, only supports (Linux 4.1.35-04005-g6c2818e-dirty + Android 7.1.1).
 * [Basic with Luci Edition](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.0_luci)
 * [Basic without Luci version](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.0_no_luci)
 
+----------------
+----------------
 
 ### References
 1. OpenWrt: https://www.openwrt.org/
