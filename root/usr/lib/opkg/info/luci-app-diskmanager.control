@@ -1,0 +1,8 @@
+Package: luci-app-diskmanager
+Version: git-19.023.13982-f3c7f53-1
+Depends: libc, librt, libpthread, mdadm, parted, mount-utils, swap-utils, e2fsprogs
+Source: realtek/luci/applications/luci-app-diskmanager
+Section: luci
+Architecture: all
+Installed-Size: 11122
+Description:  Disk/RAID configuration module

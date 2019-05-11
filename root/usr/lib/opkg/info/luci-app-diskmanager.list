@@ -1,0 +1,6 @@
+/usr/bin/disk-helper.sh
+/usr/lib/lua/luci/view/raid_creation.htm
+/usr/libexec/rpcd/disk-helper
+/usr/lib/lua/luci/view/partition.htm
+/usr/lib/lua/luci/controller/diskmanager.lua
+/usr/lib/lua/luci/model/cbi/disk.lua

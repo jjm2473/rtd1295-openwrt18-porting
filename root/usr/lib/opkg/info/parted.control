@@ -1,0 +1,10 @@
+Package: parted
+Version: 3.2-1
+Depends: libc, libuuid1, libblkid1
+Source: package/third/parted-on-openwrt
+SourceName: parted
+Section: utils
+Architecture: aarch64_cortex-a53
+Installed-Size: 186351
+Description:  parted Partition editor
+ http://www.gnu.org/software/parted/index.shtml

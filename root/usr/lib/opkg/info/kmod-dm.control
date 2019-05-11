@@ -1,10 +1,10 @@
 Package: kmod-dm
-Version: 4.14.109-1
-Depends: kernel (=4.14.109-1-ea4f7c894f16c09b49fa3b83cad0280e), kmod-crypto-manager, kmod-dax
+Version: 4.1.7-1
+Depends: kernel (=4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2), kmod-crypto-manager
 Source: package/kernel/linux
-SourceName: kmod-dm
-License: GPL-2.0
+License: GPLv2
 Section: kernel
-Architecture: aarch64_cortex-a53
-Installed-Size: 85710
+Status: unknown hold not-installed
+Architecture: rtd1295
+Installed-Size: 20778
 Description:  Kernel module necessary for LVM2 support

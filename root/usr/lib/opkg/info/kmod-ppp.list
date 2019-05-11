@@ -1,3 +1,2 @@
+/lib/modules/4.1.35-04005-g6c2818e-dirty/ppp_async.ko
 /etc/modules.d/ppp
-/lib/modules/4.14.107/ppp_generic.ko
-/lib/modules/4.14.107/ppp_async.ko

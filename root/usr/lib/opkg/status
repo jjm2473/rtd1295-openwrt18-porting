@@ -175,14 +175,6 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
 Alternatives: 100:/usr/bin/find:/bin/busybox, 100:/usr/bin/flock:/bin/busybox, 100:/usr/bin/free:/bin/busybox, 100:/sbin/ip:/bin/busybox, 100:/bin/kill:/bin/busybox, 100:/usr/bin/pgrep:/bin/busybox, 100:/bin/ps:/bin/busybox, 100:/usr/bin/top:/bin/busybox, 100:/usr/bin/uptime:/bin/busybox, 100:/usr/bin/xargs:/bin/busybox
 
-Package: kmod-crypto-cts
-Version: 4.14.109-1
-Depends: kernel (= 4.14.109-1-ea4f7c894f16c09b49fa3b83cad0280e), kmod-crypto-manager
-Status: install ok installed
-Architecture: aarch64_cortex-a53
-Installed-Time: 1554049402
-Auto-Installed: yes
-
 Package: luci-lib-ip
 Version: git-19.088.25182-8e3e502-1
 Depends: libc, liblua5.1.5, libnl-tiny
@@ -197,29 +189,6 @@ Depends: libc, libubus20170705, liblua5.1.5
 Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553960192
-Auto-Installed: yes
-
-Package: kmod-crypto-hash
-Version: 4.14.109-1
-Depends: kernel (= 4.14.109-1-ea4f7c894f16c09b49fa3b83cad0280e)
-Status: install ok installed
-Architecture: aarch64_cortex-a53
-Installed-Time: 1554049395
-Auto-Installed: yes
-
-Package: kmod-nf-reject6
-Version: 4.14.107-1
-Depends: kernel (= 4.14.107-1-baef5e1f1cb3d6b76c6d687e645dc927)
-Status: install user installed
-Architecture: aarch64_cortex-a53
-Installed-Time: 1553274868
-
-Package: kmod-crypto-aead
-Version: 4.14.109-1
-Depends: kernel (= 4.14.109-1-ea4f7c894f16c09b49fa3b83cad0280e), kmod-crypto-null
-Status: install ok installed
-Architecture: aarch64_cortex-a53
-Installed-Time: 1554049398
 Auto-Installed: yes
 
 Package: libiwinfo-lua
@@ -266,14 +235,6 @@ Status: install user installed
 Architecture: all
 Installed-Time: 1548323676
 
-Package: kmod-crypto-md5
-Version: 4.14.109-1
-Depends: kernel (= 4.14.109-1-ea4f7c894f16c09b49fa3b83cad0280e), kmod-crypto-hash
-Status: install ok installed
-Architecture: aarch64_cortex-a53
-Installed-Time: 1554049403
-Auto-Installed: yes
-
 Package: luci-mod-system
 Version: git-19.088.25182-8e3e502-1
 Depends: libc, luci-base
@@ -281,13 +242,6 @@ Status: install ok installed
 Architecture: all
 Installed-Time: 1553960266
 Auto-Installed: yes
-
-Package: kmod-nf-flow
-Version: 4.14.107-1
-Depends: kernel (= 4.14.107-1-baef5e1f1cb3d6b76c6d687e645dc927), kmod-nf-conntrack
-Status: install user installed
-Architecture: aarch64_cortex-a53
-Installed-Time: 1553274868
 
 Package: libogg
 Version: 1.3.3-1
@@ -297,12 +251,13 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1553966944
 Auto-Installed: yes
 
-Package: kmod-lib-crc-ccitt
-Version: 4.14.107-1
-Depends: kernel (= 4.14.107-1-baef5e1f1cb3d6b76c6d687e645dc927)
-Status: install user installed
-Architecture: aarch64_cortex-a53
-Installed-Time: 1553274868
+Package: luci-app-aria2
+Version: 1.0.1-4
+Depends: libc, luci-lib-ipkg, aria2
+Status: install ok installed
+Architecture: all
+Installed-Time: 1555136346
+Auto-Installed: yes
 
 Package: resize2fs
 Version: 1.44.5-1
@@ -436,6 +391,13 @@ Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
 
+Package: dosfstools
+Version: 4.1-1
+Depends: libc
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1557555224
+
 Package: netifd
 Version: 2019-03-21-34a70b62-1
 Depends: libc, libuci20130104, libnl-tiny, libubus20170705, ubus, ubusd, jshn, libubox20170601
@@ -500,6 +462,15 @@ Provides: libuclient
 Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
+
+Package: libmount1
+Version: 2.33-2
+Depends: libc, libblkid1
+Provides: libmount
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1557547859
+Auto-Installed: yes
 
 Package: attr
 Version: 2.4.48-1
@@ -717,10 +688,9 @@ Installed-Time: 1553274868
 Package: lua
 Version: 5.1.5-2
 Depends: libc, liblua5.1.5
-Status: install ok installed
+Status: install hold installed
 Architecture: aarch64_cortex-a53
-Installed-Time: 1553960168
-Auto-Installed: yes
+Installed-Time: 1557505299
 
 Package: libwebsockets-openssl
 Version: 3.1.0-1
@@ -845,6 +815,20 @@ Conffiles:
  /etc/exports 561d777edf21faf3358e85765de44c9a20b06f726f4a677463fd8fbefc5497a1
 Installed-Time: 1554049425
 
+Package: parted
+Version: 3.2-1
+Depends: libc, libuuid1, libblkid1
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1557546674
+
+Package: luci-i18n-aria2-zh-cn
+Version: 1.0.1-4
+Depends: libc, luci-app-aria2
+Status: install user installed
+Architecture: all
+Installed-Time: 1555136346
+
 Package: libnatpmp
 Version: 20150609-1
 Depends: libc
@@ -895,6 +879,13 @@ Conffiles:
  /etc/ppp/filter 579583b318e0cff706ffc134620b42d3fbce8fc31aeb0ad7eea1cc859868e902
  /etc/ppp/options 01f7358a5528be037dde329a2ecfb7a63382aababf21d4f5bc085f5acef95133
 Installed-Time: 1553274868
+
+Package: ariang
+Version: 2018-11-21-f40f5a78-1
+Depends: libc, aria2, uhttpd
+Status: install user installed
+Architecture: all
+Installed-Time: 1555136807
 
 Package: luci-base
 Version: git-19.088.25182-8e3e502-1
@@ -988,6 +979,13 @@ Depends: libc, librt, libpthread, luci-app-forked-daapd
 Status: install user installed
 Architecture: all
 Installed-Time: 1548323675
+
+Package: swap-utils
+Version: 2.33-2
+Depends: libc, librt, libblkid1
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1557548807
 
 Package: luci-proto-ipv6
 Version: git-19.088.25182-8e3e502-1
@@ -1106,6 +1104,15 @@ Architecture: all
 Installed-Time: 1553966307
 Auto-Installed: yes
 
+Package: mdadm
+Version: 4.1-1
+Depends: libc, libpthread, kmod-md-mod, kmod-md-raid0, kmod-md-raid10, kmod-md-raid1
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Conffiles:
+ /etc/config/mdadm b1ff7f54de2e179fe6fa76116d6bc48be23ba6fe4e50ce26c35edb569413692c
+Installed-Time: 1557546539
+
 Package: minidlna
 Version: 2018-04-10-799e6cf5-1
 Depends: libc, libpthread, libexif, libjpeg, libsqlite3, libffmpeg, libid3tag, libflac, libvorbis, libuuid1
@@ -1169,6 +1176,13 @@ Conffiles:
  /etc/config/transmission 9f176b3e644cdf3fefc354af68cd61f6956e762b47587489dd1a22670acd2d43
 Installed-Time: 1553966642
 
+Package: luac
+Version: 5.1.5-2
+Depends: libc, liblua5.1.5
+Status: install hold installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1557505299
+
 Package: usign
 Version: 2015-07-04-ef641914-1
 Depends: libc, libubox20170601
@@ -1195,9 +1209,9 @@ Package: liblua5.1.5
 Version: 5.1.5-2
 Depends: libc
 Provides: liblua
-Status: install ok installed
+Status: install hold installed
 Architecture: aarch64_cortex-a53
-Installed-Time: 1553960154
+Installed-Time: 1557505299
 Auto-Installed: yes
 
 Package: zlib
@@ -1288,6 +1302,15 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1553274868
 Auto-Installed: yes
 
+Package: libstdcpp6
+Version: 7.4.0-1
+Provides: libstdcpp
+Status: install hold installed
+Essential: yes
+Architecture: aarch64_cortex-a53
+Installed-Time: 1555136309
+Auto-Installed: yes
+
 Package: libsqlite3
 Version: 3260000-3
 Depends: libc, libpthread, zlib
@@ -1320,7 +1343,7 @@ Installed-Time: 1553274868
 Auto-Installed: yes
 
 Package: kernel
-Version: 4.14.109-1-ea4f7c894f16c09b49fa3b83cad0280e
+Version: 4.14.115-1-23d15a724f40bd7560c0ff99cd797489
 Depends: libc
 Status: install user installed
 Architecture: aarch64_cortex-a53
@@ -1364,6 +1387,14 @@ Provides: libevent2
 Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553966636
+Auto-Installed: yes
+
+Package: aria2
+Version: 1.34.0-6
+Depends: libc, zlib, libstdcpp6, libopenssl1.1
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1555136344
 Auto-Installed: yes
 
 Package: luci-mod-network
@@ -1445,6 +1476,13 @@ Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1554008699
 Auto-Installed: yes
+
+Package: mount-utils
+Version: 2.33-2
+Depends: libc, librt, libmount1, libsmartcols1
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1557547859
 
 Package: transmission-web
 Version: 2.94-3
@@ -1576,6 +1614,13 @@ Depends: libc, luci-app-minidlna
 Status: install user installed
 Architecture: all
 Installed-Time: 1553967011
+
+Package: luci-app-diskmanager
+Version: git-19.023.13982-f3c7f53-1
+Depends: libc, librt, libpthread, mdadm, parted, mount-utils, swap-utils, e2fsprogs
+Status: install user installed
+Architecture: all
+Installed-Time: 1557559776
 
 Package: samba4-hotplug
 Version: 1-1

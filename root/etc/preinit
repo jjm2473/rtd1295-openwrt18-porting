@@ -1,13 +1,10 @@
 #!/bin/sh
 # Copyright (C) 2006-2016 OpenWrt.org
 # Copyright (C) 2010 Vertical Communications
-# 2019 jjm2473 porting openwrt 18.06.2+ to zidoo z9s
 
 [ -z "$PREINIT" ] && exec /sbin/init
 
 export PATH="/usr/sbin:/usr/bin:/sbin:/bin"
-
-touch /android/.coldplug_done || touch /rom/android/.coldplug_done
 
 . /lib/functions.sh
 . /lib/functions/preinit.sh
