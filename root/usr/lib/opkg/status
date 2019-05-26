@@ -1625,7 +1625,7 @@ Package: samba4-hotplug
 Version: 1-1
 Depends: libc, librt, libpthread, samba4-server
 Status: install user installed
-Architecture: rtd1295
+Architecture: all
 Installed-Time: 1548323670
 
 Package: kmod-l2tp
