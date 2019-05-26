@@ -1,0 +1,371 @@
+Package: kmod-l2tp
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2), kmod-ipv6, kmod-udptunnel4, kmod-udptunnel6
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323667
+
+Package: kmod-rtl8168
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2), kmod-mii
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323667
+
+Package: kmod-crypto-manager
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2), kmod-crypto-aead, kmod-crypto-hash, kmod-crypto-pcompress, kmod-crypto-core
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323666
+Auto-Installed: yes
+
+Package: kmod-crypto-pcompress
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2), kmod-crypto-core
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323666
+Auto-Installed: yes
+
+Package: kmod-crypto-hash
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2), kmod-crypto-core
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323666
+Auto-Installed: yes
+
+Package: kmod-crypto-aead
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2), kmod-crypto-core
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323666
+
+Package: kmod-ufsd
+Version: 4.1.7-rtd1295-2
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2), libc
+Status: install user installed
+Architecture: rtd1295
+Installed-Time: 1548323668
+
+Package: kmod-md-multipath
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2), kmod-md-mod
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323667
+
+Package: kmod-lib-crc-ccitt
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2)
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323667
+
+Package: kmod-fs-nfsd
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2), kmod-fs-nfs-common, kmod-fs-exportfs
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323667
+
+Package: kmod-md-mod
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2)
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323667
+Auto-Installed: yes
+
+Package: kmod-gre
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2), kmod-ipv6, kmod-iptunnel
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323667
+
+Package: kmod-md-raid10
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2), kmod-md-mod
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323667
+
+Package: kmod-pppoe
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2), kmod-ppp, kmod-pppox
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323667
+
+Package: kmod-pppox
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2), kmod-ppp
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323667
+Auto-Installed: yes
+
+Package: kmod-crypto-crc32c
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2), kmod-crypto-hash, kmod-crypto-core
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323666
+
+Package: kmod-lib-xor
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2)
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323667
+
+Package: kmod-mii
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2)
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323667
+
+Package: kmod-dm
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2), kmod-crypto-manager
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323667
+
+Package: kmod-lib-crc32c
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2), kmod-crypto-crc32c
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323667
+
+Package: kmod-iptunnel
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2)
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323667
+Auto-Installed: yes
+
+Package: kmod-pptp
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2), kmod-ppp, kmod-gre, kmod-pppox
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323667
+
+Package: kmod-md-linear
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2), kmod-md-mod
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323667
+
+Package: kmod-udptunnel4
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2)
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323667
+Auto-Installed: yes
+
+Package: kmod-udptunnel6
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2)
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323667
+Auto-Installed: yes
+
+Package: kmod-md-raid456
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2), kmod-md-mod, kmod-lib-raid6, kmod-lib-xor
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323667
+
+Package: kmod-cryptodev
+Version: 4.1.7+1.9.git-2017-05-29-rtd1295-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2), kmod-crypto-authenc, kmod-crypto-hash
+Status: install user installed
+Architecture: rtd1295
+Installed-Time: 1548323678
+
+Package: kmod-crypto-aes
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2), kmod-crypto-core
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323666
+
+Package: kmod-crypto-core
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2)
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323666
+Auto-Installed: yes
+
+Package: kmod-crypto-authenc
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2), kmod-crypto-manager, kmod-crypto-core
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323666
+
+Package: kmod-lib-raid6
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2)
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323667
+
+Package: kmod-ata-ahci
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2), kmod-ata-core
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323666
+
+Package: kmod-dnsresolver
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2)
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323667
+
+Package: kmod-rtksdmmc
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2)
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323667
+
+Package: kmod-crypto-ecb
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2), kmod-crypto-manager, kmod-crypto-core
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323666
+
+Package: kmod-ipv6
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2)
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323667
+Auto-Installed: yes
+
+Package: kmod-ata-core
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2), kmod-scsi-core
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323666
+Auto-Installed: yes
+
+Package: kmod-ppp
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2), kmod-lib-crc-ccitt, kmod-slhc
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323667
+Auto-Installed: yes
+
+Package: kmod-fs-nfs
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2), kmod-fs-nfs-common, kmod-dnsresolver
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323667
+
+Package: kmod-md-raid0
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2), kmod-md-mod
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323667
+
+Package: kmod-md-raid1
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2), kmod-md-mod
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323667
+
+Package: kmod-fs-exportfs
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2)
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323667
+
+Package: kmod-lib-lzo
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2)
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323667
+
+Package: kmod-lib-zlib
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2)
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323667
+
+Package: kmod-fs-nfs-common
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2)
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323667
+
+Package: kmod-mppe
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2), kmod-ppp, kmod-crypto-core, kmod-crypto-arc4, kmod-crypto-sha1, kmod-crypto-ecb
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323667
+
+Package: kmod-crypto-arc4
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2), kmod-crypto-core
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323666
+
+Package: kmod-crypto-sha1
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2), kmod-crypto-hash, kmod-crypto-core
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323666
+
+Package: kmod-pppol2tp
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2), kmod-ppp, kmod-pppox, kmod-l2tp
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323667
+
+Package: kmod-scsi-core
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2)
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323666
+Auto-Installed: yes
+
+Package: kmod-slhc
+Version: 4.1.7-1
+Depends: kernel (= 4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2), kmod-lib-crc-ccitt
+Status: install hold installed
+Architecture: rtd1295
+Installed-Time: 1548323667
+Auto-Installed: yes
+
