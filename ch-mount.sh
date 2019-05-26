@@ -24,6 +24,7 @@ function mnt() {
 
 function umnt() {
     echo "UNMOUNTING"
+    ${SUDO} umount ${2}root
     ${SUDO} umount ${2}proc/sys/fs/binfmt_misc
     ${SUDO} umount ${2}tmp
     ${SUDO} umount ${2}mnt
