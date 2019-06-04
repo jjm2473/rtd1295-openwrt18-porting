@@ -183,6 +183,7 @@
 /system/bin/sgdisk      u:object_r:sgdisk_exec:s0
 /system/bin/blkid       u:object_r:blkid_exec:s0
 /system/bin/tzdatacheck u:object_r:tzdatacheck_exec:s0
+#/system/bin/ray2_upgrade u:object_r:ray2_upgrade_exec:s0
 
 #############################
 # Vendor files
@@ -375,6 +376,8 @@
 /system/bin/update_mac.sh u:object_r:realtek_exec:s0
 /system/bin/chkufsd       u:object_r:realtek_exec:s0
 /system/bin/sideband      u:object_r:realtek_exec:s0
+/system/bin/ray2_upgrade u:object_r:realtek_exec:s0
+/system/bin/wifi_connect u:object_r:realtek_exec:s0
 
 # For Mali
 /dev/mali0               u:object_r:user_device:s0
@@ -455,6 +458,3 @@
 # for hidraw daemon
 /system/bin/vr_bee[0-9]*_hidraw_daemon      u:object_r:hidraw_exec:s0
 /dev/hidraw([0-9])+                         u:object_r:hidraw_device:s0
-
-# Contorl4 sddp deamon
-/system/bin/c4_sddpd   u:object_r:sddpd_exec:s0

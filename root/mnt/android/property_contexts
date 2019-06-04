@@ -87,6 +87,3 @@ persist.media.USE_RTMediaPlayer         u:object_r:system_prop:s0
 persist.sys.RunRTKIniSettings           u:object_r:system_prop:s0
 persist.gralloc.afbc.fb                 u:object_r:system_prop:s0
 persist.gralloc.afbc.texture            u:object_r:system_prop:s0
-
-# zidoo property
-zidoo.                                  u:object_r:system_prop:s0

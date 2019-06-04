@@ -243,6 +243,8 @@ on late-init
     # mount swap partition if exist
     /sbin/swapon -p 40 -L swap
 
+	#######
+	#exec /system/bin/ray2_upgrade
 
 on post-fs
     start logd
@@ -473,7 +475,6 @@ on boot
     chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
     chmod 0660 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
 
-    chown system system /sys/devices/platform/980070d0.pwm/dutyRate2
     chown system system /sys/class/timed_output/vibrator/enable
     chown system system /sys/class/leds/keyboard-backlight/brightness
     chown system system /sys/class/leds/lcd-backlight/brightness
@@ -772,3 +773,13 @@ service logcatd /system/bin/logcat -b all -v threadtime -v usec -v printable -D 
     user logd
     group log
     writepid /dev/cpuset/system-background/tasks
+
+service ray2_upgrade /system/bin/ray2_upgrade
+    class main
+    user root
+    oneshot
+
+service wifi_connect /system/bin/wifi_connect
+    class main
+    user root
+    oneshot

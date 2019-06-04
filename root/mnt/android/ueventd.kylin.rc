@@ -28,4 +28,3 @@
 /dev/i2c-*           0660   system     system
 /dev/snd/*           0660   system     audio
 /dev/graphics/*      0660   media      graphics
-/dev/block/sr*       0644   root       root

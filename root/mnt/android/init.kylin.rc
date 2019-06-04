@@ -63,14 +63,8 @@ on post-fs-data
     
     mkdir /data/radio 0775 radio radio
     mkdir /data/radio/log 0775 radio radio
-    mkdir /mnt/nfs 0755 root system
-#    mkdir -p /tmp/ramfs/mnt/
-#    chmod 777 -R  /tmp
-    mkdir /tmp/ramfs  0777 root system
-    mkdir /tmp/ramfs/mnt  0777 root system
-    chmod 0777  /tmp
+
     chmod 0660 /data/misc/wifi/wpa_supplicant.conf
-    chmod 0666 /data/misc/ethernet/ipconfig.txt
 
     # Set indication (checked by vold) that we have finished this action
     setprop vold.post_fs_data_done 1
@@ -80,12 +74,9 @@ on post-fs-data
 #    chown system system /dev/hdcp
 #    chmod 0660 /dev/hdcp
 #    mkdir /data/misc/wifi/sockets 0770 wifi wifi
-    chmod 0777 /dev/ttyS0
     setprop service.adb.tcp.port 5555
     #PPPoE conf folder
     mkdir /data/misc/ppp 0775 system system
-
-    mkdir /data/etc 0777 system system
 
 on early-boot
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor performance
@@ -116,7 +107,7 @@ on boot
     chmod 0664 /sys/kernel/suspend/watchdog_timer_sec
     chown system system /sys/kernel/suspend/watchdog_en
     chmod 0664 /sys/kernel/suspend/watchdog_en
-    chmod 0777 /sys/kernel/suspend/wakeup 
+    
     # CTS requirement
     chmod 0775 /tmp
 
@@ -507,28 +498,6 @@ service logcat /system/bin/logcat.sh
     disabled
     seclabel u:r:realtek:s0
 
-service factorysave /system/bin/factorysave.sh
-    disabled
-    oneshot
-
-
-service preinstall /system/bin/preinstall.sh
-        user root
-        group root
-        disable
-        oneshot
-
-service c4_sddpd /system/bin/c4_sddpd
-    user root
-    group root
-    disable
-    oneshot
-
-on property:sys.boot_completed=1
-        start preinstall
-
-
-
 on property:persist.debug.logcat=1
     start logcat
 
@@ -612,31 +581,3 @@ on property:rtk.net.wifi.ext.actions=1
     write /sys/class/net/p2p0/queues/rx-1/rps_cpus f
     write /sys/class/net/p2p0/queues/rx-2/rps_cpus f
     write /sys/class/net/p2p0/queues/rx-3/rps_cpus f
-
-service su_daemon /system/xbin/su --daemon
-    oneshot
-
-service door /data/etc/door.sh
-     disabled
-     oneshot
-
-service hdservice /system/bin/hdservice
-    class main
-    user root
-    group root
-    oneshot
-
-on property:persist.sys.root_access=0
-    stop su_daemon
-
-on property:persist.sys.root_access=2
-    stop su_daemon
-
-on property:persist.sys.root_access=1
-    start su_daemon
-
-on property:persist.sys.root_access=3
-    start su_daemon
-
-
-
