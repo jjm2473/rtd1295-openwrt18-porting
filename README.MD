@@ -50,6 +50,14 @@
 
 1.3版之前的包只支持(Linux 4.1.35-04005-g6c2818e-dirty + Android 7.1.1)底包.
 
+#### 1.5.1 (2019-06-18)
+*1. 修复FTP用户列表错误*
+
+* RTD1296 (Z9S等)
+    * [完整版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.5.1_full) (**推荐**)
+* RTD1295 (X9S等)
+    * [完整版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/x9s_1.5.1_full) (**推荐**)
+
 #### 1.5 (2019-05-11)
 *1. 移植Zidoo的luci-app-diskmanager, 磁盘管理工具*
 
@@ -60,9 +68,9 @@
 *4. 延迟启动Android, 提高[获取ipv6](https://github.com/jjm2473/rtd1295-openwrt18-porting/wiki/IPv6%E9%85%8D%E7%BD%AE)成功率*
 
 * RTD1296 (Z9S等)
-    * [完整版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.5_full) (**推荐**)
+    * [完整版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.5_full)
 * RTD1295 (X9S等)
-    * [完整版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/x9s_1.5_full) (**推荐**)
+    * [完整版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/x9s_1.5_full)
 
 #### 1.4 (2019-04-13)
 *完整版只是增加了aria2*
