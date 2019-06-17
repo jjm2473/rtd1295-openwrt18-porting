@@ -251,11 +251,11 @@ end
 					<td class="cbi-value-field">
 						<div id="cbi-table-<%=i%>-Action">
 							<% if partitions_info[i]["File system"] ~= "Free Space" then %>
-							<input class="cbi-button cbi-button-remove" value="<%:Remove%>" onclick="removepartition(this.id)"
+							<input class="cbi-button cbi-button-remove" value="<%:Remove%>" onclick="removepartition(this.id)" <% if diskmanager.isUsed(partitions_info[i]["Name"]) then %> disabled<% end %>
 							<% else %>
 							<input class="cbi-button cbi-button-add" value="<%:Add%>" onclick="addpartition(this.id, 'div')"
 							<% end %>
-								type="button" id="cbid.table.<%=i%>.Action"<% if diskmanager.isUsed(partitions_info[i]["Name"]) then %> disabled<% end %>>
+								type="button" id="cbid.table.<%=i%>.Action">
 						</div>
 					</td>
 					<td class="cbi-value-field"><div id="cbi-table-<%=i%>-Number"><%=partitions_info[i].Number%></div></td>

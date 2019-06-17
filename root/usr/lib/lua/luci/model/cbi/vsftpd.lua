@@ -163,6 +163,7 @@ anon_max_rate.rmempty=true
 anon_max_rate:depends("anonymous_enable",1)
 chown_username=s:taboption("anonymous",ListValue,"chown_username",translate("Chown User"))
 chown_username:depends("anonymous_enable",1)
+local list_user
 for _, list_user in luci.util.vspairs(luci.util.split(luci.sys.exec("cat /etc/passwd | cut -f 1 -d:"))) do
     chown_username:value(list_user)
 end
@@ -174,8 +175,14 @@ local_userlist_type=s:taboption("userlist",ListValue,"userlist_type",translate("
 local_userlist_type:value("allow","allow")
 local_userlist_type:value("deny","deny")
 list=s:taboption("userlist",DynamicList,"userlist",translate("User"))
+list.datatype = "string"
 for _, list_user in luci.util.vspairs(luci.util.split(luci.sys.exec("cat /etc/passwd | cut -f 1 -d:"))) do
-    list:value(list_user)
+	repeat
+        if list_user == "" then
+            break
+        end
+        list:value(list_user)
+    until true
 end
 
 tmpl=s:taboption("template",Value,"_tmpl","",translate("Here,you can edit the template of config file"))

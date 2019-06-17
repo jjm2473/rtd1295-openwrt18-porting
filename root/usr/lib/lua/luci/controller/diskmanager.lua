@@ -36,7 +36,7 @@ function index()
 	if executables_all_existed then
 		-- entry(path, target, title, order)
 		-- set leaf attr to true to pass argument throughe url (e.g. admin/system/disk/partition/sda)
-		entry({"admin", "system", "disk"}, cbi("disk"), _("Disk Management"), 55)
+		entry({"admin", "system", "disk"}, form("disk"), _("Disk Management"), 55)
 		entry({"admin", "system", "disk", "partition"}, template("partition"), nil).leaf = true
 		entry({"admin", "system", "disk", "addpartition"}, call("action_addpartition"), nil).leaf = true
 		entry({"admin", "system", "disk", "removepartition"}, call("action_removepartition"), nil).leaf = true

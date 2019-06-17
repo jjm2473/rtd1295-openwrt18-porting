@@ -1,14 +1,14 @@
 Package: lua
-Version: 5.1.5-2
+Version: 5.1.5-3
 Depends: libc, liblua5.1.5
-Source: /root/home/src/openwrt/package/utils/lua
+Source: feeds/base/package/utils/lua
 SourceName: lua
 License: MIT
 LicenseFiles: COPYRIGHT
 Section: lang
 Maintainer: Jo-Philipp Wich <jo@mein.io>
 Architecture: aarch64_cortex-a53
-Installed-Size: 4467
+Installed-Size: 4464
 Description:  Lua is a powerful light-weight programming language designed for extending 
  applications. Lua is also frequently used as a general-purpose, stand-alone 
  language. Lua is free software.
