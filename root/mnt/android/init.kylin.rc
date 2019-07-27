@@ -307,3 +307,29 @@ service gapps_installer /system/bin/gapps_installer.sh
     group root
     disabled
     oneshot
+    
+#jiangbo one rooot
+service zidoo_root /system/bin/zidoo_root.sh
+    user root
+    group root
+    disabled
+    oneshot
+
+service zidoo_unroot /system/bin/zidoo_unroot.sh
+    user root
+    group root
+    disabled
+    oneshot
+#jiangbo one rooot
+
+#jiangbo su daemon
+service su_daemon /system/xbin/su --daemon
+    seclabel u:r:sudaemon:s0
+    oneshot
+
+on property:persist.sys.root_access=0
+    stop su_daemon
+
+on property:persist.sys.root_access=1
+    start su_daemon
+

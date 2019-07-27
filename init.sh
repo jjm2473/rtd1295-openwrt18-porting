@@ -15,7 +15,8 @@ echo './proc
 ./mnt
 ./dev
 ./acct
-./data' | xargs -n1 sh -c 'mkdir -p root/mnt/android/$0'
+./data' | xargs -n1 sh -c 'mkdir -p root/mnt/android/$0; chmod 755 root/mnt/android/$0'
 
-chmod 750 root/mnt/android/data
-chmod 771 root/mnt/android/sbin
+chmod 750 root/mnt/android/sbin
+chmod 771 root/mnt/android/data
+chmod 770 root/mnt/android/cache
