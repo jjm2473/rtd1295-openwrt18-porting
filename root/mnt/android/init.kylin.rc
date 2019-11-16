@@ -96,13 +96,6 @@ on post-fs-data
     #PPPoE conf folder
     mkdir /data/misc/ppp 0775 system system
 
-    mkdir /mnt/nfs 0755 root system
-    mkdir /tmp/ramfs 0777 root system
-    mkdir /tmp/ramfs/mnt 0777 root system
-
-    mkdir /data/etc 0777 system system
-    mkdir /data/etc/gapps 0777 system system
-
 on early-boot
     # insert mali kernel module
     insmod /system/vendor/modules/mali_kbase.ko
@@ -144,11 +137,7 @@ on boot
 
         #UART device
     chmod 0660 /dev/ttyS1
-    chmod 0777 /dev/venus_ir
     chown bluetooth net_bt_stack /dev/ttyS1
-	
-	#change the mode for fan
-	chown system system /sys/devices/platform/980070d0.pwm/dutyRate2
 
     # rfkill
     chmod 0660 /sys/class/rfkill/rfkill0/state
@@ -275,61 +264,4 @@ on property:persist.rtk.performancemode=1
 
 on property:sys.boot_completed=1 && property:persist.rtk.performancemode=0
     write /sys/devices/system/cpu/cpufreq/interactive/boost 0
-
-service factorysave /system/bin/factorysave.sh
-    disabled
-    oneshot
-
-service preinstall /system/bin/preinstall.sh
-    user root
-    group root
-    disable
-    oneshot
-
-service c4_sddpd /system/bin/c4_sddpd
-    user root
-    group root
-    disable
-    oneshot
-
-service hdservice /system/bin/hdservice
-    class main
-    user root
-    group root
-    oneshot
-
-on property:sys.boot_completed=1
-    start preinstall
-    start gapps_installer
-
-service gapps_installer /system/bin/gapps_installer.sh
-    user root
-    group root
-    disabled
-    oneshot
-    
-#jiangbo one rooot
-service zidoo_root /system/bin/zidoo_root.sh
-    user root
-    group root
-    disabled
-    oneshot
-
-service zidoo_unroot /system/bin/zidoo_unroot.sh
-    user root
-    group root
-    disabled
-    oneshot
-#jiangbo one rooot
-
-#jiangbo su daemon
-service su_daemon /system/xbin/su --daemon
-    seclabel u:r:sudaemon:s0
-    oneshot
-
-on property:persist.sys.root_access=0
-    stop su_daemon
-
-on property:persist.sys.root_access=1
-    start su_daemon
 

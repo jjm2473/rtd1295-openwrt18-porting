@@ -1,0 +1,2 @@
+# Device nodes to trigger on-demand module loading.
+ppp_generic ppp c108:0

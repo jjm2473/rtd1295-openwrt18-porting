@@ -4,7 +4,7 @@
 # specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
 
 /dev/block/mmcblk0p1	/system		ext4	ro,noatime	wait
-#/dev/block/mmcblk0p5	/vendor		ext4	ro,noatime	wait
+/dev/block/mmcblk0p5	/vendor		ext4	ro,noatime	wait
 /dev/block/mmcblk0p3	/cache		ext4	rw,noatime,nosuid,nodev,journal_checksum,errors=continue,data_err=ignore,discard	wait
 #/dev/block/mmcblk0p2	/data		ext4	rw,noatime,nosuid,nodev,journal_checksum,errors=continue,data_err=ignore,discard	wait,forceencrypt=/cache/data-MD1
 /dev/block/mmcblk0p2	/data		ext4	rw,noatime,nosuid,nodev,journal_checksum,errors=continue,data_err=ignore,discard	wait,encryptable=/cache/data-MD1

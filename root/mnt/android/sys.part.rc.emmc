@@ -1,3 +1,4 @@
 /dev/block/mmcblk0p1    /system
 /dev/block/mmcblk0p2    /data
 /dev/block/mmcblk0p3    /cache
+/dev/block/mmcblk0p5    /vendor

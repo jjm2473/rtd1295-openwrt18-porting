@@ -26,7 +26,7 @@ debug.atrace.tags.enableflags=0
 #
 # BOOTIMAGE_BUILD_PROPERTIES
 #
-ro.bootimage.build.date=2019年 07月 11日 星期四 18:39:44 CST
-ro.bootimage.build.date.utc=1562841584
-ro.bootimage.build.fingerprint=realtek/rtk_kylin32/kylin32:7.1.1/N9F27C/jiangb07111839:eng/test-keys
-persist.sys.usb.config=none
+ro.bootimage.build.date=Tue May 29 14:09:43 CST 2018
+ro.bootimage.build.date.utc=1527574183
+ro.bootimage.build.fingerprint=realtek/rtk_kylin32/kylin32:7.1.1/N9F27C/mikey05291409:eng/test-keys
+persist.sys.usb.config=adb

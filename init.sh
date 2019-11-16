@@ -12,6 +12,7 @@ echo './proc
 ./storage
 ./system
 ./sys
+./vendor
 ./mnt
 ./dev
 ./acct
