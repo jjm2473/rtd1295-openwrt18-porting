@@ -1,13 +1,12 @@
 Package: libc
-Version: 1.1.21-1
-Depends: libgcc1
+Version: 1.1.19-2
+Depends: libgcc
 Source: package/libs/toolchain
-SourceName: libc
 License: GPL-3.0-with-GCC-exception
 Section: libs
 Status: unknown hold not-installed
 Essential: yes
 Maintainer: Felix Fietkau <nbd@nbd.name>
 Architecture: aarch64_cortex-a53
-Installed-Size: 260589
+Installed-Size: 260428
 Description:  C library

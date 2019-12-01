@@ -1,0 +1,11 @@
+Package: liblucihttp
+Version: 2019-07-05-a34a17d5-1
+Depends: libc
+Source: feeds/luci/contrib/package/lucihttp
+License: ISC
+LicenseFiles: LICENSE
+Section: libs
+Maintainer: Jo-Philipp Wich <jo@mein.io>
+Architecture: aarch64_cortex-a53
+Installed-Size: 6990
+Description:  LuCI HTTP utility library

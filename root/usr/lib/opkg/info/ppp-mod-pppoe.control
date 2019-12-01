@@ -1,11 +1,10 @@
 Package: ppp-mod-pppoe
-Version: 2.4.7.git-2018-06-23-1
+Version: 2.4.7-12
 Depends: libc, kmod-pppoe
 Source: package/network/services/ppp
-SourceName: ppp-mod-pppoe
 License: BSD-4-Clause
 Section: net
 Maintainer: Felix Fietkau <nbd@nbd.name>
 Architecture: aarch64_cortex-a53
-Installed-Size: 9911
+Installed-Size: 9953
 Description:  This package contains a PPPoE (PPP over Ethernet) plugin for ppp.

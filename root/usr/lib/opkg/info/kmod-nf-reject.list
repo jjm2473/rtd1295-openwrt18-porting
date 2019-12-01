@@ -1,2 +1,2 @@
 /etc/modules.d/nf-reject
-/lib/modules/4.14.107/nf_reject_ipv4.ko
+/lib/modules/4.9.198/nf_reject_ipv4.ko

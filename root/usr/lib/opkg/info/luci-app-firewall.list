@@ -1,0 +1,12 @@
+/usr/lib/lua/luci/model/cbi/firewall/forwards.lua
+/usr/lib/lua/luci/controller/firewall.lua
+/usr/lib/lua/luci/model/cbi/firewall/zone-details.lua
+/usr/lib/lua/luci/model/cbi/firewall/forward-details.lua
+/usr/lib/lua/luci/model/cbi/firewall/rule-details.lua
+/usr/lib/lua/luci/view/firewall/cbi_addrule.htm
+/usr/lib/lua/luci/view/firewall/cbi_addforward.htm
+/usr/lib/lua/luci/view/firewall/cbi_addsnat.htm
+/usr/lib/lua/luci/model/cbi/firewall/rules.lua
+/usr/lib/lua/luci/tools/firewall.lua
+/usr/lib/lua/luci/model/cbi/firewall/zones.lua
+/usr/lib/lua/luci/model/cbi/firewall/custom.lua

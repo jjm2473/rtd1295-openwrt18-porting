@@ -1,11 +1,10 @@
 Package: mkf2fs
-Version: 1.12.0-2
-Depends: libc, libf2fs6
+Version: 1.10.0-1
+Depends: libc, libf2fs
 Source: package/utils/f2fs-tools
-SourceName: mkf2fs
 License: GPLv2
 Section: utils
 Maintainer: Felix Fietkau <nbd@nbd.name>
 Architecture: aarch64_cortex-a53
-Installed-Size: 13499
+Installed-Size: 11551
 Description:  Utility for creating a Flash-Friendly File System (F2FS)

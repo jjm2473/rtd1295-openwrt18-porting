@@ -3,10 +3,9 @@ Version: 2018-05-18-103a32e9-1
 Depends: libc
 Provides: lede-keyring
 Source: package/system/openwrt-keyring
-SourceName: openwrt-keyring
 License: GPL-2.0
 Section: base
 Maintainer: John Crispin <john@phrozen.org>
 Architecture: aarch64_cortex-a53
-Installed-Size: 1156
+Installed-Size: 1155
 Description:  The keyring of with the developer using and gpg public keys.
