@@ -1,0 +1,3 @@
+/etc/modules.d/30-fs-vfat
+/lib/modules/4.9.198/fat.ko
+/lib/modules/4.9.198/vfat.ko

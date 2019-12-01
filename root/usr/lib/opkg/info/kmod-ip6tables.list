@@ -1,5 +1,5 @@
+/lib/modules/4.9.198/ip6table_mangle.ko
 /etc/modules.d/42-ip6tables
-/lib/modules/4.14.107/ip6table_mangle.ko
-/lib/modules/4.14.107/ip6table_filter.ko
-/lib/modules/4.14.107/nf_log_ipv6.ko
-/lib/modules/4.14.107/ip6t_REJECT.ko
+/lib/modules/4.9.198/ip6table_filter.ko
+/lib/modules/4.9.198/ip6t_REJECT.ko
+/lib/modules/4.9.198/nf_log_ipv6.ko

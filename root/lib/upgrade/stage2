@@ -122,7 +122,6 @@ kill_remaining() { # [ <signal> [ <loop> ] ]
 	echo
 }
 
-indicate_upgrade
 
 killall -9 telnetd
 killall -9 dropbear

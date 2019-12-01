@@ -1,11 +1,10 @@
 Package: procd
-Version: 2019-03-11-d876d1ca-1
-Depends: libc, ubusd, ubus, libjson-script, ubox, libubox20170601, libubus20170705
+Version: 2018-03-28-dfb68f85-1
+Depends: libc, ubusd, ubus, libjson-script, ubox, libubox, libubus
 Source: package/system/procd
-SourceName: procd
 License: GPL-2.0
 Section: base
 Maintainer: John Crispin <john@phrozen.org>
 Architecture: aarch64_cortex-a53
-Installed-Size: 39190
+Installed-Size: 41538
 Description:  OpenWrt system process manager

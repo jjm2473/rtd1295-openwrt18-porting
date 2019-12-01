@@ -1,0 +1,5 @@
+/etc/hotplug.d/ieee80211/10-wifi-detect
+/lib/netifd/wireless/mac80211.sh
+/lib/wifi/mac80211.sh
+/lib/modules/4.9.198/cfg80211.ko
+/lib/modules/4.9.198/compat.ko
