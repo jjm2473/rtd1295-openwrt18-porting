@@ -7,17 +7,15 @@ module("luci.controller.admin.system", package.seeall)
 function index()
 	local fs = require "nixio.fs"
 
+	entry({"admin", "system"}, alias("admin", "system", "system"), _("System"), 30).index = true
 	entry({"admin", "system", "system"}, cbi("admin_system/system"), _("System"), 1)
 	entry({"admin", "system", "clock_status"}, post_on({ set = true }, "action_clock_status"))
 
-	entry({"admin", "system", "admin"}, firstchild(), _("Administration"), 2)
-	entry({"admin", "system", "admin", "password"}, template("admin_system/password"), _("Router Password"), 1)
-	entry({"admin", "system", "admin", "password", "json"}, post("action_password"))
+	entry({"admin", "system", "admin"}, cbi("admin_system/admin"), _("Administration"), 2)
 
-	if fs.access("/etc/config/dropbear") then
-		entry({"admin", "system", "admin", "dropbear"}, cbi("admin_system/dropbear"), _("SSH Access"), 2)
-		entry({"admin", "system", "admin", "sshkeys"}, template("admin_system/sshkeys"), _("SSH-Keys"), 3)
-		entry({"admin", "system", "admin", "sshkeys", "json"}, post_on({ keys = true }, "action_sshkeys"))
+	if fs.access("/bin/opkg") then
+		entry({"admin", "system", "packages"}, post_on({ exec = "1" }, "action_packages"), _("Software"), 10)
+		entry({"admin", "system", "packages", "ipkg"}, form("admin_system/ipkg"))
 	end
 
 	entry({"admin", "system", "startup"}, form("admin_system/startup"), _("Startup"), 45)
@@ -37,7 +35,6 @@ function index()
 	entry({"admin", "system", "flashops"}, call("action_flashops"), _("Backup / Flash Firmware"), 70)
 	entry({"admin", "system", "flashops", "reset"}, post("action_reset"))
 	entry({"admin", "system", "flashops", "backup"}, post("action_backup"))
-	entry({"admin", "system", "flashops", "backupmtdblock"}, post("action_backupmtdblock"))
 	entry({"admin", "system", "flashops", "backupfiles"}, form("admin_system/backupfiles"))
 
 	-- call() instead of post() due to upload handling!
@@ -62,6 +59,124 @@ function action_clock_status()
 
 	luci.http.prepare_content("application/json")
 	luci.http.write_json({ timestring = os.date("%c") })
+end
+
+function action_packages()
+	local fs = require "nixio.fs"
+	local ipkg = require "luci.model.ipkg"
+	local submit = (luci.http.formvalue("exec") == "1")
+	local update, upgrade
+	local changes = false
+	local install = { }
+	local remove  = { }
+	local stdout  = { "" }
+	local stderr  = { "" }
+	local out, err
+
+	-- Display
+	local display = luci.http.formvalue("display") or "available"
+
+	-- Letter
+	local letter = string.byte(luci.http.formvalue("letter") or "A", 1)
+	letter = (letter == 35 or (letter >= 65 and letter <= 90)) and letter or 65
+
+	-- Search query
+	local query = luci.http.formvalue("query")
+	query = (query ~= '') and query or nil
+
+
+	-- Modifying actions
+	if submit then
+		-- Packets to be installed
+		local ninst = luci.http.formvalue("install")
+		local uinst = nil
+
+		-- Install from URL
+		local url = luci.http.formvalue("url")
+		if url and url ~= '' then
+			uinst = url
+		end
+
+		-- Do install
+		if ninst then
+			install[ninst], out, err = ipkg.install(ninst)
+			stdout[#stdout+1] = out
+			stderr[#stderr+1] = err
+			changes = true
+		end
+
+		if uinst then
+			local pkg
+			for pkg in luci.util.imatch(uinst) do
+				install[uinst], out, err = ipkg.install(pkg)
+				stdout[#stdout+1] = out
+				stderr[#stderr+1] = err
+				changes = true
+			end
+		end
+
+		-- Remove packets
+		local rem = luci.http.formvalue("remove")
+		if rem then
+			remove[rem], out, err = ipkg.remove(rem)
+			stdout[#stdout+1] = out
+			stderr[#stderr+1] = err
+			changes = true
+		end
+
+
+		-- Update all packets
+		update = luci.http.formvalue("update")
+		if update then
+			update, out, err = ipkg.update()
+			stdout[#stdout+1] = out
+			stderr[#stderr+1] = err
+		end
+
+
+		-- Upgrade all packets
+		upgrade = luci.http.formvalue("upgrade")
+		if upgrade then
+			upgrade, out, err = ipkg.upgrade()
+			stdout[#stdout+1] = out
+			stderr[#stderr+1] = err
+		end
+	end
+
+
+	-- List state
+	local no_lists = true
+	local old_lists = false
+	if fs.access("/var/opkg-lists/") then
+		local list
+		for list in fs.dir("/var/opkg-lists/") do
+			no_lists = false
+			if (fs.stat("/var/opkg-lists/"..list, "mtime") or 0) < (os.time() - (24 * 60 * 60)) then
+				old_lists = true
+				break
+			end
+		end
+	end
+
+
+	luci.template.render("admin_system/packages", {
+		display   = display,
+		letter    = letter,
+		query     = query,
+		install   = install,
+		remove    = remove,
+		update    = update,
+		upgrade   = upgrade,
+		no_lists  = no_lists,
+		old_lists = old_lists,
+		stdout    = table.concat(stdout, ""),
+		stderr    = table.concat(stderr, "")
+	})
+
+	-- Remove index cache
+	if changes then
+		fs.unlink("/tmp/luci-indexcache")
+	end
 end
 
 local function image_supported(image)
@@ -154,17 +269,15 @@ function action_sysupgrade()
 	--
 	-- Initiate firmware flash
 	--
-	local step = tonumber(http.formvalue("step")) or 1
+	local step = tonumber(http.formvalue("step") or 1)
 	if step == 1 then
-		local force = http.formvalue("force")
-		if image_supported(image_tmp) or force then
+		if image_supported(image_tmp) then
 			luci.template.render("admin_system/upgrade", {
 				checksum = image_checksum(image_tmp),
 				sha256ch = image_sha256_checksum(image_tmp),
 				storage  = storage_size(),
 				size     = (fs.stat(image_tmp, "size") or 0),
-				keep     = (not not http.formvalue("keep")),
-				force    = (not not http.formvalue("force"))
+				keep     = (not not http.formvalue("keep"))
 			})
 		else
 			fs.unlink(image_tmp)
@@ -174,44 +287,31 @@ function action_sysupgrade()
 				image_invalid = true
 			})
 		end
-
 	--
 	-- Start sysupgrade flash
 	--
 	elseif step == 2 then
 		local keep = (http.formvalue("keep") == "1") and "" or "-n"
-		local force = (http.formvalue("force") == "1") and "-F" or ""
 		luci.template.render("admin_system/applyreboot", {
 			title = luci.i18n.translate("Flashing..."),
 			msg   = luci.i18n.translate("The system is flashing now.<br /> DO NOT POWER OFF THE DEVICE!<br /> Wait a few minutes before you try to reconnect. It might be necessary to renew the address of your computer to reach the device again, depending on your settings."),
-			addr  = (#keep > 0) and (#force > 0) and "192.168.1.1" or nil
+			addr  = (#keep > 0) and "192.168.1.1" or nil
 		})
-		luci.sys.process.exec({ "/bin/sh", "-c","sleep 1; killall dropbear uhttpd; sleep 1; /sbin/sysupgrade %s %s %q" %{ keep, force, image_tmp } }, nil, nil, true)
+		fork_exec("sleep 1; killall dropbear uhttpd; sleep 1; /sbin/sysupgrade %s %q" %{ keep, image_tmp })
 	end
 end
 
 function action_backup()
-	luci.http.header('Content-Disposition', 'attachment; filename="backup-%s-%s.tar.gz"'
-		%{ luci.sys.hostname(), os.date("%Y-%m-%d") })
+	local reader = ltn12_popen("sysupgrade --create-backup - 2>/dev/null")
+
+	luci.http.header(
+		'Content-Disposition', 'attachment; filename="backup-%s-%s.tar.gz"' %{
+			luci.sys.hostname(),
+			os.date("%Y-%m-%d")
+		})
 
 	luci.http.prepare_content("application/x-targz")
-	luci.sys.process.exec({ "/sbin/sysupgrade", "--create-backup", "-" }, luci.http.write)
-end
-
-function action_backupmtdblock()
-	local mv = luci.http.formvalue("mtdblockname") or ""
-	local m, n = mv:match('^([^%s%./"]+)/%d+/(%d+)$')
-
-	if not m and n then
-		luci.http.status(400, "Bad Request")
-		return
-	end
-
-	luci.http.header('Content-Disposition', 'attachment; filename="backup-%s-%s-%s.bin"'
-		%{ luci.sys.hostname(), m, os.date("%Y-%m-%d") })
-
-	luci.http.prepare_content("application/octet-stream")
-	luci.sys.process.exec({ "/bin/dd", "if=/dev/mtd%s" % n, "conv=fsync,notrunc" }, luci.http.write)
+	luci.ltn12.pump.all(reader, luci.http.write)
 end
 
 function action_restore()
@@ -266,74 +366,83 @@ function action_reset()
 			addr  = "192.168.1.1"
 		})
 
-		luci.sys.process.exec({ "/bin/sh", "-c", "sleep 1; killall dropbear uhttpd; sleep 1; jffs2reset -y && reboot" }, nil, nil, true)
+		fork_exec("sleep 1; killall dropbear uhttpd; sleep 1; jffs2reset -y && reboot")
 		return
 	end
 
 	http.redirect(luci.dispatcher.build_url('admin/system/flashops'))
 end
 
-function action_password()
-	local password = luci.http.formvalue("password")
-	if not password then
-		luci.http.status(400, "Bad Request")
-		return
-	end
+function action_passwd()
+	local p1 = luci.http.formvalue("pwd1")
+	local p2 = luci.http.formvalue("pwd2")
+	local stat = nil
 
-	luci.http.prepare_content("application/json")
-	luci.http.write_json({ code = luci.sys.user.setpasswd("root", password) })
-end
-
-function action_sshkeys()
-	local keys = luci.http.formvalue("keys")
-	if keys then
-		keys = luci.jsonc.parse(keys)
-		if not keys or type(keys) ~= "table" then
-			luci.http.status(400, "Bad Request")
-			return
-		end
-
-		local fd, err = io.open("/etc/dropbear/authorized_keys", "w")
-		if not fd then
-			luci.http.status(503, err)
-			return
-		end
-
-		local _, k
-		for _, k in ipairs(keys) do
-			if type(k) == "string" and k:match("^%w+%-") then
-				fd:write(k)
-				fd:write("\n")
-			end
-		end
-
-		fd:close()
-	end
-
-	local fd, err = io.open("/etc/dropbear/authorized_keys", "r")
-	if not fd then
-		luci.http.status(503, err)
-		return
-	end
-
-	local rv = {}
-	while true do
-		local ln = fd:read("*l")
-		if not ln then
-			break
-		elseif ln:match("^[%w%-]+%s+[A-Za-z0-9+/=]+$") or
-		       ln:match("^[%w%-]+%s+[A-Za-z0-9+/=]+%s")
-		then
-			rv[#rv+1] = ln
+	if p1 or p2 then
+		if p1 == p2 then
+			stat = luci.sys.user.setpasswd("root", p1)
+		else
+			stat = 10
 		end
 	end
 
-	fd:close()
-
-	luci.http.prepare_content("application/json")
-	luci.http.write_json(rv)
+	luci.template.render("admin_system/passwd", {stat=stat})
 end
 
 function action_reboot()
 	luci.sys.reboot()
+end
+
+function fork_exec(command)
+	local pid = nixio.fork()
+	if pid > 0 then
+		return
+	elseif pid == 0 then
+		-- change to root dir
+		nixio.chdir("/")
+
+		-- patch stdin, out, err to /dev/null
+		local null = nixio.open("/dev/null", "w+")
+		if null then
+			nixio.dup(null, nixio.stderr)
+			nixio.dup(null, nixio.stdout)
+			nixio.dup(null, nixio.stdin)
+			if null:fileno() > 2 then
+				null:close()
+			end
+		end
+
+		-- replace with target command
+		nixio.exec("/bin/sh", "-c", command)
+	end
+end
+
+function ltn12_popen(command)
+
+	local fdi, fdo = nixio.pipe()
+	local pid = nixio.fork()
+
+	if pid > 0 then
+		fdo:close()
+		local close
+		return function()
+			local buffer = fdi:read(2048)
+			local wpid, stat = nixio.waitpid(pid, "nohang")
+			if not close and wpid and stat == "exited" then
+				close = true
+			end
+
+			if buffer and #buffer > 0 then
+				return buffer
+			elseif close then
+				fdi:close()
+				return nil
+			end
+		end
+	elseif pid == 0 then
+		nixio.dup(fdo, nixio.stdout)
+		fdi:close()
+		fdo:close()
+		nixio.exec("/bin/sh", "-c", command)
+	end
 end

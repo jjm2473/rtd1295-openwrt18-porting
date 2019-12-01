@@ -8,6 +8,12 @@ function index()
 	local uci = require("luci.model.uci").cursor()
 	local page
 
+	page = node("admin", "network")
+	page.target = firstchild()
+	page.title  = _("Network")
+	page.order  = 50
+	page.index  = true
+
 --	if page.inreq then
 		local has_switch = false
 
@@ -37,6 +43,9 @@ function index()
 			end)
 
 		if has_wifi then
+			page = entry({"admin", "network", "wireless_assoclist"}, call("wifi_assoclist"), nil)
+			page.leaf = true
+
 			page = entry({"admin", "network", "wireless_join"}, post("wifi_join"), nil)
 			page.leaf = true
 
@@ -107,6 +116,9 @@ function index()
 			page.title  = _("DHCP and DNS")
 			page.order  = 30
 
+			page = entry({"admin", "network", "dhcplease_status"}, call("lease_status"), nil)
+			page.leaf = true
+
 			page = node("admin", "network", "hosts")
 			page.target = cbi("admin_network/hosts")
 			page.title  = _("Hostnames")
@@ -175,8 +187,7 @@ function wifi_add()
 		local net = dev:add_wifinet({
 			mode       = "ap",
 			ssid       = "OpenWrt",
-			encryption = "none",
-			disabled   = 1
+			encryption = "none"
 		})
 
 		ntm:save("wireless")
@@ -297,6 +308,14 @@ function wifi_reconnect(radio)
 	end
 end
 
+function wifi_assoclist()
+	local s = require "luci.tools.status"
+
+	luci.http.prepare_content("application/json")
+	luci.http.write_json(s.wifi_assoclist())
+end
+
+
 local function _wifi_get_scan_results(cache_key)
 	local results = luci.util.ubus("session", "get", {
 		ubus_rpc_session = luci.model.uci:get_session_id(),
@@ -321,7 +340,7 @@ function wifi_scan_trigger(radio, update)
 		return
 	end
 
-	luci.http.status(204, "Scan scheduled")
+	luci.http.status(200, "Scan scheduled")
 
 	if nixio.fork() == 0 then
 		io.stderr:close()
@@ -366,6 +385,17 @@ function wifi_scan_results(radio)
 	else
 		luci.http.status(404, "No wireless scan results")
 	end
+end
+
+function lease_status()
+	local s = require "luci.tools.status"
+
+	luci.http.prepare_content("application/json")
+	luci.http.write('[')
+	luci.http.write_json(s.dhcp_leases())
+	luci.http.write(',')
+	luci.http.write_json(s.dhcp6_leases())
+	luci.http.write(']')
 end
 
 function switch_status(switches)

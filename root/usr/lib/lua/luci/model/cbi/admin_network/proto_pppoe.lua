@@ -119,7 +119,7 @@ host_uniq = section:taboption("advanced", Value, "host_uniq",
 	translate("Raw hex-encoded bytes. Leave empty unless your ISP require this"))
 
 host_uniq.placeholder = translate("auto")
-host_uniq.datatype    = "hexstring"
+host_uniq.datatype    = "hex"
 
 
 demand = section:taboption("advanced", Value, "demand",

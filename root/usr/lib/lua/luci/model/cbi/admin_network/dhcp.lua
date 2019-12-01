@@ -250,21 +250,23 @@ o.rmempty = false
 
 o = s:taboption("general", Flag, "nonwildcard",
 	translate("Non-wildcard"),
-	translate("Bind dynamically to interfaces rather than wildcard address (recommended as linux default)"))
+	translate("Bind only to specific interfaces rather than wildcard address."))
 o.optional = false
-o.rmempty = true
+o.rmempty = false
 
 o = s:taboption("general", DynamicList, "interface",
 	translate("Listen Interfaces"),
 	translate("Limit listening to these interfaces, and loopback."))
 o.optional = true
+o:depends("nonwildcard", true)
 
 o = s:taboption("general", DynamicList, "notinterface",
 	translate("Exclude interfaces"),
 	translate("Prevent listening on these interfaces."))
 o.optional = true
+o:depends("nonwildcard", true)
 
-m:section(SimpleSection).template = "lease_status"
+m:section(SimpleSection).template = "admin_network/lease_status"
 
 s = m:section(TypedSection, "host", translate("Static Leases"),
 	translate("Static leases are used to assign fixed IP addresses and symbolic hostnames to " ..
@@ -295,7 +297,7 @@ function name.remove(self, section)
 end
 
 mac = s:option(Value, "mac", translate("<abbr title=\"Media Access Control\">MAC</abbr>-Address"))
-mac.datatype = "list(unique(macaddr))"
+mac.datatype = "list(macaddr)"
 mac.rmempty  = true
 
 function mac.cfgvalue(self, section)

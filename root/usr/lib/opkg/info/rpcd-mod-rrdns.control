@@ -1,11 +1,10 @@
 Package: rpcd-mod-rrdns
 Version: 20170710
-Depends: libc, rpcd, libubox20170601, libubus20170705
+Depends: libc, rpcd, libubox, libubus
 Source: feeds/luci/libs/rpcd-mod-rrdns
-SourceName: rpcd-mod-rrdns
 License: Apache-2.0
 Section: libs
 Maintainer: Jo-Philipp Wich <jo@mein.io>
 Architecture: aarch64_cortex-a53
-Installed-Size: 3723
+Installed-Size: 3800
 Description:  Provides rapid mass reverse DNS lookup functionality.

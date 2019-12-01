@@ -16,5 +16,5 @@ else
 	distversion = "Development Snapshot"
 end
 
-luciname    = "LuCI Master"
-luciversion = "git-19.088.25182-8e3e502"
+luciname    = "LuCI openwrt-18.06 branch"
+luciversion = "git-19.309.48729-bc17ef6"

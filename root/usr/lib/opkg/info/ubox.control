@@ -1,11 +1,10 @@
 Package: ubox
-Version: 2019-03-21-a7827795-1
-Depends: libc, libubox20170601, ubusd, ubus, libubus20170705, libuci20130104
+Version: 2018-02-14-128bc35f-2
+Depends: libc, libubox, ubusd, ubus, libubus, libuci
 Source: package/system/ubox
-SourceName: ubox
 License: GPL-2.0
 Section: base
 Maintainer: John Crispin <john@phrozen.org>
 Architecture: aarch64_cortex-a53
-Installed-Size: 15512
+Installed-Size: 15643
 Description:  OpenWrt system helper toolbox

@@ -1,6 +1,6 @@
 config core main
 	option lang auto
-	option mediaurlbase /luci-static/material
+	option mediaurlbase /luci-static/bootstrap
 	option resourcebase /luci-static/resources
 	
 config extern flash_keep
@@ -13,8 +13,6 @@ config extern flash_keep
 	option uploads	"/lib/uci/upload/"
 	
 config internal languages
-	option en "English"
-	option zh_cn "中文 (Chinese)"
 	
 config internal sauth
 	option sessionpath "/tmp/luci-sessions"
@@ -24,8 +22,6 @@ config internal ccache
 	option enable 1
 		
 config internal themes
-	option Bootstrap "/luci-static/bootstrap"
-	option Material "/luci-static/material"
 
 config internal apply
 	option rollback 30

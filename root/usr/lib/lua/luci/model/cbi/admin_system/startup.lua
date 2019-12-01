@@ -7,6 +7,7 @@ local fs  = require "nixio.fs"
 local sys = require "luci.sys"
 
 local inits = { }
+local handled = false
 
 for _, name in ipairs(sys.init.names()) do
 	local index   = sys.init.index(name)
@@ -49,9 +50,11 @@ end
 
 e.write = function(self, section)
 	if inits[section].enabled then
+		handled = true
 		inits[section].enabled = false
 		return sys.init.disable(inits[section].name)
 	else
+		handled = true
 		inits[section].enabled = true
 		return sys.init.enable(inits[section].name)
 	end
@@ -61,6 +64,7 @@ end
 start = s:option(Button, "start", translate("Start"))
 start.inputstyle = "apply"
 start.write = function(self, section)
+	handled = true
 	sys.call("/etc/init.d/%s %s >/dev/null" %{ inits[section].name, self.option })
 end
 
@@ -78,6 +82,7 @@ f = SimpleForm("rc", translate("Local Startup"),
 	translate("This is the content of /etc/rc.local. Insert your own commands here (in front of 'exit 0') to execute them at the end of the boot process."))
 
 t = f:field(TextValue, "rcs")
+t.forcewrite = true
 t.rmempty = true
 t.rows = 20
 
@@ -86,9 +91,11 @@ function t.cfgvalue()
 end
 
 function f.handle(self, state, data)
-	if state == FORM_VALID then
+	if not handled and state == FORM_VALID then
 		if data.rcs then
 			fs.writefile("/etc/rc.local", data.rcs:gsub("\r\n", "\n"))
+		else
+			fs.writefile("/etc/rc.local", "")
 		end
 	end
 	return true

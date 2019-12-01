@@ -1,5 +1,5 @@
-/lib/modules/4.14.107/nf_nat.ko
-/lib/modules/4.14.107/nf_nat_ipv4.ko
+/lib/modules/4.9.198/nf_nat_masquerade_ipv4.ko
+/lib/modules/4.9.198/nf_nat_ipv4.ko
+/lib/modules/4.9.198/nf_nat.ko
 /etc/modules.d/nf-nat
-/lib/modules/4.14.107/nf_nat_redirect.ko
-/lib/modules/4.14.107/nf_nat_masquerade_ipv4.ko
+/lib/modules/4.9.198/nf_nat_redirect.ko

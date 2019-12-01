@@ -1,10 +1,15 @@
 -- Copyright 2008 Steven Barth <steven@midlink.org>
 -- Copyright 2010-2012 Jo-Philipp Wich <jow@openwrt.org>
 -- Licensed to the public under the Apache License 2.0.
+
+local sys = require "luci.sys"
+local utl = require "luci.util"
 local dsp = require "luci.dispatcher"
+local nxo = require "nixio"
+
 local ft = require "luci.tools.firewall"
 local nw = require "luci.model.network"
-local m, s, o, v, _
+local m, s, o, k, v
 
 arg[1] = arg[1] or ""
 
@@ -39,7 +44,23 @@ elseif rule_type == "redirect" then
 		name = "SNAT %s" % name
 	end
 
-	m.title = "%s - %s" %{ translate("Firewall - Traffic Rules"), name }
+	m.title = "%s - %s" %{ translate("Firewall - Traffic Rules"), luci.util.pcdata(name) }
+
+	local wan_zone = nil
+
+	m.uci:foreach("firewall", "zone",
+		function(s)
+			local n = s.network or s.name
+			if n then
+				local i
+				for i in utl.imatch(n) do
+					if i == "wan" then
+						wan_zone = s.name
+						return false
+					end
+				end
+			end
+		end)
 
 	s = m:section(NamedSection, arg[1], "redirect", "")
 	s.anonymous = true
@@ -133,9 +154,9 @@ elseif rule_type == "redirect" then
 	o.rmempty = false
 	o.datatype = "ip4addr"
 
-	for _, v in ipairs(nw:get_interfaces()) do
+	for k, v in ipairs(nw:get_interfaces()) do
 		local a
-		for _, a in ipairs(v:ipaddrs()) do
+		for k, a in ipairs(v:ipaddrs()) do
 			o:value(a:host():string(), '%s (%s)' %{
 				a:host():string(), v:shortname()
 			})

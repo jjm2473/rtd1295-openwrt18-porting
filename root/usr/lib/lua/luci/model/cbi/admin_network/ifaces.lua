@@ -53,7 +53,7 @@ local function get_ifstate(name, option)
 
 	m.uci:foreach("luci", "ifstate", function (s)
 		if s.interface == name then
-			val = s[option]
+			val = m.uci:get("luci", s[".name"], option)
 			return false
 		end
 	end)
@@ -226,8 +226,8 @@ if not net:is_installed() then
 
 	function p_install.write()
 		return luci.http.redirect(
-			luci.dispatcher.build_url("admin/system/opkg") ..
-			"?query=%s" % net:opkg_package()
+			luci.dispatcher.build_url("admin/system/packages") ..
+			"?submit=1&install=%s" % net:opkg_package()
 		)
 	end
 end
@@ -284,7 +284,7 @@ if not net:is_floating() then
 	ifname_single = s:taboption("physical", Value, "ifname_single", translate("Interface"))
 	ifname_single.template = "cbi/network_ifacelist"
 	ifname_single.widget = "radio"
-	ifname_single.nobridges = net:is_bridge()
+	ifname_single.nobridges = true
 	ifname_single.noaliases = false
 	ifname_single.rmempty = false
 	ifname_single.network = arg[1]
@@ -305,7 +305,7 @@ if not net:is_floating() then
 		if alias then
 			old_ifs[1] = '@' .. alias
 		else
-			for _, i in ipairs(net:get_interfaces() or { net:get_interface() }) do
+			for _, i in ipairs(net:get_interfaces(true) or { net:get_interface() }) do
 				old_ifs[#old_ifs+1] = i:name()
 			end
 		end
@@ -341,7 +341,7 @@ end
 if not net:is_virtual() then
 	ifname_multi = s:taboption("physical", Value, "ifname_multi", translate("Interface"))
 	ifname_multi.template = "cbi/network_ifacelist"
-	ifname_multi.nobridges = net:is_bridge()
+	ifname_multi.nobridges = true
 	ifname_multi.noaliases = true
 	ifname_multi.rmempty = false
 	ifname_multi.network = arg[1]

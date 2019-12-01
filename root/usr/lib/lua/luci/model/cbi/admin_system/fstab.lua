@@ -117,14 +117,12 @@ function used.cfgvalue(self, section)
 end
 
 unmount = v:option(Button, "unmount", translate("Unmount"))
-function unmount.cfgvalue(self, section)
-	return non_system_mounts[section].umount
-end
-
 unmount.render = function(self, section, scope)
-	self.title = translate("Unmount")
-	self.inputstyle = "remove"
-	Button.render(self, section, scope)
+	if non_system_mounts[section].umount then
+		self.title = translate("Unmount")
+		self.inputstyle = "remove"
+        	Button.render(self, section, scope)
+	end
 end
 
 unmount.write = function(self, section)
@@ -157,7 +155,7 @@ dev.cfgvalue = function(self, section)
 	local v, e
 
 	v = m.uci:get("fstab", section, "uuid")
-	e = v and devices[v]
+	e = v and devices[v:lower()]
 	if v and e and e.size then
 		return "UUID: %s (%s, %d MB)" %{ tp.pcdata(v), e.dev, e.size }
 	elseif v and e then
@@ -233,7 +231,7 @@ ck.cfgvalue = function(self, section)
 end
 
 
-swap = m:section(TypedSection, "swap", translate("SWAP"), translate("If your physical memory is insufficient unused data can be temporarily swapped to a swap-device resulting in a higher amount of usable <abbr title=\"Random Access Memory\">RAM</abbr>. Be aware that swapping data is a very slow process as the swap-device cannot be accessed with the high datarates of the <abbr title=\"Random Access Memory\">RAM</abbr>."))
+swap = m:section(TypedSection, "swap", "SWAP", translate("If your physical memory is insufficient unused data can be temporarily swapped to a swap-device resulting in a higher amount of usable <abbr title=\"Random Access Memory\">RAM</abbr>. Be aware that swapping data is a very slow process as the swap-device cannot be accessed with the high datarates of the <abbr title=\"Random Access Memory\">RAM</abbr>."))
 swap.anonymous = true
 swap.addremove = true
 swap.template = "cbi/tblsection"

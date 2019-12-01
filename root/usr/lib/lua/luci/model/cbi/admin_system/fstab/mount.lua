@@ -136,18 +136,10 @@ for fs in io.lines("/proc/filesystems") do
 	end
 end
 
-local ok, lines = pcall(io.lines, "/etc/filesystem")
-if ok then
-	local fs
-	for fs in lines do
-		o:value(fs)
-	end
-end
 
 o = mount:taboption("advanced", Value, "options", translate("Mount options"),
 	translate("See \"mount\" manpage for details"))
 
-o.default = "noatime,nls=utf8,uid=1023,gid=1023,fmask=7,dmask=7"
 o.placeholder = "defaults"
 
 

@@ -72,18 +72,36 @@
 <% if #zones > 0 then %>
 	<script type="text/javascript">//<![CDATA[
 		cbi_validate_field('_newopen.extport', true, 'list(neg(portrange))');
-		document.getElementById('_newopen.extport').addEventListener('blur',
+		cbi_bind(document.getElementById('_newopen.extport'), 'blur',
 			function() {
 				var n = document.getElementById('_newopen.name');
 				var p = document.getElementById('_newopen.proto');
+				var hints = {
+				/*  port    name     0=both, 1=tcp, 2=udp, 3=other */
+					22:   [ 'SSH',   1 ],
+					53:   [ 'DNS',   0 ],
+					80:   [ 'HTTP',  1 ],
+					443:  [ 'HTTPS', 1 ],
+				};
 
 				if (!this.className.match(/invalid/))
 				{
-					if (!n.value && this.value)
+					var hint = hints[this.value || 0];
+					if (hint)
+					{
+						p.selectedIndex = hint[1];
+
+						if (!n.value)
+							n.value = hint[0];
+					}
+					else if (!n.value && this.value)
 					{
 						n.value = 'Open' + this.value;
 					}
 				}
 			});
+
+
+		cbi_validate_field('cbi.cts.<%=self.config%>.<%=self.sectiontype%>.<%=section%>', true, 'uciname');
 	//]]></script>
 <% end %>

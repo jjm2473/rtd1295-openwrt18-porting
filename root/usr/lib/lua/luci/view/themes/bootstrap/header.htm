@@ -98,7 +98,7 @@
 				local nnode = node.nodes[r]
 				write('<li><a href="%s">%s</a></li>' %{
 					nodeurl(prefix, r, nnode.query),
-					striptags(translate(nnode.title))
+					pcdata(striptags(translate(nnode.title)))
 				})
 			end
 
@@ -116,13 +116,13 @@
 				local grandchildren = disp.node_childs(nnode)
 
 				if #grandchildren > 0 then
-					write('<li class="dropdown"><a class="menu" href="#">%s</a>' % striptags(translate(nnode.title)))
+					write('<li class="dropdown"><a class="menu" href="#">%s</a>' % pcdata(striptags(translate(nnode.title))))
 					render_submenu(category .. "/" .. r, nnode)
 					write('</li>')
 				else
 					write('<li><a href="%s">%s</a></li>' %{
 						nodeurl(category, r, nnode.query),
-						striptags(translate(nnode.title))
+						pcdata(striptags(translate(nnode.title)))
 					})
 				end
 			end
@@ -158,8 +158,8 @@
 		<meta charset="utf-8">
 		<title><%=striptags( (boardinfo.hostname or "?") .. ( (node and node.title) and ' - ' .. translate(node.title) or '')) %> - LuCI</title>
 		<meta name="viewport" content="initial-scale=1.0">
-		<link rel="stylesheet" href="<%=media%>/cascade.css?v=git-19.088.25182-8e3e502">
-		<link rel="stylesheet" media="only screen and (max-device-width: 854px)" href="<%=media%>/mobile.css?v=git-19.088.25182-8e3e502" type="text/css" />
+		<link rel="stylesheet" href="<%=media%>/cascade.css?v=git-19.309.48729-bc17ef6">
+		<link rel="stylesheet" media="only screen and (max-device-width: 854px)" href="<%=media%>/mobile.css?v=git-19.309.48729-bc17ef6" type="text/css" />
 		<link rel="shortcut icon" href="<%=media%>/favicon.ico">
 		<% if node and node.css then %>
 			<link rel="stylesheet" href="<%=resource%>/<%=node.css%>">
@@ -167,12 +167,11 @@
 		<% if css then %>
 			<style title="text/css"><%= css %></style>
 		<% end -%>
-		<script src="<%=url('admin/translations', luci.i18n.context.lang)%>?v=git-19.088.25182-8e3e502"></script>
-		<script src="<%=resource%>/cbi.js?v=git-19.088.25182-8e3e502"></script>
-		<script src="<%=resource%>/xhr.js?v=git-19.088.25182-8e3e502"></script>
+		<script src="<%=resource%>/cbi.js?v=git-19.309.48729-bc17ef6"></script>
+		<script src="<%=resource%>/xhr.js?v=git-19.309.48729-bc17ef6"></script>
 	</head>
 
-	<body class="lang_<%=luci.i18n.context.lang%> <% if node then %><%= striptags( node.title ) %><%- end %>" data-page="<%= table.concat(disp.context.requestpath, "-") %>">
+	<body class="lang_<%=luci.i18n.context.lang%> <%- if node then %><%= striptags( node.title ) %><%- end %>">
 		<header>
 			<div class="fill">
 				<div class="container">
@@ -194,9 +193,7 @@
 				<div class="alert-message warning">
 					<h4><%:No password set!%></h4>
 					<p><%:There is no password set on this router. Please configure a root password to protect the web interface and enable SSH.%></p>
-					<% if disp.lookup("admin/system/admin") then %>
-					  <div class="right"><a class="btn" href="<%=url("admin/system/admin")%>"><%:Go to password configuration...%></a></div>
-					<% end %>
+					<div class="right"><a class="btn" href="<%=url("admin/system/admin")%>"><%:Go to password configuration...%></a></div>
 				</div>
 			<%- end -%>
 

@@ -9,7 +9,6 @@ local conf  = require "luci.config"
 
 local m, s, o
 local has_ntpd = fs.access("/usr/sbin/ntpd")
-local has_zram = fs.access("/etc/init.d/zram")
 
 m = Map("system", translate("System"), translate("Here you can configure the basic aspects of your device like its hostname or the timezone."))
 m:chain("luci")
@@ -22,8 +21,7 @@ s.addremove = false
 s:tab("general",  translate("General Settings"))
 s:tab("logging",  translate("Logging"))
 s:tab("language", translate("Language and Style"))
-s:tab("advanced", translate("Advanced"))
-if has_zram then s:tab("zram", translate("ZRam Settings")) end
+
 
 --
 -- System Properties
@@ -75,7 +73,7 @@ o.datatype    = "uinteger"
 o = s:taboption("logging", Value, "log_ip", translate("External system log server"))
 o.optional    = true
 o.placeholder = "0.0.0.0"
-o.datatype    = "ip4addr"
+o.datatype    = "host"
 
 o = s:taboption("logging", Value, "log_port", translate("External system log server port"))
 o.optional    = true
@@ -108,30 +106,7 @@ o:value(9, translate("Warning"))
 
 
 --
--- Zram Properties
---
-if has_zram then
-	o = s:taboption("zram", Value, "zram_size_mb", translate("ZRam Size"), translate("Size of the ZRam device in megabytes"))
-	o.optional    = true
-	o.placeholder = 16
-	o.datatype    = "uinteger"
-	
-	o = s:taboption("zram", ListValue, "zram_comp_algo", translate("ZRam Compression Algorithm"))
-	o.optional    = true
-	o.placeholder = lzo
-	o:value("lzo", "lzo")
-	o:value("lz4", "lz4")
-	o:value("deflate", "deflate")
-	
-	o = s:taboption("zram", Value, "zram_comp_streams", translate("ZRam Compression Streams"), translate("Number of parallel threads used for compression"))
-	o.optional    = true
-	o.placeholder = 1
-	o.datatype    = "uinteger"
-end
-
-
---
--- Language & Style
+-- Langauge & Style
 --
 
 o = s:taboption("language", ListValue, "_lang", translate("Language"))
@@ -154,7 +129,7 @@ function o.write(self, section, value)
 end
 
 
-o = s:taboption("language", ListValue, "_mediaurlbase", translate("Theme"))
+o = s:taboption("language", ListValue, "_mediaurlbase", translate("Design"))
 for k, v in pairs(conf.themes) do
 	if k:sub(1, 1) ~= "." then
 		o:value(v, k)
@@ -167,28 +142,6 @@ end
 
 function o.write(self, section, value)
 	m.uci:set("luci", "main", "mediaurlbase", value)
-end
-
-
---
--- Advanced
---
-
-o = s:taboption("advanced", Value, "_pollinterval",
-	translate("Polling interval"),
-	translate("Polling interval for status queries in seconds"))
-o.datatype = "range(3, 20)"
-o.default = 5
-o:value("3")
-o:value("5")
-o:value("10")
-
-function o.cfgvalue(...)
-	return m.uci:get("luci", "main", "pollinterval")
-end
-
-function o.write(self, section, value)
-	m.uci:set("luci", "main", "pollinterval", value)
 end
 
 

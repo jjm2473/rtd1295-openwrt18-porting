@@ -830,7 +830,6 @@ dnsmasq_start()
 	append_bool "$cfg" sequential_ip "--dhcp-sequential-ip"
 	append_bool "$cfg" allservers "--all-servers"
 	append_bool "$cfg" noping "--no-ping"
-	append_bool "$cfg" rapidcommit "--dhcp-rapid-commit"
 
 	append_parm "$cfg" logfacility "--log-facility"
 
@@ -860,9 +859,6 @@ dnsmasq_start()
 	append_parm "$cfg" "tftp_root" "--tftp-root"
 	append_parm "$cfg" "dhcp_boot" "--dhcp-boot"
 	append_parm "$cfg" "local_ttl" "--local-ttl"
-	append_parm "$cfg" "max_ttl" "--max-ttl"
-	append_parm "$cfg" "min_cache_ttl" "--min-cache-ttl"
-	append_parm "$cfg" "max_cache_ttl" "--max-cache-ttl"
 	append_parm "$cfg" "pxe_prompt" "--pxe-prompt"
 	config_list_foreach "$cfg" "pxe_service" append_pxe_service
 	config_get DOMAIN "$cfg" domain

@@ -1,0 +1,2 @@
+/etc/modules.d/20-usb-core
+/etc/modules-boot.d/20-usb-core

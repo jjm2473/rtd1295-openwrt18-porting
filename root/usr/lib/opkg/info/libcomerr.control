@@ -1,0 +1,10 @@
+Package: libcomerr
+Version: 1.44.1-1
+Depends: libc, libuuid
+Source: package/utils/e2fsprogs
+License: GPL-2.0
+Section: libs
+Architecture: aarch64_cortex-a53
+Installed-Size: 3530
+Description:  This package contains libcom_err, the common error description library
+ bundled with e2fsprogs.

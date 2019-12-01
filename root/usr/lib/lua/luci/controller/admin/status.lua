@@ -5,10 +5,10 @@
 module("luci.controller.admin.status", package.seeall)
 
 function index()
+	entry({"admin", "status"}, alias("admin", "status", "overview"), _("Status"), 20).index = true
 	entry({"admin", "status", "overview"}, template("admin_status/index"), _("Overview"), 1)
 
 	entry({"admin", "status", "iptables"}, template("admin_status/iptables"), _("Firewall"), 2).leaf = true
-	entry({"admin", "status", "iptables_dump"}, call("dump_iptables")).leaf = true
 	entry({"admin", "status", "iptables_action"}, post("action_iptables")).leaf = true
 
 	entry({"admin", "status", "routes"}, template("admin_status/routes"), _("Routes"), 3)
@@ -43,27 +43,6 @@ end
 function action_dmesg()
 	local dmesg = luci.sys.dmesg()
 	luci.template.render("admin_status/dmesg", {dmesg=dmesg})
-end
-
-function dump_iptables(family, table)
-	local prefix = (family == "6") and "ip6" or "ip"
-	local ok, lines = pcall(io.lines, "/proc/net/%s_tables_names" % prefix)
-	if ok and lines then
-		local s
-		for s in lines do
-			if s == table then
-				luci.http.prepare_content("text/plain")
-				luci.sys.process.exec({
-					"/usr/sbin/%stables" % prefix, "-w", "-t", table,
-					"--line-numbers", "-nxvL"
-				}, luci.http.write)
-				return
-			end
-		end
-	end
-
-	luci.http.status(404, "No such table")
-	luci.http.prepare_content("text/plain")
 end
 
 function action_iptables()

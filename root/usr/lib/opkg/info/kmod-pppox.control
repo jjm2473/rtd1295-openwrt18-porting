@@ -1,10 +1,9 @@
 Package: kmod-pppox
-Version: 4.1.7-1
-Depends: kernel (=4.1.7-1-e6b7dd72522ec3c2353db6b443ccc6d2), kmod-ppp
+Version: 4.9.198-1
+Depends: kernel (=4.9.198-1-0611ed3e1c5c7d754ccb555ba915b140), kmod-ppp
 Source: package/kernel/linux
-License: GPLv2
+License: GPL-2.0
 Section: kernel
-Status: unknown hold not-installed
-Architecture: rtd1295
-Installed-Size: 106
+Architecture: aarch64_cortex-a53
+Installed-Size: 1748
 Description:  Kernel helper module for PPPoE and PPTP support
