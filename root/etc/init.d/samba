@@ -5,7 +5,7 @@ START=60
 USE_PROCD=1
 
 smb_header() {
-	config_get samba_iface $1 interface "loopback lan"
+	config_get samba_iface $1 interface "loopback lan wlan"
 
 	# resolve interfaces
 	local interfaces=$(

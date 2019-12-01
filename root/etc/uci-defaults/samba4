@@ -8,8 +8,4 @@
 	ln -s samba4 /etc/config/samba
 }
 
-[ -f /etc/init.d/samba ] && {
-	/etc/init.d/samba enabled && /etc/init.d/samba disable
-}
-
 exit 0

@@ -99,15 +99,6 @@ Conffiles:
  /etc/config/rpcd 81a24774226d42c6ea53b531992335cc910094a7e17f80a803e680e2eededd4f
 Installed-Time: 1572963138
 
-Package: rpcd
-Version: 2018-11-28-3aa81d0d-1
-Depends: libc, libubus20170705, libubox20170601, libuci20130104, libblobmsg-json
-Status: install user installed
-Architecture: aarch64_cortex-a53
-Conffiles:
- /etc/config/rpcd 81a24774226d42c6ea53b531992335cc910094a7e17f80a803e680e2eededd4f
-Installed-Time: 1553875645
-
 Package: busybox
 Version: 1.28.4-3
 Depends: libc
@@ -884,6 +875,13 @@ Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1572963138
 Auto-Installed: yes
+
+Package: libexpat
+Version: 2.2.9-1
+Depends: libc
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1575204179
 
 Package: ubox
 Version: 2018-02-14-128bc35f-2
