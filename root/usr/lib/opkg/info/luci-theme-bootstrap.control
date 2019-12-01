@@ -1,9 +1,9 @@
 Package: luci-theme-bootstrap
-Version: git-19.309.48729-bc17ef6-1
+Version: git-19.332.23140-f01d93b-1
 Depends: libc
 Source: feeds/luci/themes/luci-theme-bootstrap
 License: Apache-2.0
 Section: luci
 Architecture: all
-Installed-Size: 11293
+Installed-Size: 11280
 Description:  Bootstrap Theme (default)

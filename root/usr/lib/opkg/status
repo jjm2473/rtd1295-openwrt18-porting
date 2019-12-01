@@ -3,7 +3,7 @@ Version: git-19.332.23140-f01d93b-1
 Depends: libc
 Status: install user installed
 Architecture: all
-Installed-Time: 1575179102
+Installed-Time: 1575186262
 
 Package: iwinfo
 Version: 2018-07-31-65b8333f-1
@@ -199,12 +199,11 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1553911264
 
 Package: luci-theme-bootstrap
-Version: git-19.309.48729-bc17ef6-1
+Version: git-19.332.23140-f01d93b-1
 Depends: libc
 Status: install user installed
 Architecture: all
-Installed-Time: 1572963138
-Auto-Installed: yes
+Installed-Time: 1575186235
 
 Package: base-files
 Version: 194.2-r7897-9d401013fc
@@ -837,7 +836,7 @@ Version: git-19.332.23140-f01d93b-1
 Depends: libc, luci-base
 Status: install user installed
 Architecture: all
-Installed-Time: 1575179439
+Installed-Time: 1575186157
 
 Package: liblucihttp-lua
 Version: 2019-07-05-a34a17d5-1
