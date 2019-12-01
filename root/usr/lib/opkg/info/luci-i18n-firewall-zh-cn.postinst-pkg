@@ -1,0 +1,4 @@
+	[ -n "${IPKG_INSTROOT}" ] || {
+		(. /etc/uci-defaults/luci-i18n-firewall-zh-cn) && rm -f /etc/uci-defaults/luci-i18n-firewall-zh-cn
+		exit 0
+	}

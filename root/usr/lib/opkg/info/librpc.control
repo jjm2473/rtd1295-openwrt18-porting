@@ -1,0 +1,10 @@
+Package: librpc
+Version: 2015-11-04-a921e3de-1
+Depends: libc
+Source: feeds/base/package/libs/librpc
+License: LGPL-2.1
+Section: libs
+Maintainer: Felix Fietkau <nbd@nbd.name>
+Architecture: aarch64_cortex-a53
+Installed-Size: 31623
+Description:  uClibc RPC library

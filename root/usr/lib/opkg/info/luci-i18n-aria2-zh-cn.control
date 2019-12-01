@@ -1,11 +1,10 @@
 Package: luci-i18n-aria2-zh-cn
-Version: 1.0.1-4
+Version: 1.0.1-2
 Depends: libc, luci-app-aria2
 Source: feeds/luci/applications/luci-app-aria2
-SourceName: luci-i18n-aria2-zh-cn
 License: Apache-2.0
 Section: luci
 Maintainer: Hsing-Wang Liao <kuoruan@gmail.com>
 Architecture: all
-Installed-Size: 2163
+Installed-Size: 2108
 Description:  Translation for luci-app-aria2 - 中文 (Chinese)

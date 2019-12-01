@@ -35,6 +35,7 @@ minidlna_cfg_addstr() {
 
 minidlna_cfg_add_media_dir() {
 	local val=$1
+
 	minidlna_cfg_append "media_dir=$val"
 }
 
@@ -43,8 +44,8 @@ minidlna_create_config() {
 	local port
 	local interface
 
-	config_get port "$cfg" port
-	config_get interface "$cfg" interface
+	config_get port $cfg port
+	config_get interface $cfg interface
 
 	[ -z "$interface" -o -t "$port" ] && return 1
 
@@ -54,22 +55,21 @@ minidlna_create_config() {
 	minidlna_cfg_append "port=$port"
 	minidlna_cfg_append "network_interface=$interface"
 
-	minidlna_cfg_addstr "$cfg" friendly_name
-	minidlna_cfg_addstr "$cfg" user
-	minidlna_cfg_addstr "$cfg" db_dir
-	minidlna_cfg_addstr "$cfg" log_dir
-	minidlna_cfg_addstr "$cfg" log_level 'error'
-	minidlna_cfg_addbool "$cfg" inotify '1'
-	minidlna_cfg_addbool "$cfg" enable_tivo '0'
-	minidlna_cfg_addbool "$cfg" wide_links '0'
-	minidlna_cfg_addbool "$cfg" strict_dlna '0'
-	minidlna_cfg_addstr "$cfg" album_art_names
-	minidlna_cfg_addstr "$cfg" presentation_url
-	minidlna_cfg_addstr "$cfg" notify_interval '900'
-	minidlna_cfg_addstr "$cfg" serial '12345678'
-	minidlna_cfg_addstr "$cfg" model_number '1'
-	minidlna_cfg_addstr "$cfg" minissdpsocket
-	minidlna_cfg_addstr "$cfg" root_container '.'
+	minidlna_cfg_addstr $cfg friendly_name
+	minidlna_cfg_addstr $cfg db_dir
+	minidlna_cfg_addstr $cfg log_dir
+	minidlna_cfg_addstr $cfg log_level 'error'
+	minidlna_cfg_addbool $cfg inotify '1'
+	minidlna_cfg_addbool $cfg enable_tivo '0'
+	minidlna_cfg_addbool $cfg wide_links '0'
+	minidlna_cfg_addbool $cfg strict_dlna '0'
+	minidlna_cfg_addstr $cfg album_art_names
+	minidlna_cfg_addstr $cfg presentation_url
+	minidlna_cfg_addstr $cfg notify_interval '900'
+	minidlna_cfg_addstr $cfg serial '12345678'
+	minidlna_cfg_addstr $cfg model_number '1'
+	minidlna_cfg_addstr $cfg minissdpsocket
+	minidlna_cfg_addstr $cfg root_container '.'
 	config_list_foreach "$cfg" "media_dir" minidlna_cfg_add_media_dir
 
 	return 0

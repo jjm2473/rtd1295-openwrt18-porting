@@ -1,10 +1,9 @@
 Package: nfs-kernel-server
-Version: 2.3.3-5
-Depends: libc, libwrap, libblkid1, libuuid1, libtirpc, kmod-fs-nfsd, kmod-fs-nfs, kmod-fs-nfs-v4, rpcbind, nfs-utils-libs, libkeyutils, libdevmapper
+Version: 2.3.3-3
+Depends: libc, libwrap, libblkid, libuuid, libtirpc, kmod-fs-nfsd, kmod-fs-nfs, portmap
 Source: feeds/packages/net/nfs-kernel-server
-SourceName: nfs-kernel-server
 Section: net
 Maintainer: Peter Wagner <tripolar@gmx.at>
 Architecture: aarch64_cortex-a53
-Installed-Size: 141254
+Installed-Size: 141284
 Description:  Kernel NFS server support

@@ -1,9 +1,8 @@
 Package: luci-i18n-transmission-zh-cn
-Version: git-19.088.25182-8e3e502-1
+Version: git-19.332.23140-f01d93b-1
 Depends: libc, luci-app-transmission
 Source: feeds/luci/applications/luci-app-transmission
-SourceName: luci-i18n-transmission-zh-cn
 Section: luci
 Architecture: all
-Installed-Size: 2572
+Installed-Size: 2550
 Description:  Translation for luci-app-transmission - 中文 (Chinese)

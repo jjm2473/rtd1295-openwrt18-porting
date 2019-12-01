@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# just skip wifi config in openwrt of rtd1296
+exit 0
+
 [ "${ACTION}" = "add" ] && {
 	/sbin/wifi config
 }

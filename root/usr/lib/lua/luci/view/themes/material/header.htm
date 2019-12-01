@@ -109,7 +109,7 @@
 
 			for i, r in ipairs(childs) do
 				local nnode = node.nodes[r]
-				local title = striptags(translate(nnode.title))
+				local title = pcdata(striptags(translate(nnode.title)))
 
 				write('<li><a data-title="%s" href="%s">%s</a></li>' %{
 					title,
@@ -132,7 +132,7 @@
 				local grandchildren = disp.node_childs(nnode)
 
 				if #grandchildren > 0 then
-					local title = striptags(translate(nnode.title))
+					local title = pcdata(striptags(translate(nnode.title)))
 
 					write('<li class="slide"><a class="menu" data-title="%s" href="#">%s</a>' %{
 						title,
@@ -142,7 +142,7 @@
 					render_submenu(category .. "/" .. r, nnode)
 					write('</li>')
 				else
-					local title = striptags(translate(nnode.title))
+					local title = pcdata(striptags(translate(nnode.title)))
 
 					write('<li><a data-title="%s" href="%s">%s</a></li>' %{
 						title,
@@ -182,14 +182,24 @@
 	<meta charset="utf-8">
 	<title><%=striptags( (boardinfo.hostname or "?") .. ( (node and node.title) and ' - ' .. translate(node.title) or '')) %> - LuCI</title>
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+	<meta name="format-detection" content="telephone=no, email=no"/>
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="mobile-web-app-capable" content="yes">
-	<meta name="theme-color" content="#09c">
+	<meta name="x5-fullscreen" content="true">
+	<meta name="full-screen" content="yes">
+	<meta name="x5-page-mode" content="app">
+	<meta name="browsermode" content="application">
+	<meta name="theme-color" content="#0099CC">
 	<meta name="msapplication-tap-highlight" content="no">
-	<meta name="msapplication-TileColor" content="#09c">
+	<meta name="msapplication-TileColor" content="#0099CC">
+
 	<meta name="application-name" content="<%=striptags( (boardinfo.hostname or "?") ) %> - LuCI">
 	<meta name="apple-mobile-web-app-title" content="<%=striptags( (boardinfo.hostname or "?") ) %> - LuCI">
-	<link rel="stylesheet" href="<%=media%>/cascade.css?v=git-19.088.25182-8e3e502">
+	<meta name="msapplication-TileImage" content="<%=media%>/logo.png"/>
+	<link rel="icon" href="<%=media%>/logo.png" sizes="144x144">
+	<link rel="apple-touch-icon-precomposed" href="<%=media%>/logo.png" sizes="144x144">
+
+	<link rel="stylesheet" href="<%=media%>/cascade.css?v=git-19.332.23140-f01d93b">
 	<link rel="shortcut icon" href="<%=media%>/favicon.ico">
 	<% if node and node.css then %>
 		<link rel="stylesheet" href="<%=resource%>/<%=node.css%>">
@@ -197,18 +207,16 @@
 	<% if css then %>
 		<style title="text/css"><%= css %></style>
 	<% end -%>
-	<script src="<%=url('admin/translations', luci.i18n.context.lang)%>?v=git-19.088.25182-8e3e502"></script>
-	<script src="<%=resource%>/cbi.js?v=git-19.088.25182-8e3e502"></script>
-	<script src="<%=resource%>/xhr.js?v=git-19.088.25182-8e3e502"></script>
+	<script src="<%=resource%>/cbi.js?v=git-19.332.23140-f01d93b"></script>
+	<script src="<%=resource%>/xhr.js?v=git-19.332.23140-f01d93b"></script>
 </head>
-<body class="lang_<%=luci.i18n.context.lang%> <% if node then %><%= striptags( node.title ) %><% end %> <% if luci.dispatcher.context.authsession then %>logged-in<% end %>" data-page="<%= table.concat(disp.context.requestpath, "-") %>">
+<body class="lang_<%=luci.i18n.context.lang%> <%- if node then %><%= striptags( node.title ) %><%- end %> <% if luci.dispatcher.context.authsession then %>logged-in<% end %>">
 <header>
 	<div class="fill">
 		<div class="container">
 			<span class="showSide"></span>
-			<a id="logo" href="<%=url("admin/status/overview")%>"><img src="<%=media%>/brand.png" alt="OpenWrt"></a>
 			<a class="brand" href="#"><%=boardinfo.hostname or "?"%></a>
-			<div class="status">
+			<div class="pull-right">
 				<% render_changes() %>
 				<span id="xhr_poll_status" style="display:none" onclick="XHR.running() ? XHR.halt() : XHR.run()">
 					<span class="label success" id="xhr_poll_status_on"><span class="mobile-hide"><%:Auto Refresh%></span> <%:on%></span>
@@ -231,9 +239,7 @@
 					<div class="alert-message warning">
 						<h4><%:No password set!%></h4>
 						<p><%:There is no password set on this router. Please configure a root password to protect the web interface and enable SSH.%></p>
-						<% if disp.lookup("admin/system/admin") then %>
-							<div class="right"><a class="btn" href="<%=url("admin/system/admin")%>"><%:Go to password configuration...%></a></div>
-						<% end %>
+						<div class="right"><a class="btn" href="<%=url("admin/system/admin")%>"><%:Go to password configuration...%></a></div>
 					</div>
 				<%- end -%>
 

@@ -1,0 +1,11 @@
+/etc/config/samba
+/usr/sbin/nmbd
+/etc/samba/smb.conf.template
+/etc/samba/valid.dat
+/etc/init.d/samba
+/etc/samba/upcase.dat
+/usr/sbin/smbpasswd
+/usr/sbin/smbd
+/lib/upgrade/keep.d/samba36-server
+/usr/sbin/samba_multicall
+/etc/samba/lowcase.dat
