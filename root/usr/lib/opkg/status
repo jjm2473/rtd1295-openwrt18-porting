@@ -939,6 +939,13 @@ Status: install user installed
 Architecture: all
 Installed-Time: 1575173728
 
+Package: transmission-web
+Version: 2.94-8
+Depends: libc
+Status: install user installed
+Architecture: all
+Installed-Time: 1575184836
+
 Package: libtirpc
 Version: 1.0.3-2
 Depends: libc, libpthread
