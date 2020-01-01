@@ -1,10 +1,11 @@
 Package: usign
 Version: 2019-08-06-5a52b379-1
-Depends: libc, libubox
+Depends: libc, libubox20170601
 Source: package/system/usign
+SourceName: usign
 License: ISC
 Section: base
 Maintainer: Felix Fietkau <nbd@nbd.name>
 Architecture: aarch64_cortex-a53
-Installed-Size: 10068
+Installed-Size: 10429
 Description:  OpenWrt signature verification utility

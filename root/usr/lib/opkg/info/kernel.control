@@ -1,9 +1,10 @@
 Package: kernel
-Version: 4.9.198-1-0611ed3e1c5c7d754ccb555ba915b140
+Version: 4.14.156-1-ae418ed2395263358bbe7536d318ae28
 Depends: libc
 Source: package/kernel/linux
+SourceName: kernel
 License: GPL-2.0
 Section: sys
 Architecture: aarch64_cortex-a53
-Installed-Size: 105
+Installed-Size: 103
 Description:  Virtual kernel package

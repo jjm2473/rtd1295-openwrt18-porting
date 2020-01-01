@@ -1,10 +1,11 @@
 Package: partx-utils
-Version: 2.32-2
-Depends: libc, libblkid, libsmartcols
+Version: 2.34-1
+Depends: libc, libblkid1, libsmartcols1
 Source: package/utils/util-linux
+SourceName: partx-utils
 License: GPL-2.0
 LicenseFiles: COPYING libblkid/COPYING libmount/COPYING Documentation/licenses/COPYING.GPLv2 Documentation/licenses/COPYING.LGPLv2.1 libuuid/COPYING Documentation/licenses/COPYING.BSD-3
 Section: utils
 Architecture: aarch64_cortex-a53
-Installed-Size: 32025
+Installed-Size: 40714
 Description:  contains partx, addpart, delpart

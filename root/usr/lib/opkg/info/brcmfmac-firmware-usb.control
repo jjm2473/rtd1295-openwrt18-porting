@@ -1,9 +1,10 @@
 Package: brcmfmac-firmware-usb
-Version: 2017-09-06-a61ac5cf-1
+Version: 20190416-1
 Depends: libc
 Source: package/firmware/linux-firmware
+SourceName: brcmfmac-firmware-usb
 Section: firmware
 Maintainer: Felix Fietkau <nbd@nbd.name>
 Architecture: aarch64_cortex-a53
-Installed-Size: 502999
+Installed-Size: 502995
 Description:  Broadcom BCM43xx fullmac USB firmware

@@ -1,2 +1,2 @@
+/lib/modules/4.14.156/evdev.ko
 /etc/modules.d/60-input-evdev
-/lib/modules/4.9.198/evdev.ko

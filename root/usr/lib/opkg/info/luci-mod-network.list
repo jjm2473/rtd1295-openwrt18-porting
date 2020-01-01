@@ -1,0 +1,9 @@
+/www/luci-static/resources/view/network/dhcp.js
+/www/luci-static/resources/view/network/routes.js
+/usr/lib/lua/luci/controller/admin/network.lua
+/www/luci-static/resources/view/network/hosts.js
+/www/luci-static/resources/view/network/switch.js
+/usr/lib/lua/luci/view/admin_network/diagnostics.htm
+/www/luci-static/resources/view/network/interfaces.js
+/etc/uci-defaults/50_luci-mod-admin-full
+/www/luci-static/resources/view/network/wireless.js

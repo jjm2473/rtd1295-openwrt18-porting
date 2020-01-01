@@ -1,9 +1,10 @@
 Package: kmod-sound-core
-Version: 4.9.198-1
-Depends: kernel (=4.9.198-1-0611ed3e1c5c7d754ccb555ba915b140), kmod-input-core
+Version: 4.14.156-1
+Depends: kernel (=4.14.156-1-ae418ed2395263358bbe7536d318ae28), kmod-input-core
 Source: package/kernel/linux
+SourceName: kmod-sound-core
 License: GPL-2.0
 Section: kernel
 Architecture: aarch64_cortex-a53
-Installed-Size: 126634
+Installed-Size: 147901
 Description:  Kernel modules for sound support

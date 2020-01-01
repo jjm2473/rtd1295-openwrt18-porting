@@ -1,2 +1,2 @@
-/lib/modules/4.9.198/hid.ko
+/lib/modules/4.14.156/hid.ko
 /etc/modules.d/61-hid

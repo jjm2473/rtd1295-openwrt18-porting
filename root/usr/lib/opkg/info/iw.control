@@ -1,10 +1,11 @@
 Package: iw
-Version: 4.14-1
+Version: 5.0.1-1
 Depends: libc, libnl-tiny
 Source: package/network/utils/iw
+SourceName: iw
 License: GPL-2.0
 Section: net
 Maintainer: Felix Fietkau <nbd@nbd.name>
 Architecture: aarch64_cortex-a53
-Installed-Size: 35172
+Installed-Size: 37789
 Description:  cfg80211 interface configuration utility

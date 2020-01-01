@@ -1,9 +1,0 @@
-Package: libxtables
-Version: 1.6.2-3
-Depends: libc
-Source: package/network/utils/iptables
-License: GPL-2.0
-Section: libs
-Architecture: aarch64_cortex-a53
-Installed-Size: 41422
-Description:  IPv4/IPv6 firewall - shared xtables library

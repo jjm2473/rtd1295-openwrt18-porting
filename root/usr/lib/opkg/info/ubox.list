@@ -1,5 +1,4 @@
 /sbin/lsmod
-/usr/bin/getrandom
 /sbin/modprobe
 /lib/libvalidate.so
 /sbin/rmmod

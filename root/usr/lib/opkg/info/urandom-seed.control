@@ -1,0 +1,10 @@
+Package: urandom-seed
+Version: 1.0-1
+Depends: libc, getrandom
+Source: package/system/urandom-seed
+SourceName: urandom-seed
+License: GPL-2.0
+Section: base
+Architecture: aarch64_cortex-a53
+Installed-Size: 835
+Description:  /etc/urandom.seed handling for OpenWrt
