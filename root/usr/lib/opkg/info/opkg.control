@@ -1,14 +1,15 @@
 Package: opkg
 Version: 2019-06-14-dcbc142e-1
-Depends: libc, uclient-fetch, libpthread, libubox
+Depends: libc, uclient-fetch, libpthread, libubox20170601
 Source: package/system/opkg
+SourceName: opkg
 License: GPL-2.0
 LicenseFiles: COPYING
 Section: base
 Essential: yes
 Maintainer: Jo-Philipp Wich <jo@mein.io>
 Architecture: aarch64_cortex-a53
-Installed-Size: 64627
+Installed-Size: 66309
 Description:  Lightweight package management system
  opkg is the opkg Package Management System, for handling
  installation and removal of packages on a system. It can

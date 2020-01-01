@@ -1,0 +1,12 @@
+Package: libuci20130104
+Version: 2019-09-01-415f9e48-3
+Depends: libc, libubox20170601
+Provides: libuci
+Source: package/system/uci
+SourceName: libuci
+License: LGPL-2.1
+Section: libs
+Maintainer: Felix Fietkau <nbd@nbd.name>
+Architecture: aarch64_cortex-a53
+Installed-Size: 15740
+Description:  C library for the Unified Configuration Interface (UCI)

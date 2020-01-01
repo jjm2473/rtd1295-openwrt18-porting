@@ -1,7 +1,5 @@
-/usr/lib/lua/luci/model/cbi/admin_network/proto_ppp.lua
-/usr/lib/lua/luci/model/cbi/admin_network/proto_pppoe.lua
-/usr/lib/lua/luci/model/cbi/admin_network/proto_pptp.lua
-/usr/lib/lua/luci/model/cbi/admin_network/proto_pppossh.lua
-/usr/lib/lua/luci/model/cbi/admin_network/proto_l2tp.lua
-/usr/lib/lua/luci/model/cbi/admin_network/proto_pppoa.lua
-/usr/lib/lua/luci/model/network/proto_ppp.lua
+/www/luci-static/resources/protocol/pppoe.js
+/www/luci-static/resources/protocol/ppp.js
+/www/luci-static/resources/protocol/l2tp.js
+/www/luci-static/resources/protocol/pppoa.js
+/www/luci-static/resources/protocol/pptp.js

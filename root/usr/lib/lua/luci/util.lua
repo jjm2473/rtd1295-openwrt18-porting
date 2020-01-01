@@ -207,9 +207,8 @@ end
 -- handling.  It may actually be a property of the getopt function
 -- rather than the shell proper.
 function shellstartsqescape(value)
-   res, _ = string.gsub(value, "^\-", "\\-")
-   res, _ = string.gsub(res, "^-", "\-")
-   return shellsqescape(value)
+   res, _ = string.gsub(value, "^%-", "\\-")
+   return shellsqescape(res)
 end
 
 -- containing the resulting substrings. The optional max parameter specifies
@@ -262,7 +261,7 @@ end
 
 -- one token per invocation, the tokens are separated by whitespace. If the
 -- input value is a table, it is transformed into a string first. A nil value
--- will result in a valid interator which aborts with the first invocation.
+-- will result in a valid iterator which aborts with the first invocation.
 function imatch(v)
 	if type(v) == "table" then
 		local k = nil

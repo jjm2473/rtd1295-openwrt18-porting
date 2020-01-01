@@ -1,0 +1,9 @@
+Package: brcmfmac-board-rpi2
+Version: 2018-03-12-86e88fbf0345da49555d0ec34c80b4fbae7d0cd3
+Depends: libc
+Source: package/firmware/brcmfmac-board-rpi
+SourceName: brcmfmac-board-rpi2
+Section: firmware
+Architecture: all
+Installed-Size: 837
+Description:  NVRAM for the Broadcom BCM43430 on RPi boards.

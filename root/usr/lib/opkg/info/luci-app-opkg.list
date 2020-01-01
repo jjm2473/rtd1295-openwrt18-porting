@@ -1,0 +1,3 @@
+/www/luci-static/resources/view/opkg.js
+/usr/lib/lua/luci/controller/opkg.lua
+/usr/lib/lua/luci/view/opkg.htm

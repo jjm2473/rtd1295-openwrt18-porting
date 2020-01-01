@@ -1,12 +1,13 @@
 Package: libpthread
-Version: 1.1.19-2
-Depends: libgcc
+Version: 1.1.24-2
+Depends: libgcc1
 Source: package/libs/toolchain
+SourceName: libpthread
 License: GPL-3.0-with-GCC-exception
 Section: libs
 Status: unknown hold not-installed
 Essential: yes
 Maintainer: Felix Fietkau <nbd@nbd.name>
 Architecture: aarch64_cortex-a53
-Installed-Size: 123
+Installed-Size: 124
 Description:  POSIX thread library

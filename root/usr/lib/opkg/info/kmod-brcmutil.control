@@ -1,9 +1,10 @@
 Package: kmod-brcmutil
-Version: 4.9.198+2017-11-01-10
-Depends: kernel (=4.9.198-1-0611ed3e1c5c7d754ccb555ba915b140)
+Version: 4.14.156+4.19.85-1-1
+Depends: kernel (=4.14.156-1-ae418ed2395263358bbe7536d318ae28)
 Source: package/kernel/mac80211
+SourceName: kmod-brcmutil
 Section: kernel
 Maintainer: Felix Fietkau <nbd@nbd.name>
 Architecture: aarch64_cortex-a53
-Installed-Size: 3499
+Installed-Size: 3695
 Description:  This module contains some common parts needed by Broadcom Wireless drivers brcmsmac and brcmfmac.

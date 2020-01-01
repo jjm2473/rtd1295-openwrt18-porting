@@ -1,10 +1,11 @@
 Package: uci
-Version: 2019-05-17-f199b961-1
-Depends: libc, libuci
+Version: 2019-09-01-415f9e48-3
+Depends: libc, libuci20130104
 Source: package/system/uci
+SourceName: uci
 License: LGPL-2.1
 Section: base
 Maintainer: Felix Fietkau <nbd@nbd.name>
 Architecture: aarch64_cortex-a53
-Installed-Size: 6831
+Installed-Size: 6830
 Description:  Utility for the Unified Configuration Interface (UCI)

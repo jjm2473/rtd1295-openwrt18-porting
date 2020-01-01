@@ -1,9 +1,10 @@
 Package: wireless-regdb
-Version: 2017-10-20-4343d359
+Version: 2019.06.03
 Depends: libc
 Source: package/firmware/wireless-regdb
+SourceName: wireless-regdb
 Section: firmware
 Maintainer: Felix Fietkau <nbd@nbd.name>
-Architecture: aarch64_cortex-a53
-Installed-Size: 1828
+Architecture: all
+Installed-Size: 2030
 Description:  Wireless Regulatory Database

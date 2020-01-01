@@ -1,0 +1,11 @@
+Package: cgi-io
+Version: 14
+Depends: libc, libubox20170601, libubus20170705
+Source: feeds/packages/net/cgi-io
+SourceName: cgi-io
+License: GPL-2.0-or-later
+Section: net
+Maintainer: John Crispin <blogic@openwrt.org>
+Architecture: aarch64_cortex-a53
+Installed-Size: 7161
+Description:  This package contains an cgi utility that is useful for up/downloading files

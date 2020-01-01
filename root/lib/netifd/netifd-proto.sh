@@ -64,6 +64,8 @@ proto_init_update() {
 	PROTO_PREFIX6=
 	PROTO_DNS=
 	PROTO_DNS_SEARCH=
+	PROTO_NEIGHBOR=
+	PROTO_NEIGHBOR6=
 	json_init
 	json_add_int action 0
 	[ -n "$ifname" -a "*" != "$ifname" ] && json_add_string "ifname" "$ifname"
@@ -131,6 +133,23 @@ proto_add_ipv6_address() {
 	local class="$6"
 
 	append PROTO_IP6ADDR "$address/$mask/$preferred/$valid/$offlink/$class"
+}
+
+proto_add_ipv4_neighbor(){
+	local address="$1"
+	local mac="$2"
+	local proxy="$3"
+
+	append PROTO_NEIGHBOR "$address/$mac/$proxy"
+}
+
+proto_add_ipv6_neighbor(){
+	local address="$1"
+	local mac="$2"
+	local proxy="$3"
+	local router="$4"
+
+	append PROTO_NEIGHBOR6 "$address/$mac/$proxy/$router"
 }
 
 proto_add_ipv4_route() {
@@ -218,6 +237,43 @@ _proto_push_string() {
 	json_add_string "" "$1"
 }
 
+_proto_push_ipv4_neighbor(){
+	local str="$1"
+	local address mac proxy
+
+	address="${str%%/*}"
+	str="${str#*/}"
+	mac="${str%%/*}"
+	str="${str#*/}"
+	proxy="${str%%/*}"
+
+	json_add_object ""
+	json_add_string ipaddr "$address"
+	[ -n "$mac" ] && json_add_string mac "$mac"
+	[ -n "$proxy" ] && json_add_boolean proxy "$proxy"
+	json_close_object
+}
+
+_proto_push_ipv6_neighbor(){
+	local str="$1"
+	local address mac proxy router
+
+	address="${str%%/*}"
+	str="${str#*/}"
+	mac="${str%%/*}"
+	str="${str#*/}"
+	proxy="${str%%/*}"
+	str="${str#*/}"
+	router="${str%%/*}"
+
+	json_add_object ""
+	json_add_string ipaddr "$address"
+	[ -n "$mac" ] && json_add_string mac "$mac"
+	[ -n "$proxy" ] && json_add_boolean proxy "$proxy"
+	[ -n "$router" ] && json_add_boolean router "$router"
+	json_close_object
+}
+
 _proto_push_route() {
 	local str="$1";
 	local target="${str%%/*}"
@@ -277,6 +333,8 @@ proto_send_update() {
 	_proto_push_array "ip6prefix" "$PROTO_PREFIX6" _proto_push_string
 	_proto_push_array "dns" "$PROTO_DNS" _proto_push_string
 	_proto_push_array "dns_search" "$PROTO_DNS_SEARCH" _proto_push_string
+	_proto_push_array "neighbor" "$PROTO_NEIGHBOR" _proto_push_ipv4_neighbor
+	_proto_push_array "neighbor6" "$PROTO_NEIGHBOR6" _proto_push_ipv6_neighbor
 	_proto_notify "$interface"
 }
 

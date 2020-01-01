@@ -60,11 +60,13 @@
 /usr/bin/nslookup
 /usr/bin/pgrep
 /bin/umount
+/sbin/swapon
 /bin/netmsg
 /usr/bin/tail
 /usr/sbin/ntpd-hotplug
 /usr/bin/mkfifo
 /bin/chgrp
+/sbin/swapoff
 /bin/cp
 /sbin/poweroff
 /usr/bin/[[

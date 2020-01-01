@@ -1,10 +1,11 @@
 Package: odhcp6c
-Version: 2018-07-14-67ae6a71-15
-Depends: libc, libubox
+Version: 2019-01-11-e199804b-16
+Depends: libc, libubox20170601
 Source: package/network/ipv6/odhcp6c
+SourceName: odhcp6c
 License: GPL-2.0
 Section: net
 Maintainer: Hans Dedecker <dedeckeh@gmail.com>
 Architecture: aarch64_cortex-a53
-Installed-Size: 24647
+Installed-Size: 24868
 Description:  Embedded DHCPv6-client for OpenWrt

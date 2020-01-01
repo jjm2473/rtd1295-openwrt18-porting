@@ -1,0 +1,12 @@
+/www/luci-static/resources/view/system/flash.js
+/www/luci-static/resources/view/system/sshkeys.js
+/www/luci-static/resources/view/system/password.js
+/usr/lib/lua/luci/model/cbi/admin_system/backupfiles.lua
+/www/luci-static/resources/view/system/system.js
+/www/luci-static/resources/view/system/dropbear.js
+/www/luci-static/resources/view/system/crontab.js
+/usr/lib/lua/luci/controller/admin/system.lua
+/www/luci-static/resources/view/system/mounts.js
+/www/luci-static/resources/view/system/leds.js
+/www/luci-static/resources/view/system/reboot.js
+/www/luci-static/resources/view/system/startup.js

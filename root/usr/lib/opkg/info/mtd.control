@@ -1,10 +1,11 @@
 Package: mtd
-Version: 23
-Depends: libc, libubox
+Version: 24
+Depends: libc, libubox20170601
 Source: package/system/mtd
+SourceName: mtd
 License: GPL-2.0+
 Section: utils
 Architecture: aarch64_cortex-a53
-Installed-Size: 11975
+Installed-Size: 9899
 Description:  This package contains an utility useful to upgrade from other firmware or 
  older OpenWrt releases.
