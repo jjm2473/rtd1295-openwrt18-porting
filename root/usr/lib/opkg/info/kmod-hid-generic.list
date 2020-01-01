@@ -1,2 +1,2 @@
-/lib/modules/4.9.198/hid-generic.ko
 /etc/modules.d/hid-generic
+/lib/modules/4.14.156/hid-generic.ko

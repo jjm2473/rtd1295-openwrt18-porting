@@ -1,9 +1,10 @@
 Package: kmod-nls-iso8859-1
-Version: 4.9.198-1
-Depends: kernel (=4.9.198-1-0611ed3e1c5c7d754ccb555ba915b140), kmod-nls-base
+Version: 4.14.156-1
+Depends: kernel (=4.14.156-1-ae418ed2395263358bbe7536d318ae28), kmod-nls-base
 Source: package/kernel/linux
+SourceName: kmod-nls-iso8859-1
 License: GPL-2.0
 Section: kernel
 Architecture: aarch64_cortex-a53
-Installed-Size: 1755
+Installed-Size: 1814
 Description:  Kernel module for NLS ISO 8859-1 (Latin 1)

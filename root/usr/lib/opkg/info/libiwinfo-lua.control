@@ -1,11 +1,12 @@
 Package: libiwinfo-lua
-Version: 2018-07-31-65b8333f-1
-Depends: libc, libiwinfo, liblua
+Version: 2019-10-16-07315b6f-1
+Depends: libc, libiwinfo20181126, liblua5.1.5
 Source: package/network/utils/iwinfo
+SourceName: libiwinfo-lua
 License: GPL-2.0
 Section: lang
 Maintainer: Jo-Philipp Wich <jo@mein.io>
 Architecture: aarch64_cortex-a53
-Installed-Size: 5951
+Installed-Size: 5990
 Description:  This is the Lua binding for the iwinfo library. It provides access to all enabled
  backends.

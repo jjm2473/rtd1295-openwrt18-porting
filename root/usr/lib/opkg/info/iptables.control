@@ -1,11 +1,12 @@
 Package: iptables
-Version: 1.6.2-3
-Depends: libc, kmod-ipt-core, libip4tc, libip6tc, libxtables
+Version: 1.8.3-1
+Depends: libc, kmod-ipt-core, libip4tc2, libip6tc2, libxtables12
 Source: package/network/utils/iptables
+SourceName: iptables
 License: GPL-2.0
 Section: net
 Architecture: aarch64_cortex-a53
-Installed-Size: 25428
+Installed-Size: 24414
 Description:  IP firewall administration tool.
  
  Matches:
@@ -28,6 +29,7 @@ Description:  IP firewall administration tool.
  - DNAT
  - DROP
  - REJECT
+ - FLOWOFFLOAD
  - LOG
  - MARK
  - MASQUERADE

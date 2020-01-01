@@ -7,14 +7,13 @@ local table  = require "table"
 local nixio  = require "nixio"
 local fs     = require "nixio.fs"
 local uci    = require "luci.model.uci"
-local ntm    = require "luci.model.network"
 
 local luci  = {}
 luci.util   = require "luci.util"
 luci.ip     = require "luci.ip"
 
-local tonumber, ipairs, pairs, pcall, type, next, setmetatable, require, select =
-	tonumber, ipairs, pairs, pcall, type, next, setmetatable, require, select
+local tonumber, ipairs, pairs, pcall, type, next, setmetatable, require, select, unpack =
+	tonumber, ipairs, pairs, pcall, type, next, setmetatable, require, select, unpack
 
 
 module "luci.sys"
@@ -24,51 +23,6 @@ function call(...)
 end
 
 exec = luci.util.exec
-
-function mounts()
-	local data = {}
-	local k = {"fs", "blocks", "used", "available", "percent", "mountpoint"}
-	local ps = luci.util.execi("df")
-
-	if not ps then
-		return
-	else
-		ps()
-	end
-
-	for line in ps do
-		local row = {}
-
-		local j = 1
-		for value in line:gmatch("[^%s]+") do
-			row[k[j]] = value
-			j = j + 1
-		end
-
-		if row[k[1]] then
-
-			-- this is a rather ugly workaround to cope with wrapped lines in
-			-- the df output:
-			--
-			--	/dev/scsi/host0/bus0/target0/lun0/part3
-			--                   114382024  93566472  15005244  86% /mnt/usb
-			--
-
-			if not row[k[2]] then
-				j = 2
-				line = ps()
-				for value in line:gmatch("[^%s]+") do
-					row[k[j]] = value
-					j = j + 1
-				end
-			end
-
-			table.insert(data, row)
-		end
-	end
-
-	return data
-end
 
 -- containing the whole environment is returned otherwise this function returns
 -- the corresponding string value for the given name or nil if no such variable
@@ -119,7 +73,7 @@ end
 net = {}
 
 local function _nethints(what, callback)
-	local _, k, e, mac, ip, name
+	local _, k, e, mac, ip, name, duid, iaid
 	local cur = uci.cursor()
 	local ifn = { }
 	local hosts = { }
@@ -166,6 +120,24 @@ local function _nethints(what, callback)
 					mac = luci.ip.checkmac(mac)
 					if mac and ip then
 						_add(what, mac, ip, nil, name ~= "*" and name)
+					end
+				end
+			end
+		end
+	)
+
+	cur:foreach("dhcp", "odhcpd",
+		function(s)
+			if type(s.leasefile) == "string" and fs.access(s.leasefile) then
+				for e in io.lines(s.leasefile) do
+					duid, iaid, name, _, ip = e:match("^# %S+ (%S+) (%S+) (%S+) (-?%d+) %S+ %S+ ([0-9a-f:.]+)/[0-9]+")
+					mac = net.duid_to_mac(duid)
+					if mac then
+						if ip and iaid == "ipv4" then
+							_add(what, mac, ip, nil, name ~= "*" and name)
+						elseif ip then
+							_add(what, mac, nil, ip, name ~= "*" and name)
+						end
 					end
 				end
 			end
@@ -368,6 +340,26 @@ function net.devices()
 	return devs
 end
 
+function net.duid_to_mac(duid)
+	local b1, b2, b3, b4, b5, b6
+
+	if type(duid) == "string" then
+		-- DUID-LLT / Ethernet
+		if #duid == 28 then
+			b1, b2, b3, b4, b5, b6 = duid:match("^00010001(%x%x)(%x%x)(%x%x)(%x%x)(%x%x)(%x%x)%x%x%x%x%x%x%x%x$")
+
+		-- DUID-LL / Ethernet
+		elseif #duid == 20 then
+			b1, b2, b3, b4, b5, b6 = duid:match("^00030001(%x%x)(%x%x)(%x%x)(%x%x)(%x%x)(%x%x)$")
+
+		-- DUID-LL / Ethernet (Without Header)
+		elseif #duid == 12 then
+			b1, b2, b3, b4, b5, b6 = duid:match("^(%x%x)(%x%x)(%x%x)(%x%x)(%x%x)(%x%x)$")
+		end
+	end
+
+	return b1 and luci.ip.checkmac(table.concat({ b1, b2, b3, b4, b5, b6 }, ":"))
+end
 
 process = {}
 
@@ -418,6 +410,96 @@ end
 
 process.signal = nixio.kill
 
+local function xclose(fd)
+	if fd and fd:fileno() > 2 then
+		fd:close()
+	end
+end
+
+function process.exec(command, stdout, stderr, nowait)
+	local out_r, out_w, err_r, err_w
+	if stdout then out_r, out_w = nixio.pipe() end
+	if stderr then err_r, err_w = nixio.pipe() end
+
+	local pid = nixio.fork()
+	if pid == 0 then
+		nixio.chdir("/")
+
+		local null = nixio.open("/dev/null", "w+")
+		if null then
+			nixio.dup(out_w or null, nixio.stdout)
+			nixio.dup(err_w or null, nixio.stderr)
+			nixio.dup(null, nixio.stdin)
+			xclose(out_w)
+			xclose(out_r)
+			xclose(err_w)
+			xclose(err_r)
+			xclose(null)
+		end
+
+		nixio.exec(unpack(command))
+		os.exit(-1)
+	end
+
+	local _, pfds, rv = nil, {}, { code = -1, pid = pid }
+
+	xclose(out_w)
+	xclose(err_w)
+
+	if out_r then
+		pfds[#pfds+1] = {
+			fd = out_r,
+			cb = type(stdout) == "function" and stdout,
+			name = "stdout",
+			events = nixio.poll_flags("in", "err", "hup")
+		}
+	end
+
+	if err_r then
+		pfds[#pfds+1] = {
+			fd = err_r,
+			cb = type(stderr) == "function" and stderr,
+			name = "stderr",
+			events = nixio.poll_flags("in", "err", "hup")
+		}
+	end
+
+	while #pfds > 0 do
+		local nfds, err = nixio.poll(pfds, -1)
+		if not nfds and err ~= nixio.const.EINTR then
+			break
+		end
+
+		local i
+		for i = #pfds, 1, -1 do
+			local rfd = pfds[i]
+			if rfd.revents > 0 then
+				local chunk, err = rfd.fd:read(4096)
+				if chunk and #chunk > 0 then
+					if rfd.cb then
+						rfd.cb(chunk)
+					else
+						rfd.buf = rfd.buf or {}
+						rfd.buf[#rfd.buf + 1] = chunk
+					end
+				else
+					table.remove(pfds, i)
+					if rfd.buf then
+						rv[rfd.name] = table.concat(rfd.buf, "")
+					end
+					rfd.fd:close()
+				end
+			end
+		end
+	end
+
+	if not nowait then
+		_, _, rv.code = nixio.waitpid(pid)
+	end
+
+	return rv
+end
+
 
 user = {}
 
@@ -454,6 +536,8 @@ end
 wifi = {}
 
 function wifi.getiwinfo(ifname)
+	local ntm = require "luci.model.network"
+
 	ntm.init()
 
 	local wnet = ntm:get_wifinet(ifname)
@@ -499,7 +583,7 @@ function init.enabled(name)
 end
 
 function init.enable(name)
-	return (init_action("enable", name) == 1)
+	return (init_action("enable", name) == 0)
 end
 
 function init.disable(name)
@@ -512,4 +596,12 @@ end
 
 function init.stop(name)
 	return (init_action("stop", name) == 0)
+end
+
+function init.restart(name)
+	return (init_action("restart", name) == 0)
+end
+
+function init.reload(name)
+	return (init_action("reload", name) == 0)
 end

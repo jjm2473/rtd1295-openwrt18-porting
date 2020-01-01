@@ -1,10 +1,13 @@
 Package: uclient-fetch
-Version: 2018-11-24-3ba74ebc-1
-Depends: libc, libuclient
+Version: 2019-05-30-3b3e368d-1
+Depends: libc, libuclient20160123
+Provides: wget
+Alternatives: 200:/usr/bin/wget:/bin/uclient-fetch
 Source: package/libs/uclient
+SourceName: uclient-fetch
 License: ISC
 Section: net
 Maintainer: Felix Fietkau <nbd@nbd.name>
 Architecture: aarch64_cortex-a53
-Installed-Size: 6676
+Installed-Size: 6578
 Description:  Tiny wget replacement using libuclient

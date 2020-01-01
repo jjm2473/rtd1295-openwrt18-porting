@@ -1,0 +1,9 @@
+Package: luci-app-opkg
+Version: git-19.334.63023-039ef1f-1
+Depends: libc, opkg
+Source: feeds/luci/applications/luci-app-opkg
+SourceName: luci-app-opkg
+Section: luci
+Architecture: all
+Installed-Size: 8242
+Description:  OPKG package management application

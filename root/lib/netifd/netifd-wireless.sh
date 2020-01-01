@@ -70,7 +70,7 @@ _wdev_prepare_channel() {
 	}
 
 	case "$hwmode" in
-		a|b|g) ;;
+		a|b|g|ad) ;;
 		*)
 			if [ "$channel" -gt 14 ]; then
 				hwmode=a
@@ -200,6 +200,7 @@ wireless_vif_parse_encryption() {
 		*tkip+aes|*tkip+ccmp|*aes+tkip|*ccmp+tkip) wpa_cipher="CCMP TKIP";;
 		*aes|*ccmp) wpa_cipher="CCMP";;
 		*tkip) wpa_cipher="TKIP";;
+		*gcmp) wpa_cipher="GCMP";;
 	esac
 
 	# 802.11n requires CCMP for WPA
@@ -211,10 +212,10 @@ wireless_vif_parse_encryption() {
 	# wpa2/tkip+aes     => WPA2 RADIUS, CCMP+TKIP
 
 	case "$encryption" in
-		wpa2*|*psk2*)
+		wpa2*|wpa3*|*psk2*|psk3*|sae*|owe*)
 			wpa=2
 		;;
-		*mixed*)
+		wpa*mixed*|*psk*mixed*)
 			wpa=3
 		;;
 		wpa*|*psk*)
@@ -228,6 +229,21 @@ wireless_vif_parse_encryption() {
 	wpa_pairwise="$wpa_cipher"
 
 	case "$encryption" in
+		owe*)
+			auth_type=owe
+		;;
+		wpa3-mixed*)
+			auth_type=eap-eap192
+		;;
+		wpa3*)
+			auth_type=eap192
+		;;
+		psk3-mixed*|sae-mixed*)
+			auth_type=psk-sae
+		;;
+		psk3*|sae*)
+			auth_type=sae
+		;;
 		*psk*)
 			auth_type=psk
 		;;

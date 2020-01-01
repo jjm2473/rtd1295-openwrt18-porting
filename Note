@@ -7,7 +7,7 @@ fdisk openwrt-sunxi-cortexa53-sun50i-a64-sopine-baseboard-squashfs-sdcard.img | 
  2: 83  178   3  12 -  211   1  13 [     45056 -     524288] Linux files*
 
 dump root fs:
-dd if=openwrt-sunxi-cortexa53-sun50i-a64-sopine-baseboard-squashfs-sdcard.img of=openwrt-sunxi-cortexa53-sun50i-a64-sopine-baseboard-root-squashfs.img ibs=1 skip=$((45056*512))
+dd if=openwrt-sunxi-cortexa53-sun50i-a64-sopine-baseboard-squashfs-sdcard.img of=openwrt-sunxi-cortexa53-sun50i-a64-sopine-baseboard-root-squashfs.img ibs=512 skip=45056
 
 mount root fs:
 mount -t squashfs openwrt-sunxi-cortexa53-sun50i-a64-sopine-baseboard-root-squashfs.img /mnt/sunxi

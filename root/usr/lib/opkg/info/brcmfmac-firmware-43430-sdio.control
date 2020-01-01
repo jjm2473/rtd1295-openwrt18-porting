@@ -1,9 +1,10 @@
 Package: brcmfmac-firmware-43430-sdio
-Version: 2017-09-06-a61ac5cf-1
+Version: 20190416-1
 Depends: libc
 Source: package/firmware/linux-firmware
+SourceName: brcmfmac-firmware-43430-sdio
 Section: firmware
 Maintainer: Felix Fietkau <nbd@nbd.name>
 Architecture: aarch64_cortex-a53
-Installed-Size: 246244
+Installed-Size: 260827
 Description:  Broadcom BCM43430 FullMac SDIO firmware

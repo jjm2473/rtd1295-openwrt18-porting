@@ -1,9 +1,0 @@
-Package: libip6tc
-Version: 1.6.2-3
-Depends: libc, libxtables
-Source: package/network/utils/iptables
-License: GPL-2.0
-Section: libs
-Architecture: aarch64_cortex-a53
-Installed-Size: 18989
-Description:  IPv6 firewall - shared libiptc library

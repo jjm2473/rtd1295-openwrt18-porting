@@ -1,2 +1,2 @@
-/lib/modules/4.9.198/usbhid.ko
+/lib/modules/4.14.156/usbhid.ko
 /etc/modules.d/usb-hid
