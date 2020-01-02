@@ -17,4 +17,4 @@ else
 end
 
 luciname    = "LuCI openwrt-19.07 branch"
-luciversion = "git-19.334.63023-039ef1f"
+luciversion = "git-19.365.55415-a44e6b3"

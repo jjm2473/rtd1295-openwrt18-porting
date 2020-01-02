@@ -1,5 +1,5 @@
 Package: resize2fs
-Version: 1.44.5-1
+Version: 1.44.5-2
 Depends: libc, e2fsprogs
 Source: feeds/base/package/utils/e2fsprogs
 SourceName: resize2fs
@@ -7,5 +7,5 @@ License: GPL-2.0
 LicenseFiles: NOTICE
 Section: utils
 Architecture: aarch64_cortex-a53
-Installed-Size: 21551
+Installed-Size: 21568
 Description:  Ext2 Filesystem resize utility

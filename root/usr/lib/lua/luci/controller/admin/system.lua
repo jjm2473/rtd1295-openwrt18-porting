@@ -5,7 +5,6 @@
 module("luci.controller.admin.system", package.seeall)
 
 function index()
-	local fs = require "nixio.fs"
 	entry({"admin", "system", "system"}, view("system/system"), _("System"), 1)
 
 	entry({"admin", "system", "admin"}, firstchild(), _("Administration"), 2)
@@ -23,11 +22,8 @@ function index()
 	entry({"admin", "system", "mounts"}, view("system/mounts"), _("Mount Points"), 50)
 		.file_depends = { "/sbin/block" }
 
-	local nodes, number = fs.glob("/sys/class/leds/*/trigger")
-	if number > 0 then
-		entry({"admin", "system", "leds"}, view("system/leds"), _("<abbr title=\"Light Emitting Diode\">LED</abbr> Configuration"), 60)
-			.file_depends = { "/sys/class/leds" }
-	end
+	entry({"admin", "system", "leds"}, view("system/leds"), _("<abbr title=\"Light Emitting Diode\">LED</abbr> Configuration"), 60)
+		.file_depends = { "/sys/class/leds" }
 
 	entry({"admin", "system", "flash"}, view("system/flash"), _("Backup / Flash Firmware"), 70)
 

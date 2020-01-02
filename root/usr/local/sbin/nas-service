@@ -10,7 +10,7 @@ fi
 
 if echo "$SERVICES" | grep -q $1; then
 	SERVICENAME=$1
-	[ "$SERVICENAME" == "samba" ] && SERVICENAME="samba"
+	[ "$SERVICENAME" == "samba" ] && SERVICENAME="samba4"
 	[ "$SERVICENAME" == "netatalk" ] && SERVICENAME="afpd"
 	case "$2" in
 		enable)

@@ -6,5 +6,5 @@ SourceName: dbus
 License: AFL-2.1
 Section: utils
 Architecture: aarch64_cortex-a53
-Installed-Size: 98574
+Installed-Size: 98442
 Description:  Simple interprocess messaging system (daemon)

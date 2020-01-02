@@ -1,13 +1,13 @@
 Package: odhcpd-ipv6only
-Version: 2019-09-15-88d9ab64-3
+Version: 2019-12-16-e53fec89-3
 Depends: libc, libubox20170601, libuci20130104, libubus20170705, libnl-tiny
-Source: package/network/services/odhcpd
+Source: feeds/base/package/network/services/odhcpd
 SourceName: odhcpd-ipv6only
 License: GPL-2.0
 Section: net
 Maintainer: Hans Dedecker <dedeckeh@gmail.com>
 Architecture: aarch64_cortex-a53
-Installed-Size: 33697
+Installed-Size: 33690
 Description:  odhcpd is a daemon for serving and relaying IP management protocols to
  configure clients and downstream routers. It tries to follow the RFC 6204
  requirements for IPv6 home routers.

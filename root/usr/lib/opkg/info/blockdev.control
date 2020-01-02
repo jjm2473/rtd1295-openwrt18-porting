@@ -1,5 +1,5 @@
 Package: blockdev
-Version: 2.33-2
+Version: 2.34-1
 Depends: libc, librt
 Source: feeds/base/package/utils/util-linux
 SourceName: blockdev
@@ -7,5 +7,5 @@ License: GPL-2.0
 LicenseFiles: COPYING libblkid/COPYING libmount/COPYING Documentation/licenses/COPYING.GPLv2 Documentation/licenses/COPYING.LGPLv2.1 libuuid/COPYING Documentation/licenses/COPYING.BSD-3
 Section: utils
 Architecture: aarch64_cortex-a53
-Installed-Size: 17216
+Installed-Size: 17574
 Description:  The blockdev program is the command-line interface to call block device ioctls.

@@ -1,10 +1,10 @@
 Package: luci-proto-ipv6
-Version: git-19.334.63023-039ef1f-1
+Version: git-19.365.55415-a44e6b3-1
 Depends: libc
 Source: feeds/luci/protocols/luci-proto-ipv6
 SourceName: luci-proto-ipv6
 License: Apache-2.0
 Section: luci
 Architecture: all
-Installed-Size: 2837
+Installed-Size: 2829
 Description:  Support for DHCPv6/6in4/6to4/6rd/DS-Lite

@@ -1,9 +1,9 @@
 Package: luci-lib-jsonc
-Version: git-19.334.63023-039ef1f-1
+Version: git-19.365.55415-a44e6b3-1
 Depends: libc, liblua5.1.5, libjson-c2
 Source: feeds/luci/libs/luci-lib-jsonc
 SourceName: luci-lib-jsonc
 Section: luci
 Architecture: aarch64_cortex-a53
-Installed-Size: 3877
+Installed-Size: 3873
 Description:  Lua binding for JSON-C

@@ -1,10 +1,10 @@
 Package: luci-mod-admin-full
-Version: git-19.334.63023-039ef1f-1
+Version: git-19.365.55415-a44e6b3-1
 Depends: libc, luci-base, luci-mod-status, luci-mod-system, luci-mod-network
 Source: feeds/luci/modules/luci-mod-admin-full
 SourceName: luci-mod-admin-full
 License: Apache-2.0
 Section: luci
 Architecture: all
-Installed-Size: 103
+Installed-Size: 96
 Description:  LuCI Administration - full-featured for full control

@@ -1,10 +1,11 @@
 Package: libtirpc
-Version: 1.0.3-2
+Version: 1.1.4-1
 Depends: libc, libpthread
 Source: feeds/packages/libs/libtirpc
+SourceName: libtirpc
 License: BSD-3-Clause
 Section: libs
 Maintainer: Andy Walsh <andy.walsh44+github@gmail.com>
 Architecture: aarch64_cortex-a53
-Installed-Size: 62782
+Installed-Size: 64774
 Description:  Library TI RPC for RPC bindings

@@ -1,11 +1,11 @@
 Package: libblobmsg-json
-Version: 2019-06-16-ecf56174-1
+Version: 2019-10-29-30130391-1
 Depends: libc, libjson-c2, libubox20170601
-Source: package/libs/libubox
+Source: feeds/base/package/libs/libubox
 SourceName: libblobmsg-json
 License: ISC
 Section: libs
 Maintainer: Felix Fietkau <nbd@nbd.name>
 Architecture: aarch64_cortex-a53
-Installed-Size: 3380
+Installed-Size: 3375
 Description:  blobmsg <-> json conversion library

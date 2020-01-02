@@ -1,14 +1,14 @@
 Package: libgcrypt
-Version: 1.8.4-1
+Version: 1.8.5-1
 Depends: libc, libgpg-error
 Source: feeds/packages/libs/libgcrypt
 SourceName: libgcrypt
-License: LGPL-2.1+ GPL-2.0+
-LicenseFiles: COPYING
+License: LGPL-2.1-or-later
+LicenseFiles: COPYING.LIB
 Section: libs
 Maintainer: W. Michael Petullo <mike@flyn.org>
 Architecture: aarch64_cortex-a53
-Installed-Size: 342373
+Installed-Size: 342408
 Description:  This is a general purpose cryptographic library based on the code from
  GnuPG. It provides functions for all cryptograhic building blocks:
  symmetric ciphers (AES, DES, Arcfour, CAST5), hash algorithms (MD5, SHA-1,

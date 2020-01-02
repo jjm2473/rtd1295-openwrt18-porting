@@ -8,5 +8,5 @@ LicenseFiles: COPYING Copyright
 Section: libs
 Maintainer: Nikos Mavrogiannopoulos <n.mavrogiannopoulos@gmail.com>
 Architecture: aarch64_cortex-a53
-Installed-Size: 168454
+Installed-Size: 167766
 Description:  The Linux-PAM Pluggable Authentication Modules.

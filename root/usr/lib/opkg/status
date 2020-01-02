@@ -1,3 +1,18 @@
+Package: terminfo
+Version: 6.1-5
+Depends: libc
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1577973294
+Auto-Installed: yes
+
+Package: luci-theme-material
+Version: git-19.365.55415-a44e6b3-1
+Depends: libc
+Status: install user installed
+Architecture: all
+Installed-Time: 1577971960
+
 Package: iwinfo
 Version: 2019-10-16-07315b6f-1
 Depends: libc, libiwinfo20181126
@@ -14,13 +29,20 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1575129153
 Auto-Installed: yes
 
+Package: libpam
+Version: 1.3.1-1
+Depends: libc
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1577973501
+Auto-Installed: yes
+
 Package: cgi-io
-Version: 14
+Version: 16
 Depends: libc, libubox20170601, libubus20170705
 Status: install user installed
 Architecture: aarch64_cortex-a53
-Installed-Time: 1575129153
-Auto-Installed: yes
+Installed-Time: 1577972642
 
 Package: libc
 Version: 1.1.24-2
@@ -29,6 +51,17 @@ Status: install hold installed
 Essential: yes
 Architecture: aarch64_cortex-a53
 Installed-Time: 1575129153
+Auto-Installed: yes
+
+Package: avahi-dbus-daemon
+Version: 0.7-3
+Depends: libc, libavahi-dbus-support, libexpat, librt, libdaemon
+Provides: avahi-daemon
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Conffiles:
+ /etc/avahi/avahi-daemon.conf 65650c663773acb2c2e25e5a4158a5970cc74def4ff7f26f927819e6ab66c33a
+Installed-Time: 1577973637
 Auto-Installed: yes
 
 Package: mkf2fs
@@ -50,12 +83,11 @@ Conffiles:
 Installed-Time: 1575129153
 
 Package: luci-app-opkg
-Version: git-19.334.63023-039ef1f-1
+Version: git-19.365.55415-a44e6b3-1
 Depends: libc, opkg
 Status: install user installed
 Architecture: all
-Installed-Time: 1575129153
-Auto-Installed: yes
+Installed-Time: 1577972646
 
 Package: wpad-basic
 Version: 2019-08-08-ca8c2bd2-1
@@ -106,16 +138,7 @@ Status: install user installed
 Architecture: aarch64_cortex-a53
 Conffiles:
  /etc/config/rpcd 81a24774226d42c6ea53b531992335cc910094a7e17f80a803e680e2eededd4f
-Installed-Time: 1575129153
-
-Package: rpcd
-Version: 2018-11-28-3aa81d0d-1
-Depends: libc, libubus20170705, libubox20170601, libuci20130104, libblobmsg-json
-Status: install user installed
-Architecture: aarch64_cortex-a53
-Conffiles:
- /etc/config/rpcd 81a24774226d42c6ea53b531992335cc910094a7e17f80a803e680e2eededd4f
-Installed-Time: 1553875645
+Installed-Time: 1577973110
 
 Package: busybox
 Version: 1.30.1-5
@@ -126,12 +149,11 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1575129153
 
 Package: luci-lib-ip
-Version: git-19.334.63023-039ef1f-1
+Version: git-19.365.55415-a44e6b3-1
 Depends: libc, liblua5.1.5, libnl-tiny
 Status: install user installed
 Architecture: aarch64_cortex-a53
-Installed-Time: 1575129153
-Auto-Installed: yes
+Installed-Time: 1577972660
 
 Package: libubus-lua
 Version: 2018-10-06-221ce7e7-1
@@ -147,13 +169,20 @@ Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1575129153
 
+Package: libdbus
+Version: 1.12.12-1
+Depends: libc, libpthread
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1577973605
+Auto-Installed: yes
+
 Package: luci-mod-system
-Version: git-19.334.63023-039ef1f-1
+Version: git-19.365.55415-a44e6b3-1
 Depends: libc, luci-base
 Status: install user installed
 Architecture: all
-Installed-Time: 1575129153
-Auto-Installed: yes
+Installed-Time: 1577972666
 
 Package: brcmfmac-firmware-43455-sdio
 Version: 20190416-1
@@ -162,6 +191,13 @@ Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1575129153
 
+Package: resize2fs
+Version: 1.44.5-2
+Depends: libc, e2fsprogs
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1577972672
+
 Package: getrandom
 Version: 2019-06-16-4df34a4d-3
 Depends: libc
@@ -169,27 +205,27 @@ Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1575129153
 
-Package: luci-theme-bootstrap
-Version: git-19.334.63023-039ef1f-1
-Depends: libc
-Status: install user installed
-Architecture: all
-Installed-Time: 1575129153
-Auto-Installed: yes
-
-Package: resize2fs
-Version: 1.44.5-1
-Depends: libc, e2fsprogs
-Status: install user installed
-Architecture: aarch64_cortex-a53
-Installed-Time: 1553911199
-
 Package: blockdev
-Version: 2.33-2
+Version: 2.34-1
 Depends: libc, librt
 Status: install user installed
 Architecture: aarch64_cortex-a53
-Installed-Time: 1553911264
+Installed-Time: 1577972675
+
+Package: libgcrypt
+Version: 1.8.5-1
+Depends: libc, libgpg-error
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1577973455
+Auto-Installed: yes
+
+Package: luci-theme-bootstrap
+Version: git-19.365.55415-a44e6b3-1
+Depends: libc
+Status: install user installed
+Architecture: all
+Installed-Time: 1577972677
 
 Package: libuuid1
 Version: 2.34-1
@@ -198,6 +234,22 @@ Provides: libuuid
 Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1575129153
+Auto-Installed: yes
+
+Package: libcap
+Version: 2.27-1
+Depends: libc
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1577973347
+Auto-Installed: yes
+
+Package: libavahi-client
+Version: 0.7-3
+Depends: libc, avahi-dbus-daemon
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1577973650
 Auto-Installed: yes
 
 Package: base-files
@@ -280,6 +332,14 @@ Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1575129153
 
+Package: attr
+Version: 2.4.48-1
+Depends: libc, libattr
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1577973655
+Auto-Installed: yes
+
 Package: ubusd
 Version: 2018-10-06-221ce7e7-1
 Depends: libc, libubox20170601, libblobmsg-json
@@ -289,20 +349,26 @@ Installed-Time: 1575129153
 Auto-Installed: yes
 
 Package: libubox20170601
-Version: 2019-06-16-ecf56174-1
+Version: 2019-10-29-30130391-1
 Depends: libc
 Provides: libubox
 Status: install user installed
 Architecture: aarch64_cortex-a53
-Installed-Time: 1575129153
-Auto-Installed: yes
+Installed-Time: 1577972680
 
 Package: luci-mod-status
-Version: git-19.334.63023-039ef1f-1
+Version: git-19.365.55415-a44e6b3-1
 Depends: libc, luci-base, libiwinfo20181126, libiwinfo-lua
 Status: install user installed
 Architecture: aarch64_cortex-a53
-Installed-Time: 1575129153
+Installed-Time: 1577972995
+
+Package: libgpg-error
+Version: 1.36-3
+Depends: libc
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1577973393
 Auto-Installed: yes
 
 Package: libxtables12
@@ -333,12 +399,11 @@ Conffiles:
 Installed-Time: 1575129153
 
 Package: luci-app-firewall
-Version: git-19.334.63023-039ef1f-1
+Version: git-19.365.55415-a44e6b3-1
 Depends: libc, firewall
 Status: install user installed
 Architecture: all
-Installed-Time: 1575129153
-Auto-Installed: yes
+Installed-Time: 1577972717
 
 Package: libblkid1
 Version: 2.34-1
@@ -373,6 +438,14 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1575129153
 Alternatives: 200:/usr/bin/wget:/bin/uclient-fetch
 
+Package: libdaemon
+Version: 0.14-5
+Depends: libc
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1577973627
+Auto-Installed: yes
+
 Package: uci
 Version: 2019-09-01-415f9e48-3
 Depends: libc, libuci20130104
@@ -396,6 +469,14 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1575129153
 Auto-Installed: yes
 
+Package: dbus
+Version: 1.12.12-1
+Depends: libc, libexpat, libdbus
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1577973615
+Auto-Installed: yes
+
 Package: dropbear
 Version: 2019.78-2
 Depends: libc
@@ -414,6 +495,15 @@ Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1575129153
 
+Package: libgmp10
+Version: 6.1.2-2
+Depends: libc
+Provides: libgmp
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1577973369
+Auto-Installed: yes
+
 Package: rpcd-mod-file
 Version: 2019-11-10-77ad0de0-1
 Depends: libc, libubus20170705, libubox20170601, rpcd
@@ -429,11 +519,21 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1575129153
 
 Package: odhcpd-ipv6only
-Version: 2019-09-15-88d9ab64-3
+Version: 2019-12-16-e53fec89-3
 Depends: libc, libubox20170601, libuci20130104, libubus20170705, libnl-tiny
 Status: install user installed
 Architecture: aarch64_cortex-a53
-Installed-Time: 1575129153
+Installed-Time: 1577972721
+
+Package: samba4-server
+Version: 4.9.15-2
+Depends: libc, samba4-libs
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Conffiles:
+ /etc/config/samba4 149c6b68b72dc5eb758e0e275dac279459defbab03caa66b209491a457d33cf2
+ /etc/samba/smb.conf.template 6c9e6c35be0a3f51b2bad14727482d6be2c0d9e6f393a649043d47e26dbbebb4
+Installed-Time: 1577974613
 
 Package: rpcd-mod-luci
 Version: 20191114
@@ -451,12 +551,11 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1575129153
 
 Package: luci-proto-ppp
-Version: git-19.334.63023-039ef1f-1
+Version: git-19.365.55415-a44e6b3-1
 Depends: libc
 Status: install user installed
 Architecture: all
-Installed-Time: 1575129153
-Auto-Installed: yes
+Installed-Time: 1577972723
 
 Package: libcomerr0
 Version: 1.44.5-2
@@ -468,12 +567,11 @@ Installed-Time: 1575129153
 Auto-Installed: yes
 
 Package: luci-mod-admin-full
-Version: git-19.334.63023-039ef1f-1
+Version: git-19.365.55415-a44e6b3-1
 Depends: libc, luci-base, luci-mod-status, luci-mod-system, luci-mod-network
 Status: install user installed
 Architecture: all
-Installed-Time: 1575129153
-Auto-Installed: yes
+Installed-Time: 1577972724
 
 Package: ppp
 Version: 2.4.7.git-2019-05-25-2
@@ -487,7 +585,7 @@ Conffiles:
 Installed-Time: 1575129153
 
 Package: luci-base
-Version: git-19.334.63023-039ef1f-1
+Version: git-19.365.55415-a44e6b3-1
 Depends: libc, lua, luci-lib-nixio, luci-lib-ip, rpcd, libubus-lua, luci-lib-jsonc, liblucihttp-lua, rpcd-mod-file, rpcd-mod-luci, cgi-io
 Status: install user installed
 Architecture: aarch64_cortex-a53
@@ -495,7 +593,15 @@ Conffiles:
  /etc/luci-uploads/.placeholder e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
  /etc/config/luci 5a7c058ee80817cbda78401fa5e13eb2c0580d4aca9e4bf00df12f8d558aec29
  /etc/config/ucitrack 3480e8ca8e224537c9d95e7678b05123ff7b06a2a0b3d1000032a04576d90381
-Installed-Time: 1575129153
+Installed-Time: 1577972729
+
+Package: libnettle7
+Version: 3.5.1-1
+Depends: libc, libgmp10
+Provides: libnettle
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1577973391
 Auto-Installed: yes
 
 Package: logd
@@ -504,6 +610,23 @@ Depends: libc, libubox20170601, libubus20170705, libblobmsg-json
 Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1575129153
+
+Package: samba4-libs
+Version: 4.9.15-2
+Depends: libc, zlib, libtirpc, libpopt0, libcomerr0, libreadline8, libcap, libpthread, libnettle7, libgcrypt, libpam, dbus, libavahi-client, attr, libavahi-client
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1577974613
+Auto-Installed: yes
+
+Package: libreadline8
+Version: 8.0-1
+Depends: libc, libncursesw6
+Provides: libreadline
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1577973340
+Auto-Installed: yes
 
 Package: librt
 Version: 1.1.24-2
@@ -514,28 +637,25 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1575129153
 
 Package: libjson-script
-Version: 2019-06-16-ecf56174-1
+Version: 2019-10-29-30130391-1
 Depends: libc, libubox20170601
 Status: install user installed
 Architecture: aarch64_cortex-a53
-Installed-Time: 1575129153
-Auto-Installed: yes
+Installed-Time: 1577972736
 
 Package: luci-proto-ipv6
-Version: git-19.334.63023-039ef1f-1
+Version: git-19.365.55415-a44e6b3-1
 Depends: libc
 Status: install user installed
 Architecture: all
-Installed-Time: 1575129153
-Auto-Installed: yes
+Installed-Time: 1577972737
 
 Package: libblobmsg-json
-Version: 2019-06-16-ecf56174-1
+Version: 2019-10-29-30130391-1
 Depends: libc, libjson-c2, libubox20170601
 Status: install user installed
 Architecture: aarch64_cortex-a53
-Installed-Time: 1575129153
-Auto-Installed: yes
+Installed-Time: 1577972742
 
 Package: libip6tc2
 Version: 1.8.3-1
@@ -572,12 +692,11 @@ Installed-Time: 1575129153
 Auto-Installed: yes
 
 Package: jshn
-Version: 2019-06-16-ecf56174-1
+Version: 2019-10-29-30130391-1
 Depends: libc, libjson-c2, libubox20170601, libblobmsg-json
 Status: install user installed
 Architecture: aarch64_cortex-a53
-Installed-Time: 1575129153
-Auto-Installed: yes
+Installed-Time: 1577972743
 
 Package: e2fsprogs
 Version: 1.44.5-2
@@ -595,6 +714,15 @@ Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1553911272
 
+Package: libncurses6
+Version: 6.1-5
+Depends: libc, terminfo
+Provides: libncursesw, libncurses, libncursesw6
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1577973303
+Auto-Installed: yes
+
 Package: brcmfmac-firmware-usb
 Version: 20190416-1
 Depends: libc
@@ -602,6 +730,13 @@ Status: install ok installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1575129153
 Auto-Installed: yes
+
+Package: luci-app-samba4
+Version: git-19.365.55415-a44e6b3-1
+Depends: libc, samba4-server
+Status: install user installed
+Architecture: all
+Installed-Time: 1577974761
 
 Package: libss2
 Version: 1.44.5-2
@@ -622,13 +757,13 @@ Installed-Time: 1575129153
 Auto-Installed: yes
 
 Package: uhttpd
-Version: 2019-08-17-6b03f960-4
+Version: 2019-12-22-5f9ae573-1
 Depends: libc, libubox20170601, libblobmsg-json, libjson-script, libjson-c2
 Status: install user installed
 Architecture: aarch64_cortex-a53
 Conffiles:
  /etc/config/uhttpd 779a23a1f25b7721094ee54154ffe86745c88ca894fd21b20788ba874c92833d
-Installed-Time: 1575129153
+Installed-Time: 1577972748
 
 Package: usign
 Version: 2019-08-06-5a52b379-1
@@ -645,6 +780,13 @@ Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1575129153
 
+Package: luci-i18n-samba4-zh-cn
+Version: git-19.365.55415-a44e6b3-1
+Depends: libc, luci-app-samba4
+Status: install user installed
+Architecture: all
+Installed-Time: 1577974762
+
 Package: liblua5.1.5
 Version: 5.1.5-3
 Depends: libc
@@ -652,6 +794,14 @@ Provides: liblua
 Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1575129153
+Auto-Installed: yes
+
+Package: zlib
+Version: 1.2.11-3
+Depends: libc
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1577973252
 Auto-Installed: yes
 
 Package: brcmfmac-board-rpi2
@@ -669,12 +819,11 @@ Architecture: all
 Installed-Time: 1575129153
 
 Package: luci-lib-nixio
-Version: git-19.334.63023-039ef1f-1
+Version: git-19.365.55415-a44e6b3-1
 Depends: libc, liblua5.1.5
 Status: install user installed
 Architecture: aarch64_cortex-a53
-Installed-Time: 1575129153
-Auto-Installed: yes
+Installed-Time: 1577972753
 
 Package: libubus20170705
 Version: 2018-10-06-221ce7e7-1
@@ -685,6 +834,13 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1575129153
 Auto-Installed: yes
 
+Package: luci-i18n-base-zh-cn
+Version: git-19.365.55415-a44e6b3-1
+Depends: libc, luci-base
+Status: install user installed
+Architecture: all
+Installed-Time: 1577971963
+
 Package: liblucihttp-lua
 Version: 2019-07-05-a34a17d5-1
 Depends: libc, liblucihttp0, liblua5.1.5
@@ -694,19 +850,18 @@ Installed-Time: 1575129153
 Auto-Installed: yes
 
 Package: luci-lib-jsonc
-Version: git-19.334.63023-039ef1f-1
+Version: git-19.365.55415-a44e6b3-1
 Depends: libc, liblua5.1.5, libjson-c2
 Status: install user installed
 Architecture: aarch64_cortex-a53
-Installed-Time: 1575129153
-Auto-Installed: yes
+Installed-Time: 1577972753
 
 Package: luci
-Version: git-19.334.63023-039ef1f-1
+Version: git-19.365.55415-a44e6b3-1
 Depends: libc, uhttpd, luci-mod-admin-full, luci-theme-bootstrap, luci-app-firewall, luci-app-opkg, luci-proto-ppp, libiwinfo-lua, luci-proto-ipv6, rpcd-mod-rrdns
 Status: install user installed
 Architecture: all
-Installed-Time: 1575129153
+Installed-Time: 1577971945
 
 Package: libgcc1
 Version: 7.5.0-2
@@ -715,6 +870,14 @@ Status: install hold installed
 Essential: yes
 Architecture: aarch64_cortex-a53
 Installed-Time: 1575129153
+Auto-Installed: yes
+
+Package: libexpat
+Version: 2.2.7-1
+Depends: libc
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1577973593
 Auto-Installed: yes
 
 Package: ubox
@@ -740,6 +903,13 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1575129153
 Auto-Installed: yes
 
+Package: blkid
+Version: 2.34-1
+Depends: libc, libblkid1, libuuid1
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1577972758
+
 Package: rpcd-mod-iwinfo
 Version: 2019-11-10-77ad0de0-1
 Depends: libc, libubus20170705, libubox20170601, rpcd, libiwinfo20181126
@@ -748,19 +918,19 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1575129153
 
 Package: luci-mod-network
-Version: git-19.334.63023-039ef1f-1
+Version: git-19.365.55415-a44e6b3-1
 Depends: libc, luci-base, libiwinfo-lua, rpcd-mod-iwinfo
 Status: install user installed
 Architecture: all
-Installed-Time: 1575129153
-Auto-Installed: yes
+Installed-Time: 1577972764
 
-Package: blkid
-Version: 2.33-2
-Depends: libc, libblkid1, libuuid1
-Status: install user installed
+Package: libtirpc
+Version: 1.1.4-1
+Depends: libc, libpthread
+Status: install ok installed
 Architecture: aarch64_cortex-a53
-Installed-Time: 1553875782
+Installed-Time: 1577973274
+Auto-Installed: yes
 
 Package: fwtool
 Version: 2
@@ -786,6 +956,23 @@ Architecture: aarch64_cortex-a53
 Installed-Time: 1575129153
 Auto-Installed: yes
 
+Package: libpopt0
+Version: 1.16-2
+Depends: libc
+Provides: libpopt
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1577973288
+Auto-Installed: yes
+
+Package: libattr
+Version: 2.4.48-1
+Depends: libc
+Status: install ok installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1577973654
+Auto-Installed: yes
+
 Package: wireless-regdb
 Version: 2019.06.03
 Depends: libc
@@ -801,12 +988,14 @@ Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1575129153
 
-Package: brcmfmac-firmware-43430-sdio
-Version: 20190416-1
-Depends: libc
-Status: install user installed
+Package: libavahi-dbus-support
+Version: 0.7-3
+Depends: libc, dbus
+Provides: libavahi
+Status: install ok installed
 Architecture: aarch64_cortex-a53
-Installed-Time: 1575129153
+Installed-Time: 1577973624
+Auto-Installed: yes
 
 Package: rpcd-mod-rrdns
 Version: 20170710
@@ -815,6 +1004,13 @@ Status: install user installed
 Architecture: aarch64_cortex-a53
 Installed-Time: 1575129153
 Auto-Installed: yes
+
+Package: brcmfmac-firmware-43430-sdio
+Version: 20190416-1
+Depends: libc
+Status: install user installed
+Architecture: aarch64_cortex-a53
+Installed-Time: 1575129153
 
 Package: ppp-mod-pppoe
 Version: 2.4.7.git-2019-05-25-2
