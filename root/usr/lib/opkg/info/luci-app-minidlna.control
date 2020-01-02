@@ -1,8 +1,9 @@
 Package: luci-app-minidlna
-Version: git-19.332.23140-f01d93b-1
-Depends: libc, minidlna
+Version: git-19.365.55415-a44e6b3-1
+Depends: libc, luci-compat, minidlna
 Source: feeds/luci/applications/luci-app-minidlna
+SourceName: luci-app-minidlna
 Section: luci
 Architecture: all
-Installed-Size: 3236
+Installed-Size: 3229
 Description:  LuCI Support for miniDLNA

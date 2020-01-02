@@ -2,7 +2,8 @@ Package: ca-bundle
 Version: 20190110-1
 Depends: libc
 Source: feeds/base/package/system/ca-certificates
+SourceName: ca-bundle
 Section: base
 Architecture: all
-Installed-Size: 115226
+Installed-Size: 115225
 Description:  System CA certificates as a bundle

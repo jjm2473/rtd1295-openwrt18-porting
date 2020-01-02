@@ -2,12 +2,13 @@ Package: libnatpmp
 Version: 20150609-1
 Depends: libc
 Source: feeds/packages/libs/libnatpmp
+SourceName: libnatpmp
 License: BSD-3c
 LicenseFiles: LICENSE
 Section: libs
 Maintainer: Hauke Mehrtens <hauke@hauke-m.de>
 Architecture: aarch64_cortex-a53
-Installed-Size: 3226
+Installed-Size: 3198
 Description:  libnatpmp is an attempt to make a portable and fully compliant implementation
  of the protocol for the client side. It is based on non blocking sockets and
  all calls of the API are asynchronous. It is therefore very easy to integrate

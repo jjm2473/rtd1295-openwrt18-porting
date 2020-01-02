@@ -1,5 +1,5 @@
 Package: libstdcpp6
-Version: 7.4.0-1
+Version: 7.5.0-2
 Provides: libstdcpp
 Source: package/libs/toolchain
 SourceName: libstdcpp
@@ -9,5 +9,5 @@ Status: unknown hold not-installed
 Essential: yes
 Maintainer: Felix Fietkau <nbd@nbd.name>
 Architecture: aarch64_cortex-a53
-Installed-Size: 387585
+Installed-Size: 387593
 Description:  GNU Standard C++ Library v3

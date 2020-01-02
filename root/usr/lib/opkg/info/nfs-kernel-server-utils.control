@@ -1,0 +1,10 @@
+Package: nfs-kernel-server-utils
+Version: 2.3.4-2
+Depends: libc, nfs-kernel-server
+Source: feeds/packages/net/nfs-kernel-server
+SourceName: nfs-kernel-server-utils
+Section: net
+Maintainer: Peter Wagner <tripolar@gmx.at>
+Architecture: aarch64_cortex-a53
+Installed-Size: 12446
+Description:  NFS server utils

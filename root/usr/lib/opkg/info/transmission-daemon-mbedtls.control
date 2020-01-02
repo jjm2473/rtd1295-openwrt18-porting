@@ -1,14 +1,15 @@
 Package: transmission-daemon-mbedtls
-Version: 2.94-8
-Depends: libc, libcurl, libevent2, libminiupnpc, libnatpmp, libpthread, librt, zlib, libmbedtls
+Version: 2.94-9
+Depends: libc, libcurl4, libevent2-7, libminiupnpc, libnatpmp, libpthread, librt, zlib, libmbedtls12
 Source: feeds/packages/net/transmission
+SourceName: transmission-daemon-mbedtls
 License: GPL-2.0-or-later
 LicenseFiles: COPYING
 Section: net
 Require-User: transmission=224:transmission=224
 Maintainer: Rosen Penev <rosenp@gmail.com>
 Architecture: aarch64_cortex-a53
-Installed-Size: 172376
+Installed-Size: 173053
 Description:  Transmission is a simple BitTorrent client.
  It features a very simple, intuitive interface
  on top on an efficient, cross-platform back-end.

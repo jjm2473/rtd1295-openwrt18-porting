@@ -1,14 +1,15 @@
 Package: libffmpeg-mini
-Version: 3.2.12-3
-Depends: libc, libpthread, libpthread, zlib, libbz2
+Version: 3.4.6-3
+Depends: libc, libpthread, libpthread, zlib, libbz2-1.0
 Provides: libffmpeg
 Source: feeds/packages/multimedia/ffmpeg
-License: LGPL-2.1+ GPL-2+ LGPL-3
+SourceName: libffmpeg-mini
+License: LGPL-2.1-or-later GPL-2.0-or-later LGPL-3
 LicenseFiles: COPYING.GPLv2 COPYING.GPLv3 COPYING.LGPLv2.1 COPYING.LGPLv3
 Section: libs
 Maintainer: Ted Hess <thess@kitschensync.net>, Ian Leonard <antonlacon@gmail.com>
 Architecture: aarch64_cortex-a53
-Installed-Size: 645274
+Installed-Size: 680148
 Description:  FFmpeg is a a software package that can record, convert and stream digital
  audio and video in numerous formats.
  

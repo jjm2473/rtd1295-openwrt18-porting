@@ -1,8 +1,9 @@
 Package: luci-i18n-minidlna-zh-cn
-Version: git-19.332.23140-f01d93b-1
+Version: git-19.365.55415-a44e6b3-1
 Depends: libc, luci-app-minidlna
 Source: feeds/luci/applications/luci-app-minidlna
+SourceName: luci-i18n-minidlna-zh-cn
 Section: luci
 Architecture: all
-Installed-Size: 1814
+Installed-Size: 2010
 Description:  Translation for luci-app-minidlna - 中文 (Chinese)

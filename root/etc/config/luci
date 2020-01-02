@@ -15,6 +15,7 @@ config extern 'flash_keep'
 
 config internal 'languages'
 	option zh_cn '中文 (Chinese)'
+	option en 'English'
 
 config internal 'sauth'
 	option sessionpath '/tmp/luci-sessions'

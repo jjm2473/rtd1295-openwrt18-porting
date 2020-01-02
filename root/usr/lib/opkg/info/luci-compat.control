@@ -1,0 +1,9 @@
+Package: luci-compat
+Version: git-19.365.55415-a44e6b3-1
+Depends: libc, luci-base
+Source: feeds/luci/modules/luci-compat
+SourceName: luci-compat
+Section: luci
+Architecture: all
+Installed-Size: 37928
+Description:  LuCI compatibility libraries

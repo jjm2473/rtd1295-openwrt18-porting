@@ -1,10 +1,10 @@
 Package: nfs-utils-libs
-Version: 2.3.3-5
-Depends: libc, libwrap, libblkid1, libuuid1, libtirpc, libkeyutils, libdevmapper
+Version: 2.3.4-2
+Depends: libc, libwrap, libblkid1, libuuid1, libtirpc, libkeyutils1, libdevmapper
 Source: feeds/packages/net/nfs-kernel-server
 SourceName: nfs-utils-libs
 Section: utils
 Maintainer: Peter Wagner <tripolar@gmx.at>
 Architecture: aarch64_cortex-a53
-Installed-Size: 14548
+Installed-Size: 15508
 Description:  Libraries provided by nfs-utils

@@ -1,0 +1,12 @@
+Package: libkeyutils1
+Version: 1.6-3
+Depends: libc
+Provides: libkeyutils
+Source: feeds/packages/libs/keyutils
+SourceName: libkeyutils
+License: LGPL-2.1-or-later
+LicenseFiles: LICENSE.LGPL
+Section: libs
+Architecture: aarch64_cortex-a53
+Installed-Size: 4561
+Description:  Key utilities library

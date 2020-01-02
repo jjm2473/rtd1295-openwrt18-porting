@@ -1,165 +1,436 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-<head>
-	<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-	<meta http-equiv="cache-control" content="no-cache" />
-	<meta http-equiv="expires" content="0" />
-	<meta http-equiv="pragma" content="no-cache" />
-	<link rel='shortcut icon' href='favicon.ico' type='image/x-icon'/ >
-	<title>Transmission Web Control</title>
-	<!-- Style sheet -->
-	<link rel="stylesheet" type="text/css" href="tr-web-control/style/before-easyui.css?v=20180906" />
-	<link id="styleEasyui" rel="stylesheet" type="text/css" href="tr-web-control/script/easyui/themes/default/easyui.css?v=20180906"/>
-	<link rel="stylesheet" type="text/css" href="tr-web-control/script/plugins/jquery.webui-popover.css" />
-	<link rel="stylesheet" type="text/css" href="tr-web-control/style/base.css?v=20180906" />
-	<link rel="stylesheet" type="text/css" href="tr-web-control/script/easyui/themes/icon.css?v=20180906"/>
-	<link rel="stylesheet" type="text/css" href="tr-web-control/style/icon.custom.css?v=20180906"/>
-	<link rel="stylesheet" type="text/css" href="tr-web-control/style/iconfont/iconfont.css?v=20180906"/>
-	<!-- <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_584244_g4d8d6qr58nnrk9.css"/> -->
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=8,IE=9,IE=10"><!-- ticket #4555 --> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<link href="./images/favicon.ico" rel="icon" />
+		<link href="./images/favicon.png" rel="shortcut icon" />
+		<link rel="apple-touch-icon" href="./images/webclip-icon.png"/>
+		<script type="text/javascript" src="./javascript/jquery/jquery.min.js"></script>
+		<script type="text/javascript" src="./javascript/jquery/jquery-migrate.min.js"></script>
+		<script type="text/javascript" src="./javascript/jquery/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="./javascript/jquery/jquery.ui-contextmenu.min.js"></script>
+		<link rel="stylesheet" href="./style/jqueryui/jquery-ui.min.css" type="text/css" media="all" />
+<!--
+		<link media="screen" href="./style/transmission/mobile.css" type= "text/css" rel="stylesheet" />
+-->
+		<link media="only screen and (max-device-width: 480px)" href="./style/transmission/mobile.css" type= "text/css" rel="stylesheet" />
+		<link media="screen and (min-device-width: 481px)" href="./style/transmission/common.css" type="text/css" rel="stylesheet" />
+		<!--[if IE 8]>
+		<link media="screen" href="./style/transmission/common.css" type="text/css" rel="stylesheet" />
+		<![endif]-->
+		<script type="text/javascript" src="./javascript/jquery/jquery.transmenu.min.js"></script>
+		<script type="text/javascript" src="./javascript/jquery/json2.min.js"></script>
+		<script type="text/javascript" src="./javascript/common.js"></script>
+		<script type="text/javascript" src="./javascript/inspector.js"></script>
+		<script type="text/javascript" src="./javascript/prefs-dialog.js"></script>
+		<script type="text/javascript" src="./javascript/remote.js"></script>
+		<script type="text/javascript" src="./javascript/transmission.js"></script>
+		<script type="text/javascript" src="./javascript/torrent.js"></script>
+		<script type="text/javascript" src="./javascript/torrent-row.js"></script>
+		<script type="text/javascript" src="./javascript/file-row.js"></script>
+		<script type="text/javascript" src="./javascript/dialog.js"></script>
+		<script type="text/javascript" src="./javascript/formatter.js"></script>
+		<script type="text/javascript" src="./javascript/notifications.js"></script>
+		<title>Transmission Web Interface</title>
+	</head>
+	<body id="transmission_body">
 
-	<!-- Base class library -->
-	<script type="text/javascript" src="tr-web-control/script/jquery/jquery-1.12.4.min.js"></script>
-	<script type="text/javascript" src="tr-web-control/script/jquery/jquery.form.js"></script>
-	<script type="text/javascript" src="tr-web-control/script/jquery/json2.min.js"></script>
-	<script type="text/javascript" src="tr-web-control/script/jquery/Base64.js"></script>
-	<script type="text/javascript" src="tr-web-control/script/easyui/jquery.easyui.min.js?v=20180906"></script>
-	<script type="text/javascript" src="tr-web-control/script/easyui/plugins/jquery.datagrid.drophead.js"></script>
-	<script type="text/javascript" src="tr-web-control/script/plugins/jquery.webui-popover.min.js"></script>
-	<!-- -->
-	<!-- System class library -->
-	<script type="text/javascript" src="tr-web-control/script/min/FileSaver.min.js?v=20180906"></script>
-	<script type="text/javascript" src="tr-web-control/script/min/clipboard.min.js"></script>
-	<script type="text/javascript" src="tr-web-control/script/min/public.min.js?v=20180906"></script>
-	<script type="text/javascript" src="tr-web-control/script/min/ua-parser.min.js?v=20180906"></script>
-	<script type="text/javascript" src="tr-web-control/script/min/transmission.min.js?v=20180906"></script>
-	<script type="text/javascript" src="tr-web-control/script/min/transmission.torrents.min.js?v=20171027"></script>
-	<script type="text/javascript" src="tr-web-control/script/min/system.min.js?v=20180906"></script>
-	<script type="text/javascript" src="tr-web-control/config.js?v=20180906"></script>
-	<script type="text/javascript" src="tr-web-control/plugin.js?v=20180906"></script>
-	<script type="text/javascript">
-		 var nonpc = [ "console", "mobile", "tablet", "smarttv", "wearable", "embedded" ]
-		 if ((nonpc.indexOf($.ua.device.type) != -1 )&&location.search.getQueryString("devicetype")!="computer") 
-		 {
-		   location.href = "index.mobile.html";
-		 }
-	</script>
-</head>
-<body>
-	<div id="main" class="easyui-layout">
-		<div id="m_top" data-options="region:'north'">
-			<div class="easyui-layout" data-options="fit:true">
-				<div id="m_title_layout" data-options="region:'center'" border="0">
-					<img id="logo" src="tr-web-control/logo.png"/><span id="m_title" style="padding:10px;display:none;"></span>
-					<span id="area-update-infos" style="display:none;padding: 13px;position: absolute;background-color: #ffe48c;">
-						<span id="msg-updateInfos" style="color:#ff3232;"></span>
-						<a id="button-download-update" href="" class="easyui-linkbutton" data-options="iconCls:'iconfont tr-icon-help'"><span system-lang="public['text-have-update']"></span></a>
-					</span>
-					<div style="float:right;padding:13px;">
-						<span>Theme: </span>
-						<!-- 切换主题 -->
-						<select id="select-themes" style="width:120px;height:25px"></select>
-						<!-- 切换到移动版 -->
-						<a id="toolbar_mobile" href="javascript:location.href = 'index.mobile.html';" class="easyui-linkbutton" data-options="iconCls:'icon-mobile',plain:true" system-tip-lang="toolbar.tip['ui-mobile']"><span system-lang="toolbar['ui-mobile']"></span></a>
-						<span class="button-split">|</span>
-						<!-- 切换到原版 -->
-						<a id="" href="javascript:location.href = 'index.original.html';" class="easyui-linkbutton" data-options="iconCls:'icon-transmission',plain:true" system-tip-lang="toolbar.tip['ui-original']"><span system-lang="toolbar['ui-original']"></span></a>
-						<span class="button-split">|</span>
-						<!-- 关于 -->
-						<a id="toolbar_about" href="javascript:void(0);" onclick="javascript:system.openDialogFromTemplate({id: 'dialog-about',options: {title: system.lang.toolbar['about'],width: 420,height: 370}});" class="easyui-linkbutton" data-options="iconCls:'icon-about',plain:true" system-tip-lang="toolbar.about"><span system-lang="toolbar.about"></span></a>
+		<div id="toolbar">
+			<div id="toolbar-open" title="Open Torrent"></div>
+			<div id="toolbar-remove" title="Remove Selected Torrents"></div>
+			<div id="toolbar-separator"></div>
+			<div id="toolbar-start" title="Start Selected Torrents"></div>
+			<div id="toolbar-pause" title="Pause Selected Torrents"></div>
+			<div id="toolbar-separator"></div>
+			<div id="toolbar-start-all" title="Start All Torrents"></div>
+			<div id="toolbar-pause-all" title="Pause All Torrents"></div>
+			<div id="toolbar-inspector" title="Toggle Inspector"></div>
+		</div>
+
+		<div id="statusbar">
+			<div id='filter'>
+				Show
+				<select id="filter-mode">
+					<option value="all">All</option>
+					<option value="active">Active</option>
+					<option value="downloading">Downloading</option>
+					<option value="seeding">Seeding</option>
+					<option value="paused">Paused</option>
+					<option value="finished">Finished</option>
+				</select>
+				<select id="filter-tracker"></select>
+				<input type="search" id="torrent_search" placeholder="Filter" />
+				<span id="filter-count">&nbsp;</span>
+			</div>
+
+			<div id='speed-info'>
+				<div id='speed-dn-container'>
+					<div id='speed-dn-icon'></div>
+					<div id='speed-dn-label'></div>
+				</div>
+				<div id='speed-up-container'>
+					<div id='speed-up-icon'></div>
+					<div id='speed-up-label'></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="ui-helper-hidden" id="prefs-dialog">
+			<ul>
+				<li id="prefs-tab-general"><a href="#prefs-page-torrents">Torrents</a></li>
+				<li id="prefs-tab-speed"><a href="#prefs-page-speed">Speed</a></li>
+				<li id="prefs-tab-peers"><a href="#prefs-page-peers">Peers</a></li>
+				<li id="prefs-tab-network"><a href="#prefs-page-network">Network</a></li>
+				<li class="ui-tab-dialog-close"></li>
+			</ul>
+			<div>
+				<div id="prefs-page-torrents">
+					<div class="prefs-section">
+						<div class="title">Downloading</div>
+						<div class="row"><div class="key">Download to:</div><div class="value"><input type="text" id="download-dir"/></div></div>
+						<div class="checkbox-row"><input type="checkbox" id="start-added-torrents"/><label for="start-added-torrents">Start when added</label></div>
+						<div class="checkbox-row"><input type="checkbox" id="rename-partial-files"/><label for="rename-partial-files">Append &quot;.part&quot; to incomplete files' names</label></div>
 					</div>
-					<div style="float:right;display:none;">Language：<select id="lang" value="" style="width:200px;"></select></div>
+					<div class="prefs-section">
+						<div class="title">Seeding</div>
+						<div class="row"><div class="key"><input type="checkbox" id="seedRatioLimited"/><label for="seedRatioLimited">Stop seeding at ratio:</label></div>
+                                                                 <div class="value"><input type="number" min="0" id="seedRatioLimit"/></div></div>
+						<div class="row"><div class="key"><input type="checkbox" id="idle-seeding-limit-enabled"/><label for="idle-seeding-limit-enabled">Stop seeding if idle for (min):</label></div>
+                                                                 <div class="value"><input type="number" min="0" id="idle-seeding-limit"/></div></div>
+					</div>
 				</div>
-				<!-- 工具栏 -->
-				<div id="m_toolbar" data-options="region:'south',border:0">
-					<!-- 增加种子 -->
-					<a id="toolbar_add_torrents" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'iconfont tr-icon-plus',plain:true,disabled:true"></a>
-					<span class="button-split">|</span>
-					<!-- 限速 -->
-					<a id="toolbar_alt_speed" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'iconfont tr-icon-rocket',plain:true"></a>
-					<span class="button-split">|</span>
-					<!-- 刷新 -->
-					<a id="toolbar_reload" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'iconfont tr-icon-reload',plain:true"></a>
-					<!-- 设置 -->
-					<a id="toolbar_config" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'iconfont tr-icon-system-config',plain:true"></a>
-					<span class="button-split">|</span>
-					<!-- 扩展功能/插件 -->
-					<a id="toolbar_plugin" href="#" class="easyui-menubutton" data-options="menu:'#menu-plugin',iconCls:'iconfont tr-icon-plugin',disabled:false" system-tip-lang="toolbar.plugin"></a>
-					<span class="button-split">|</span>
-					<!-- 开始 -->
-					<a id="toolbar_start" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'iconfont tr-icon-start',plain:true,disabled:true"></a>
-					<!-- 暂停 -->
-					<a id="toolbar_pause" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'iconfont tr-icon-pause',plain:true,disabled:true"></a>
-					<!-- 改名 -->
-					<a id="toolbar_rename" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'iconfont tr-icon-rename',plain:true,disabled:true" system-tip-lang="toolbar.tip.rename"></a>
-					<!-- 删除 -->
-					<a id="toolbar_remove" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'iconfont tr-icon-delete',plain:true,disabled:true"></a>
-					<!-- 重新校验 -->
-					<a id="toolbar_recheck" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'iconfont tr-icon-data-check',plain:true,disabled:true"></a>
-					<!-- 获取更多Peers -->
-					<a id="toolbar_morepeers" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'iconfont tr-icon-more-peers',plain:true,disabled:true" system-tip-lang="toolbar.tip['more-peers']"></a>
-					<!-- 设置下载目录 -->
-					<a id="toolbar_changeDownloadDir" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'iconfont tr-icon-folder-change',plain:true,disabled:true"></a>
-					<!-- 复制下载目录 -->
-					<a id="toolbar_copyPath" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'iconfont tr-icon-clippy',plain:true,disabled:true" data-clipboard-action="copy" data-clipboard-target="#clipboard-source"></a>
-					<span class="button-split">|</span>
-					<!-- 队列 -->
-					<a id="toolbar_queue" href="#" class="easyui-menubutton" data-options="menu:'#menu-queue',iconCls:'iconfont tr-icon-queue-move',disabled:true" system-tip-lang="toolbar.queue"></a>
-					<span class="button-split">|</span>
-					<!-- 开始所有 -->
-					<a id="toolbar_start_all" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'iconfont tr-icon-start-all',plain:true,disabled:true"></a>
-					<!-- 暂停所有 -->
-					<a id="toolbar_pause_all" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'iconfont tr-icon-pause-all',plain:true,disabled:true"></a>
-					<span class="button-split">|</span>
-					<label id="toolbar_label_reload_time"></label>
-					<input id="toolbar_reload_time" style="width:50px;text-align:center;" class="easyui-numberspinner"/>
-					<label id="toolbar_label_reload_time_unit"></label>
-					<a id="toolbar_autoreload" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true"></a>
-					<span id="toolbar_right_area" style="padding:1px;position: absolute;right: 2px;">
-						<!-- 搜索 -->
-						<input id="toolbar_search" type="text" class="easyui-searchbox" style="width:200px;"/>
-					</span>
+				<div id="prefs-page-speed">
+					<div class="prefs-section">
+						<div class="title">Speed Limits</div>
+						<div class="row"><div class="key"><input type="checkbox" id="speed-limit-up-enabled"/><label for="speed-limit-up-enabled">Upload (kB/s):</label></div>
+                                                                 <div class="value"><input type="number" min="0" id="speed-limit-up"/></div></div>
+						<div class="row"><div class="key"><input type="checkbox" id="speed-limit-down-enabled"/><label for="speed-limit-down-enabled">Download (kB/s):</label></div>
+                                                                 <div class="value"><input type="number" min="0" id="speed-limit-down"/></div></div>
+					</div>
+					<div class="prefs-section">
+						<div class="title"><div id="alternative-speed-limits-title">Alternative Speed Limits</div></div>
+						<div class="row" id="alternative-speed-limits-desc">Override normal speed limits manually or at scheduled times</div>
+						<div class="row"><div class="key">Upload (kB/s):</div>
+                                                                 <div class="value"><input type="number" min="0" id="alt-speed-up"/></div></div>
+						<div class="row"><div class="key">Download (kB/s):</div>
+                                                                 <div class="value"><input type="number" min="0" id="alt-speed-down"/></div></div>
+						<div class="checkbox-row"><input type="checkbox" id="alt-speed-time-enabled"/><label for="alt-speed-time-enabled">Scheduled Times</label></div>
+						<div class="row"><div class="key">From:</div>
+						                 <div class="value"><select id="alt-speed-time-begin"></select></div></div>
+						<div class="row"><div class="key">To:</div>
+						                 <div class="value"><select id="alt-speed-time-end"></select></div></div>
+						<div class="row"><div class="key"><label for="alt-speed-time-day">On days:</label></div>
+						                 <div class="value"><select id="alt-speed-time-day">
+								 		<option value="127">Everyday</option>
+										<option value="62">Weekdays</option>
+										<option value="65">Weekends</option>
+										<option value="1">Sunday</option>
+										<option value="2">Monday</option>
+										<option value="4">Tuesday</option>
+										<option value="8">Wednesday</option>
+										<option value="16">Thursday</option>
+										<option value="32">Friday</option>
+										<option value="64">Saturday</option></select></div></div>
+					</div>
+				</div>
+				<div id="prefs-page-peers">
+					<div class="prefs-section">
+						<div class="title">Connections</div>
+						<div class="row"><div class="key"><label for="peer-limit-per-torrent">Max peers per torrent:</label></div>
+						                 <div class="value"><input type="number" min="0" id="peer-limit-per-torrent"/></div></div>
+						<div class="row"><div class="key"><label for="peer-limit-global">Max peers overall:</label></div>
+						                 <div class="value"><input type="number" min="0" id="peer-limit-global"/></div></div>
+					</div>
+					<div class="prefs-section">
+						<div class="title">Options</div>
+						<div class="row"><div class="key">Encryption mode:</div>
+						                 <div class="value"><select id="encryption">
+						                 	<option value="tolerated">Allow encryption</option>
+						                 	<option value="preferred">Prefer encryption</option>
+						                 	<option value="required">Require encryption</option></select></div></div>
+						<div class="checkbox-row"><input type="checkbox" id="pex-enabled" title="PEX is a tool for exchanging peer lists with the peers you're connected to."/>
+						                          <label for="pex-enabled" title="PEX is a tool for exchanging peer lists with the peers you're connected to.">Use PEX to find more peers</label></div>
+						<div class="checkbox-row"><input type="checkbox" id="dht-enabled" title="DHT is a tool for finding peers without a tracker."/>
+						                          <label for="dht-enabled" title="DHT is a tool for finding peers without a tracker.">Use DHT to find more peers</label></div>
+						<div class="checkbox-row"><input type="checkbox" id="lpd-enabled" title="LPD is a tool for finding peers on your local network."/>
+						                          <label for="lpd-enabled" title="LPD is a tool for finding peers on your local network.">Use LPD to find more peers</label></div>
+					</div>
+					<div class="prefs-section">
+						<div class="title">Blocklist</div>
+						<div class="row"><div class="key"><input type="checkbox" id="blocklist-enabled"/><label for="blocklist-enabled">Enable blocklist:</label></div>
+						                 <div class="value"><input type="url" id="blocklist-url"/></div></div>
+						<div class="row"><div class="key" id="blocklist-info">Blocklist has <span id="blocklist-size">?</span> rules</div>
+						                 <div class="value"><input type="button" id="blocklist-update-button" value="Update"/></div></div>
+					</div>
+				</div>
+				<div id="prefs-page-network">
+					<div class="prefs-section">
+						<div class="title">Listening Port</div>
+						<div class="row"><div class="key"><label for="peer-port">Peer listening port:</label></div>
+						                 <div class="value"><input type="number" min="0" max="65535" id="peer-port"/></div></div>
+						<div class="row"><div class="key">&nbsp;</div>
+						                 <div class="value"><span id="port-label">Status: Unknown</span></div></div>
+						<div class="checkbox-row"><input type="checkbox" id="peer-port-random-on-start"/><label for="peer-port-random-on-start">Randomize port on launch</label></div>
+						<div class="checkbox-row"><input type="checkbox" id="port-forwarding-enabled"/><label for="port-forwarding-enabled">Use port forwarding from my router</label></div>
+					</div>
+					<div class="prefs-section">
+						<div class="title">Options</div>
+						<div class="checkbox-row"><input type="checkbox" id="utp-enabled" title="uTP is a tool for reducing network congestion."/>
+						                          <label for="utp-enabled" title="uTP is a tool for reducing network congestion.">Enable uTP for peer communication</label></div>
+					</div>
 				</div>
 			</div>
 		</div>
-		<div id="m_left_layout" title="." data-options="region:'west',split:true,border:0">
-			<div id="layout_left" class="easyui-layout" data-options="fit:true">
-				<div id="m_left" data-options="region:'center',border:0,onResize:function(w,h){system.layoutResize('nav', {width:w});}"></div>
-				<div id="m_status" title="status" data-options="region:'south',split:true,border:0,collapsed:true">
-					<span id="status_text"></span>
-					<a id="button-cancel-checked" class="easyui-linkbutton" data-options="iconCls:'iconfont tr-icon-cancel-checked'" style="display:none;right: 5px;bottom: 5px;position:absolute;" system-tip-lang="dialog['public']['button-cancel']"></a>
+
+		<div class="ui-helper-hidden" id="torrent_inspector">
+
+			<div id="inspector-tabs-wrapper">
+			<div id="inspector-tabs">
+				<div class="inspector-tab selected" id="inspector-tab-info" title="Info"><a href="#info"></a></div><div class="inspector-tab" id="inspector-tab-peers" title="Peers"><a href="#peers"></a></div><div class="inspector-tab" id="inspector-tab-trackers" title="Trackers"><a href="#trackers"></a></div><div class="inspector-tab" id="inspector-tab-files" title="Files"><a href="#files"></a></div>
+			</div><!-- inspector-tabs -->
+			</div><!-- inspector-tabs-wrapper -->
+
+			<div id="inspector_header">
+				<div id="torrent_inspector_name"></div>
+				<span id="torrent_inspector_size"></span>
+			</div>
+
+			<div class="inspector-page" id="inspector-page-info">
+				<div class="prefs-section">
+					<div class="title">Activity</div>
+					<div class="row"><div class="key">Have:</div><div class="value" id="inspector-info-have">&nbsp;</div></div>
+					<div class="row"><div class="key">Availability:</div><div class="value" id="inspector-info-availability">&nbsp;</div></div>
+					<div class="row"><div class="key">Uploaded:</div><div class="value" id="inspector-info-uploaded">&nbsp;</div></div>
+					<div class="row"><div class="key">Downloaded:</div><div class="value" id="inspector-info-downloaded">&nbsp;</div></div>
+					<div class="row"><div class="key">State:</div><div class="value" id="inspector-info-state">&nbsp;</div></div>
+					<div class="row"><div class="key">Running Time:</div><div class="value" id="inspector-info-running-time">&nbsp;</div></div>
+					<div class="row"><div class="key">Remaining Time:</div><div class="value" id="inspector-info-remaining-time">&nbsp;</div></div>
+					<div class="row"><div class="key">Last Activity:</div><div class="value" id="inspector-info-last-activity">&nbsp;</div></div>
+					<div class="row"><div class="key">Error:</div><div class="value" id="inspector-info-error">&nbsp;</div></div>
 				</div>
+				<div class="prefs-section">
+					<div class="title">Details</div>
+					<div class="row"><div class="key">Size:</div><div class="value" id="inspector-info-size">&nbsp;</div></div>
+					<div class="row"><div class="key">Location:</div><div class="value" id="inspector-info-location">&nbsp;</div></div>
+					<div class="row"><div class="key">Hash:</div><div class="value" id="inspector-info-hash">&nbsp;</div></div>
+					<div class="row"><div class="key">Privacy:</div><div class="value" id="inspector-info-privacy">&nbsp;</div></div>
+					<div class="row"><div class="key">Origin:</div><div class="value" id="inspector-info-origin">&nbsp;</div></div>
+					<div class="row"><div class="key">Comment:</div><div class="value" id="inspector-info-comment">&nbsp;</div></div>
+				</div>
+			</div><!-- id="inspector_tab_info_container" -->
+
+			<div class="inspector-page ui-helper-hidden" id="inspector-page-peers">
+				<div id="inspector_peers_list">
+				</div>
+			</div><!-- id="inspector_tab_peers_container" -->
+
+			<div class="inspector-page ui-helper-hidden" id="inspector-page-trackers">
+				<div id="inspector_trackers_list">
+				</div>
+			</div><!-- id="inspector_tab_trackers_container" -->
+
+			<div class="inspector-page ui-helper-hidden" id="inspector-page-files">
+					<ul id="inspector_file_list">
+					</ul>
+			</div><!-- id="inspector_tab_files_container" -->
+
+		</div>
+
+		<div id="torrent_container">
+			<ul class="torrent_list" id="torrent_list"></ul>
+		</div>
+
+		<div class="dialog_container ui-helper-hidden" id="dialog_container">
+			<div class="dialog_top_bar"></div>
+			<div class="dialog_window">
+				<div class="dialog_logo" id="dialog_logo"></div>
+				<h2 class="dialog_heading" id="dialog_heading"></h2>
+				<div class="dialog_message" id="dialog_message"></div>
+				<a href="#confirm" id="dialog_confirm_button">Confirm</a>
+				<a href="#cancel" id="dialog_cancel_button">Cancel</a>
 			</div>
 		</div>
-		<div id="m_body" title="." data-options="region:'center',border:0" >
-			<div id="layout_body"  class="easyui-layout" data-options="fit:true">
-				<div id="m_list" data-options="region:'center',border:0"></div>
-				<div id="m_attribute" title="attribute" data-options="region:'south',split:true,border:0,collapsed:true,href:'tr-web-control/template/torrent-attribute.html',cache:true,onResize:function(w,h){system.layoutResize('attribute', {height:h});}"></div>
+
+		<div class="ui-helper-hidden" id="about-dialog">
+			<p id="about-logo"></p>
+			<p id="about-title">Transmission X</p>
+			<p id="about-blurb">A fast and easy BitTorrent client</p>
+			<p id="about-copyright">Copyright (c) The Transmission Project</p>
+		</div>
+
+		<div class="ui-helper-hidden" id="stats-dialog">
+			<div class="prefs-section">
+				<div class="title">Current Session</div>
+				<div class="row"><div class="key">Uploaded:</div><div class="value" id='stats-session-uploaded'>&nbsp;</div></div>
+				<div class="row"><div class="key">Downloaded:</div><div class="value" id='stats-session-downloaded'>&nbsp;</div></div>
+				<div class="row"><div class="key">Ratio:</div><div class="value" id='stats-session-ratio'>&nbsp;</div></div>
+				<div class="row"><div class="key">Running Time:</div><div class="value" id='stats-session-duration'>&nbsp;</div></div>
+			</div>
+			<div class="prefs-section">
+				<div class="title">Total</div>
+				<div class="row"><div class="key">Started:</div><div class="value" id='stats-total-count'>&nbsp;</div></div>
+				<div class="row"><div class="key">Uploaded:</div><div class="value" id='stats-total-uploaded'>&nbsp;</div></div>
+				<div class="row"><div class="key">Downloaded:</div><div class="value" id='stats-total-downloaded'>&nbsp;</div></div>
+				<div class="row"><div class="key">Ratio:</div><div class="value" id='stats-total-ratio'>&nbsp;</div></div>
+				<div class="row"><div class="key">Running Time:</div><div class="value" id='stats-total-duration'>&nbsp;</div></div>
 			</div>
 		</div>
-		<div id="m_statusbar" data-options="region:'south'">
-			<span id="status_alt_speed" style="display:none;">&nbsp;&nbsp;&nbsp;&nbsp;</span>
-			<span id="status_title_downloadspeed" class="iconlabel icon-down"></span>&nbsp;<span id="status_downloadspeed"></span>
-			<span class="button-split">|</span>
-			<span id="status_title_uploadspeed" class="iconlabel icon-up"></span>&nbsp;<span id="status_uploadspeed"></span>
-			<span class="button-split">|</span>
-			<span id="status_freespace"></span><span id="status_version" style="float:right;"></span>
+
+		<div class="dialog_container ui-helper-hidden" id="upload_container">
+			<div class="dialog_top_bar"></div>
+			<div class="dialog_window">
+				<div class="dialog_logo" id="upload_dialog_logo"></div>
+				<h2 class="dialog_heading">Upload Torrent Files</h2>
+				<form action="#" method="post" id="torrent_upload_form"
+					enctype="multipart/form-data" target="torrent_upload_frame">
+					<div class="dialog_message">
+						<label for="torrent_upload_file">Please select a torrent file to upload:</label>
+							<input type="file" name="torrent_files[]" id="torrent_upload_file" multiple="multiple" />
+						<label for="torrent_upload_url">Or enter a URL:</label>
+							<input type="url" id="torrent_upload_url"/>
+						<label id='add-dialog-folder-label' for="add-dialog-folder-input">Destination folder:</label>
+							<input type="text" id="add-dialog-folder-input"/>
+							<input type="checkbox" id="torrent_auto_start" />
+						<label for="torrent_auto_start" id="auto_start_label">Start when added</label>
+					</div>
+					<a href="#upload" id="upload_confirm_button">Upload</a>
+					<a href="#cancel" id="upload_cancel_button">Cancel</a>
+				</form>
+			</div>
 		</div>
-		<div id="dropArea" class="dropArea" style="display:none;">
-			<span id="text-drop-title" style="position:absolute;top:150px;left:150px;font-size:40px;font-weight: bold;" disabled="disabled"></span>
+
+        <div class="dialog_container ui-helper-hidden" id="rename_container">
+            <div class="dialog_top_bar"></div>
+            <div class="dialog_window">
+                <div class="dialog_logo"></div>
+                <h2 class="dialog_heading">Rename torrent</h2>
+                <div class="dialog_message">
+                    <label for="torrent_rename_name">Enter new name:</label>
+                    <input type="text" id="torrent_rename_name"/>
+                </div>
+                <a href="#rename" id="rename_confirm_button">Rename</a>
+                <a href="#cancel" id="rename_cancel_button">Cancel</a>
+            </div>
+        </div>
+
+		<div class="dialog_container ui-helper-hidden" id="move_container">
+			<div class="dialog_top_bar"></div>
+			<div class="dialog_window">
+				<div class="dialog_logo" id="move_dialog_logo"></div>
+				<h2 class="dialog_heading">Set Location</h2>
+				<form action="#" method="post" id="torrent_move_form"
+					enctype="multipart/form-data" target="torrent_move_frame">
+					<div class="dialog_message">
+						<label for="torrent_path">Location:</label>
+						<input type="text" id="torrent_path"/>
+					</div>
+					<a href="#move" id="move_confirm_button">Apply</a>
+					<a href="#cancel" id="move_cancel_button">Cancel</a>
+				</form>
+			</div>
 		</div>
-	</div>
-	<!-- 队列子菜单 -->
-	<div id="menu-queue" style="width:150px;">
-		<div id="menu-queue-move-top" data-options="iconCls:'iconfont tr-icon-top'" onclick="system.changeSelectedTorrentStatus('',null,'queue-move-top');" system-tip-lang="menus.queue['move-top']"><span system-lang="menus.queue['move-top']"></span></div>
-		<div id="menu-queue-move-up" data-options="iconCls:'iconfont tr-icon-up'" onclick="system.changeSelectedTorrentStatus('',null,'queue-move-up');" system-tip-lang="menus.queue['move-up']"><span system-lang="menus.queue['move-up']"></span></div>
-		<div id="menu-queue-move-down" data-options="iconCls:'iconfont tr-icon-down'" onclick="system.changeSelectedTorrentStatus('',null,'queue-move-down');" system-tip-lang="menus.queue['move-down']"><span system-lang="menus.queue['move-down']"></span></div>
-		<div id="menu-queue-move-bottom" data-options="iconCls:'iconfont tr-icon-bottom'" onclick="system.changeSelectedTorrentStatus('',null,'queue-move-bottom');" system-tip-lang="menus.queue['move-bottom']"><span system-lang="menus.queue['move-bottom']"></span></div>
-	</div>
-	<!-- 扩展功能/插件 -->
-	<div id="menu-plugin" style="width:260px;">
-		<div id="menu-plugin-tracker-replace" data-options="iconCls:'iconfont tr-icon-replace'" system-tip-lang="toolbar.tip['tracker-replace']" onclick="system.plugin.exec('replace-tracker');"><span system-lang="toolbar['tracker-replace']"></span></div>
-		<div id="menu-plugin-auto-match-data-folder" data-options="iconCls:'iconfont tr-icon-auto-match'" system-tip-lang="menus.plugin['auto-match-data-folder']" onclick="system.plugin.exec('auto-match-data-folder');"><span system-lang="menus.plugin['auto-match-data-folder']"></span></div>
-	</div>
-	<textarea id="clipboard-source"></textarea>
-</body>
+
+		<div class="torrent_footer">
+			<div id="settings_menu" title="Settings Menu">&nbsp;</div>
+			<div id="prefs-button" title="Edit Preferences…">&nbsp;</div>
+			<div id="turtle-button" title="Alternative Speed Limits">&nbsp;</div>
+			<div id="compact-button" title="Compact View">&nbsp;</div>
+
+			<ul class="ui-helper-hidden" id="footer_super_menu">
+				<li id="about-button">About</li>
+				<li>---</li>
+				<li id="homepage">Transmission Homepage</li>
+				<li id="tipjar">Transmission Tip Jar</li>
+				<li>---</li>
+				<li id="statistics">Statistics</li>
+				<!--
+				<li id="toggle_notifications">Notifcations</li>
+				-->
+				<li>---</li>
+				<li>Total Download Rate
+					<ul id="footer_download_rate_menu">
+						<li radio-group="download-rate" id="unlimited_download_rate"><span class='ui-icon ui-icon-bullet'></span>Unlimited</li>
+						<li radio-group="download-rate" id="limited_download_rate">Limit (10 kB/s)</li>
+						<li>---</li>
+						<li class='download-speed'>5 kB/s</li>
+						<li class='download-speed'>10 kB/s</li>
+						<li class='download-speed'>20 kB/s</li>
+						<li class='download-speed'>30 kB/s</li>
+						<li class='download-speed'>40 kB/s</li>
+						<li class='download-speed'>50 kB/s</li>
+						<li class='download-speed'>75 kB/s</li>
+						<li class='download-speed'>100 kB/s</li>
+						<li class='download-speed'>150 kB/s</li>
+						<li class='download-speed'>200 kB/s</li>
+						<li class='download-speed'>250 kB/s</li>
+						<li class='download-speed'>500 kB/s</li>
+						<li class='download-speed'>750 kB/s</li>
+					</ul>
+				</li>
+				<li>Total Upload Rate
+					<ul id="footer_upload_rate_menu">
+						<li radio-group="upload-rate" id="unlimited_upload_rate"><span class='ui-icon ui-icon-bullet'></span>Unlimited</li>
+						<li radio-group="upload-rate" id="limited_upload_rate">Limit (10 kB/s)</li>
+						<li>---</li>
+						<li class='upload-speed'>5 kB/s</li>
+						<li class='upload-speed'>10 kB/s</li>
+						<li class='upload-speed'>20 kB/s</li>
+						<li class='upload-speed'>30 kB/s</li>
+						<li class='upload-speed'>40 kB/s</li>
+						<li class='upload-speed'>50 kB/s</li>
+						<li class='upload-speed'>75 kB/s</li>
+						<li class='upload-speed'>100 kB/s</li>
+						<li class='upload-speed'>150 kB/s</li>
+						<li class='upload-speed'>200 kB/s</li>
+						<li class='upload-speed'>250 kB/s</li>
+						<li class='upload-speed'>500 kB/s</li>
+						<li class='upload-speed'>750 kB/s</li>
+					</ul>
+				</li>
+				<li>---</li>
+				<li>Sort Transfers By
+					<ul id="footer_sort_menu">
+						<li radio-group="sort-mode" id="sort_by_queue_order">Queue Order</li>
+						<li radio-group="sort-mode" id="sort_by_activity">Activity</li>
+						<li radio-group="sort-mode" id="sort_by_age">Age</li>
+						<li radio-group="sort-mode" id="sort_by_name">Name</li>
+						<li radio-group="sort-mode" id="sort_by_percent_completed">Progress</li>
+						<li radio-group="sort-mode" id="sort_by_ratio">Ratio</li>
+						<li radio-group="sort-mode" id="sort_by_size">Size</li>
+						<li radio-group="sort-mode" id="sort_by_state">State</li>
+						<li>---</li>
+						<li id="reverse_sort_order">Reverse Sort Order</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+
+		<ul class="ui-helper-hidden" id="torrent_context_menu">
+			<li data-command="pause_selected">Pause</li>
+			<li data-command="resume_selected">Resume</li>
+			<li data-command="resume_now_selected">Resume Now</li>
+			<li>---</li>
+			<li data-command="move_top">Move to Top</li>
+			<li data-command="move_up">Move Up</li>
+			<li data-command="move_down">Move Down</li>
+			<li data-command="move_bottom">Move to Bottom</li>
+			<li>---</li>
+			<li data-command="remove">Remove From List…</li>
+			<li data-command="remove_data">Trash Data and Remove From List…</li>
+			<li>---</li>
+			<li data-command="verify">Verify Local Data</li>
+			<li data-command="move">Set Location…</li>
+			<li data-command="rename">Rename…</li>
+			<li>---</li>
+			<li data-command="reannounce">Ask tracker for more peers</li>
+			<li>---</li>
+			<li data-command="select_all">Select All</li>
+			<li data-command="deselect_all">Deselect All</li>
+		</ul>
+
+		<iframe name="torrent_upload_frame" id="torrent_upload_frame" src="about:blank" ></iframe>
+	</body>
 </html>

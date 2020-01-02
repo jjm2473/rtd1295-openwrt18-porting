@@ -1,5 +1,5 @@
 Package: libopenssl1.1
-Version: 1.1.1b-3
+Version: 1.1.1d-2
 Depends: libc
 Provides: libopenssl
 Source: feeds/base/package/libs/openssl
@@ -7,8 +7,9 @@ SourceName: libopenssl
 License: OpenSSL
 LicenseFiles: LICENSE
 Section: libs
+Maintainer: Eneas U de Queiroz <cotequeiroz@gmail.com>
 Architecture: aarch64_cortex-a53
-Installed-Size: 1165995
+Installed-Size: 1168365
 Description:  The OpenSSL Project is a collaborative effort to develop a robust,
  commercial-grade, full-featured, and Open Source toolkit implementing the
  Transport Layer Security (TLS) protocol as well as a full-strength

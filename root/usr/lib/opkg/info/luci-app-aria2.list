@@ -1,4 +1,7 @@
 /usr/lib/lua/luci/controller/aria2.lua
-/usr/lib/lua/luci/model/cbi/aria2.lua
+/usr/lib/lua/luci/model/cbi/aria2/config.lua
+/usr/lib/lua/luci/view/aria2/value_with_btn.htm
+/usr/lib/lua/luci/model/cbi/aria2/files.lua
 /etc/uci-defaults/40_luci-aria2
-/usr/lib/lua/luci/view/aria2/overview_status.htm
+/usr/lib/lua/luci/view/aria2/settings_header.htm
+/usr/lib/lua/luci/view/aria2/log_template.htm
