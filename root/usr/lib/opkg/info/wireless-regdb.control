@@ -1,0 +1,10 @@
+Package: wireless-regdb
+Version: 2019.06.03
+Depends: libc
+Source: package/firmware/wireless-regdb
+SourceName: wireless-regdb
+Section: firmware
+Maintainer: Felix Fietkau <nbd@nbd.name>
+Architecture: all
+Installed-Size: 2030
+Description:  Wireless Regulatory Database

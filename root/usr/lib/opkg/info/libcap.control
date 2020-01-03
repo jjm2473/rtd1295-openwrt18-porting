@@ -1,5 +1,5 @@
 Package: libcap
-Version: 2.26-1
+Version: 2.27-1
 Depends: libc
 Source: feeds/packages/libs/libcap
 SourceName: libcap
@@ -8,5 +8,5 @@ LicenseFiles: License
 Section: libs
 Maintainer: Paul Wassi <p.wassi@gmx.at>
 Architecture: aarch64_cortex-a53
-Installed-Size: 6408
+Installed-Size: 6409
 Description:  Linux capabilities library

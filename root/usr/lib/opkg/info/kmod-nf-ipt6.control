@@ -1,10 +1,10 @@
 Package: kmod-nf-ipt6
-Version: 4.14.107-1
-Depends: kernel (=4.14.107-1-baef5e1f1cb3d6b76c6d687e645dc927), kmod-nf-ipt
+Version: 4.14.156-1
+Depends: kernel (=4.14.156-1-ae418ed2395263358bbe7536d318ae28), kmod-nf-ipt
 Source: package/kernel/linux
 SourceName: kmod-nf-ipt6
 License: GPL-2.0
 Section: kernel
 Architecture: aarch64_cortex-a53
-Installed-Size: 8820
+Installed-Size: 8806
 Description:  Ip6tables core

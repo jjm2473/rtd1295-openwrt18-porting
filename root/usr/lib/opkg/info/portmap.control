@@ -1,0 +1,13 @@
+Package: portmap
+Version: 6.0-4
+Depends: libc, libwrap, librpc
+Source: feeds/packages/net/portmap
+License: BSD-4c
+LicenseFiles: portmap.man
+Section: net
+Require-User: rpc=65533:rpc=65533
+Maintainer: Peter Wagner <tripolar@gmx.at>
+Architecture: aarch64_cortex-a53
+Installed-Size: 6747
+Description:  Portmap is a server that converts RPC (Remote Procedure Call) program
+ numbers into DARPA protocol port numbers.

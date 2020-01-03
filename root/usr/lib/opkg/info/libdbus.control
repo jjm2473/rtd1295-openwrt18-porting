@@ -6,5 +6,5 @@ SourceName: libdbus
 License: AFL-2.1
 Section: utils
 Architecture: aarch64_cortex-a53
-Installed-Size: 111095
+Installed-Size: 111022
 Description:  Simple interprocess messaging system (library)

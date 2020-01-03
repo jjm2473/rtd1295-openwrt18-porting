@@ -8,6 +8,6 @@ LicenseFiles: doc/COPYING doc/COPYING.LGPL
 Section: libs
 Maintainer: Maxim Storchak <m.storchak@gmail.com>
 Architecture: aarch64_cortex-a53
-Installed-Size: 5866
+Installed-Size: 5863
 Description:  Extended attributes support
  This package provides libattr

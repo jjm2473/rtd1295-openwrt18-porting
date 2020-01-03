@@ -7,5 +7,5 @@ License: GPLv2
 Section: net
 Maintainer: Cezary Jackiewicz <cezary@eko.one.pl>
 Architecture: aarch64_cortex-a53
-Installed-Size: 42127
+Installed-Size: 42126
 Description:  Fast and secure FTP server (no TLS)

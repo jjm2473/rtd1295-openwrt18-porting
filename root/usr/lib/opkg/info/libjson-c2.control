@@ -9,5 +9,5 @@ LicenseFiles: COPYING
 Section: libs
 Maintainer: Felix Fietkau <nbd@nbd.name>
 Architecture: aarch64_cortex-a53
-Installed-Size: 15152
+Installed-Size: 15215
 Description:  This package contains a library for javascript object notation backends.

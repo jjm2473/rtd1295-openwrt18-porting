@@ -1,0 +1,9 @@
+Package: brcm2708-gpu-fw
+Version: 2018-11-29-b428bdd819df8d0ad3009b64492a4b3d1f9453e4
+Depends: libc
+Source: package/kernel/brcm2708-gpu-fw
+SourceName: brcm2708-gpu-fw
+Section: boot
+Architecture: aarch64_cortex-a53
+Installed-Size: 103
+Description:  GPU and kernel boot firmware for brcm2708. 

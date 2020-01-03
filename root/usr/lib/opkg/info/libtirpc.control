@@ -7,5 +7,5 @@ License: BSD-3-Clause
 Section: libs
 Maintainer: Andy Walsh <andy.walsh44+github@gmail.com>
 Architecture: aarch64_cortex-a53
-Installed-Size: 64715
+Installed-Size: 64774
 Description:  Library TI RPC for RPC bindings

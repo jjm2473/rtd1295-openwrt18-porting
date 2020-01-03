@@ -7,5 +7,5 @@ License: LGPL-2.1
 Section: libs
 Maintainer: Felix Fietkau <nbd@nbd.name>
 Architecture: aarch64_cortex-a53
-Installed-Size: 14135
+Installed-Size: 14132
 Description:  This package contains a stripped down version of libnl

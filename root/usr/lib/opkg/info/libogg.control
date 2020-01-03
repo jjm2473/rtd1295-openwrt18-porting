@@ -8,7 +8,7 @@ LicenseFiles: COPYING
 Section: libs
 Maintainer: Ted Hess <thess@kitschensync.net>
 Architecture: aarch64_cortex-a53
-Installed-Size: 8962
+Installed-Size: 8914
 Description:  Ogg project codecs use the Ogg bitstream format to arrange the raw,
  compressed bitstream into a more robust, useful form.  For example,
  the Ogg bitstream makes seeking, time stamping and error recovery

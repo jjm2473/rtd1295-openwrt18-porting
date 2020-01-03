@@ -8,6 +8,6 @@ LicenseFiles: COPYING
 Section: libs
 Maintainer: Ted Hess <thess@kitschensync.net>
 Architecture: aarch64_cortex-a53
-Installed-Size: 27782
+Installed-Size: 27783
 Description:  libid3tag is a library for reading and (eventually) writing ID3 tags, both
  ID3v1 and the various versions of ID3v2.

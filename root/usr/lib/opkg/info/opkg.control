@@ -1,5 +1,5 @@
 Package: opkg
-Version: 2019-01-31-d4ba162b-1
+Version: 2019-06-14-dcbc142e-1
 Depends: libc, uclient-fetch, libpthread, libubox20170601
 Source: package/system/opkg
 SourceName: opkg
@@ -9,7 +9,7 @@ Section: base
 Essential: yes
 Maintainer: Jo-Philipp Wich <jo@mein.io>
 Architecture: aarch64_cortex-a53
-Installed-Size: 66225
+Installed-Size: 66309
 Description:  Lightweight package management system
  opkg is the opkg Package Management System, for handling
  installation and removal of packages on a system. It can

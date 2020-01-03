@@ -1,0 +1,9 @@
+Package: luci-i18n-firewall-zh-cn
+Version: git-19.332.23140-f01d93b-1
+Depends: libc, luci-app-firewall
+Source: feeds/luci/applications/luci-app-firewall
+License: Apache-2.0
+Section: luci
+Architecture: all
+Installed-Size: 5014
+Description:  Translation for luci-app-firewall - 中文 (Chinese)

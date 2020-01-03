@@ -132,6 +132,10 @@ function ip6prefix(val)
 	return ( val and val >= 0 and val <= 128 )
 end
 
+function cidr(val)
+	return cidr4(val) or cidr6(val)
+end
+
 function cidr4(val)
 	local ip, mask = val:match("^([^/]+)/([^/]+)$")
 
@@ -414,7 +418,7 @@ function maxlength(val, max)
 end
 
 function phonedigit(val)
-	return (val:match("^[0-9\*#!%.]+$") ~= nil)
+	return (val:match("^[0-9%*#!%.]+$") ~= nil)
 end
 
 function timehhmmss(val)

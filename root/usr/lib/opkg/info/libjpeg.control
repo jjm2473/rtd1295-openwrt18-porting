@@ -1,5 +1,5 @@
 Package: libjpeg
-Version: 9c-1
+Version: 9c-2
 Depends: libc
 Source: feeds/packages/libs/libjpeg
 SourceName: libjpeg
@@ -8,5 +8,5 @@ LicenseFiles: README
 Section: libs
 Maintainer: Jo-Philipp Wich <jo@mein.io>
 Architecture: aarch64_cortex-a53
-Installed-Size: 94898
+Installed-Size: 95150
 Description:  The Independent JPEG Group's JPEG runtime library

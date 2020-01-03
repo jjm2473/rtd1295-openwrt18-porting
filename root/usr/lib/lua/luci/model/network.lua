@@ -181,7 +181,7 @@ function _wifi_iface(x)
 			return true
 		end
 	end
-	return false
+	return (nfs.access("/sys/class/net/%s/phy80211" % x) == true)
 end
 
 local function _wifi_iwinfo_by_ifname(ifname, force_phy_only)
@@ -622,6 +622,12 @@ function del_network(self, n)
 					_uci:delete("wireless", s['.name'], "network")
 				end
 			end)
+
+		local ok, fw = pcall(require, "luci.model.firewall")
+		if ok then
+			fw.init()
+			fw:del_network(n)
+		end
 	end
 	return r
 end
@@ -1159,6 +1165,10 @@ function protocol.is_dynamic(self)
 	return (self:_ubus("dynamic") == true)
 end
 
+function protocol.is_auto(self)
+	return (self:_get("auto") ~= "0")
+end
+
 function protocol.is_alias(self)
 	local ifn, parent = nil, nil
 
@@ -1245,8 +1255,8 @@ function protocol.get_interface(self)
 	end
 end
 
-function protocol.get_interfaces(self)
-	if self:is_bridge() or (self:is_virtual() and not self:is_floating()) then
+function protocol.get_interfaces(self, ignore_bridge_state)
+	if ignore_bridge_state or self:is_bridge() or (self:is_virtual() and not self:is_floating()) then
 		local ifaces = { }
 
 		local ifn

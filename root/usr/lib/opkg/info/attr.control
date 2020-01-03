@@ -8,7 +8,7 @@ LicenseFiles: doc/COPYING doc/COPYING.LGPL
 Section: utils
 Maintainer: Maxim Storchak <m.storchak@gmail.com>
 Architecture: aarch64_cortex-a53
-Installed-Size: 11602
+Installed-Size: 11595
 Description:  Extended attributes support
  This package provides xattr manipulation utilities
  - attr

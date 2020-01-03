@@ -1,12 +1,12 @@
 Package: libf2fs6
-Version: 1.12.0-2
+Version: 1.12.0-3
 Depends: libc, libuuid1
 Provides: libf2fs
 Source: package/utils/f2fs-tools
 SourceName: libf2fs
-License: GPLv2
+License: GPL-2.0
 Section: libs
 Maintainer: Felix Fietkau <nbd@nbd.name>
 Architecture: aarch64_cortex-a53
-Installed-Size: 9423
+Installed-Size: 9415
 Description:  Library for Flash-Friendly File System (F2FS) tools

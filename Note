@@ -1,0 +1,17 @@
+
+decompress:
+gunzip -k openwrt-sunxi-cortexa53-sun50i-a64-sopine-baseboard-squashfs-sdcard.img.gz
+
+find the begining of root fs:
+fdisk openwrt-sunxi-cortexa53-sun50i-a64-sopine-baseboard-squashfs-sdcard.img | grep Linux
+ 2: 83  178   3  12 -  211   1  13 [     45056 -     524288] Linux files*
+
+dump root fs:
+dd if=openwrt-sunxi-cortexa53-sun50i-a64-sopine-baseboard-squashfs-sdcard.img of=openwrt-sunxi-cortexa53-sun50i-a64-sopine-baseboard-root-squashfs.img ibs=512 skip=45056
+
+mount root fs:
+mount -t squashfs openwrt-sunxi-cortexa53-sun50i-a64-sopine-baseboard-root-squashfs.img /mnt/sunxi
+
+OR in Macos 
+
+squashfuse openwrt-sunxi-cortexa53-sun50i-a64-sopine-baseboard-root-squashfs.img /mnt/sunxi

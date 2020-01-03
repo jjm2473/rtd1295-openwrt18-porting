@@ -9,6 +9,6 @@ Section: net
 Require-User: aria2=6800:aria2=6800
 Maintainer: Imre Kaloz <kaloz@openwrt.org>, Hsing-Wang Liao <kuoruan@gmail.com>
 Architecture: aarch64_cortex-a53
-Installed-Size: 628856
+Installed-Size: 628642
 Description:  aria2 is a lightweight multi-protocol & multi-source command-line download
  utility

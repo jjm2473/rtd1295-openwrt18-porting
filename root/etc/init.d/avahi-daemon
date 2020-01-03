@@ -4,7 +4,7 @@ START=61
 
 BIN=avahi-daemon
 DEFAULT=/etc/default/$BIN
-OPTIONS="--no-drop-root -D"
+OPTIONS="-D"
 RUN_D=/var/run/$BIN
 
 start() {

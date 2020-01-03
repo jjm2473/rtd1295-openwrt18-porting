@@ -1,5 +1,5 @@
 Package: rpcbind
-Version: 1.2.5-2
+Version: 1.2.5-4
 Depends: libc, libtirpc, libwrap
 Source: feeds/packages/net/rpcbind
 SourceName: rpcbind
@@ -8,7 +8,7 @@ Section: net
 Require-User: rpc=65533:rpc=65533
 Maintainer: Andy Walsh <andy.walsh44+github@gmail.com>
 Architecture: aarch64_cortex-a53
-Installed-Size: 26568
+Installed-Size: 26658
 Description:  The rpcbind utility is a server that converts RPC program numbers into universal addresses.
  It must be running on the host to be able to make RPC calls on a server on that machine.
  

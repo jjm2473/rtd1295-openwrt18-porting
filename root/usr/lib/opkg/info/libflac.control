@@ -8,5 +8,5 @@ LicenseFiles: README COPYING.FDL COPYING.GPL COPYING.LGPL COPYING.Xiph
 Section: libs
 Maintainer: Ted Hess <thess@kitschensync.net>
 Architecture: aarch64_cortex-a53
-Installed-Size: 79513
+Installed-Size: 79422
 Description:  Free Lossless Audio Codec library

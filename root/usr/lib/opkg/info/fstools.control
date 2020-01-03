@@ -1,5 +1,5 @@
 Package: fstools
-Version: 2018-12-28-af93f4b8-4
+Version: 2019-08-28-6a61b9ac-1
 Depends: libc, ubox
 Source: package/system/fstools
 SourceName: fstools
@@ -7,5 +7,5 @@ License: GPL-2.0
 Section: base
 Maintainer: John Crispin <john@phrozen.org>
 Architecture: aarch64_cortex-a53
-Installed-Size: 15781
+Installed-Size: 15789
 Description:  OpenWrt filesystem tools

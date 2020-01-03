@@ -1,2 +1,2 @@
 /etc/modules.d/pppoe
-/lib/modules/4.1.35-04005-g6c2818e-dirty/pppoe.ko
+/lib/modules/4.14.156/pppoe.ko

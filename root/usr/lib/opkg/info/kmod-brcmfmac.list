@@ -1,0 +1,2 @@
+/etc/modules.d/brcmfmac
+/lib/modules/4.14.156/brcmfmac.ko

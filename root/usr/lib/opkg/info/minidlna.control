@@ -9,6 +9,6 @@ Section: multimedia
 Require-User: minidlna:minidlna
 Maintainer: Knyazkov Dmitry <medavedik@gmail.com>
 Architecture: aarch64_cortex-a53
-Installed-Size: 124464
+Installed-Size: 124403
 Description:  MiniDLNA (aka ReadyDLNA) is server software with the aim of
  being fully compliant with DLNA/UPnP-AV clients.

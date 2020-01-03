@@ -1,10 +1,10 @@
 Package: luci-mod-status
-Version: git-19.088.25182-8e3e502-1
+Version: git-19.365.55415-a44e6b3-1
 Depends: libc, luci-base, libiwinfo20181126, libiwinfo-lua
 Source: feeds/luci/modules/luci-mod-status
 SourceName: luci-mod-status
 License: Apache-2.0
 Section: luci
 Architecture: aarch64_cortex-a53
-Installed-Size: 22577
+Installed-Size: 23107
 Description:  LuCI Status Pages

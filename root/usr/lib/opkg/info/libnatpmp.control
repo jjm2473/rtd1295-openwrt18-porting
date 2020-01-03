@@ -8,7 +8,7 @@ LicenseFiles: LICENSE
 Section: libs
 Maintainer: Hauke Mehrtens <hauke@hauke-m.de>
 Architecture: aarch64_cortex-a53
-Installed-Size: 3216
+Installed-Size: 3198
 Description:  libnatpmp is an attempt to make a portable and fully compliant implementation
  of the protocol for the client side. It is based on non blocking sockets and
  all calls of the API are asynchronous. It is therefore very easy to integrate

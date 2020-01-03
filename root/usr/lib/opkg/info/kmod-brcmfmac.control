@@ -1,0 +1,10 @@
+Package: kmod-brcmfmac
+Version: 4.14.156+4.19.85-1-1
+Depends: kernel (=4.14.156-1-ae418ed2395263358bbe7536d318ae28), kmod-cfg80211, kmod-brcmutil, kmod-mmc, kmod-usb-core, brcmfmac-firmware-usb
+Source: package/kernel/mac80211
+SourceName: kmod-brcmfmac
+Section: kernel
+Maintainer: Felix Fietkau <nbd@nbd.name>
+Architecture: aarch64_cortex-a53
+Installed-Size: 111113
+Description:  Kernel module for Broadcom IEEE802.11n USB Wireless cards

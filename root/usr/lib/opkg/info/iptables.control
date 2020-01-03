@@ -1,12 +1,12 @@
 Package: iptables
-Version: 1.8.2-3
-Depends: libc, kmod-ipt-core, libip4tc0, libip6tc0, libxtables12
+Version: 1.8.3-1
+Depends: libc, kmod-ipt-core, libip4tc2, libip6tc2, libxtables12
 Source: package/network/utils/iptables
 SourceName: iptables
 License: GPL-2.0
 Section: net
 Architecture: aarch64_cortex-a53
-Installed-Size: 25193
+Installed-Size: 24414
 Description:  IP firewall administration tool.
  
  Matches:

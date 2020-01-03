@@ -1,5 +1,5 @@
 Package: libdevmapper
-Version: 2.03.02-1
+Version: 2.03.02-2
 Depends: libc, kmod-dm, libpthread, libuuid1, librt, libblkid1
 Source: feeds/packages/utils/lvm2
 SourceName: libdevmapper
@@ -8,6 +8,6 @@ LicenseFiles: COPYING COPYING.lib
 Section: libs
 Maintainer: Daniel Golle <daniel@makrotopia.org>
 Architecture: aarch64_cortex-a53
-Installed-Size: 117814
+Installed-Size: 131106
 Description:  The device-mapper is a component of the 2.6 linux kernel that supports logical
  volume management. It is required by LVM2 and EVMS.

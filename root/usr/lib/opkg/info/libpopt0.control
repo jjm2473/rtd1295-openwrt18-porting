@@ -7,5 +7,5 @@ SourceName: libpopt
 License: MIT
 Section: libs
 Architecture: aarch64_cortex-a53
-Installed-Size: 17483
+Installed-Size: 17441
 Description:  A command line option parsing library

@@ -1,5 +1,5 @@
 Package: libgcc1
-Version: 7.4.0-1
+Version: 7.5.0-2
 Provides: libgcc
 Source: package/libs/toolchain
 SourceName: libgcc
@@ -9,5 +9,5 @@ Status: unknown hold not-installed
 Essential: yes
 Maintainer: Felix Fietkau <nbd@nbd.name>
 Architecture: aarch64_cortex-a53
-Installed-Size: 33674
+Installed-Size: 33530
 Description:  GCC support library

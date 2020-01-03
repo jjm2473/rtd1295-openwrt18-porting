@@ -7,7 +7,7 @@ SourceName: libavahi-dbus-support
 Section: libs
 Maintainer: Ted Hess <thess@kitschensync.net>
 Architecture: aarch64_cortex-a53
-Installed-Size: 69072
+Installed-Size: 69007
 Description:  Avahi is an mDNS/DNS-SD (aka RendezVous/Bonjour/ZeroConf)
  implementation (library). It facilitates
  service discovery on a local network -- this means that

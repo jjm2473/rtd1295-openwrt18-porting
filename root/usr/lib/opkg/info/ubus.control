@@ -7,5 +7,5 @@ License: LGPL-2.1
 Section: base
 Maintainer: Felix Fietkau <nbd@nbd.name>
 Architecture: aarch64_cortex-a53
-Installed-Size: 5324
+Installed-Size: 5312
 Description:  OpenWrt RPC client utility

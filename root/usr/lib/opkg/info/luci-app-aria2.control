@@ -1,11 +1,11 @@
 Package: luci-app-aria2
-Version: 1.0.1-4
-Depends: libc, luci-lib-ipkg, aria2
+Version: git-19.365.55415-a44e6b3-1
+Depends: libc, luci-compat, aria2, luci-lib-ipkg
 Source: feeds/luci/applications/luci-app-aria2
 SourceName: luci-app-aria2
-License: Apache-2.0
+License: MIT
 Section: luci
-Maintainer: Hsing-Wang Liao <kuoruan@gmail.com>
+Maintainer: Xingwang Liao <kuoruan@gmail.com>
 Architecture: all
-Installed-Size: 4331
+Installed-Size: 9026
 Description:  LuCI Support for Aria2

@@ -1,10 +1,7 @@
-/usr/lib/lua/luci/model/cbi/admin_network/proto_dslite.lua
-/usr/lib/lua/luci/model/cbi/admin_network/proto_6rd.lua
-/usr/lib/lua/luci/model/cbi/admin_network/proto_6to4.lua
-/usr/lib/lua/luci/model/cbi/admin_network/proto_map.lua
-/usr/lib/lua/luci/model/network/proto_dhcpv6.lua
-/usr/lib/lua/luci/model/network/proto_4x6.lua
-/usr/lib/lua/luci/model/cbi/admin_network/proto_464xlat.lua
-/usr/lib/lua/luci/model/network/proto_6x4.lua
-/usr/lib/lua/luci/model/cbi/admin_network/proto_6in4.lua
-/usr/lib/lua/luci/model/cbi/admin_network/proto_dhcpv6.lua
+/www/luci-static/resources/protocol/6rd.js
+/www/luci-static/resources/protocol/6to4.js
+/www/luci-static/resources/protocol/dhcpv6.js
+/www/luci-static/resources/protocol/6in4.js
+/www/luci-static/resources/protocol/dslite.js
+/www/luci-static/resources/protocol/464xlat.js
+/www/luci-static/resources/protocol/map.js

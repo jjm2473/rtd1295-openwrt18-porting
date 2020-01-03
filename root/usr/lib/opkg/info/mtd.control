@@ -6,6 +6,6 @@ SourceName: mtd
 License: GPL-2.0+
 Section: utils
 Architecture: aarch64_cortex-a53
-Installed-Size: 12155
+Installed-Size: 9899
 Description:  This package contains an utility useful to upgrade from other firmware or 
  older OpenWrt releases.

@@ -1,10 +1,10 @@
 Package: kmod-fs-nfs-v4
-Version: 4.14.109-1
-Depends: kernel (=4.14.109-1-ea4f7c894f16c09b49fa3b83cad0280e), kmod-fs-nfs
+Version: 4.14.156-1
+Depends: kernel (=4.14.156-1-ae418ed2395263358bbe7536d318ae28), kmod-fs-nfs
 Source: package/kernel/linux
 SourceName: kmod-fs-nfs-v4
 License: GPL-2.0
 Section: kernel
 Architecture: aarch64_cortex-a53
-Installed-Size: 71018
+Installed-Size: 70071
 Description:  Kernel module for NFS v4 support

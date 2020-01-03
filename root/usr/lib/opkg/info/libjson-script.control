@@ -1,11 +1,11 @@
 Package: libjson-script
-Version: 2019-02-27-eeef7b50-1
+Version: 2019-10-29-30130391-1
 Depends: libc, libubox20170601
-Source: package/libs/libubox
+Source: feeds/base/package/libs/libubox
 SourceName: libjson-script
 License: ISC
 Section: utils
 Maintainer: Felix Fietkau <nbd@nbd.name>
 Architecture: aarch64_cortex-a53
-Installed-Size: 4537
+Installed-Size: 4526
 Description:  Minimalistic JSON based scripting engine

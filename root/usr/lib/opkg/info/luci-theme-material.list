@@ -1,13 +1,13 @@
-/www/luci-static/material/fonts/font.woff
+/www/luci-static/material/icons/spinner.svg
 /www/luci-static/material/js/jquery.min.js
+/www/luci-static/material/icons/arrow.svg
 /www/luci-static/material/cascade.css
 /www/luci-static/material/favicon.ico
 /www/luci-static/material/custom.css
 /www/luci-static/material/brand.png
-/www/luci-static/material/fonts/font.eot
 /usr/lib/lua/luci/view/themes/material/header.htm
+/www/luci-static/material/icons/menu.svg
+/www/luci-static/material/icons/logout.svg
 /www/luci-static/material/js/script.js
 /usr/lib/lua/luci/view/themes/material/footer.htm
-/www/luci-static/material/fonts/font.ttf
-/www/luci-static/material/fonts/font.svg
 /etc/uci-defaults/30_luci-theme-material

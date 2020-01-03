@@ -1,0 +1,5 @@
+/usr/libexec/cgi-io
+/www/cgi-bin/cgi-exec
+/www/cgi-bin/cgi-backup
+/www/cgi-bin/cgi-download
+/www/cgi-bin/cgi-upload

@@ -28,6 +28,11 @@
 		min-width: 250px;
 	}
 
+	.controls > *:nth-child(2),
+	.controls > *:nth-child(3) {
+		flex-basis: 20%;
+	}
+
 	.controls > * > .btn {
 		flex-basis: 20px;
 		text-align: center;
@@ -107,6 +112,8 @@
 		<label><%:Actions%>:</label>
 		<button class="btn cbi-button-positive" data-command="update" onclick="handleOpkg(event)"><%:Update lists…%></button>
 		&#160;
+		<button class="btn cbi-button-action" onclick="handleUpload(event)"><%:Upload Package…%></button>
+		&#160;
 		<button class="btn cbi-button-neutral" onclick="handleConfig(event)"><%:Configure opkg…%></button>
 	</div>
 </div>
@@ -135,6 +142,6 @@
 	</div>
 </div>
 
-<script type="text/javascript" src="<%=resource%>/view/opkg.js?v=git-19.088.25182-8e3e502"></script>
+<script type="text/javascript" src="<%=resource%>/view/opkg.js?v=git-19.365.55415-a44e6b3"></script>
 
 <%+footer%>

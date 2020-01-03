@@ -8,7 +8,7 @@ LicenseFiles: COPYING
 Section: libs
 Maintainer: Ted Hess <thess@kitschensync.net>
 Architecture: aarch64_cortex-a53
-Installed-Size: 192950
+Installed-Size: 192817
 Description:  Vorbis is a general purpose audio and music encoding format
  contemporary to MPEG-4's AAC and TwinVQ, the next generation beyond
  MPEG audio layer 3. Unlike the MPEG sponsored formats (and other

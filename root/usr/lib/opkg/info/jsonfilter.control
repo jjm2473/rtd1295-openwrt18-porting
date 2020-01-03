@@ -7,5 +7,5 @@ License: ISC
 Section: base
 Maintainer: Jo-Philipp Wich <jo@mein.io>
 Architecture: aarch64_cortex-a53
-Installed-Size: 9490
+Installed-Size: 9485
 Description:  OpenWrt JSON filter utility

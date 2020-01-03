@@ -1,0 +1,3 @@
+/lib/modules/4.14.156/fat.ko
+/etc/modules.d/30-fs-vfat
+/lib/modules/4.14.156/vfat.ko

@@ -1,9 +1,9 @@
 Package: luci-i18n-samba4-zh-cn
-Version: git-19.088.25182-8e3e502-1
+Version: git-19.365.55415-a44e6b3-1
 Depends: libc, luci-app-samba4
 Source: feeds/luci/applications/luci-app-samba4
 SourceName: luci-i18n-samba4-zh-cn
 Section: luci
 Architecture: all
-Installed-Size: 1437
+Installed-Size: 1513
 Description:  Translation for luci-app-samba4 - 中文 (Chinese)

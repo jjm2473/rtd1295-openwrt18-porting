@@ -1,5 +1,5 @@
 Package: libblkid1
-Version: 2.33-2
+Version: 2.34-1
 Depends: libc, libuuid1
 Provides: libblkid
 Source: package/utils/util-linux
@@ -8,7 +8,7 @@ License: GPL-2.0
 LicenseFiles: COPYING libblkid/COPYING libmount/COPYING Documentation/licenses/COPYING.GPLv2 Documentation/licenses/COPYING.LGPLv2.1 libuuid/COPYING Documentation/licenses/COPYING.BSD-3
 Section: libs
 Architecture: aarch64_cortex-a53
-Installed-Size: 119953
+Installed-Size: 120952
 Description:  The libblkid library is used to identify block devices (disks) as to their
  content (e.g. filesystem type, partitions) as well as extracting additional
  information such as filesystem labels/volume names, partitions, unique

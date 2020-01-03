@@ -5,3 +5,4 @@
 /etc/samba/idmap.ldb
 /etc/samba/lmhosts
 /etc/nsswitch.conf
+/etc/krb5.conf

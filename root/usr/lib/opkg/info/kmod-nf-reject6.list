@@ -1,2 +1,2 @@
-/lib/modules/4.14.107/nf_reject_ipv6.ko
+/lib/modules/4.14.156/nf_reject_ipv6.ko
 /etc/modules.d/nf-reject6

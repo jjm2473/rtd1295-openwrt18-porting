@@ -1,5 +1,5 @@
 Package: librt
-Version: 1.1.21-1
+Version: 1.1.24-2
 Depends: libpthread
 Source: package/libs/toolchain
 SourceName: librt
@@ -9,5 +9,5 @@ Status: unknown hold not-installed
 Essential: yes
 Maintainer: Felix Fietkau <nbd@nbd.name>
 Architecture: aarch64_cortex-a53
-Installed-Size: 126
+Installed-Size: 124
 Description:  POSIX.1b RealTime extension library

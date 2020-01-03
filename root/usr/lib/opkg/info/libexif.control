@@ -8,7 +8,7 @@ LicenseFiles: COPYING
 Section: libs
 Maintainer: W. Michael Petullo <mike@flyn.org>
 Architecture: aarch64_cortex-a53
-Installed-Size: 69238
+Installed-Size: 69237
 Description:  libexif is a library for parsing, editing, and saving EXIF data. It is
  intended to replace lots of redundant implementations in command-line
  utilities and programs with GUIs.
