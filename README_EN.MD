@@ -44,6 +44,14 @@ From 1.3, offering RTD1295 and RTD1296 varients, RTD1295 varient supports (Linux
 
 Before 1.3, only supports (Linux 4.1.35-04005-g6c2818e-dirty + Android 7.1.1).
 
+#### 2.0.0 (2020-01-03)
+*1. Merged Openwrt 19.07.0-rc2*
+
+* RTD1296 (Z9S,etc.)
+    * [Complete Edition](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/z9s_2.0.0_full) (**recommended**)
+* RTD1295 (X9S,etc.)
+    * [Complete Edition](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/x9s_2.0.0_full) (**recommended**)
+
 #### 1.5 (2019-05-11)
 *1. Port zidoo's luci-app-diskmanager, the disk manager*
 
@@ -54,9 +62,9 @@ Before 1.3, only supports (Linux 4.1.35-04005-g6c2818e-dirty + Android 7.1.1).
 *4. delay Android booting, make [ipv6 config](https://github.com/jjm2473/rtd1295-openwrt18-porting/wiki/IPv6%E9%85%8D%E7%BD%AE) works better*
 
 * RTD1296 (Z9S,etc.)
-    * [Complete Edition](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.5_full) (**recommended**)
+    * [Complete Edition](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.5_full)
 * RTD1295 (X9S,etc.)
-    * [Complete Edition](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/x9s_1.5_full) (**recommended**)
+    * [Complete Edition](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/x9s_1.5_full)
 
 #### 1.4 (2019-04-13)
 *Complete Edition only add aria2*

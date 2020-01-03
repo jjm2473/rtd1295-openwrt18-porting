@@ -50,13 +50,21 @@
 
 1.3版之前的包只支持(Linux 4.1.35-04005-g6c2818e-dirty + Android 7.1.1)底包.
 
+#### 2.0.0 (2020-01-03)
+*1. 合并Openwrt 19.07.0-rc2，可以使用稳定的软件源*
+
+* RTD1296 (Z9S等)
+    * [完整版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/z9s_2.0.0_full) (**推荐**)
+* RTD1295 (X9S等)
+    * [完整版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/x9s_2.0.0_full) (**推荐**)
+
 #### 1.5.1 (2019-06-18)
 *1. 修复FTP用户列表错误*
 
 * RTD1296 (Z9S等)
-    * [完整版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.5.1_full) (**推荐**)
+    * [完整版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.5.1_full)
 * RTD1295 (X9S等)
-    * [完整版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/x9s_1.5.1_full) (**推荐**)
+    * [完整版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/x9s_1.5.1_full)
 
 #### 1.5 (2019-05-11)
 *1. 移植Zidoo的luci-app-diskmanager, 磁盘管理工具*
