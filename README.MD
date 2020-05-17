@@ -1,6 +1,8 @@
 ## RTD1295 OpenWrt 19.07.0-rc2+ 移植项目
 [English Version](/README_EN.MD)
 
+> 为了统一构建脚本，最新的开发工作已经转移到 [https://github.com/jjm2473/openwrt/tree/openwrt-18.06](https://github.com/jjm2473/openwrt/tree/openwrt-18.06)
+
 ### 一.项目说明
 ![Screenshot](screenshot.jpg?raw=true)
 
