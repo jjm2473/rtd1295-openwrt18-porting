@@ -1,6 +1,8 @@
 ## RTD1295 OpenWrt 19.07.0-rc2+ Porting Project
 [中文版](/README.MD)
 
+> In order to unify build script, the source code moved to [https://github.com/jjm2473/openwrt/tree/openwrt-18.06](https://github.com/jjm2473/openwrt/tree/openwrt-18.06)
+
 ### I. Project Description
 ![Screenshot](screenshot.jpg?raw=true)
 
