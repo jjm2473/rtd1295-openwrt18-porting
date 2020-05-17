@@ -58,17 +58,17 @@
 *目前发现此版本刚刷完之后Samba服务在其他设备不会被发现，手动输入IP又能挂载成功，过段时间可能又能被其他设备发现，怀疑是DNS缓存导致的，刚刷完建议设置主机名，然后重启当前设备以及路由器。机友若发现此问题或者有解决此问题的经验都可以提交issue讨论*
 
 * RTD1296 (Z9S等)
-    * [完整版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/z9s_2.0.0_full) (**推荐**)
+    * [完整版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/z9s_2.0.0_full) (**实验版本**)
 * RTD1295 (X9S等)
-    * [完整版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/x9s_2.0.0_full) (**推荐**)
+    * [完整版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/x9s_2.0.0_full) (**实验版本**)
 
 #### 1.5.1 (2019-06-18)
 *1. 修复FTP用户列表错误*
 
 * RTD1296 (Z9S等)
-    * [完整版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.5.1_full)
+    * [完整版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.5.1_full) (**推荐**)
 * RTD1295 (X9S等)
-    * [完整版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/x9s_1.5.1_full)
+    * [完整版](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/x9s_1.5.1_full) (**推荐**)
 
 #### 1.5 (2019-05-11)
 *1. 移植Zidoo的luci-app-diskmanager, 磁盘管理工具*
