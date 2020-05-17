@@ -50,9 +50,17 @@ Before 1.3, only supports (Linux 4.1.35-04005-g6c2818e-dirty + Android 7.1.1).
 *1. Merged Openwrt 19.07.0-rc2*
 
 * RTD1296 (Z9S,etc.)
-    * [Complete Edition](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/z9s_2.0.0_full) (**recommended**)
+    * [Complete Edition](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/z9s_2.0.0_full) (**experimental**)
 * RTD1295 (X9S,etc.)
-    * [Complete Edition](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/x9s_2.0.0_full) (**recommended**)
+    * [Complete Edition](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/x9s_2.0.0_full) (**experimental**)
+
+#### 1.5.1 (2019-06-18)
+*1. Fix FTP user list
+
+* RTD1296 (Z9S,etc.)
+    * [Complete Edition](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/1.5.1_full) (**recommended**)
+* RTD1295 (X9S,etc.)
+    * [Complete Edition](https://github.com/jjm2473/rtd1295-openwrt18-porting/releases/tag/x9s_1.5.1_full) (**recommended**)
 
 #### 1.5 (2019-05-11)
 *1. Port zidoo's luci-app-diskmanager, the disk manager*
