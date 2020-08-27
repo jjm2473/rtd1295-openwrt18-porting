@@ -1,6 +1,6 @@
-# 本项目已过时，下载最新固件请到 https://jjm2473.github.io/nas/2020/08/26/rtd129x-openwrt-1806.html
-# 本项目已过时，下载最新固件请到 https://jjm2473.github.io/nas/2020/08/26/rtd129x-openwrt-1806.html
-# 本项目已过时，下载最新固件请到 https://jjm2473.github.io/nas/2020/08/26/rtd129x-openwrt-1806.html
+# 本项目已过时，下载最新固件请到 https://github.com/jjm2473/openwrt/wiki/RTD129X-Openwrt-18.06
+# 本项目已过时，下载最新固件请到 https://github.com/jjm2473/openwrt/wiki/RTD129X-Openwrt-18.06
+# 本项目已过时，下载最新固件请到 https://github.com/jjm2473/openwrt/wiki/RTD129X-Openwrt-18.06
 
 ----------
 
