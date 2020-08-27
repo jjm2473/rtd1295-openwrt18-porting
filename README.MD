@@ -1,3 +1,9 @@
+# 本项目已过时，下载最新固件请到 https://jjm2473.github.io/nas/2020/08/26/rtd129x-openwrt-1806.html
+# 本项目已过时，下载最新固件请到 https://jjm2473.github.io/nas/2020/08/26/rtd129x-openwrt-1806.html
+# 本项目已过时，下载最新固件请到 https://jjm2473.github.io/nas/2020/08/26/rtd129x-openwrt-1806.html
+
+----------
+
 ## RTD1295 OpenWrt 19.07.0-rc2+ 移植项目
 [English Version](/README_EN.MD)
 
