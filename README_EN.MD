@@ -1,3 +1,8 @@
+# The project was obsoleted, please goto https://jjm2473.github.io/nas/2020/08/26/rtd129x-openwrt-1806.en.html
+# The project was obsoleted, please goto https://jjm2473.github.io/nas/2020/08/26/rtd129x-openwrt-1806.en.html
+# The project was obsoleted, please goto https://jjm2473.github.io/nas/2020/08/26/rtd129x-openwrt-1806.en.html
+
+------------------
 ## RTD1295 OpenWrt 19.07.0-rc2+ Porting Project
 [中文版](/README.MD)
 
